@@ -30,7 +30,7 @@ class NewsController extends Controller
             'news' => $news,
             'lang' => $lang,
         ];
-        return view('admin.content.content_news', $pass_data);
+        return view('admin.content.content_news', $pass_data); //test
     }
 
     /**

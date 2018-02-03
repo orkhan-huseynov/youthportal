@@ -28,7 +28,7 @@ class NewsController extends Controller
         }
         $pass_data = [
             'news' => $news,
-            'lang' => $lang
+            'lang' => $lang,
         ];
         return view('admin.content.content_news', $pass_data);
     }

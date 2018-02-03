@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Section;
+use App\Models\NewsRu;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $sections = Section::all();
+        $news_ru = NewsRu::take(50)->get();
 
-        return view('home', ['sections' => $sections]);
+        return view('home', ['sections' => $sections, 'news' => $news_ru]);
     }
 }

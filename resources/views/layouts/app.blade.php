@@ -113,31 +113,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 comments_container_margin">
-                                <div class="life_style_comments_container">
-                                    <p class="life_style_comments_container_text">Lorem ipsum dolor sit amet, consectetur</p>
-                                    <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                                    <div class="line_p_margin_3"><p class="line_p_2"></p></div>
-                                </div>
-                                <div class="life_style_comments_container">
-                                    <p class="life_style_comments_container_text">Lorem ipsum dolor sit amet, consectetur</p>
-                                    <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                                    <div class="line_p_margin_3"><p class="line_p_2"></p></div>
-                                </div>
-                                <div class="life_style_comments_container">
-                                    <p class="life_style_comments_container_text">Lorem ipsum dolor sit amet, consectetur</p>
-                                    <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                                    <div class="line_p_margin_3"><p class="line_p_2"></p></div>
-                                </div>
-                                <div class="life_style_comments_container">
-                                    <p class="life_style_comments_container_text">Lorem ipsum dolor sit amet, consectetur</p>
-                                    <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                                </div>
-                                <div>
-                                    <p class="accordion_section_text"><a><span class="accordion_section_text_span">ACCORDION</span></a></p>
-                                </div>
-                            </div>
-                            <div class="row">
+                            @yield('news_ribbon')
+                            {{--<div class="row">
                                 <div class="col-sm-4 col-md-4">
                                     <div class="accordion_section_name">
                                         <a href="#"><i class="fa fa-minus-square" aria-hidden="true"></i></a>
@@ -165,7 +142,7 @@
                                     <p class="name_plus__text">Something here</p>
                                     <p class="name_plus__text">Some text</p>
                                 </div>
-                            </div>
+                            </div>--}}
                             <div class="row spot_container_second">
                                 <div class="col-sm-12 col-md-12">
                                     <div>

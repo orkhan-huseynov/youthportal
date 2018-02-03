@@ -346,3 +346,15 @@
         </div>
     </div>
 @endsection
+
+@section('news_ribbon')
+    <div class="col-sm-12 col-md-12 comments_container_margin">
+        @foreach ($news as $news_item)
+            <div class="life_style_comments_container">
+                <p class="life_style_comments_container_text">{{$news_item->name}}</p>
+                <p class="popular_news_time">{{$news_item->activity_start}} // World News // No Comments</p>
+                <div class="line_p_margin_3"><p class="line_p_2"></p></div>
+            </div>
+        @endforeach
+    </div>
+@endsection

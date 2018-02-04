@@ -26,7 +26,22 @@ $('.delete-link').click(function(){
 });
 
 //daterange
-$('.single_cal2').daterangepicker({
+$('#newsCreateForm .single_cal2').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: false,
+    startDate: new Date(),
+    timePicker: true,
+    timePicker24Hour: true,
+    timePickerIncrement: 1,
+    singleClasses: "picker_2",
+    autoUpdateInput: true,
+    locale: {
+        format: 'DD.MM.YYYY HH:mm'
+    }
+}, function(start, end, label) {
+    console.log(start.toISOString(), end.toISOString(), label);
+});
+$('#newsEditForm .single_cal2').daterangepicker({
     singleDatePicker: true,
     showDropdowns: false,
     timePicker: true,

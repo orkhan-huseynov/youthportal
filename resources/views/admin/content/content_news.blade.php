@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 
-@section('title', 'NewsRu')
+@section('title', 'News')
 
 @section('content')
 

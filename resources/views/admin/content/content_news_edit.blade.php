@@ -120,6 +120,13 @@
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name')}}</span>
                                             </div>
                                         </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="video_url">Video URL</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <input id="video_url" class="form-control col-md-6 col-xs-6" minlength="3" name="video_url" type="text" value="{{old('video_url', $news->video_url)}}">
+                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('video_url')}}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="tagline-tab">
                                         <div class="item form-group">

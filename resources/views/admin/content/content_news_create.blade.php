@@ -58,24 +58,25 @@
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Published</label>
-                                            <div class="col-md-11 col-sm-11 col-xs-11 to_left">
+                                            <div class="col-md-5 col-sm-5 col-xs-5 to_left">
                                                 <input id="published" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="published" type="checkbox" @if (old('published') == 'on')  checked @endif>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('published')}}</span>
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Actual</label>
-                                            <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="actual" type="checkbox" @if (old('actual') == 'on')  checked @endif>
-                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('actual')}}</span>
+                                            <div class="checkbox_container">
+                                                <div class="checkbox_item">
+                                                    <label class="control-label" for="published">Actual</label>
+                                                    <input id="actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="actual" type="checkbox" @if (old('actual') == 'on')  checked @endif>
+                                                </div>
+                                                <div class="checkbox_item">
+                                                    <label class="control-label" for="published">Very actual</label>
+                                                    <input id="very_actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_actual" type="checkbox" @if (old('very_actual') == 'on')  checked @endif>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Very actual</label>
-                                            <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="very_actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_actual" type="checkbox" @if (old('very_actual') == 'on')  checked @endif>
-                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('very_actual')}}</span>
-                                            </div>
+
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Important</label>
@@ -118,6 +119,13 @@
                                             <div class="col-md-6 col-sm-6 col-xs-6">
                                                 <input id="name" class="form-control col-md-6 col-xs-6" minlength="3" name="name" required type="text" value="{{old('name')}}">
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="video_url">Video URL</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <input id="video_url" class="form-control col-md-6 col-xs-6" minlength="3" name="video_url" type="text" value="{{old('video_url')}}">
+                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('video_url')}}</span>
                                             </div>
                                         </div>
                                     </div>

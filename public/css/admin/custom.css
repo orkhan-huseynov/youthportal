@@ -3983,7 +3983,9 @@ ul.notifications {
 /** Custom **/
 th.dt-center, td.dt-center { text-align: center; }
 
-.checkbox_container {margin-top: 6px;}
+.checkbox_container {
+  display: flex;
+}
 
 .tab-content {
     border-left: 1px solid #ddd;

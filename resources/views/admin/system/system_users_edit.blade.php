@@ -46,24 +46,10 @@
                                 </div>
                             </div>
                             <div class="item form-group {{$errors->has('name')?'has-error':''}}">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name">Name <span class="required">*</span></label>
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name">Full Name <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input id="name" class="form-control col-md-7 col-xs-12" minlength="3" name="name" required type="text" value="{{old('name', $user->name)}}" />
                                     <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name')}}</span>
-                                </div>
-                            </div>
-                            <div class="item form-group {{$errors->has('surname')?'has-error':''}}">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="surname">Surname <span class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="surname" class="form-control col-md-7 col-xs-12" minlength="3" name="surname" required type="text" value="{{old('surname', $user->surname)}}" />
-                                    <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('surname')}}</span>
-                                </div>
-                            </div>
-                            <div class="item form-group {{$errors->has('lastname')?'has-error':''}}">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="lastname">Last name</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="lastname" class="form-control col-md-7 col-xs-12" minlength="3" name="lastname" type="text" value="{{old('lastname', $user->lastname)}}" />
-                                    <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('lastname')}}</span>
                                 </div>
                             </div>
                             <div class="item form-group {{$errors->has('email')?'has-error':''}}">
@@ -71,6 +57,19 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12" value="{{old('email', $user->email)}}" />
                                     <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('email')}}</span>
+                                </div>
+                            </div>
+                            <div class="item form-group {{$errors->has('gender')?'has-error':''}}">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="gender">Gender</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div id="gender" class="btn-group" data-toggle="buttons">
+                                        <label class="btn @if (old('gender', $user->gender) == 'male') btn-primary @else btn-default @endif genderButtonLabel" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                            <input type="radio" name="gender" value="male" @if (old('gender', $user->gender) == 'male') checked @endif> &nbsp; Male &nbsp;
+                                        </label>
+                                        <label class="btn @if (old('gender', $user->gender) == 'female') btn-primary @else btn-default @endif genderButtonLabel" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" @if (old('gender') == 'female') checked @endif>
+                                            <input type="radio" name="gender" value="female" @if (old('gender', $user->gender) == 'female') checked @endif> Female
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="item form-group {{$errors->has('password')?'has-error':''}}">

@@ -57,4 +57,5 @@ Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], 
     Route::post('/content-news/{lang}', 'Admin\Content\NewsController@store');
     Route::get('/content-news/{lang}/{news_id}/edit', 'Admin\Content\NewsController@edit');
     Route::put('/content-news/{lang}/{news_id}', 'Admin\Content\NewsController@update');
+    Route::delete('/content-news/{lang}/{news_id}', 'Admin\Content\NewsController@destroy');
 });

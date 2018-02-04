@@ -113,6 +113,7 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $section = Section::findOrFail($id);
+        $section->delete();
     }
 }

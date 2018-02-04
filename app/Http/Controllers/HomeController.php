@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $sections = Section::all();
-        $news_ru = NewsRu::take(50)->get();
+        $news_ru = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
 
         return view('home', ['sections' => $sections, 'news' => $news_ru]);
     }

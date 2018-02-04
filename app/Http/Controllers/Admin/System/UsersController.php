@@ -48,23 +48,21 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
+        $rules = [
             'group' => 'required|numeric',
-            'name' => 'required|min:3|max:35',
-            'surname' => 'required|min:3|max:35',
-            'lastname' => 'min:3|max:35',
+            'name' => 'required|min:3|max:255',
             'email' => 'required|email|unique:users',
+            'gender' => 'required|min:4|max:6', //male of female
             'password' => 'required|min:6',
             'password2' => 'required|min:6|same:password'
-        );
+        ];
         $this->validate($request, $rules);
         
         $user = new User;
         $user->email = $request->email;
         $user->group_id = $request->group;
         $user->name = $request->name;
-        $user->surname = $request->surname;
-        $user->lastname = $request->lastname;
+        $user->gender = $request->gender;
         $user->password = Hash::make($request->password);
         $user->save();
         
@@ -91,10 +89,10 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $groups = Group::all();
         
-        $data_array = array(
+        $data_array = [
             'user' => $user,
             'groups' => $groups
-        );
+        ];
         
         return view('admin.system.system_users_edit', $data_array);
     }
@@ -107,21 +105,19 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $rules = array(
+        $rules = [
             'group' => 'required|numeric',
-            'name' => 'required|min:3|max:35',
-            'surname' => 'required|min:3|max:35',
-            'lastname' => 'min:3|max:35',
+            'name' => 'required|min:3|max:255',
             'email' => 'required|email',
-        );
+            'gender' => 'required|min:4|max:6', //male of female
+        ];
         $this->validate($request, $rules);
         
         $user = User::findOrFail($id);
         $user->email = $request->email;
         $user->group_id = $request->group;
         $user->name = $request->name;
-        $user->surname = $request->surname;
-        $user->lastname = $request->lastname;
+        $user->gender = $request->gender;
         $user->active = ($request->active == 'on');
         
         if($request->password !== '') {

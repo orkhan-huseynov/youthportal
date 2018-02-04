@@ -37,7 +37,8 @@
                                     <th>ID</th>
                                     <th>Email Address</th>
                                     <th>Fullname</th>
-                                    <th>Status</th>
+                                    <th>Active</th>
+                                    <th>Gender</th>
                                     <th>Group</th>
                                     <th class=" no-link last"><span class="nobr">Actions</span>
                                     </th>
@@ -50,7 +51,8 @@
                                         <td class="">{{$user->id}}</td>
                                         <td class="">{{$user->email}}</td>
                                         <td class="">{{$user->name}} {{$user->surname}}</td>
-                                        <td class="">{{($user->active) ? 'Active' : 'Inactive'}}</td>
+                                        <td class="">@if ($user->active) <i class="fa fa-check"></i> @endif</td>
+                                        <td class="">@if ($user->gender == 'male') <i class="fa fa-mars"></i> @else <i class="fa fa-venus"></i> @endif</td>
                                         <td class="">{{$user->group->name}}</td>
                                         <td class="last"><a href="{{url('admin/system-users/'.$user->id.'/edit')}}"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;<a class="delete-link" href="javascript:void(0);" data-url="{{url('admin/system-users/'.$user->id)}}" data-return-url="{{url('admin/system-users')}}"><i class="fa fa-trash"></i></a></td>
                                     </tr>

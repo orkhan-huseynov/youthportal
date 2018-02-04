@@ -397,8 +397,18 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($lang, $id)
     {
-        //
+        if ($lang != 'ru' && $lang != 'az'){
+            abort(404);
+        }
+
+        if ($lang == 'ru') {
+            $news = NewsRu::findOrFail($id);
+        } else {
+            $news = NewsAz::findOrFail($id);
+        }
+
+        $news->delete();
     }
 }

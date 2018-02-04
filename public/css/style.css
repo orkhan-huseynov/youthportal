@@ -136,16 +136,6 @@ body {
     margin-top: 230px;
 }
 
-.news_card_container_third {
-    margin-right: 46px;
-    margin-left: -23px;
-    margin-top: 20px;
-}
-
-.news_card_container_third img {
-    height: 200px;
-}
-
 .news_cards_main {
     margin-bottom: 20px;
 }
@@ -155,21 +145,31 @@ body {
     padding-left: 0;
 }
 
-.news_card_container_second img {
-    height: 200px;
-}
-
-.news_card_container_second {
-    margin-top: 20px;
-    margin-right: 23px;
-}
 
 .news_card_container_second .title_text {
     font-size: 1.2rem;
+    margin-top: -10px;
 }
 
-.news_card_container_third .title_text {
-    font-size: 1.2rem;
+.news_card_container_second .time_text {
+    font-size: 0.7rem;
+}
+
+.news_card_container_second {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.news_card_container_second .actual {
+    width: 50%;
+    height: 50%;
+    border-radius: 0;
+}
+
+.news_card_container_second img{
+    height: 200px;
+    border-radius: 0;
 }
 
 .card_overlay_little {

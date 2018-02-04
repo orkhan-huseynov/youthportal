@@ -66,30 +66,25 @@
                                         <div class="item form-group">
                                             <div class="checkbox_container">
                                                 <div class="checkbox_item">
-                                                    <label class="control-label" for="published">Actual</label>
-                                                    <input id="actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="actual" type="checkbox" @if (old('actual') == 'on')  checked @endif>
+                                                    <label class="control-label" for="checkBoxActual">Actual</label>
+                                                    <input id="checkBoxActual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="actual" type="checkbox" @if (old('actual') == 'on')  checked @endif>
                                                 </div>
                                                 <div class="checkbox_item">
-                                                    <label class="control-label" for="published">Very actual</label>
-                                                    <input id="very_actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_actual" type="checkbox" @if (old('very_actual') == 'on')  checked @endif>
+                                                    <label class="control-label" for="checkBoxVeryActual">Very actual</label>
+                                                    <input id="checkBoxVeryActual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_actual" type="checkbox" @if (old('very_actual') == 'on')  checked @endif>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="item form-group">
-
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Important</label>
-                                            <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="important" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="important" type="checkbox" @if (old('important') == 'on')  checked @endif>
-                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('important')}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Very important</label>
-                                            <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="very_important" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_important" type="checkbox" @if (old('very_important') == 'on')  checked @endif>
-                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('very_important')}}</span>
+                                            <div class="checkbox_container">
+                                                <div class="checkbox_item">
+                                                    <label class="control-label" for="checkBoxImportant">Important</label>
+                                                    <input id="checkBoxImportant" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="important" type="checkbox" @if (old('important') == 'on')  checked @endif>
+                                                </div>
+                                                <div class="checkbox_item">
+                                                    <label class="control-label" for="checkBoxVeryImportant">Very important</label>
+                                                    <input id="checkBoxVeryImportant" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_important" type="checkbox" @if (old('very_important') == 'on')  checked @endif>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="item form-group">

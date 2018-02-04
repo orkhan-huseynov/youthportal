@@ -106,6 +106,44 @@ for (let genderButtonLabel of genderButtonLabels) {
     });
 }
 
+//Group checkbox control
+/*
+let checkBoxActual = document.querySelector('#checkBoxActual');
+let checkBoxVeryActual = document.querySelector('#checkBoxVeryActual');
+let checkBoxImportant = document.querySelector('#checkBoxImportant');
+let checkBoxVeryImportant = document.querySelector('#checkBoxVeryImportant');
+
+if (checkBoxActual != null) {
+    let checkBoxActualEventListener =
+    checkBoxActual.addEventListener('change', function () {
+        if (checkBoxActual.checked) {
+            $('#checkBoxVeryActual').trigger('click');
+        }
+    });
+}
+if (checkBoxVeryActual != null) {
+    checkBoxVeryActual.addEventListener('change', function () {
+        if (checkBoxVeryActual.checked) {
+            $('#checkBoxActual').trigger('click');
+        }
+    });
+}
+if (checkBoxImportant != null) {
+    checkBoxImportant.addEventListener('change', function () {
+        if (checkBoxImportant.checked) {
+            $('#checkBoxVeryImportant').trigger('click');
+        }
+    });
+}
+if (checkBoxVeryImportant != null) {
+    checkBoxVeryImportant.addEventListener('change', function () {
+        if (checkBoxVeryImportant.checked) {
+            $('#checkBoxImportant').trigger('click');
+        }
+    });
+}
+*/
+
 //Validators
 let newsCreateForm = document.getElementById('newsCreateForm');
 if (newsCreateForm != null) {
@@ -148,7 +186,7 @@ if (newsCreateForm != null) {
 
 let newsEditForm = document.getElementById('newsEditForm');
 if (newsEditForm != null) {
-    newsCreateForm.addEventListener('submit', function (e) {
+    newsEditForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         let newsSectionSelect = document.getElementById('newsSectionSelect');

@@ -19,49 +19,28 @@
         <div class="container-fluid news_cards_main">
             <div class="row">
                 <div class="col-sm-6 news_card">
-                    <div class="card text-white news_card_container news_card_container_margin">
-                        <img class="card-img" src="{{ asset('images/pexels-photo-697243.jpeg') }}" alt="Card image">
-                        <div class="card-img-overlay news_card_overlay">
-                            <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> Last updated 3 mins ago</p>
-                            <h5 class="card-title title_text">Card title</h5>
-                            <p class="card-text main_text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    @foreach($news_very_actual as $very_actual)
+                        <div class="card text-white news_card_container news_card_container_margin">
+                            <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
+                            <div class="card-img-overlay news_card_overlay">
+                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$very_actual->activity_start}}</p>
+                                <h5 class="card-title title_text">{{$very_actual->name}}</h5>
+                                <p class="card-text main_text">{{$very_actual->tagline}}</p>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="col-sm-3 news_card">
+                <div class="col-sm-6 news_card news_card_second">
                     <div class="news_card_container_second">
-                        <div class="card text-white news_card_container">
-                            <img class="card-img" src="{{ asset('images/7deb467507756b82a9cfeb84d6a27aab.jpg') }}" alt="Card image">
+                        @foreach($news_actual as $actual)
+                        <div class="card text-white actual">
+                            <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
                             <div class="card-img-overlay card_overlay_little">
-                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> Last updated 3 mins ago</p>
-                                <h5 class="card-title title_text">Card title</h5>
+                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$actual->activity_start}}</p>
+                                <h5 class="card-title title_text">{{$actual->name}}</h5>
                             </div>
                         </div>
-                        <div class="card text-white news_card_container">
-                            <img class="card-img" src="{{ asset('images/blue-apron-shares-make-bland-debut-2017-6.jpg') }}" alt="Card image">
-                            <div class="card-img-overlay card_overlay_little">
-                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> Last updated 3 mins ago</p>
-                                <h5 class="card-title title_text">Card title</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 news_card">
-                    <div class="news_card_container_third">
-                        <div class="card text-white news_card_container news">
-                            <img class="card-img" src="{{ asset('images/man-coffee-cup-pen.jpg') }}" alt="Card image">
-                            <div class="card-img-overlay card_overlay_little">
-                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> Last updated 3 mins ago</p>
-                                <h5 class="card-title title_text">Card title</h5>
-                            </div>
-                        </div>
-                        <div class="card text-white news_card_container">
-                            <img class="card-img" src="{{ asset('images/tn_ir-iran-russia-mou-20171218.jpg') }}" alt="Card image">
-                            <div class="card-img-overlay card_overlay_little">
-                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> Last updated 3 mins ago</p>
-                                <h5 class="card-title title_text">Card title</h5>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

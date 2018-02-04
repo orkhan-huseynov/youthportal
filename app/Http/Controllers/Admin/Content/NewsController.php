@@ -68,7 +68,6 @@ class NewsController extends Controller
             'section' => 'required|numeric',
             //'activity_start' => 'required',
             'name' => 'required|min:3|max:255',
-            'video_url' => 'min:3',
             'tagline' => 'required|min:3',
             'text' => 'required',
         ];
@@ -260,7 +259,6 @@ class NewsController extends Controller
         $rules = [
             'section' => 'required|numeric',
             'name' => 'required|min:3|max:255',
-            'video_url' => 'min:3',
             'tagline' => 'required|min:3',
             'text' => 'required',
         ];
@@ -275,14 +273,14 @@ class NewsController extends Controller
 
         if ($request->hasFile('photo')) {
             $filename_600 = time() . '_600.' . $request->photo->getClientOriginalExtension();
-            $path_600 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_600;
+            $path_600 = storage_path('/app/public/images/'.$filename_600);
             Image::make($request->photo->getRealPath())->resize(600, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_600);
             $news->photo = $filename_600;
 
             $filename_150 = time() . '_150.' . $request->photo->getClientOriginalExtension();
-            $path_150 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_150;
+            $path_150 = storage_path('/app/public/images/'.$filename_150);
             Image::make($request->photo->getRealPath())->resize(150, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_150);
@@ -291,7 +289,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_1')) {
             $filename_image_1 = time() . '.' . $request->image_1->getClientOriginalExtension();
-            $path_image_1 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_1;
+            $path_image_1 = storage_path('/app/public/images/'.$filename_image_1);
             Image::make($request->image_1->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_1);
@@ -300,7 +298,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_2')) {
             $filename_image_2 = time() . '.' . $request->image_2->getClientOriginalExtension();
-            $path_image_2 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_2;
+            $path_image_2 = storage_path('/app/public/images/'.$filename_image_2);
             Image::make($request->image_2->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_2);
@@ -309,7 +307,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_3')) {
             $filename_image_3 = time() . '.' . $request->image_3->getClientOriginalExtension();
-            $path_image_3 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_3;
+            $path_image_3 = storage_path('/app/public/images/'.$filename_image_3);
             Image::make($request->image_3->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_3);
@@ -318,7 +316,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_4')) {
             $filename_image_4 = time() . '.' . $request->image_4->getClientOriginalExtension();
-            $path_image_4 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_4;
+            $path_image_4 = storage_path('/app/public/images/'.$filename_image_4);
             Image::make($request->image_4->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_4);
@@ -327,7 +325,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_5')) {
             $filename_image_5 = time() . '.' . $request->image_5->getClientOriginalExtension();
-            $path_image_5 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_5;
+            $path_image_5 = storage_path('/app/public/images/'.$filename_image_5);
             Image::make($request->image_5->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_5);
@@ -336,7 +334,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_6')) {
             $filename_image_6 = time() . '.' . $request->image_6->getClientOriginalExtension();
-            $path_image_6 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_6;
+            $path_image_6 = storage_path('/app/public/images/'.$filename_image_6);
             Image::make($request->image_6->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_6);
@@ -345,7 +343,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_7')) {
             $filename_image_7 = time() . '.' . $request->image_7->getClientOriginalExtension();
-            $path_image_7 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_7;
+            $path_image_7 = storage_path('/app/public/images/'.$filename_image_7);
             Image::make($request->image_7->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_7);
@@ -354,7 +352,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_8')) {
             $filename_image_8 = time() . '.' . $request->image_8->getClientOriginalExtension();
-            $path_image_8 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_8;
+            $path_image_8 = storage_path('/app/public/images/'.$filename_image_8);
             Image::make($request->image_8->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_8);
@@ -363,7 +361,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_9')) {
             $filename_image_9 = time() . '.' . $request->image_9->getClientOriginalExtension();
-            $path_image_9 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_9;
+            $path_image_9 = storage_path('/app/public/images/'.$filename_image_9);
             Image::make($request->image_9->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_9);
@@ -372,7 +370,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_10')) {
             $filename_image_10 = time() . '.' . $request->image_10->getClientOriginalExtension();
-            $path_image_10 = '/var/www/html/huseynov.us/public_html/yp/storage/app/public/images/'.$filename_image_10;
+            $path_image_10 = storage_path('/app/public/images/'.$filename_image_10);
             Image::make($request->image_10->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_10);

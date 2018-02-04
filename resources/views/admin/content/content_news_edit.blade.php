@@ -24,16 +24,16 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Create news</h2>
+                        <h2>Edit news</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form id="newsCreateForm" class="form-horizontal form-label-left" action="{{url('admin/content-news/'.$lang)}}" method="post" enctype="multipart/form-data">
+                        <form id="newsEditForm" class="form-horizontal form-label-left" action="{{url('admin/content-news/'.$lang.'/'.$news->id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
-
+                            {{ method_field('PUT') }}
                             <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                 <ul id="newsTab" class="nav nav-tabs bar_tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab_content1" id="element-tab" role="tab" data-toggle="tab" aria-expanded="true">Element</a></li>
@@ -49,7 +49,7 @@
                                                 <select id="newsSectionSelect" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="section">
                                                     <option value="0">Choose Section</option>
                                                     @foreach ($sections as $section)
-                                                        <option value="{{$section->id}}">{{$section->name_ru}}</option>
+                                                        <option @if (old('section', $news->section_id) == $section->id) selected @endif value="{{$section->id}}">{{$section->name_ru}}</option>
                                                     @endforeach
 
                                                 </select>
@@ -59,35 +59,35 @@
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Published</label>
                                             <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="published" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="published" type="checkbox" @if (old('published') == 'on')  checked @endif>
+                                                <input id="published" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="published" type="checkbox" @if (old('published', $news->active) == 'on')  checked @endif>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('published')}}</span>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Actual</label>
                                             <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="actual" type="checkbox" @if (old('actual') == 'on')  checked @endif>
+                                                <input id="actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="actual" type="checkbox" @if (old('actual', $news->actual) == 'on')  checked @endif>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('actual')}}</span>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Very actual</label>
                                             <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="very_actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_actual" type="checkbox" @if (old('very_actual') == 'on')  checked @endif>
+                                                <input id="very_actual" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_actual" type="checkbox" @if (old('very_actual', $news->very_actual) == 'on')  checked @endif>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('very_actual')}}</span>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Important</label>
                                             <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="important" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="important" type="checkbox" @if (old('important') == 'on')  checked @endif>
+                                                <input id="important" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="important" type="checkbox" @if (old('important', $news->important) == 'on')  checked @endif>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('important')}}</span>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Very important</label>
                                             <div class="col-md-11 col-sm-11 col-xs-11 to_left">
-                                                <input id="very_important" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_important" type="checkbox" @if (old('very_important') == 'on')  checked @endif>
+                                                <input id="very_important" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="very_important" type="checkbox" @if (old('very_important', $news->very_important) == 'on')  checked @endif>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('very_important')}}</span>
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
                                                         <div class="row">
                                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="activity_start">From</label>
                                                             <div class="col-sm-6 xdisplay_inputx form-group has-feedback">
-                                                                <input id="newsCreateActivityStart" name="activity_start" type="text" class="form-control has-feedback-left single_cal2">
+                                                                <input id="newsCreateActivityStart" name="activity_start" type="text" class="form-control has-feedback-left single_cal2" value="{{ old('activity_start', $news->activity_start->format('d.m.Y h:i')) }}">
                                                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true">{{$errors->first('activity_start')}}</span>
                                                             </div>
                                                         </div>
@@ -116,7 +116,7 @@
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="name_ru">Name</label>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <input id="name" class="form-control col-md-6 col-xs-6" minlength="3" name="name" required type="text" value="{{old('name')}}">
+                                                <input id="name" class="form-control col-md-6 col-xs-6" minlength="3" name="name" required type="text" value="{{old('name', $news->name)}}">
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name')}}</span>
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="tagline">Tagline</label>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <textarea id="newsCreateTagline" class="form-control col-md-6 col-xs-6" name="tagline" rows="10" cols="20">{{old('tagline')}}</textarea>
+                                                <textarea id="newsCreateTagline" class="form-control col-md-6 col-xs-6" name="tagline" rows="10" cols="20">{{old('tagline', $news->tagline)}}</textarea>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('tagline')}}</span>
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="text_ru">Text</label>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <textarea id="newsCreateText" class="form-control col-md-6 col-xs-6" name="text" rows="10" cols="20">{{old('text')}}</textarea>
+                                                <textarea id="newsCreateText" class="form-control col-md-6 col-xs-6" name="text" rows="10" cols="20">{{old('text', $news->text)}}</textarea>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('text')}}</span>
                                             </div>
                                         </div>
@@ -147,6 +147,11 @@
                                                     <input id="newsCreatePhoto" class="form-control col-md-6 col-xs-6" name="photo" type="file">
                                                     <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('photo')}}</span>
                                                 </div>
+                                                @if ($news->photo != '')
+                                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                                        <img src="{{ url('storage/images/'.$news->photo)}}" alt="" class="news_thumbnail" width="33" />
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="item form-group">

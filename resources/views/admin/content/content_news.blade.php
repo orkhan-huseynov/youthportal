@@ -54,11 +54,11 @@
                                     <td class="">{{$news_item->section->name_ru}}</td>
                                     <td class="">{{$news_item->name}}</td>
                                     <td class="">@if ($news_item->active) <i class="fa fa-check"></i> @endif</td>
-                                    <td class="">{{$news_item->activity_start}}</td>
+                                    <td class="">{{$news_item->activity_start->format('d.m.Y h:i')}}</td>
                                     <td class="">@if ($news_item->video_of_day) <i class="fa fa-check"></i> @endif</td>
-                                    <td class="">@if ($news_item->actual) Actual @elseif ($news_item->very_actual) Very actual @endif</td>
-                                    <td class="">@if ($news_item->important) Important @elseif ($news_item->very_important) Very important @endif</td>
-                                    <td class="last"><a href="{{url('admin/content-news/'.$news_item->id.'/edit')}}"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;<a class="delete-link" href="javascript:void(0);" data-url="{{url('admin/content-news/'.$news_item->id)}}" data-return-url="{{url('admin/content-news')}}"><i class="fa fa-trash"></i></a></td>
+                                    <td class="">@if ($news_item->very_actual) Very actual @elseif ($news_item->actual) Actual @endif</td>
+                                    <td class="">@if ($news_item->very_important) Very important @elseif ($news_item->important) Important @endif</td>
+                                    <td class="last"><a href="{{url('admin/content-news/'.$lang.'/'.$news_item->id.'/edit')}}"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;<a class="delete-link" href="javascript:void(0);" data-url="{{url('admin/content-news/'.$news_item->id)}}" data-return-url="{{url('admin/content-news')}}"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>

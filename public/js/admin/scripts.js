@@ -6,6 +6,10 @@ $.ajaxSetup({
     }
 });
 
+$(document).ready(function (){
+    $('.ui-pnotify').remove();
+});
+
 $('.delete-link').click(function(){
     var delete_url = $(this).attr('data-url');
     var return_url = $(this).attr('data-return-url');
@@ -23,7 +27,10 @@ $('.delete-link').click(function(){
 
 $('.single_cal2').daterangepicker({
     singleDatePicker: true,
-    singleClasses: "picker_2"
+    singleClasses: "picker_2",
+    locale: {
+        format: 'DD.MM.YYYY hh:mm'
+    }
 }, function(start, end, label) {
     console.log(start.toISOString(), end.toISOString(), label);
 });
@@ -38,7 +45,7 @@ add_files_button.addEventListener('click', function(e){
     let label = document.createElement('Label');
     label.setAttribute('class', 'control-label col-md-1 col-sm-1 col-xs-1');
     label.setAttribute('for', `image_${i}`);
-    label.innerHTML = `Image ${i}<span class="required">*</span>`;
+    label.innerHTML = `Image ${i}`;
 
     row.appendChild(label);
 
@@ -48,7 +55,6 @@ add_files_button.addEventListener('click', function(e){
     input.setAttribute('id', `image_${i}`);
     input.setAttribute('class', 'form-control col-md-6 col-xs-6');
     input.setAttribute('name', `image_${i}`);
-    input.setAttribute('required', 'required');
     input.setAttribute('type', 'file');
 
     input_container.appendChild(input);
@@ -61,4 +67,73 @@ add_files_button.addEventListener('click', function(e){
     }
     i++;
 
+});
+
+//Validators
+let newsCreateForm = document.getElementById('newsCreateForm');
+newsCreateForm.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    let newsSectionSelect = document.getElementById('newsSectionSelect');
+    if (newsSectionSelect.value == 0) {
+        new PNotify({ title: 'Please choose a section!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    let newsCreateActivityStart = document.getElementById('newsCreateActivityStart');
+    if (newsCreateActivityStart.value == '') {
+        new PNotify({ title: 'Please select activity start date!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    let newsCreateTagline = document.getElementById('newsCreateTagline');
+    if (newsCreateTagline.value == '') {
+        new PNotify({ title: 'Please enter tagline!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    let newsCreateText = document.getElementById('newsCreateText');
+    if (newsCreateText.value == '') {
+        new PNotify({ title: 'Please enter text!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    let newsCreatePhoto = document.getElementById('newsCreatePhoto');
+    if (newsCreatePhoto.files.length == 0) {
+        new PNotify({ title: 'Please choose a photo!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    newsCreateForm.submit();
+});
+
+let newsEditForm = document.getElementById('newsEditForm');
+newsCreateForm.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    let newsSectionSelect = document.getElementById('newsSectionSelect');
+    if (newsSectionSelect.value == 0) {
+        new PNotify({ title: 'Please choose a section!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    let newsCreateActivityStart = document.getElementById('newsCreateActivityStart');
+    if (newsCreateActivityStart.value == '') {
+        new PNotify({ title: 'Please select activity start date!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    let newsCreateTagline = document.getElementById('newsCreateTagline');
+    if (newsCreateTagline.value == '') {
+        new PNotify({ title: 'Please enter tagline!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    let newsCreateText = document.getElementById('newsCreateText');
+    if (newsCreateText.value == '') {
+        new PNotify({ title: 'Please enter text!', text: '', type: 'notice', styling: 'bootstrap3' });
+        return false;
+    }
+
+    newsCreateForm.submit();
 });

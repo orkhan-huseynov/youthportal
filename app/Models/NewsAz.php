@@ -22,6 +22,12 @@ class NewsAz extends Model
         'very_important' => 'boolean',
     ];
 
+    protected $dates = [
+        'activity_start',
+        'created_at',
+        'updated_at',
+    ];
+
     public function section() {
         return $this->belongsTo('App\Models\Section');
     }

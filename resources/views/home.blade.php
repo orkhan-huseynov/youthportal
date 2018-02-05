@@ -101,12 +101,14 @@
     </div>
     <div class="row life_style_main">
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
+            @foreach ($news_policy as $policy)
             <div class="big_news_container__inner">
-                <img src="{{ asset('images/man-coffee-cup-pen.jpg') }}" alt="news photo"/>
-                <h6 class="h6_settings">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h6>
-                <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                <p class="big_news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                <img src="storage/images/{{$policy->photo}}" alt="news photo"/>
+                <h6 class="h6_settings">{{$policy->name}}</h6>
+                <p class="life_style_time">{{$policy->activity_start}} // Политика // Нет комментариев</p>
+                <p class="big_news_text">{{$policy->tagline}}</p>
             </div>
+            @endforeach
         </div>
         <div class="col-sm-12 col-md-3 hot_news_container life_style_little_news_container">
             <div>

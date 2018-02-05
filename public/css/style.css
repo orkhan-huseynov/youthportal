@@ -212,6 +212,13 @@ body {
     margin-bottom: 0;
 }
 
+.life_style_time {
+    color: #dc3545;
+    font-size: 0.8rem;
+    /*margin-top: -7px;
+    margin-bottom: 10px;*/
+}
+
 .popular_news_container_second h6 {
     color: #666;
     font-size: 1rem;

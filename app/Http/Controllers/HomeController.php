@@ -29,7 +29,9 @@ class HomeController extends Controller
         $news_ru = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
         $news_ru_very_actual = NewsRu::where('very_actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(1)->get();
         $news_ru_actual = NewsRu::where('actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+        $news_ru_view = NewsRu::where('active', 1)->orderBy('view_count', 'DESC')->orderBy('activity_start', 'DESC')->take(4)->get();
+        $news_ru_very_important = NewsRu::where('very_important', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
 
-        return view('home', ['sections' => $sections, 'news' => $news_ru, 'news_very_actual' => $news_ru_very_actual, 'news_actual' => $news_ru_actual]);
+        return view('home', ['sections' => $sections, 'news' => $news_ru, 'news_very_actual' => $news_ru_very_actual, 'news_actual' => $news_ru_actual, 'news_views' => $news_ru_view, 'news_very_important' => $news_ru_very_important]);
     }
 }

@@ -50,90 +50,44 @@
 @section('inner_content')
     <div class="row">
         <div class="col-sm-12 col-md-6 news_category_container hover_class">
-            <a href="#"><p><span class="news_category_span">POPULYAR XƏBƏRLƏR</span></p></a>
+            <a href="#"><p><span class="news_category_span">ПОПУЛЯРНЫЕ НОВОСТИ</span></p></a>
         </div>
         <div class="col-sm-12 col-md-6 news_category_container hover_class">
-            <a href="#"><p><span class="news_category_span">QAYNAR XƏBƏRLƏR</span></p></a>
+            <a href="#"><p><span class="news_category_span">ГОРЯЧИЕ НОВОСТИ</span></p></a>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-3 popular_news_container">
-            <div>
-                <img src="{{ asset('images/_96116747_youngpeopleab.jpg') }}" alt="news photo" class="popular_news_img"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/mother-holding-baby-landing.jpg') }}" alt="news photo" class="popular_news_img"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/stock-photo-financial-business-news.jpg') }}" alt="news photo" class="popular_news_img"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/micex-russia-stocks-ruble.jpg') }}" alt="news photo" class="popular_news_img"/>
-            </div>
+            @foreach ($news_views as $news_view)
+                <div class="popular_news_container__img">
+                    <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
+                    <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                </div>
+            @endforeach
         </div>
         <div class="col-sm-3 popular_news_container_second">
-            <div>
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
+            @foreach ($news_views as $news_view)
+                <div class="popular_news_container_second__text">
+                    <p class="popular_news_time">{{$news_view->activity_start}}</p>
+                    <h6>{{$news_view->name}}</h6>
+                </div>
+                @endforeach
         </div>
         <div class="col-sm-3 hot_news_container">
-            <div>
-                <img src="{{ asset('images/SILO_fb_022117_stockNews_shutter.jpg') }}" alt="news photo"/>
+            @foreach ($news_very_important as $very_important)
+            <div class="popular_news_container__img">
+                <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
                 <div class="line_p_margin_2"><p class="line_p_2"></p></div>
             </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/7deb467507756b82a9cfeb84d6a27aab.jpg') }}" alt="news photo"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/tn_ir-iran-russia-mou-20171218.jpg') }}" alt="news photo"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/pexels-photo-697243.jpeg') }}" alt="news photo"/>
-            </div>
+            @endforeach
         </div>
         <div class="col-sm-3 hot_news_container_second">
-            <div>
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
+            @foreach ($news_very_important as $very_important)
             <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
+                <p class="popular_news_time">{{$very_important->activity_start}}</p>
+                <h6>{{$very_important->name}}</h6>
             </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
+            @endforeach
         </div>
     </div>
     <div class="row new_category_row hover_class">

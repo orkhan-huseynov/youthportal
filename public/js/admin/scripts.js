@@ -213,6 +213,6 @@ if (newsEditForm != null) {
             return false;
         }
 
-        newsCreateForm.submit();
+        newsEditForm.submit();
     });
 }

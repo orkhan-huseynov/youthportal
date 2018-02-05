@@ -23,7 +23,7 @@
                         <div class="card text-white news_card_container news_card_container_margin">
                             <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
                             <div class="card-img-overlay news_card_overlay">
-                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$very_actual->activity_start}}</p>
+                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$very_actual->activity_start->format('d.m.Y H:i')}}</p>
                                 <h5 class="card-title title_text">{{$very_actual->name}}</h5>
                                 <p class="card-text main_text">{{$very_actual->tagline}}</p>
                             </div>
@@ -36,7 +36,7 @@
                         <div class="card text-white actual">
                             <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
                             <div class="card-img-overlay card_overlay_little">
-                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$actual->activity_start}}</p>
+                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$actual->activity_start->format('d.m.Y H:i')}}</p>
                                 <h5 class="card-title title_text">{{$actual->name}}</h5>
                             </div>
                         </div>
@@ -331,7 +331,7 @@
         @foreach ($news as $news_item)
             <div class="life_style_comments_container">
                 <p class="life_style_comments_container_text">{{$news_item->name}}</p>
-                <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // World News // No Comments</p>
+                <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // World News // No Comments</p>
                 <div class="line_p_margin_3"><p class="line_p_2"></p></div>
             </div>
         @endforeach

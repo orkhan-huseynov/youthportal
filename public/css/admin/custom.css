@@ -3985,6 +3985,17 @@ th.dt-center, td.dt-center { text-align: center; }
 
 .checkbox_container {
   display: flex;
+  margin-left: 15px;
+}
+.form-horizontal .checkbox_item .control-label {
+  display: block;
+  float: left;
+  min-width: 80px;
+  text-align: center;
+  padding-right: 10px;
+}
+.checkbox_item .switchery {
+  margin: 5px 10px 0 0;
 }
 
 .tab-content {

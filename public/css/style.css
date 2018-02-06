@@ -133,6 +133,7 @@ body {
 
 .news_cards_main {
     margin-bottom: 20px;
+    padding-right: 60px !important;
 }
 
 .news_cards_main .news_card {

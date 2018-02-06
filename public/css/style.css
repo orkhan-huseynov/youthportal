@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background-image: url("images/bodyBgLeft.png"), url("images/bodyBgRight.png");
+    background-image: url("../images/bodyBgLeft.png"), url("../images/bodyBgRight.png");
     background-position: left top, right top;
     background-repeat: no-repeat, no-repeat;
     font-family: 'MuseoSans100';
@@ -39,7 +39,7 @@ body {
 
 .search_btn {
     width: 200px;
-    margin-left: 285px;
+    margin-left: 260px;
 }
 
 .search_container .search_btn{
@@ -107,20 +107,15 @@ body {
 
 .news_card_container img {
     border-radius: 0;
-    height: 400px;
+    height: 300px;
 }
 
 .clock_icon {
     width: 10px;
 }
 
-.news_card_container .time_text {
-    font-size: 0.7rem;
-}
-
 .news_card_container .title_text {
     font-size: 1.5rem;
-    margin-top: -10px;
 }
 
 .news_card_container .main_text {
@@ -133,7 +128,7 @@ body {
 }
 
 .news_card_overlay {
-    margin-top: 230px;
+    margin-top: 200px;
 }
 
 .news_cards_main {
@@ -146,20 +141,20 @@ body {
     padding-left: 0;
 }
 
+.margin_class {
+    margin-top: 30px;
+}
+
 
 .news_card_container_second .title_text {
     font-size: 1.2rem;
-    margin-top: -10px;
-}
-
-.news_card_container_second .time_text {
-    font-size: 0.7rem;
 }
 
 .news_card_container_second {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
+    margin-right: 45px;
 }
 
 .news_card_container_second .actual {
@@ -169,12 +164,12 @@ body {
 }
 
 .news_card_container_second img{
-    height: 200px;
+    height: 150px;
     border-radius: 0;
 }
 
 .card_overlay_little {
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .news_category_container p {
@@ -213,6 +208,13 @@ body {
     margin-bottom: 0;
 }
 
+.life_style_time {
+    color: #dc3545;
+    font-size: 0.8rem;
+    /*margin-top: -7px;
+    margin-bottom: 10px;*/
+}
+
 .popular_news_container_second h6 {
     color: #666;
     font-size: 1rem;
@@ -245,6 +247,7 @@ body {
 .networks_card {
     width: 100px;
     height: 160px;
+    margin-top: 15px;
 }
 
 .card_img {
@@ -277,10 +280,14 @@ body {
     margin-bottom: 0;
 }
 
+.line_width {
+    width: 310px;
+}
+
 .line_p_margin_2 {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 315px;
+    width: 310px;
 }
 
 .networks_numbers {
@@ -302,8 +309,8 @@ body {
     font-weight: bold;
     font-size: 1.2rem;
     border-bottom: 1px solid #dc3545;
-    margin-left: 5px;
-    width: 320px;
+    width: 310px;
+    margin-top: 30px;
 }
 
 .video_text_span {
@@ -311,13 +318,12 @@ body {
 }
 
 .video_container__inner_2 {
-    margin-left: 5px;
     margin-top: 30px;
 }
 
 .video_container_2 iframe {
-    width: 320px;
-    height: 188px;
+    width: 310px;
+    height: 178px;
 }
 
 
@@ -330,10 +336,10 @@ body {
     margin-top: 20px;
 }*/
 
-.popular_hot_networks .video_container {
+/*.popular_hot_networks .video_container {
     position: absolute;
     z-index: 10;
-}
+}*/
 
 .video_container_2 .sport_text {
     margin-top: 20px;
@@ -375,7 +381,7 @@ body {
 .comment_menu_container {
     margin-left: -10px;
     margin-top: 30px;
-    width: 350px;
+    width: 320px;
 }
 
 .comment_menu_container li:first-child {
@@ -470,7 +476,7 @@ body {
 
 .line_p_margin_3 {
     margin-top: 20px;
-    width: 320px;
+    width: 310px;
 }
 
 .life_style_comments_container .popular_news_time {
@@ -540,10 +546,6 @@ body {
     margin-right: 15px;
 }
 
-.comments_container_margin {
-    margin-left: 5px;
-}
-
 .accordion_text {
     font-size: 1rem;
     color: #666;
@@ -573,27 +575,26 @@ body {
 }
 
 .spot_container_second .sport_text {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     color: rgba(0,0,0,.5);
     font-weight: bold;
     font-size: 1.2rem;
     border-bottom: 1px solid #dc3545;
-    margin-left: 5px;
-    width: 320px;
+    /*margin-left: 5px;*/
+    width: 310px;
 }
 
-.spot_container_second p:last-child {
+/*.spot_container_second p:last-child {
     margin-top: 60px;
-}
+}*/
 
 .spot_container_second .sport_text_span {
-    margin-top: 30px;
     border-bottom: 4px solid #dc3545;
 }
 
-.main_container .spot_container_second {
+/*.main_container .spot_container_second {
     margin-left: 5px;
-}
+}*/
 
 .news_category_p_width {
     width: 315px;

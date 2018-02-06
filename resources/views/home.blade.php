@@ -23,7 +23,6 @@
                         <div class="card text-white news_card_container news_card_container_margin">
                             <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
                             <div class="card-img-overlay news_card_overlay">
-                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$very_actual->activity_start->format('d.m.Y H:i')}}</p>
                                 <h5 class="card-title title_text">{{$very_actual->name}}</h5>
                                 <p class="card-text main_text">{{$very_actual->tagline}}</p>
                             </div>
@@ -36,7 +35,6 @@
                         <div class="card text-white actual">
                             <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
                             <div class="card-img-overlay card_overlay_little">
-                                <p class="card-text time_text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$actual->activity_start->format('d.m.Y H:i')}}</p>
                                 <h5 class="card-title title_text">{{$actual->name}}</h5>
                             </div>
                         </div>
@@ -102,41 +100,28 @@
     <div class="row life_style_main">
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
-                <img src="{{ asset('images/man-coffee-cup-pen.jpg') }}" alt="news photo"/>
-                <h6 class="h6_settings">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h6>
-                <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                <p class="big_news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                <img src="storage/images/{{$news_policy->first()->photo}}" alt="news photo"/>
+                <h6 class="h6_settings">{{$news_policy->first()->name}}</h6>
+                <p class="life_style_time">{{$news_policy->first()->activity_start}} // Политика // Нет комментариев</p>
+                <p class="big_news_text">{{$news_policy->first()->tagline}}</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-3 hot_news_container life_style_little_news_container">
-            <div>
-                <img src="{{ asset('images/SILO_fb_022117_stockNews_shutter.jpg') }}" alt="news photo"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/7deb467507756b82a9cfeb84d6a27aab.jpg') }}" alt="news photo"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/tn_ir-iran-russia-mou-20171218.jpg') }}" alt="news photo"/>
-            </div>
+            @foreach ($news_policy as $policy)
+                <div class="popular_news_container__img">
+                    <img src="storage/images/{{$policy->photo_150}}" alt="news photo"/>
+                    <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                </div>
+            @endforeach
         </div>
         <div class="col-sm-12 col-md-3 hot_news_container_second life_style_little_news_container little_news_container_margin">
-            <div>
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
+            @foreach ($news_policy as $policy)
+                <div class="popular_news_container_second__text">
+                    <p class="popular_news_time">{{$policy->activity_start}}</p>
+                    <h6>{{$policy->name}}</h6>
+                    <p></p>
+                </div>
+                @endforeach
         </div>
     </div>
     <div class="row world_news_main hover_class">
@@ -281,13 +266,20 @@
 @endsection
 
 @section('news_ribbon')
-    <div class="col-sm-12 col-md-12 comments_container_margin">
-        @foreach ($news as $news_item)
-            <div class="life_style_comments_container">
-                <p class="life_style_comments_container_text">{{$news_item->name}}</p>
-                <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // World News // No Comments</p>
-                <div class="line_p_margin_3"><p class="line_p_2"></p></div>
-            </div>
-        @endforeach
+    <div class="row">
+        <div class="col-sm-12 col-md-12 news_category_container hover_class">
+            <a href="#"><p class="line_width"><span class="news_category_span">НОВОСТНАЯ ЛЕНТА</span></p></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 comments_container_margin">
+            @foreach ($news as $news_item)
+                <div class="life_style_comments_container">
+                    <p class="life_style_comments_container_text">{{$news_item->name}}</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // World News // No Comments</p>
+                    <div class="line_p_margin_3"><p class="line_p_2"></p></div>
+                </div>
+            @endforeach
+        </div>
     </div>
 @endsection

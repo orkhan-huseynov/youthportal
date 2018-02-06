@@ -52,10 +52,27 @@
                         @yield('inner_content')
                     </div>
                     <!-- Corner content -->
+
                     <div class="col-sm-12 col-md-4">
-                        <div class="row">
+                        @yield('news_ribbon')
+                        <div class="row margin_class">
+                            <div class="col-sm-12 col-md-12 video_container_2 hover_class">
+                                <div>
+                                    <p class="video_text"><a><span class="video_text_span">ВИДЕО ДНЯ</span></a></p>
+                                </div>
+                                <div class="video_container__inner_2">
+                                    <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                                <!--
+                                <div>
+                                    <a><p class="sport_text"><span class="sport_text_span">ADS SPOT</span></p></a>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                        <div class="row margin_class">
                             <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                                <a href="#"><p><span class="news_category_span">Присоединяйтесь к нам</span></p></a>
+                                <a href="#"><p><span class="news_category_span">ПРИСОЕДИНЯЙТЕСЬ К НАМ</span></p></a>
                             </div>
                         </div>
                         <div class="row">
@@ -84,36 +101,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 video_container_2 hover_class">
-                                <div>
-                                    <p class="video_text"><a><span class="video_text_span">Видео дня</span></a></p>
-                                </div>
-                                <div class="video_container__inner_2">
-                                    <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                </div>
-                                <!--
-                                <div>
-                                    <a><p class="sport_text"><span class="sport_text_span">ADS SPOT</span></p></a>
-                                </div>
-                                -->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 life_style_container_second hover_class">
-                                <nav class="navbar navbar-expand-lg navbar-light comment_menu_container">
-                                    <div class="collapse navbar-collapse comment_menu_inner" id="navbarNav">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item active">
-                                                <a class="nav-link" href="#"><p>Новостная лента<span class="sr-only">(current)</span></p></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="row">
-                            @yield('news_ribbon')
+
+
                             {{--<div class="row">
                                 <div class="col-sm-4 col-md-4">
                                     <div class="accordion_section_name">
@@ -146,7 +135,7 @@
                             <div class="row spot_container_second">
                                 <div class="col-sm-12 col-md-12">
                                     <div>
-                                        <a><p class="sport_text"><span class="sport_text_span">ADS SPOT</span></p></a>
+                                        <a><p class="sport_text"><span class="sport_text_span">ОПРОС</span></p></a>
                                     </div>
                                     <div>
                                         <a><p class="sport_text"><span class="sport_text_span">FACEBOOK</span></p></a>

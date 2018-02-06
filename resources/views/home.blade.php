@@ -55,37 +55,41 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3 popular_news_container">
+        <div class="col-sm-12 col-md-6 popular_news_container">
+            <div class="row">
             @foreach ($news_views as $news_view)
-                <div class="popular_news_container__img">
-                    <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
-                    <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                <div class="col-sm-6 col-md-6 popular_inner">
+                    <div class="popular_news_container__img">
+                        <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
+                        <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 popular_inner">
+                    <div class="popular_news_container_second__text popular_news_container_second">
+                        <p class="popular_news_time">{{$news_view->activity_start}}</p>
+                        <h6>{{$news_view->name}}</h6>
+                    </div>
                 </div>
             @endforeach
+            </div>
         </div>
-        <div class="col-sm-3 popular_news_container_second">
-            @foreach ($news_views as $news_view)
-                <div class="popular_news_container_second__text">
-                    <p class="popular_news_time">{{$news_view->activity_start}}</p>
-                    <h6>{{$news_view->name}}</h6>
+        <div class="col-sm-12 col-md-6 hot_news_container">
+            <div class="row">
+            @foreach ($news_very_important as $very_important)
+                <div class="col-sm-12 col-md-6">
+                    <div class="popular_news_container__img">
+                        <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
+                        <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="popular_news_container_second__text hot_news_container_second">
+                        <p class="popular_news_time">{{$very_important->activity_start}}</p>
+                        <h6>{{$very_important->name}}</h6>
+                    </div>
                 </div>
                 @endforeach
-        </div>
-        <div class="col-sm-3 hot_news_container">
-            @foreach ($news_very_important as $very_important)
-            <div class="popular_news_container__img">
-                <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
             </div>
-            @endforeach
-        </div>
-        <div class="col-sm-3 hot_news_container_second">
-            @foreach ($news_very_important as $very_important)
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">{{$very_important->activity_start}}</p>
-                <h6>{{$very_important->name}}</h6>
-            </div>
-            @endforeach
         </div>
     </div>
     <div class="row new_category_row hover_class">

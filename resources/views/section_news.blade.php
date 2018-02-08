@@ -39,7 +39,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row for_line">
                                         <div class="col-sm-12 col-md-12">
                                             <div class="line_p_margin_2"><p class="line_p_2"></p></div>
                                         </div>

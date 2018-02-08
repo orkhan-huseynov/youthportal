@@ -23,7 +23,7 @@
                         <div class="card text-white news_card_container news_card_container_margin">
                             <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
                             <div class="card-img-overlay news_card_overlay">
-                                <h5 class="card-title title_text">{{$very_actual->name}}</h5>
+                                <a href="news_details/{{$very_actual->id}}"><h5 class="card-title title_text">{{$very_actual->name}}</h5></a>
                                 <p class="card-text main_text">{{$very_actual->tagline}}</p>
                             </div>
                         </div>
@@ -684,7 +684,7 @@
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
                     <p class="life_style_comments_container_text">{{$news_item->name}}</p>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // World News // No Comments</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // {{--{{$news_item->section->name_ru}}--}} // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach

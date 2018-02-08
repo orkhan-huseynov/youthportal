@@ -288,6 +288,33 @@ body {
     margin-bottom: 20px;
 }
 
+.popular_inner .title_style:hover {
+    text-decoration: none;
+    color: #dc3545;
+}
+
+.main_container .title_style:hover {
+    text-decoration: none;
+    color: #dc3545;
+}
+
+.life_style_big_news_container a:hover {
+    color: #dc3545;
+}
+
+.hot_news_container_second .title_style:hover {
+    text-decoration: none;
+    color: #dc3545;
+}
+
+.hot_news_container_second a {
+    text-decoration: none;
+}
+
+.popular_inner a:hover {
+    text-decoration: none;
+}
+
 .line_p_2 {
     border: 1px solid #e0e0d1;
     margin-bottom: 0;

@@ -636,6 +636,14 @@ body {
     padding: 0;
 }
 
+.lang_class {
+    color: #dc3545;
+    position: absolute;
+    z-index: 10;
+    right: 45px;
+    top: 15px;
+}
+
 footer {
     margin-top: 80px;
     background-color: #f5f5f0;
@@ -648,6 +656,10 @@ footer {
     font-size: 1.2rem;
 }
 
+.transform_class {
+    text-transform: uppercase;
+}
+
 .footer_ul {
     list-style: none;
     color: rgba(0,0,0,.5);
@@ -658,6 +670,16 @@ footer {
     margin-left: -30px;
     font-weight: bold;
     margin-top: 5px;
+    text-transform: uppercase;
+}
+
+.footer_ul a {
+    color: rgba(0,0,0,.5);
+}
+
+.footer_ul a:hover {
+    text-decoration: none;
+    color: #212529;
 }
 
 .footer_ul i {

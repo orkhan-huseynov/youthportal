@@ -150,10 +150,10 @@
         <footer>
             <div class="container-fluid">
                 <div class="row footer_inner">
-                    <div class="col-sm-12 col-md-3 hover_class footer_category">
+                    {{--<div class="col-sm-12 col-md-3 hover_class footer_category">
                         <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">TWEETS</span></p></a>
-                    </div>
-                    <div class="col-sm-12 col-md-3 hover_class footer_category">
+                    </div>--}}
+                    <div class="col-sm-12 col-md-6 hover_class footer_category">
                         <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">NAVIGATION</span></p></a>
                         <ul class="footer_ul">
                             <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
@@ -165,7 +165,7 @@
                             <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-12 col-md-3 hover_class footer_category">
+                    {{--<div class="col-sm-12 col-md-3 hover_class footer_category">
                         <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">SOMETHING</span></p></a>
                         <div class="row">
                             <div class="col-sm-6 col-md-4 footer_img_container">
@@ -184,8 +184,8 @@
                                 <img src="{{ asset('images/stock-photo-financial-business-news-online-on-a-laptop-with-coffee-and-stationery-252720643.jpg') }}" class="footer_img" alt="footer photo"/>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-3 hover_class footer_category">
+                    </div>--}}
+                    <div class="col-sm-12 col-md-6 hover_class footer_category">
                         <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">ABOUT</span></p></a>
                         <p class="footer_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>

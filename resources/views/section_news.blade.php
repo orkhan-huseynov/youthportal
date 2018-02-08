@@ -3,13 +3,20 @@
 @section('main_menu')
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#"><p>Главная <span class="sr-only">(current)</span></p></a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/')}}"><p>Главная <span class="sr-only">(current)</span></p></a>
             </li>
             @foreach($sections as $section)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{$section->id}}"><p>{{ $section->name_ru }}</p></a>
-                </li>
+                @if ($section->id == $section_id)
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>{{ $section->name_ru }}</p></a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>{{ $section->name_ru }}</p></a>
+                    </li>
+                @endif
+
             @endforeach
         </ul>
     </div>
@@ -29,7 +36,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6 popular_inner">
                                             <div class="popular_news_container__img">
-                                                <img src="storage/images/{{$news_s->photo_150}}" alt="news photo" class="popular_news_img"/>
+                                                <img src="{{url('storage/images/'.$news_s->photo_150)}}" alt="news photo" class="popular_news_img"/>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 popular_inner">

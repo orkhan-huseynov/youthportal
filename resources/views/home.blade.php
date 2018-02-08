@@ -4,7 +4,7 @@
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><p>Главная <span class="sr-only">(current)</span></p></a>
+                <a class="nav-link" href="{{url('/')}}"><p>Главная <span class="sr-only">(current)</span></p></a>
             </li>
             @foreach($sections as $section)
                 <li class="nav-item">

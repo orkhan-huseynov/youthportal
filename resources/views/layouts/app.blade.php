@@ -48,54 +48,8 @@
 
                     <div class="col-sm-12 col-md-4">
                         @yield('news_ribbon')
-                        <div class="row margin_class">
-                            <div class="col-sm-12 col-md-12 video_container_2 hover_class">
-                                <div>
-                                    <p class="video_text"><a><span class="video_text_span">ВИДЕО ДНЯ</span></a></p>
-                                </div>
-                                <div class="video_container__inner_2">
-                                    <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                </div>
-                                <!--
-                                <div>
-                                    <a><p class="sport_text"><span class="sport_text_span">ADS SPOT</span></p></a>
-                                </div>
-                                -->
-                            </div>
-                        </div>
-                        <div class="row margin_class">
-                            <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                                <a href="#"><p><span class="news_category_span">ПРИСОЕДИНЯЙТЕСЬ К НАМ</span></p></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-4 networks_cards_container">
-                                <div class="networks_card networks_card_first">
-                                    <img class="card_img" src="{{ asset('images/f.png') }}" alt="facebook">
-                                    <div class="card_body">
-                                        <p class="card_text"><span class="networks_numbers">7.000</span><span class="networks_second_span">izləyici</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-4 networks_cards_container">
-                                <div class="networks_card networks_card_second">
-                                    <img class="card_img" src="{{ asset('images/o-TWITTER-570.jpg') }}" alt="facebook">
-                                    <div class="card_body">
-                                        <p class="card_text"><span class="networks_numbers">3.000</span><span class="networks_second_span">followers</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-4 networks_cards_container">
-                                <div class="networks_card networks_card_third">
-                                    <img class="card_img" src="{{ asset('images/how-to-create-rss-feed-joomla-3x.jpg') }}" alt="facebook">
-                                    <div class="card_body">
-                                        <p class="card_text"><span>Rss vasitəsi ilə izləyin</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        @yield('video_container')
+                        @yield('networks_container')
                             {{--<div class="row">
                                 <div class="col-sm-4 col-md-4">
                                     <div class="accordion_section_name">

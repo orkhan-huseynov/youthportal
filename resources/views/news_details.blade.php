@@ -14,16 +14,16 @@
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/')}}"><p>Главная <span class="sr-only">(current)</span></p></a>
+                <a class="nav-link" href="{{url('/')}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
             </li>
             @foreach($sections as $section)
-                @if ($section->id == $news_main->first()->section_id)
+                @if ($section->id == $sections->first()->section_id)
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>{{ $section->name_ru }}</p></a>
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
                 </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>{{ $section->name_ru }}</p></a>
+                        <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
                     </li>
                 @endif
             @endforeach
@@ -77,12 +77,11 @@
             </div>
         </div>
     </div>
-
 @endsection
 @section('news_ribbon')
     <div class="row">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <a href="#"><p class="line_width"><span class="news_category_span">НОВОСТНАЯ ЛЕНТА</span></p></a>
+            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p>
         </div>
     </div>
     <div class="row">
@@ -90,10 +89,60 @@
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
                     <p class="life_style_comments_container_text">{{$news_item->name}}</p>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // {{$news_item->section->name_ru}} // No Comments</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach
+        </div>
+    </div>
+@endsection
+@section('video_container')
+    <div class="row margin_class">
+        <div class="col-sm-12 col-md-12 video_container_2 hover_class">
+            <div>
+                <p class="video_text"><a><span class="video_text_span">@if($lang == 'az') GÜNÜN VİDEOSU @else ВИДЕО ДНЯ @endif</span></a></p>
+            </div>
+            <div class="video_container__inner_2">
+                <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <!--
+            <div>
+                <a><p class="sport_text"><span class="sport_text_span">ADS SPOT</span></p></a>
+            </div>
+            -->
+        </div>
+    </div>
+@endsection
+@section('networks_container')
+    <div class="row margin_class">
+        <div class="col-sm-12 col-md-12 news_category_container hover_class">
+            <p class="video_text"><span class="news_category_span">@if($lang == 'az') BİZƏ QOŞULUN @else ПРИСОЕДИНЯЙТЕСЬ К НАМ @endif</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_first">
+                <img class="card_img" src="{{ asset('images/f.png') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span class="networks_numbers">7.000</span><span class="networks_second_span">@if($lang == 'az') izləyici @else подписчиков @endif</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_second">
+                <img class="card_img" src="{{ asset('images/o-TWITTER-570.jpg') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span class="networks_numbers">3.000</span><span class="networks_second_span">followers</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_third">
+                <img class="card_img" src="{{ asset('images/how-to-create-rss-feed-joomla-3x.jpg') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span>@if($lang == 'az') Rss vasitəsi ilə izləyin @else Следите через Rss @endif</span></p>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

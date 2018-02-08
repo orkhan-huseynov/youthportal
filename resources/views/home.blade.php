@@ -19,7 +19,7 @@
             </li>
             @foreach($sections as $section)
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
                 </li>
             @endforeach
         </ul>
@@ -36,24 +36,28 @@
             <div class="row">
                 <div class="col-sm-6 news_card">
                     @foreach($news_very_actual as $very_actual)
-                        <div class="card text-white news_card_container news_card_container_margin">
-                            <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
-                            <div class="card-img-overlay news_card_overlay">
-                                <a href="news_details/{{$very_actual->id}}"><h5 class="card-title title_text">{{$very_actual->name}}</h5></a>
-                                <p class="card-text main_text">{{$very_actual->tagline}}</p>
+                        <a href="{{url('news_details/'.$very_actual->id)}}">
+                            <div class="card text-white news_card_container news_card_container_margin">
+                                <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
+                                <div class="card-img-overlay news_card_overlay">
+                                    <h5 class="card-title title_text">{{$very_actual->name}}</h5>
+                                    <p class="card-text main_text">{{$very_actual->tagline}}</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
                 <div class="col-sm-6 news_card news_card_second">
                     <div class="news_card_container_second">
                         @foreach($news_actual as $actual)
-                        <div class="card text-white actual">
-                            <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
-                            <div class="card-img-overlay card_overlay_little">
-                                <h5 class="card-title title_text">{{$actual->name}}</h5>
+                            <div class="card text-white actual">
+                                <a href="{{url('news_details/'.$actual->id)}}">
+                                    <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
+                                    <div class="card-img-overlay card_overlay_little">
+                                        <h5 class="card-title title_text">{{$actual->name}}</h5>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -76,16 +80,21 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6 popular_inner">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
+                            <a href="{{url('news_details/'.$news_view->id)}}">
+                                <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 popular_inner">
                         <div class="popular_news_container_second__text popular_news_container_second">
                             <p class="popular_news_time">{{$news_view->activity_start}}</p>
-                            <h6>{{$news_view->name}}</h6>
+                            <a href="news_details/{{$news_view->id}}" class="title_a">
+                                <h6 class="title_style">{{$news_view->name}}</h6>
+                            </a>
                         </div>
                     </div>
                 </div>
+                </a>
                 <div class="row for_line">
                     <div class="col-sm-12 col-md-12">
                         <div class="line_p_margin_2"><p class="line_p_2"></p></div>
@@ -98,13 +107,17 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
+                            <a href="{{url('news_details/'.$very_important->id)}}">
+                                <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="popular_news_container_second__text hot_news_container_second">
                             <p class="popular_news_time">{{$very_important->activity_start}}</p>
-                            <h6>{{$very_important->name}}</h6>
+                            <a href="{{url('news_details/'.$very_important->id)}}">
+                                <h6 class="title_style">{{$very_important->name}}</h6>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -130,10 +143,12 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_policy->count() > 0)
-                <img src="storage/images/{{$news_policy->first()->photo}}" alt="news photo"/>
-                <h6 class="h6_settings">{{$news_policy->first()->name}}</h6>
-                <p class="life_style_time">{{$news_policy->first()->activity_start}} // {{$news_policy->first()->section->name_ru}} // Нет комментариев</p>
-                <p class="big_news_text">{{$news_policy->first()->tagline}}</p>
+                    <a href="{{url('news_details/'.$news_policy->first()->id)}}" class="title_style">
+                        <img src="storage/images/{{$news_policy->first()->photo}}" alt="news photo"/>
+                        <h6 class="h6_settings title_style">{{$news_policy->first()->name}}</h6>
+                        <p class="life_style_time">{{$news_policy->first()->activity_start}} // {{$news_policy->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="big_news_text title_style">{{$news_policy->first()->tagline}}</p>
+                    </a>
                 @endif
             </div>
         </div>
@@ -151,14 +166,17 @@
                 <div class="row policy_news">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$policy->photo_150}}" alt="news photo"/>
+                            <a href="{{url('news_details/'.$policy->id)}}">
+                                <img src="storage/images/{{$policy->photo_150}}" alt="news photo"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$policy->activity_start}}</p>
-                            <h6>{{$policy->name}}</h6>
-                            <p></p>
+                            <a href="{{url('news_details/'.$policy->id)}}">
+                                <h6 class="title_style">{{$policy->name}}</h6>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -184,10 +202,12 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_economy->count() > 0)
-                <img src="storage/images/{{$news_economy->first()->photo}}" alt="news photo"/>
-                <h6 class="h6_settings">{{$news_economy->first()->name}}</h6>
-                <p class="life_style_time">{{$news_economy->first()->activity_start}} // {{$news_economy->first()->section->name_ru}} // Нет комментариев</p>
-                <p class="big_news_text">{{$news_economy->first()->tagline}}</p>
+                    <a href="{{url('news_details/'.$news_economy->first()->id)}}" class="title_style">
+                        <img src="storage/images/{{$news_economy->first()->photo}}" alt="news photo"/>
+                        <h6 class="h6_settings">{{$news_economy->first()->name}}</h6>
+                        <p class="life_style_time">{{$news_economy->first()->activity_start}} // {{$news_economy->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="big_news_text">{{$news_economy->first()->tagline}}</p>
+                    </a>
                 @endif
             </div>
         </div>
@@ -205,14 +225,17 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$economy->photo_150}}" alt="news photo"/>
+                            <a href="{{url('news_details/'.$economy->id)}}">
+                                <img src="storage/images/{{$economy->photo_150}}" alt="news photo"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$economy->activity_start}}</p>
-                            <h6>{{$economy->name}}</h6>
-                            <p></p>
+                            <a href="{{url('news_details/'.$economy->id)}}">
+                                <h6>{{$economy->name}}</h6>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -238,10 +261,12 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_sport->count() > 0)
-                    <img src="storage/images/{{$news_sport->first()->photo}}" alt="news photo"/>
-                    <h6 class="h6_settings">{{$news_sport->first()->name}}</h6>
-                    <p class="life_style_time">{{$news_sport->first()->activity_start}} // {{$news_sport->first()->section->name_ru}} // Нет комментариев</p>
-                    <p class="big_news_text">{{$news_sport->first()->tagline}}</p>
+                    <a href="{{url('news_details/'.$news_sport->first()->id)}}">
+                        <img src="storage/images/{{$news_sport->first()->photo}}" alt="news photo"/>
+                        <h6 class="h6_settings">{{$news_sport->first()->name}}</h6>
+                        <p class="life_style_time">{{$news_sport->first()->activity_start}} // {{$news_sport->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="big_news_text">{{$news_sport->first()->tagline}}</p>
+                    </a>
                 @endif
             </div>
         </div>
@@ -259,14 +284,17 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$sport->photo_150}}" alt="news photo"/>
+                            <a href="{{url('news_details/'.$sport->id)}}">
+                                <img src="storage/images/{{$sport->photo_150}}" alt="news photo"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$sport->activity_start}}</p>
-                            <h6>{{$sport->name}}</h6>
-                            <p></p>
+                            <a href="{{url('news_details/'.$sport->id)}}">
+                                <h6>{{$sport->name}}</h6>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -292,10 +320,12 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_education->count() > 0)
-                    <img src="storage/images/{{$news_education->first()->photo}}" alt="news photo"/>
-                    <h6 class="h6_settings">{{$news_education->first()->name}}</h6>
-                    <p class="life_style_time">{{$news_education->first()->activity_start}} // {{$news_education->first()->section->name_ru}} // Нет комментариев</p>
-                    <p class="big_news_text">{{$news_education->first()->tagline}}</p>
+                    <a href="{{url('news_details/'.$news_education->first()->id)}}">
+                        <img src="storage/images/{{$news_education->first()->photo}}" alt="news photo"/>
+                        <h6 class="h6_settings">{{$news_education->first()->name}}</h6>
+                        <p class="life_style_time">{{$news_education->first()->activity_start}} // {{$news_education->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="big_news_text">{{$news_education->first()->tagline}}</p>
+                    </a>
                 @endif
             </div>
         </div>
@@ -313,7 +343,9 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$education->photo_150}}" alt="news photo"/>
+                            <a href="{{url('news_details/'.$education->id)}}">
+                                <img src="storage/images/{{$education->photo_150}}" alt="news photo"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
@@ -346,10 +378,12 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_culture->count() > 0)
-                    <img src="storage/images/{{$news_culture->first()->photo}}" alt="news photo"/>
-                    <h6 class="h6_settings">{{$news_culture->first()->name}}</h6>
-                    <p class="life_style_time">{{$news_culture->first()->activity_start}} // {{$news_culture->first()->section->name_ru}} // Нет комментариев</p>
-                    <p class="big_news_text">{{$news_culture->first()->tagline}}</p>
+                    <a href="{{url('news_details/'.$news_culture->first()->id)}}">
+                        <img src="storage/images/{{$news_culture->first()->photo}}" alt="news photo"/>
+                        <h6 class="h6_settings">{{$news_culture->first()->name}}</h6>
+                        <p class="life_style_time">{{$news_culture->first()->activity_start}} // {{$news_culture->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="big_news_text">{{$news_culture->first()->tagline}}</p>
+                    </a>
                 @endif
             </div>
         </div>
@@ -367,7 +401,9 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$culture->photo_150}}" alt="news photo"/>
+                            <a href="{{url('news_details/'.$culture->id)}}">
+                                <img src="storage/images/{{$culture->photo_150}}" alt="news photo"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
@@ -400,10 +436,12 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_hightech->count() > 0)
-                    <img src="storage/images/{{$news_hightech->first()->photo}}" alt="news photo"/>
-                    <h6 class="h6_settings">{{$news_hightech->first()->name}}</h6>
-                    <p class="life_style_time">{{$news_hightech->first()->activity_start}} // {{$news_hightech->first()->section->name_ru}} // Нет комментариев</p>
-                    <p class="big_news_text">{{$news_hightech->first()->tagline}}</p>
+                    <a href="{{url('news_details/'.$news_hightech->id)}}">
+                        <img src="storage/images/{{$news_hightech->first()->photo}}" alt="news photo"/>
+                        <h6 class="h6_settings">{{$news_hightech->first()->name}}</h6>
+                        <p class="life_style_time">{{$news_hightech->first()->activity_start}} // {{$news_hightech->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="big_news_text">{{$news_hightech->first()->tagline}}</p>
+                    </a>
                 @endif
             </div>
         </div>
@@ -421,14 +459,17 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$hightech->photo_150}}" alt="news photo"/>
+                            <a href="{{url('news_details/'.$hightech->id)}}">
+                                <img src="storage/images/{{$hightech->photo_150}}" alt="news photo"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$hightech->activity_start}}</p>
-                            <h6>{{$hightech->name}}</h6>
-                            <p></p>
+                            <a href="{{url('news_details/'.$hightech->id)}}">
+                                <h6>{{$hightech->name}}</h6>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -454,10 +495,12 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_world->count() > 0)
-                    <img src="storage/images/{{$news_world->first()->photo}}" alt="news photo"/>
-                    <h6 class="h6_settings">{{$news_world->first()->name}}</h6>
-                    <p class="life_style_time">{{$news_world->first()->activity_start}} // {{$news_world->first()->section->name_ru}} // Нет комментариев</p>
-                    <p class="big_news_text">{{$news_world->first()->tagline}}</p>
+                    <a href="{{url('news_details/'.$news_world->id)}}" class="title_style">
+                        <img src="storage/images/{{$news_world->first()->photo}}" alt="news photo"/>
+                        <h6 class="h6_settings">{{$news_world->first()->name}}</h6>
+                        <p class="life_style_time">{{$news_world->first()->activity_start}} // {{$news_world->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="big_news_text">{{$news_world->first()->tagline}}</p>
+                    </a>
                 @endif
             </div>
         </div>
@@ -475,14 +518,17 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <img src="storage/images/{{$world->photo_150}}" alt="news photo"/>
+                            <a href="{{url('news_details/'.$world->id)}}">
+                                <img src="storage/images/{{$world->photo_150}}" alt="news photo"/>
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$world->activity_start}}</p>
-                            <h6>{{$world->name}}</h6>
-                            <p></p>
+                            <a href="{{url('news_details/'.$world->id)}}">
+                                <h6>{{$world->name}}</h6>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -692,7 +738,7 @@
 @section('news_ribbon')
     <div class="row">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <a href="#"><p class="line_width"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p></a>
+            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p>
         </div>
     </div>
     <div class="row">
@@ -700,10 +746,60 @@
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
                     <p class="life_style_comments_container_text">{{$news_item->name}}</p>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // {{$news_item->section->name_ru}} // No Comments</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach
+        </div>
+    </div>
+@endsection
+@section('video_container')
+    <div class="row margin_class">
+        <div class="col-sm-12 col-md-12 video_container_2 hover_class">
+            <div>
+                <p class="video_text"><a><span class="video_text_span">@if($lang == 'az') GÜNÜN VİDEOSU @else ВИДЕО ДНЯ @endif</span></a></p>
+            </div>
+            <div class="video_container__inner_2">
+                <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <!--
+            <div>
+                <a><p class="sport_text"><span class="sport_text_span">ADS SPOT</span></p></a>
+            </div>
+            -->
+        </div>
+    </div>
+@endsection
+@section('networks_container')
+    <div class="row margin_class">
+        <div class="col-sm-12 col-md-12 news_category_container hover_class">
+            <p class="video_text"><span class="news_category_span">@if($lang == 'az') BİZƏ QOŞULUN @else ПРИСОЕДИНЯЙТЕСЬ К НАМ @endif</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_first">
+                <img class="card_img" src="{{ asset('images/f.png') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span class="networks_numbers">7.000</span><span class="networks_second_span">@if($lang == 'az') izləyici @else подписчиков @endif</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_second">
+                <img class="card_img" src="{{ asset('images/o-TWITTER-570.jpg') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span class="networks_numbers">3.000</span><span class="networks_second_span">followers</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_third">
+                <img class="card_img" src="{{ asset('images/how-to-create-rss-feed-joomla-3x.jpg') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span>@if($lang == 'az') Rss vasitəsi ilə izləyin @else Следите через Rss @endif</span></p>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

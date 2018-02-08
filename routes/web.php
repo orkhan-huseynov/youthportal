@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', function (){
+   return redirect('/az');
+});
+Route::get('/{lang}', 'HomeController@index');
 Route::get('section/{section_id}', 'SectionController@index');
 Route::get('news_details/{id}', 'NewsDetailsController@index');
 

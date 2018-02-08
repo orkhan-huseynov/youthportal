@@ -30,14 +30,7 @@
                     <div class="col-sm-12 col-md-6">
                         <a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                     </div>
-                    <div class="col-sm-12 col-md-6 search_container">
-                        <div class="input-group mb-3 search_btn">
-                            <input type="search" class="form-control" placeholder="поиск" aria-label="search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
+                    @yield('search_input')
                 </div>
             </div>
         </header>

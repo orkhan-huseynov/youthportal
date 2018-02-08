@@ -1,17 +1,33 @@
 @extends('layouts.app')
 
+
+@section('search_input')
+    <div class="col-sm-12 col-md-6 search_container">
+        <div class="input-group mb-3 search_btn">
+            <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+@endsection
 @section('main_menu')
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="{{url('/')}}"><p>Главная <span class="sr-only">(current)</span></p></a>
+                <a class="nav-link" href="{{url('/')}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
             </li>
             @foreach($sections as $section)
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>{{ $section->name_ru }}</p></a>
+                    <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
                 </li>
             @endforeach
         </ul>
+        @if ($lang == 'az')
+        <a href="{{url('/ru')}}">По-русски</a>
+            @else
+            <a href="{{url('/az')}}">Azərbaycanca</a>
+        @endif
     </div>
 @endsection
 @section('top_news')
@@ -48,10 +64,10 @@
 @section('inner_content')
     <div class="row">
         <div class="col-sm-12 col-md-6 news_category_container hover_class">
-            <a href="#"><p><span class="news_category_span">ПОПУЛЯРНЫЕ НОВОСТИ</span></p></a>
+            <a href="#"><p><span class="news_category_span">@if ($lang == 'ru') ПОПУЛЯРНЫЕ НОВОСТИ @else POPULYAR XƏBƏRLƏR @endif </span></p></a>
         </div>
         <div class="col-sm-12 col-md-6 news_category_container hover_class">
-            <a href="#"><p><span class="news_category_span">ГОРЯЧИЕ НОВОСТИ</span></p></a>
+            <a href="#"><p><span class="news_category_span">@if ($lang == 'ru') ГОРЯЧИЕ НОВОСТИ @else QAYNAR XƏBƏRLƏR @endif </span></p></a>
         </div>
     </div>
     <div class="row">
@@ -103,7 +119,7 @@
     {{-- policy --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">ПОЛИТИКА</span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') ПОЛИТИКА @else SİYASƏT @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -157,7 +173,7 @@
     {{-- economy --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">ЭКОНОМИКА</span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') ЭКОНОМИКА @else İQTİSADİYYƏT @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -211,7 +227,7 @@
     {{-- sport --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">СПОРТ</span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') СПОРТ @else İDMAN @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -265,7 +281,7 @@
     {{-- education --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">ОБРАЗОВАНИЕ</span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') ОБРАЗОВАНИЕ @else TƏHSİL @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -319,7 +335,7 @@
     {{-- show buisness/ culture --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">КУЛЬТУРА</span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') КУЛЬТУРА @else MƏDƏNİYYƏT @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -427,7 +443,7 @@
     {{-- actions/ world --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">В МИРЕ</span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') В МИРЕ @else DÜNYADA @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -676,7 +692,7 @@
 @section('news_ribbon')
     <div class="row">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <a href="#"><p class="line_width"><span class="news_category_span">НОВОСТНАЯ ЛЕНТА</span></p></a>
+            <a href="#"><p class="line_width"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p></a>
         </div>
     </div>
     <div class="row">
@@ -684,7 +700,7 @@
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
                     <p class="life_style_comments_container_text">{{$news_item->name}}</p>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // {{--{{$news_item->section->name_ru}}--}} // No Comments</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // {{$news_item->section->name_ru}} // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach

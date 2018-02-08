@@ -145,6 +145,14 @@ body {
     margin-top: 30px;
 }
 
+.policy_news:last-child .line_p_2 {
+    display: none;
+}
+
+.inner_content_container .section_news_container {
+    padding: 0;
+}
+
 
 .news_card_container_second .title_text {
     font-size: 1.2rem;
@@ -184,6 +192,7 @@ body {
 .news_category_span {
     border-bottom: 3px solid #dc3545;
     padding-bottom: 3px;
+    text-transform: uppercase;
 }
 
 .main_inner_container a {
@@ -611,6 +620,30 @@ body {
     margin-top: 10px;
 }
 
+.section_news_inner {
+    margin-top: 20px;
+}
+
+.popular_news_container .for_line:last-child .line_p_2 {
+    display: none;
+}
+
+.hot_news_container .for_line:last-child .line_p_2 {
+    display: none;
+}
+
+.main_container .news_details_container {
+    padding: 0;
+}
+
+.lang_class {
+    color: #dc3545;
+    position: absolute;
+    z-index: 10;
+    right: 45px;
+    top: 15px;
+}
+
 footer {
     margin-top: 80px;
     background-color: #f5f5f0;
@@ -623,6 +656,10 @@ footer {
     font-size: 1.2rem;
 }
 
+.transform_class {
+    text-transform: uppercase;
+}
+
 .footer_ul {
     list-style: none;
     color: rgba(0,0,0,.5);
@@ -633,6 +670,16 @@ footer {
     margin-left: -30px;
     font-weight: bold;
     margin-top: 5px;
+    text-transform: uppercase;
+}
+
+.footer_ul a {
+    color: rgba(0,0,0,.5);
+}
+
+.footer_ul a:hover {
+    text-decoration: none;
+    color: #212529;
 }
 
 .footer_ul i {

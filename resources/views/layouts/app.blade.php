@@ -30,14 +30,7 @@
                     <div class="col-sm-12 col-md-6">
                         <a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                     </div>
-                    <div class="col-sm-12 col-md-6 search_container">
-                        <div class="input-group mb-3 search_btn">
-                            <input type="search" class="form-control" placeholder="поиск" aria-label="search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
+                    @yield('search_input')
                 </div>
             </div>
         </header>
@@ -48,7 +41,7 @@
         <section>
             <div class="container-fluid main_container">
                 <div class="row main_inner_container">
-                    <div class="col-sm-12 col-md-8">
+                    <div class="col-sm-12 col-md-8 inner_content_container">
                         @yield('inner_content')
                     </div>
                     <!-- Corner content -->
@@ -147,52 +140,7 @@
                 </div>
             </div>
         </section>
-        <footer>
-            <div class="container-fluid">
-                <div class="row footer_inner">
-                    <div class="col-sm-12 col-md-3 hover_class footer_category">
-                        <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">TWEETS</span></p></a>
-                    </div>
-                    <div class="col-sm-12 col-md-3 hover_class footer_category">
-                        <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">NAVIGATION</span></p></a>
-                        <ul class="footer_ul">
-                            <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
-                            <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
-                            <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
-                            <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
-                            <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
-                            <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
-                            <li><a><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  KATEGORIYA</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-12 col-md-3 hover_class footer_category">
-                        <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">SOMETHING</span></p></a>
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4 footer_img_container">
-                                <img src="{{ asset('stock-photo-financial-business-news.jpg') }}" class="footer_img" alt="footer photo"/>
-                                <img src="{{ asset('images/tn_ir-iran-russia-mou-20171218.jpg') }}" class="footer_img" alt="footer photo"/>
-                                <img src="{{ asset('images/7deb467507756b82a9cfeb84d6a27aab.jpg') }}" class="footer_img" alt="footer photo"/>
-                            </div>
-                            <div class="col-sm-6 col-md-4 footer_img_container">
-                                <img src="{{ asset('images/SILO_fb_022117_stockNews_shutter.jpg') }}" class="footer_img" alt="footer photo"/>
-                                <img src="{{ asset('images/man-coffee-cup-pen.jpg') }}" class="footer_img" alt="footer photo"/>
-                                <img src="{{ asset('images/mother-holding-baby-landing.jpg') }}" class="footer_img" alt="footer photo"/>
-                            </div>
-                            <div class="col-sm-6 col-md-4 footer_img_container">
-                                <img src="{{ asset('images/micex-russia-stocks-ruble.jpg') }}" class="footer_img" alt="footer photo"/>
-                                <img src="{{ asset('images/blue-apron-shares-make-bland-debut-2017-6.jpg') }}" class="footer_img" alt="footer photo"/>
-                                <img src="{{ asset('images/stock-photo-financial-business-news-online-on-a-laptop-with-coffee-and-stationery-252720643.jpg') }}" class="footer_img" alt="footer photo"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-3 hover_class footer_category">
-                        <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">ABOUT</span></p></a>
-                        <p class="footer_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+        @yield('footer')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

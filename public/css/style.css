@@ -145,6 +145,14 @@ body {
     margin-top: 30px;
 }
 
+.policy_news:last-child .line_p_2 {
+    display: none;
+}
+
+.inner_content_container .section_news_container {
+    padding: 0;
+}
+
 
 .news_card_container_second .title_text {
     font-size: 1.2rem;
@@ -184,6 +192,7 @@ body {
 .news_category_span {
     border-bottom: 3px solid #dc3545;
     padding-bottom: 3px;
+    text-transform: uppercase;
 }
 
 .main_inner_container a {
@@ -609,6 +618,10 @@ body {
 
 .main_container .world_news_container_little_2 {
     margin-top: 10px;
+}
+
+.section_news_inner {
+    margin-top: 20px;
 }
 
 footer {

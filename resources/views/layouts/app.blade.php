@@ -48,7 +48,7 @@
         <section>
             <div class="container-fluid main_container">
                 <div class="row main_inner_container">
-                    <div class="col-sm-12 col-md-8">
+                    <div class="col-sm-12 col-md-8 inner_content_container">
                         @yield('inner_content')
                     </div>
                     <!-- Corner content -->

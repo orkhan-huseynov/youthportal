@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('section/{section_id}', 'SectionController@index');
 
 Auth::routes();
 

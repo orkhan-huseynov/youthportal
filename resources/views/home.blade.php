@@ -8,7 +8,7 @@
             </li>
             @foreach($sections as $section)
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><p>{{ $section->name_ru }}</p></a>
+                    <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>{{ $section->name_ru }}</p></a>
                 </li>
             @endforeach
         </ul>
@@ -56,45 +56,53 @@
     </div>
     <div class="row">
         <div class="col-sm-12 col-md-6 popular_news_container">
-            <div class="row">
             @foreach ($news_views as $news_view)
-                <div class="col-sm-6 col-md-6 popular_inner">
-                    <div class="popular_news_container__img">
-                        <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
-                        <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 popular_inner">
+                        <div class="popular_news_container__img">
+                            <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 popular_inner">
+                        <div class="popular_news_container_second__text popular_news_container_second">
+                            <p class="popular_news_time">{{$news_view->activity_start}}</p>
+                            <h6>{{$news_view->name}}</h6>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6 popular_inner">
-                    <div class="popular_news_container_second__text popular_news_container_second">
-                        <p class="popular_news_time">{{$news_view->activity_start}}</p>
-                        <h6>{{$news_view->name}}</h6>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="line_p_margin_2"><p class="line_p_2"></p></div>
                     </div>
                 </div>
             @endforeach
-            </div>
         </div>
         <div class="col-sm-12 col-md-6 hot_news_container">
-            <div class="row">
             @foreach ($news_very_important as $very_important)
-                <div class="col-sm-12 col-md-6">
-                    <div class="popular_news_container__img">
-                        <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="popular_news_container__img">
+                            <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="popular_news_container_second__text hot_news_container_second">
+                            <p class="popular_news_time">{{$very_important->activity_start}}</p>
+                            <h6>{{$very_important->name}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
                         <div class="line_p_margin_2"><p class="line_p_2"></p></div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="popular_news_container_second__text hot_news_container_second">
-                        <p class="popular_news_time">{{$very_important->activity_start}}</p>
-                        <h6>{{$very_important->name}}</h6>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+            @endforeach
         </div>
     </div>
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">HƏYAT TƏRZİ</span></a></p>
+            <p><a href="#"><span class="news_category_span">ПОЛИТИКА</span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -104,31 +112,92 @@
     <div class="row life_style_main">
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
+                @if ($news_policy->count() > 0)
                 <img src="storage/images/{{$news_policy->first()->photo}}" alt="news photo"/>
                 <h6 class="h6_settings">{{$news_policy->first()->name}}</h6>
                 <p class="life_style_time">{{$news_policy->first()->activity_start}} // Политика // Нет комментариев</p>
                 <p class="big_news_text">{{$news_policy->first()->tagline}}</p>
+                @endif
             </div>
         </div>
-        <div class="col-sm-12 col-md-3 hot_news_container life_style_little_news_container">
+        <div class="col-sm-12 col-md-6 hot_news_container life_style_little_news_container">
+                @php
+                    $i = 0;
+                @endphp
             @foreach ($news_policy as $policy)
-                <div class="popular_news_container__img">
-                    <img src="storage/images/{{$policy->photo_150}}" alt="news photo"/>
-                    <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                    @php
+                        $i++;
+                    @endphp
+                @if ($i == 1)
+                    @continue
+                    @endif
+                <div class="row policy_news">
+                    <div class="col-sm-6 col-md-6">
+                        <div class="popular_news_container__img">
+                            <img src="storage/images/{{$policy->photo_150}}" alt="news photo"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                        <div class="popular_news_container_second__text">
+                            <p class="popular_news_time">{{$policy->activity_start}}</p>
+                            <h6>{{$policy->name}}</h6>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                    </div>
                 </div>
             @endforeach
         </div>
-        <div class="col-sm-12 col-md-3 hot_news_container_second life_style_little_news_container little_news_container_margin">
-            @foreach ($news_policy as $policy)
-                <div class="popular_news_container_second__text">
-                    <p class="popular_news_time">{{$policy->activity_start}}</p>
-                    <h6>{{$policy->name}}</h6>
-                    <p></p>
-                </div>
-                @endforeach
+    </div>
+    <div class="row new_category_row hover_class">
+        <div class="col-sm-12 col-md-12 news_category_container life_style_container">
+            <p><a href="#"><span class="news_category_span">ЭКОНОМИКА</span></a></p>
+            <div class="chevron_right_left_div">
+                <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
+            </div>
         </div>
     </div>
-    <div class="row world_news_main hover_class">
+    <div class="row life_style_main">
+        <div class="col-sm-12 col-md-6 life_style_big_news_container">
+            <div class="big_news_container__inner">
+                @if ($news_economy->count() > 0)
+                <img src="storage/images/{{$news_economy->first()->photo}}" alt="news photo"/>
+                <h6 class="h6_settings">{{$news_economy->first()->name}}</h6>
+                <p class="life_style_time">{{$news_economy->first()->activity_start}} // Политика // Нет комментариев</p>
+                <p class="big_news_text">{{$news_economy->first()->tagline}}</p>
+                @endif
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 hot_news_container life_style_little_news_container">
+            @foreach ($news_economy as $economy)
+                <div class="row">
+                    <div class="col-sm-6 col-md-6">
+                        <div class="popular_news_container__img">
+                            <img src="storage/images/{{$economy->photo_150}}" alt="news photo"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                        <div class="popular_news_container_second__text">
+                            <p class="popular_news_time">{{$economy->activity_start}}</p>
+                            <h6>{{$economy->name}}</h6>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    {{--<div class="row world_news_main hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
             <p><a href="#"><span class="news_category_span">WORLD NEWS</span></a></p>
             <div class="chevron_right_left_div">
@@ -150,8 +219,8 @@
                 <p class="big_news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,. Ut enim ad ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             </div>
         </div>
-    </div>
-    <div class="row world_news_container_little">
+    </div>--}}
+    {{--<div class="row world_news_container_little">
         <div class="col-sm-6 col-md-3 popular_news_container">
             <div>
                 <img src="{{ asset('images/_96116747_youngpeopleab.jpg') }}" alt="news photo" class="popular_news_img"/>
@@ -196,8 +265,8 @@
                 <p></p>
             </div>
         </div>
-    </div>
-    <div class="row world_news_main">
+    </div>--}}
+    {{--<div class="row world_news_main">
         <div class="col-sm-12 col-md-6 news_category_container hover_class">
             <a href="#"><p class="news_category_p_width"><span class="news_category_span">POPULYAR XƏBƏRLƏR</span></p></a>
         </div>
@@ -266,7 +335,7 @@
                 <p></p>
             </div>
         </div>
-    </div>
+    </div>--}}
 @endsection
 
 @section('news_ribbon')

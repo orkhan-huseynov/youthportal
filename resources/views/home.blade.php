@@ -19,7 +19,7 @@
             </li>
             @foreach($sections as $section)
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
                 </li>
             @endforeach
         </ul>
@@ -746,7 +746,7 @@
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
                     <p class="life_style_comments_container_text">{{$news_item->name}}</p>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // {{$news_item->section->name_ru}} // No Comments</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach

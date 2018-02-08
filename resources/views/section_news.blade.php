@@ -11,25 +11,24 @@
     </div>
 @endsection
 @section('main_menu')
-    <div class="collapse navbar-collapse menu_inner" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('/')}}"><p>Главная <span class="sr-only">(current)</span></p></a>
-            </li>
-            @foreach($sections as $section)
-                @if ($section->id == $section_id)
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>{{ $section->name_ru }}</p></a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('section/'.$section->id)}}"><p>{{ $section->name_ru }}</p></a>
-                    </li>
-                @endif
-
-            @endforeach
-        </ul>
-    </div>
+<div class="collapse navbar-collapse menu_inner" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/')}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
+        </li>
+        @foreach($sections as $section)
+            @if ($section->id == $sections->first()->section_id)
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
+                </li>
+            @endif
+        @endforeach
+    </ul>
+</div>
 @endsection
 @section('inner_content')
             <div class="container-fluid section_news_container">
@@ -37,7 +36,7 @@
                     <div class="col-sm-12 col-md-12">
                         <div class="row">
                             <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                                <a href="#"><p><span class="news_category_span">{{$section_name->first()->name_ru}}</span></p></a>
+                                <a href="#"><p><span class="news_category_span">@if($lang == 'az') {{$section_name->first()->name_az}} @else {{$section_name->first()->name_ru}} @endif </span></p></a>
                             </div>
                         </div>
                         <div class="row">
@@ -71,7 +70,7 @@
 @section('news_ribbon')
     <div class="row">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <p class="line_width ribbon_text"><span class="news_category_span">НОВОСТНАЯ ЛЕНТА</span></p>
+            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p>
         </div>
     </div>
     <div class="row">
@@ -79,7 +78,7 @@
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
                     <p class="life_style_comments_container_text">{{$news_item->name}}</p>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // {{$news_item->section->name_ru}} // No Comments</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach

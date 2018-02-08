@@ -36,24 +36,28 @@
             <div class="row">
                 <div class="col-sm-6 news_card">
                     @foreach($news_very_actual as $very_actual)
-                        <div class="card text-white news_card_container news_card_container_margin">
-                            <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
-                            <div class="card-img-overlay news_card_overlay">
-                                <a href="news_details/{{$very_actual->id}}"><h5 class="card-title title_text">{{$very_actual->name}}</h5></a>
-                                <p class="card-text main_text">{{$very_actual->tagline}}</p>
+                        <a href="news_details/{{$very_actual->id}}">
+                            <div class="card text-white news_card_container news_card_container_margin">
+                                <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
+                                <div class="card-img-overlay news_card_overlay">
+                                    <h5 class="card-title title_text">{{$very_actual->name}}</h5>
+                                    <p class="card-text main_text">{{$very_actual->tagline}}</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
                 <div class="col-sm-6 news_card news_card_second">
                     <div class="news_card_container_second">
                         @foreach($news_actual as $actual)
-                        <div class="card text-white actual">
-                            <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
-                            <div class="card-img-overlay card_overlay_little">
-                                <h5 class="card-title title_text">{{$actual->name}}</h5>
+                            <div class="card text-white actual">
+                                <a href="news_details/{{$actual->id}}">
+                                    <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
+                                    <div class="card-img-overlay card_overlay_little">
+                                        <h5 class="card-title title_text">{{$actual->name}}</h5>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -692,7 +696,7 @@
 @section('news_ribbon')
     <div class="row">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <a href="#"><p class="line_width"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p></a>
+            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p>
         </div>
     </div>
     <div class="row">
@@ -704,6 +708,56 @@
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach
+        </div>
+    </div>
+@endsection
+@section('video_container')
+    <div class="row margin_class">
+        <div class="col-sm-12 col-md-12 video_container_2 hover_class">
+            <div>
+                <p class="video_text"><a><span class="video_text_span">@if($lang == 'az') GÜNÜN VİDEOSU @else ВИДЕО ДНЯ @endif</span></a></p>
+            </div>
+            <div class="video_container__inner_2">
+                <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <!--
+            <div>
+                <a><p class="sport_text"><span class="sport_text_span">ADS SPOT</span></p></a>
+            </div>
+            -->
+        </div>
+    </div>
+@endsection
+@section('networks_container')
+    <div class="row margin_class">
+        <div class="col-sm-12 col-md-12 news_category_container hover_class">
+            <p class="video_text"><span class="news_category_span">@if($lang == 'az') BİZƏ QOŞULUN @else ПРИСОЕДИНЯЙТЕСЬ К НАМ @endif</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_first">
+                <img class="card_img" src="{{ asset('images/f.png') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span class="networks_numbers">7.000</span><span class="networks_second_span">@if($lang == 'az') izləyici @else подписчиков @endif</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_second">
+                <img class="card_img" src="{{ asset('images/o-TWITTER-570.jpg') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span class="networks_numbers">3.000</span><span class="networks_second_span">followers</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 networks_cards_container">
+            <div class="networks_card networks_card_third">
+                <img class="card_img" src="{{ asset('images/how-to-create-rss-feed-joomla-3x.jpg') }}" alt="facebook">
+                <div class="card_body">
+                    <p class="card_text"><span>@if($lang == 'az') Rss vasitəsi ilə izləyin @else Следите через Rss @endif</span></p>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

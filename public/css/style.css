@@ -326,6 +326,14 @@ body {
     margin-top: 30px;
 }
 
+.ribbon_text {
+    color: rgba(0,0,0,.5);
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #dc3545;
+    width: 310px;
+}
+
 .video_text_span {
     border-bottom: 4px solid #dc3545;
 }
@@ -339,8 +347,14 @@ body {
     height: 178px;
 }
 
-.popular_news_container {
+.news_cards_main a {
+    text-decoration: none;
+    color: #fff;
+}
 
+.news_cards_main a:hover {
+    text-decoration: none;
+    color: #888888;
 }
 
 /*.popular_news_container_second__text {

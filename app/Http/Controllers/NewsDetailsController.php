@@ -11,7 +11,7 @@ class NewsDetailsController extends Controller
 {
     //
 
-    public function index($id, $lang) {
+    public function index($lang, $id) {
 
         if($lang != 'ru' && $lang != 'az'){
             abort(404);

@@ -24,16 +24,7 @@
 </head>
 <body>
     <div id="app" class="container_wrapper">
-        <header>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
-                    </div>
-                    @yield('search_input')
-                </div>
-            </div>
-        </header>
+        @yield('header')
         <nav class="navbar navbar-expand-lg navbar-light menu_container">
             @yield('main_menu')
         </nav>

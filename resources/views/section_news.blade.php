@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+
+@section('header')
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
+                </div>
+                @yield('search_input')
+            </div>
+        </div>
+    </header>
+@endsection
 @section('search_input')
     <div class="col-sm-12 col-md-6 search_container">
         <div class="input-group mb-3 search_btn">
@@ -14,10 +27,10 @@
 <div class="collapse navbar-collapse menu_inner" id="navbarNav">
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="{{url('/')}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
+            <a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
         </li>
         @foreach($sections as $section)
-            @if ($section->id == $sections->first()->section_id)
+            @if ($section->id == $section_id)
                 <li class="nav-item active">
                     <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
                 </li>

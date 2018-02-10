@@ -298,6 +298,10 @@ body {
     font-weight: bold;
 }
 
+.pop_hot_inner {
+    margin-top: 10px;
+}
+
 .main_container .title_style:hover {
     text-decoration: none;
     color: #dc3545;

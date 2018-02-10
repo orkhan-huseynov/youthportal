@@ -792,7 +792,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-4 networks_cards_container">
+        <div class="col-sm-4 col-md-4 networks_cards_container">
             <div class="networks_card networks_card_first">
                 <img class="card_img" src="{{ asset('images/f.png') }}" alt="facebook">
                 <div class="card_body">
@@ -800,7 +800,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-4 networks_cards_container">
+        <div class="col-sm-4 col-md-4 networks_cards_container">
             <div class="networks_card networks_card_second">
                 <img class="card_img" src="{{ asset('images/o-TWITTER-570.jpg') }}" alt="facebook">
                 <div class="card_body">
@@ -808,7 +808,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-4 networks_cards_container">
+        <div class="col-sm-4 col-md-4 networks_cards_container">
             <div class="networks_card networks_card_third">
                 <img class="card_img" src="{{ asset('images/how-to-create-rss-feed-joomla-3x.jpg') }}" alt="facebook">
                 <div class="card_body">

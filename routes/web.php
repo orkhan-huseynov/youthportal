@@ -14,9 +14,10 @@
 Route::get('/', function (){
    return redirect('/az');
 });
-Route::get('/{lang}', 'HomeController@index');
+Route::get('{lang}', 'HomeController@index')->where('lang', 'ru|az');
 Route::get('/{lang}/section/{section_id}', 'SectionController@index');
 Route::get('/{lang}/news_details/{id}', 'NewsDetailsController@index');
+
 
 Auth::routes();
 

@@ -41,6 +41,11 @@
                 @endif
             @endforeach
         </ul>
+        @if ($lang == 'az')
+            <a href="{{url('/ru')}}" class="btn btn-danger lang_class">По-русски</a>
+        @else
+            <a href="{{url('/az')}}" class="btn btn-danger lang_class">Azərbaycanca</a>
+        @endif
     </div>
 @endsection
 @section('inner_content')

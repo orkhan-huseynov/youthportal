@@ -143,7 +143,7 @@
     {{-- policy --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span"> @if ($lang) ПОЛИТИКА @else SİYASƏT @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span"> @if ($lang == 'ru') ПОЛИТИКА @else SİYASƏT @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -202,7 +202,7 @@
     {{-- economy --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang) ЭКОНОМИКА @else İQTİSADİYYƏT @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') ЭКОНОМИКА @else İQTİSADİYYƏT @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -261,7 +261,7 @@
     {{-- sport --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang) СПОРТ @else İDMAN @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') СПОРТ @else İDMAN @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -320,7 +320,7 @@
     {{-- education --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang) ОБРАЗОВАНИЕ @else TƏHSİL @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') ОБРАЗОВАНИЕ @else TƏHSİL @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -378,7 +378,7 @@
     {{-- show buisness/ culture --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang) КУЛЬТУРА @else MƏDƏNİYYƏT @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') КУЛЬТУРА @else MƏDƏNİYYƏT @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -495,7 +495,7 @@
     {{-- actions/ world --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang) В МИРЕ @else DÜNYADA @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') В МИРЕ @else DÜNYADA @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>

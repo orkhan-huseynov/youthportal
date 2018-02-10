@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
-
+@section('header')
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
+                </div>
+                @yield('search_input')
+            </div>
+        </div>
+    </header>
+@endsection
 @section('search_input')
     <div class="col-sm-12 col-md-6 search_container">
         <div class="input-group mb-3 search_btn">
@@ -15,7 +26,7 @@
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="{{url('/')}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
+                <a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
             </li>
             @foreach($sections as $section)
                 <li class="nav-item">
@@ -36,7 +47,7 @@
             <div class="row">
                 <div class="col-sm-6 news_card">
                     @foreach($news_very_actual as $very_actual)
-                        <a href="{{url('news_details/'.$very_actual->id)}}">
+                        <a href="{{url($lang.'/news_details/'.$very_actual->id)}}">
                             <div class="card text-white news_card_container news_card_container_margin">
                                 <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
                                 <div class="card-img-overlay news_card_overlay">
@@ -51,7 +62,7 @@
                     <div class="news_card_container_second">
                         @foreach($news_actual as $actual)
                             <div class="card text-white actual">
-                                <a href="{{url('news_details/'.$actual->id)}}">
+                                <a href="{{url($lang.'/news_details/'.$actual->id)}}">
                                     <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
                                     <div class="card-img-overlay card_overlay_little">
                                         <h5 class="card-title title_text">{{$actual->name}}</h5>
@@ -80,7 +91,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6 popular_inner">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$news_view->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$news_view->id)}}">
                                 <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
                             </a>
                         </div>
@@ -88,7 +99,7 @@
                     <div class="col-sm-6 col-md-6 popular_inner">
                         <div class="popular_news_container_second__text popular_news_container_second">
                             <p class="popular_news_time">{{$news_view->activity_start}}</p>
-                            <a href="news_details/{{$news_view->id}}" class="title_a">
+                            <a href="{{url($lang.'/news_details/'.$news_view->id)}}" class="title_a">
                                 <h6 class="title_style">{{$news_view->name}}</h6>
                             </a>
                         </div>
@@ -107,7 +118,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$very_important->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$very_important->id)}}">
                                 <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
@@ -115,7 +126,7 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="popular_news_container_second__text hot_news_container_second">
                             <p class="popular_news_time">{{$very_important->activity_start}}</p>
-                            <a href="{{url('news_details/'.$very_important->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$very_important->id)}}" class="title_a">
                                 <h6 class="title_style">{{$very_important->name}}</h6>
                             </a>
                         </div>
@@ -132,7 +143,7 @@
     {{-- policy --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') ПОЛИТИКА @else SİYASƏT @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span"> @if ($lang == 'ru') ПОЛИТИКА @else SİYASƏT @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -143,7 +154,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_policy->count() > 0)
-                    <a href="{{url('news_details/'.$news_policy->first()->id)}}" class="title_style">
+                    <a href="{{url($lang.'/news_details/'.$news_policy->first()->id)}}" class="title_style">
                         <img src="storage/images/{{$news_policy->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings title_style">{{$news_policy->first()->name}}</h6>
                         <p class="life_style_time">{{$news_policy->first()->activity_start}} // {{$news_policy->first()->section->name_ru}} // Нет комментариев</p>
@@ -166,7 +177,7 @@
                 <div class="row policy_news">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$policy->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$policy->id)}}">
                                 <img src="storage/images/{{$policy->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
@@ -174,7 +185,7 @@
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$policy->activity_start}}</p>
-                            <a href="{{url('news_details/'.$policy->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$policy->id)}}">
                                 <h6 class="title_style">{{$policy->name}}</h6>
                             </a>
                         </div>
@@ -202,7 +213,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_economy->count() > 0)
-                    <a href="{{url('news_details/'.$news_economy->first()->id)}}" class="title_style">
+                    <a href="{{url($lang.'/news_details/'.$news_economy->first()->id)}}" class="title_style">
                         <img src="storage/images/{{$news_economy->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_economy->first()->name}}</h6>
                         <p class="life_style_time">{{$news_economy->first()->activity_start}} // {{$news_economy->first()->section->name_ru}} // Нет комментариев</p>
@@ -225,7 +236,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$economy->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$economy->id)}}">
                                 <img src="storage/images/{{$economy->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
@@ -233,7 +244,7 @@
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$economy->activity_start}}</p>
-                            <a href="{{url('news_details/'.$economy->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$economy->id)}}">
                                 <h6>{{$economy->name}}</h6>
                             </a>
                         </div>
@@ -261,7 +272,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_sport->count() > 0)
-                    <a href="{{url('news_details/'.$news_sport->first()->id)}}">
+                    <a href="{{url($lang.'/news_details/'.$news_sport->first()->id)}}">
                         <img src="storage/images/{{$news_sport->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_sport->first()->name}}</h6>
                         <p class="life_style_time">{{$news_sport->first()->activity_start}} // {{$news_sport->first()->section->name_ru}} // Нет комментариев</p>
@@ -284,7 +295,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$sport->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$sport->id)}}">
                                 <img src="storage/images/{{$sport->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
@@ -292,7 +303,7 @@
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$sport->activity_start}}</p>
-                            <a href="{{url('news_details/'.$sport->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$sport->id)}}">
                                 <h6>{{$sport->name}}</h6>
                             </a>
                         </div>
@@ -320,7 +331,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_education->count() > 0)
-                    <a href="{{url('news_details/'.$news_education->first()->id)}}">
+                    <a href="{{url($lang.'/news_details/'.$news_education->first()->id)}}">
                         <img src="storage/images/{{$news_education->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_education->first()->name}}</h6>
                         <p class="life_style_time">{{$news_education->first()->activity_start}} // {{$news_education->first()->section->name_ru}} // Нет комментариев</p>
@@ -343,7 +354,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$education->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$education->id)}}">
                                 <img src="storage/images/{{$education->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
@@ -378,7 +389,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_culture->count() > 0)
-                    <a href="{{url('news_details/'.$news_culture->first()->id)}}">
+                    <a href="{{url($lang.'/news_details/'.$news_culture->first()->id)}}">
                         <img src="storage/images/{{$news_culture->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_culture->first()->name}}</h6>
                         <p class="life_style_time">{{$news_culture->first()->activity_start}} // {{$news_culture->first()->section->name_ru}} // Нет комментариев</p>
@@ -401,7 +412,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$culture->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$culture->id)}}">
                                 <img src="storage/images/{{$culture->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
@@ -436,7 +447,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_hightech->count() > 0)
-                    <a href="{{url('news_details/'.$news_hightech->id)}}">
+                    <a href="{{url($lang.'/news_details/'.$news_hightech->id)}}">
                         <img src="storage/images/{{$news_hightech->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_hightech->first()->name}}</h6>
                         <p class="life_style_time">{{$news_hightech->first()->activity_start}} // {{$news_hightech->first()->section->name_ru}} // Нет комментариев</p>
@@ -459,7 +470,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$hightech->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$hightech->id)}}">
                                 <img src="storage/images/{{$hightech->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
@@ -467,7 +478,7 @@
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$hightech->activity_start}}</p>
-                            <a href="{{url('news_details/'.$hightech->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$hightech->id)}}">
                                 <h6>{{$hightech->name}}</h6>
                             </a>
                         </div>
@@ -495,7 +506,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_world->count() > 0)
-                    <a href="{{url('news_details/'.$news_world->id)}}" class="title_style">
+                    <a href="{{url($lang.'/news_details/'.$news_world->id)}}" class="title_style">
                         <img src="storage/images/{{$news_world->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_world->first()->name}}</h6>
                         <p class="life_style_time">{{$news_world->first()->activity_start}} // {{$news_world->first()->section->name_ru}} // Нет комментариев</p>
@@ -518,7 +529,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
                         <div class="popular_news_container__img">
-                            <a href="{{url('news_details/'.$world->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$world->id)}}">
                                 <img src="storage/images/{{$world->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
@@ -526,7 +537,7 @@
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$world->activity_start}}</p>
-                            <a href="{{url('news_details/'.$world->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$world->id)}}">
                                 <h6>{{$world->name}}</h6>
                             </a>
                         </div>
@@ -745,7 +756,9 @@
         <div class="col-sm-12 col-md-12 comments_container_margin">
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
-                    <p class="life_style_comments_container_text">{{$news_item->name}}</p>
+                    <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
+                        <p class="life_style_comments_container_text title_style">{{$news_item->name}}</p>
+                    </a>
                     <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
@@ -816,7 +829,7 @@
                     <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') NAVİQASİYA @else НАВИГАЦИЯ @endif</span></p>
                     <ul class="footer_ul">
                         @foreach($sections as $section)
-                            <li><a href="{{url('section/'.$section->id)}}"><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  @if($lang == 'ru') {{' '.$section->name_ru}} @else {{' '.$section->name_az}} @endif</span></a></li>
+                            <li><a href="{{url($lang.'/section/'.$section->id)}}"><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  @if($lang == 'ru') {{' '.$section->name_ru}} @else {{' '.$section->name_az}} @endif</span></a></li>
                             @endforeach
                     </ul>
                 </div>

@@ -63,13 +63,17 @@
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6 popular_inner">
                                             <div class="popular_news_container__img">
-                                                <img src="{{url('storage/images/'.$news_s->photo_150)}}" alt="news photo" class="popular_news_img"/>
+                                                <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
+                                                    <img src="{{url('storage/images/'.$news_s->photo_150)}}" alt="news photo" class="popular_news_img"/>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 popular_inner">
                                             <div class="popular_news_container_second__text popular_news_container_second">
                                                 <p class="popular_news_time">{{$news_s->activity_start}}</p>
-                                                <h6>{{$news_s->name}}</h6>
+                                                <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
+                                                    <h6 class="title_style">{{$news_s->name}}</h6>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -95,7 +99,9 @@
         <div class="col-sm-12 col-md-12 comments_container_margin">
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
-                    <p class="life_style_comments_container_text">{{$news_item->name}}</p>
+                    <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
+                        <p class="life_style_comments_container_text title_style">{{$news_item->name}}</p>
+                    </a>
                     <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>

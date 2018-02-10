@@ -756,7 +756,9 @@
         <div class="col-sm-12 col-md-12 comments_container_margin">
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
-                    <p class="life_style_comments_container_text">{{$news_item->name}}</p>
+                    <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
+                        <p class="life_style_comments_container_text title_style">{{$news_item->name}}</p>
+                    </a>
                     <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>

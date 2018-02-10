@@ -298,6 +298,15 @@ body {
     font-weight: bold;
 }
 
+.pop_hot_inner {
+    margin-top: 10px;
+}
+
+nav .nav_btn {
+    margin: 0 auto;
+    border: #fff;
+}
+
 .main_container .title_style:hover {
     text-decoration: none;
     color: #dc3545;

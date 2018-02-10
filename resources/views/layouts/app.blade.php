@@ -26,6 +26,9 @@
     <div id="app" class="container_wrapper">
         @yield('header')
         <nav class="navbar navbar-expand-lg navbar-light menu_container">
+            <button class="navbar-toggler nav_btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon nav_btn_span"></span>
+            </button>
             @yield('main_menu')
         </nav>
         @yield('top_news')

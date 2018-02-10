@@ -126,7 +126,7 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="popular_news_container_second__text hot_news_container_second">
                             <p class="popular_news_time">{{$very_important->activity_start}}</p>
-                            <a href="{{url($lang.'/news_details/'.$very_important->id)}}">
+                            <a href="{{url($lang.'/news_details/'.$very_important->id)}}" class="title_a">
                                 <h6 class="title_style">{{$very_important->name}}</h6>
                             </a>
                         </div>

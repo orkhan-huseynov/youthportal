@@ -288,7 +288,11 @@ body {
     margin-bottom: 20px;
 }
 
-.popular_inner .title_style:hover {
+.main_container a:hover {
+    text-decoration: none;
+}
+
+.title_style:hover {
     text-decoration: none;
     color: #dc3545;
 }

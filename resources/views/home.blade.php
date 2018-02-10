@@ -449,7 +449,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_hightech->count() > 0)
-                    <a href="{{url($lang.'/news_details/'.$news_hightech->id)}}">
+                    <a href="{{url($lang.'/news_details/'.$news_hightech->first()->id)}}">
                         <img src="storage/images/{{$news_hightech->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_hightech->first()->name}}</h6>
                         <p class="life_style_time">{{$news_hightech->first()->activity_start}} // {{$news_hightech->first()->section->name_ru}} // Нет комментариев</p>
@@ -508,7 +508,7 @@
         <div class="col-sm-12 col-md-6 life_style_big_news_container">
             <div class="big_news_container__inner">
                 @if ($news_world->count() > 0)
-                    <a href="{{url($lang.'/news_details/'.$news_world->id)}}" class="title_style">
+                    <a href="{{url($lang.'/news_details/'.$news_world->first()->id)}}" class="title_style">
                         <img src="storage/images/{{$news_world->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_world->first()->name}}</h6>
                         <p class="life_style_time">{{$news_world->first()->activity_start}} // {{$news_world->first()->section->name_ru}} // Нет комментариев</p>

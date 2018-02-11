@@ -103,11 +103,31 @@ body {
 
 .news_card_container_margin {
     margin: 20px 0 0 45px;
+    height: 304px;
+}
+
+.news_card_container_margin:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.25);
+    transition: all .3s linear;
+}
+.news_card_container_margin:hover:before {
+    background: none;
+}
+
+.news_card_container_margin:hover h5 {
+    color: #ddd;
 }
 
 .news_card_container img {
     border-radius: 0;
-    height: 300px;
+    height: 302px;
 }
 
 .clock_icon {
@@ -116,6 +136,7 @@ body {
 
 .news_card_container .title_text {
     font-size: 1.5rem;
+    margin-bottom: 0;
 }
 
 .news_card_container .main_text {
@@ -127,9 +148,15 @@ body {
     border-radius: 0;
 }
 
-/*.news_card_overlay {
-    margin-top: 200px;
-}*/
+.news_card_overlay {
+    display: flex;
+    align-items: flex-end;
+    padding: 0.8rem 1rem !important;
+}
+
+.news_card_overlay h5 {
+
+}
 
 .news_cards_main {
     margin-bottom: 20px;
@@ -155,7 +182,8 @@ body {
 
 
 .news_card_container_second .title_text {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-bottom: 0;
 }
 
 .news_card_container_second {
@@ -171,14 +199,31 @@ body {
     border-radius: 0;
 }
 
+.news_card_container_second .actual:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.25);
+    transition: all .3s linear;
+}
+.news_card_container_second .actual:hover:before {
+    background: none;
+}
+
 .news_card_container_second img{
     height: 150px;
     border-radius: 0;
 }
 
-/*.card_overlay_little {
-    margin-top: 80px;
-}*/
+.card_overlay_little {
+    display: flex;
+    align-items: flex-end;
+    padding: 0.8rem 1rem !important;
+}
 
 .news_category_container p {
     border-bottom: 1px solid #dc3545;
@@ -395,7 +440,7 @@ nav .nav_btn {
 
 .news_cards_main a:hover {
     text-decoration: none;
-    color: #888888;
+    color: #ddd;
 }
 
 /*.popular_news_container_second__text {

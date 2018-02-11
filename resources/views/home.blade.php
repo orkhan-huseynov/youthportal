@@ -51,7 +51,7 @@
                                 <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
                                 <div class="card-img-overlay news_card_overlay">
                                     <h5 class="card-title title_text">{{$very_actual->name}}</h5>
-                                    <p class="card-text main_text">{{$very_actual->tagline}}</p>
+                                    <!-- <p class="card-text main_text">{{$very_actual->tagline}}</p> -->
                                 </div>
                             </div>
                         </a>
@@ -64,7 +64,7 @@
                                 <a href="{{url($lang.'/news_details/'.$actual->id)}}">
                                     <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
                                     <div class="card-img-overlay card_overlay_little">
-                                        <h5 class="card-title title_text">{{$actual->name}}</h5>
+                                        <h6 class="card-title title_text">{{$actual->name}}</h6>
                                     </div>
                                 </a>
                             </div>

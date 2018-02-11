@@ -242,7 +242,7 @@ body {
 
 .main_inner_container a {
     color: rgba(0,0,0,.5);
-    font-weight: bold;
+    font-weight: normal;
     font-size: 1.2rem;
 }
 
@@ -257,7 +257,7 @@ body {
 
 .popular_news_img {
     width: 150px;
-    height: 85px;
+    height: 100px;
 }
 
 .popular_news_time {
@@ -275,19 +275,19 @@ body {
 
 .popular_news_container_second h6 {
     color: #666;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     /*margin-top: -7px;*/
     font-weight: normal;
 }
 
 .hot_news_container img {
     width: 150px;
-    height: 85px;
+    height: 100px;
 }
 
 .hot_news_container_second h6 {
     color: #666;
-    font-size: 1rem;
+    font-size: 0.85rem;
     /*margin-top: -7px;*/
     font-weight: normal;
 }
@@ -337,6 +337,15 @@ body {
     text-decoration: none;
 }
 
+.title_style_important {
+    font-weight: bold;
+}
+
+.title_style_very_important {
+    font-weight: bold;
+    color: #dc3545;
+}
+
 .title_style:hover {
     text-decoration: none;
     color: #dc3545;
@@ -345,6 +354,7 @@ body {
 
 .pop_hot_inner {
     margin-top: 10px;
+    height: 120px;
 }
 
 nav .nav_btn {
@@ -564,23 +574,32 @@ nav .nav_btn {
 
 .h6_settings {
     color: #666666;
-    font-size: 1.10rem;
+    font-size: 1rem;
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
 .big_news_text {
     color: #777;
-    font-size: 1rem;
+    font-size: 0.85rem;
     margin-top: -10px;
     text-align: justify;
 }
 
 .life_style_comments_container_text {
     color: #666;
-    font-size: 1rem;
-    margin-top: 28px;
+    font-size: 0.85rem;
+    margin-top: 18px;
     font-weight: normal;
+}
+
+.title_style_important {
+    font-weight: bold;
+}
+
+.title_style_very_important {
+    font-weight: bold;
+    color: #dc3545;
 }
 
 .news_category_main_2 .life_style_comments_container {

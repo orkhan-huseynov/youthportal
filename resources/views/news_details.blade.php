@@ -8,24 +8,21 @@
                 <div class="col-sm-12 col-md-6">
                     <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
-                @yield('search_input')
+                <div class="col-sm-12 col-md-6 search_container">
+                    <div class="input-group mb-3 search_btn float-right">
+                        <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 @endsection
-@section('search_input')
-    <div class="col-sm-12 col-md-6 search_container">
-        <div class="input-group mb-3 search_btn">
-            <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
-            </div>
-        </div>
-    </div>
-@endsection
 @section('main_menu')
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
             </li>
@@ -41,11 +38,13 @@
                 @endif
             @endforeach
         </ul>
-        @if ($lang == 'az')
-            <a href="{{url('/ru')}}" class="btn btn-danger lang_class">По-русски</a>
-        @else
-            <a href="{{url('/az')}}" class="btn btn-danger lang_class">Azərbaycanca</a>
-        @endif
+        <span class="my-2 my-lg-0">
+            @if ($lang == 'az')
+                <a href="{{url('/ru')}}" class="btn btn-danger lang_class">По-русски</a>
+            @else
+                <a href="{{url('/az')}}" class="btn btn-danger lang_class">Azərbaycanca</a>
+            @endif
+        </span>
     </div>
 @endsection
 @section('inner_content')

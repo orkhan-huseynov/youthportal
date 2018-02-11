@@ -94,7 +94,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6 popular_inner">
                         <div class="popular_news_container_second__text popular_news_container_second">
-                            <p class="popular_news_time">{{$news_view->activity_start}}</p>
+                            <p class="popular_news_time">{{$news_view->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$news_view->id)}}" class="title_a">
                                 <h6 class="title_style">{{$news_view->name}}</h6>
                             </a>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="popular_news_container_second__text hot_news_container_second">
-                            <p class="popular_news_time">{{$very_important->activity_start}}</p>
+                            <p class="popular_news_time">{{$very_important->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$very_important->id)}}" class="title_a">
                                 <h6 class="title_style">{{$very_important->name}}</h6>
                             </a>
@@ -158,7 +158,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_policy->first()->id)}}" class="title_style">
                         <img src="storage/images/{{$news_policy->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings title_style">{{$news_policy->first()->name}}</h6>
-                        <p class="life_style_time">{{$news_policy->first()->activity_start}} // {{$news_policy->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="life_style_time">{{$news_policy->first()->activity_start->format('d.m.Y H:i')}} // {{$news_policy->first()->section->name_ru}} // Нет комментариев</p>
                         <p class="big_news_text title_style">{{$news_policy->first()->tagline}}</p>
                     </a>
                 @endif
@@ -185,7 +185,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
-                            <p class="popular_news_time">{{$policy->activity_start}}</p>
+                            <p class="popular_news_time">{{$policy->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$policy->id)}}">
                                 <h6 class="title_style">{{$policy->name}}</h6>
                             </a>
@@ -217,7 +217,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_economy->first()->id)}}" class="title_style">
                         <img src="storage/images/{{$news_economy->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_economy->first()->name}}</h6>
-                        <p class="life_style_time">{{$news_economy->first()->activity_start}} // {{$news_economy->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="life_style_time">{{$news_economy->first()->activity_start->format('d.m.Y H:i')}} // {{$news_economy->first()->section->name_ru}} // Нет комментариев</p>
                         <p class="big_news_text">{{$news_economy->first()->tagline}}</p>
                     </a>
                 @endif
@@ -244,7 +244,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
-                            <p class="popular_news_time">{{$economy->activity_start}}</p>
+                            <p class="popular_news_time">{{$economy->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$economy->id)}}">
                                 <h6>{{$economy->name}}</h6>
                             </a>
@@ -276,7 +276,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_sport->first()->id)}}">
                         <img src="storage/images/{{$news_sport->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_sport->first()->name}}</h6>
-                        <p class="life_style_time">{{$news_sport->first()->activity_start}} // {{$news_sport->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="life_style_time">{{$news_sport->first()->activity_start->format('d.m.Y H:i')}} // {{$news_sport->first()->section->name_ru}} // Нет комментариев</p>
                         <p class="big_news_text">{{$news_sport->first()->tagline}}</p>
                     </a>
                 @endif
@@ -303,7 +303,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
-                            <p class="popular_news_time">{{$sport->activity_start}}</p>
+                            <p class="popular_news_time">{{$sport->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$sport->id)}}">
                                 <h6>{{$sport->name}}</h6>
                             </a>
@@ -335,7 +335,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_education->first()->id)}}">
                         <img src="storage/images/{{$news_education->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_education->first()->name}}</h6>
-                        <p class="life_style_time">{{$news_education->first()->activity_start}} // {{$news_education->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="life_style_time">{{$news_education->first()->activity_start->format('d.m.Y H:i')}} // {{$news_education->first()->section->name_ru}} // Нет комментариев</p>
                         <p class="big_news_text">{{$news_education->first()->tagline}}</p>
                     </a>
                 @endif
@@ -362,7 +362,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
-                            <p class="popular_news_time">{{$education->activity_start}}</p>
+                            <p class="popular_news_time">{{$education->activity_start->format('d.m.Y H:i')}}</p>
                             <h6>{{$education->name}}</h6>
                             <p></p>
                         </div>
@@ -393,7 +393,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_culture->first()->id)}}">
                         <img src="storage/images/{{$news_culture->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_culture->first()->name}}</h6>
-                        <p class="life_style_time">{{$news_culture->first()->activity_start}} // {{$news_culture->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="life_style_time">{{$news_culture->first()->activity_start->format('d.m.Y H:i')}} // {{$news_culture->first()->section->name_ru}} // Нет комментариев</p>
                         <p class="big_news_text">{{$news_culture->first()->tagline}}</p>
                     </a>
                 @endif
@@ -420,7 +420,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
-                            <p class="popular_news_time">{{$culture->activity_start}}</p>
+                            <p class="popular_news_time">{{$culture->activity_start->format('d.m.Y H:i')}}</p>
                             <h6>{{$culture->name}}</h6>
                             <p></p>
                         </div>
@@ -451,7 +451,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_hightech->first()->id)}}">
                         <img src="storage/images/{{$news_hightech->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_hightech->first()->name}}</h6>
-                        <p class="life_style_time">{{$news_hightech->first()->activity_start}} // {{$news_hightech->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="life_style_time">{{$news_hightech->first()->activity_start->format('d.m.Y H:i')}} // {{$news_hightech->first()->section->name_ru}} // Нет комментариев</p>
                         <p class="big_news_text">{{$news_hightech->first()->tagline}}</p>
                     </a>
                 @endif
@@ -478,7 +478,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
-                            <p class="popular_news_time">{{$hightech->activity_start}}</p>
+                            <p class="popular_news_time">{{$hightech->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$hightech->id)}}">
                                 <h6>{{$hightech->name}}</h6>
                             </a>
@@ -510,7 +510,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_world->first()->id)}}" class="title_style">
                         <img src="storage/images/{{$news_world->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings">{{$news_world->first()->name}}</h6>
-                        <p class="life_style_time">{{$news_world->first()->activity_start}} // {{$news_world->first()->section->name_ru}} // Нет комментариев</p>
+                        <p class="life_style_time">{{$news_world->first()->activity_start->format('d.m.Y H:i')}} // {{$news_world->first()->section->name_ru}} // Нет комментариев</p>
                         <p class="big_news_text">{{$news_world->first()->tagline}}</p>
                     </a>
                 @endif
@@ -537,7 +537,7 @@
                     </div>
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
-                            <p class="popular_news_time">{{$world->activity_start}}</p>
+                            <p class="popular_news_time">{{$world->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$world->id)}}">
                                 <h6>{{$world->name}}</h6>
                             </a>

@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="col-sm-6 col-md-6 popular_inner">
                                             <div class="popular_news_container_second__text popular_news_container_second">
-                                                <p class="popular_news_time">{{$news_s->activity_start}}</p>
+                                                <p class="popular_news_time">{{$news_s->activity_start->format('d.m.Y H:i')}}</p>
                                                 <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
                                                     <h6 class="title_style">{{$news_s->name}}</h6>
                                                 </a>

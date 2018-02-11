@@ -57,7 +57,7 @@
                                         <h6 class="h6_settings">{{$news_main->first()->name}}</h6>
                                         <p class="life_style_time">{{$news_main->first()->activity_start->format('d.m.Y H:i')}} // {{$news_main->first()->section->name_ru}} // Нет комментариев</p>
                             <p class="big_news_text">{{$news_main->first()->text}}</p>
-                            <div class="">
+                            <div class="news_images">
                                 @if ($news_main->first()->image_1 != '')
                                     <img src="{{url('storage/images/'.$news_main->first()->image_1)}}" alt="news photo"/>
                                 @endif
@@ -106,7 +106,7 @@
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
                     <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
-                        <p class="life_style_comments_container_text title_style">{{$news_item->name}}</p>
+                        <p class="life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
                     </a>
                     <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
@@ -209,4 +209,11 @@
         </div>
     </footer>
     </div>
+@endsection
+@section('facebook_social')
+    @if($lang == 'ru')
+        <div class="fb-page" data-href="https://www.facebook.com/YouthPortalaz-198120266876647/" data-tabs="timeline" data-width="334" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/YouthPortalaz-198120266876647/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/YouthPortalaz-198120266876647/">YouthPortal.az</a></blockquote></div>
+    @else
+        <div class="fb-page" data-href="https://www.facebook.com/youthportalaz/" data-tabs="timeline" data-width="343" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/youthportalaz/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/youthportalaz/">Youth Portal</a></blockquote></div>
+    @endif
 @endsection

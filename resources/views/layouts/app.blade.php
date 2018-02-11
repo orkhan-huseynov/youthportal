@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>YouthPortal</title>
+    <title>Youth Portal</title>
 
     <!-- Styles -->
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet" />--}}
@@ -90,7 +90,8 @@
                                     <div>
                                         <a><p class="sport_text"><span class="sport_text_span">FACEBOOK</span></p></a>
                                     </div>
-                                    <div class="fb-page" data-href="https://www.facebook.com/YouthPortalaz-198120266876647/" data-tabs="timeline" data-width="334" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/YouthPortalaz-198120266876647/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/YouthPortalaz-198120266876647/">YouthPortal.az</a></blockquote></div>
+                                    @yield('facebook_social')
+
                                 </div>
                             </div>
                         </div>

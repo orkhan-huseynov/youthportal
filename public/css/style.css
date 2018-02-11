@@ -390,13 +390,13 @@ nav .nav_btn {
 }
 
 .line_width {
-    width: 310px;
+    /*width: 310px;*/
 }
 
 .line_p_margin_2 {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 310px;
+    /*width: 310px;*/
 }
 
 .networks_numbers {
@@ -419,7 +419,7 @@ nav .nav_btn {
     font-size: 1.2rem;
     border-bottom: 1px solid #dc3545;
     width: 310px;
-    margin-top: 30px;
+    margin-top: 13px;
 }
 
 .ribbon_text {
@@ -427,7 +427,7 @@ nav .nav_btn {
     font-weight: bold;
     font-size: 1.2rem;
     border-bottom: 1px solid #dc3545;
-    width: 310px;
+    /*width: 310px;*/
 }
 
 .video_text_span {
@@ -487,7 +487,7 @@ nav .nav_btn {
 }
 
 .life_style_container p {
-    width: 660px;
+    /*width: 660px;*/
 }
 
 .life_style_container_second {
@@ -549,6 +549,7 @@ nav .nav_btn {
 .chevron_right_left_div {
     margin-left: 681px;
     margin-top: -45px;
+    display: none;
 }
 
 .life_style_little_news_container {
@@ -854,4 +855,8 @@ footer .footer_img_container {
 
 .inner_page_ribbon {
     margin-top: 20px;
+}
+
+.news_images img {
+    width: 100%;
 }

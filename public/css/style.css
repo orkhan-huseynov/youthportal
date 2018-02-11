@@ -39,12 +39,12 @@ body {
 
 .search_btn {
     width: 200px;
-    margin-left: 260px;
+    /*margin-left: 260px;*/
 }
 
 .search_container .search_btn{
     width: 250px;
-    padding-right: 35px;
+    padding-right: 30px;
 }
 
 .search_btn input {
@@ -75,7 +75,7 @@ body {
     color: #000;
     font-size: 1rem;
     font-weight: bold;
-    margin: 0 10px;
+    /*margin: 0 10px;*/
 }
 
 .menu_container li:first-child {
@@ -692,12 +692,14 @@ nav .nav_btn {
     padding: 0;
 }
 
-.lang_class {
-    color: #dc3545;
+.menu_container .lang_class {
+    /*color: #dc3545;
     position: absolute;
     z-index: 10;
     right: 45px;
-    top: 15px;
+    top: 15px;*/
+    margin-top: -8px;
+    padding: 2px 6px;
 }
 
 footer {

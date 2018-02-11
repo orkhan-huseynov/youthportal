@@ -551,7 +551,7 @@ nav .nav_btn {
 
 .big_news_container__inner img {
     width: 320px;
-    height: 188px;
+    margin: 0 20px 10px 0;
 }
 
 .big_news_container__inner {
@@ -559,12 +559,12 @@ nav .nav_btn {
 }
 
 .big_news_container__inner {
-    width: 320px;
+    /*width: 320px;*/
 }
 
 .h6_settings {
     color: #666666;
-    font-size: 1.2rem;
+    font-size: 1.10rem;
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -573,6 +573,7 @@ nav .nav_btn {
     color: #777;
     font-size: 1rem;
     margin-top: -10px;
+    text-align: justify;
 }
 
 .life_style_comments_container_text {
@@ -830,4 +831,8 @@ footer .footer_img_container {
 
 .footer_img_container:nth-child(3) {
     margin-left: -10px;
+}
+
+.inner_page_ribbon {
+    margin-top: 20px;
 }

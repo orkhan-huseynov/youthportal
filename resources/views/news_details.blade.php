@@ -54,42 +54,42 @@
             <div class="col-sm-12 col-md-12 life_style_big_news_container">
                 <div class="big_news_container__inner">
                     @if ($news_main->count() > 0)
-                        <img src="{{url('storage/images/'.$news_main->first()->photo)}}" alt="news photo"/>
-                        <h6 class="h6_settings">{{$news_main->first()->name}}</h6>
-                        <p class="life_style_time">{{$news_main->first()->activity_start->format('d.m.Y H:i')}} // {{$news_main->first()->section->name_ru}} // Нет комментариев</p>
-                        <p class="big_news_text">{{$news_main->first()->text}}</p>
-                        <div class="">
-                            @if ($news_main->first()->image_1 != '')
-                                <img src="{{url('storage/images/'.$news_main->first()->image_1)}}" alt="news photo"/>
-                            @endif
-                                @if ($news_main->first()->image_2 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_2)}}" alt="news photo"/>
+                        <img src="{{url('storage/images/'.$news_main->first()->photo)}}" class="float-left" alt="news photo"/>
+                                        <h6 class="h6_settings">{{$news_main->first()->name}}</h6>
+                                        <p class="life_style_time">{{$news_main->first()->activity_start->format('d.m.Y H:i')}} // {{$news_main->first()->section->name_ru}} // Нет комментариев</p>
+                            <p class="big_news_text">{{$news_main->first()->text}}</p>
+                            <div class="">
+                                @if ($news_main->first()->image_1 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_1)}}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_3 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_3)}}" alt="news photo"/>
-                                @endif
-                                @if ($news_main->first()->image_4 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_4)}}" alt="news photo"/>
-                                @endif
-                                @if ($news_main->first()->image_5 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_5)}}" alt="news photo"/>
-                                @endif
-                                @if ($news_main->first()->image_6 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_6)}}" alt="news photo"/>
-                                @endif
-                                @if ($news_main->first()->image_7 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_7)}}" alt="news photo"/>
-                                @endif
-                                @if ($news_main->first()->image_8 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_8)}}" alt="news photo"/>
-                                @endif
-                                @if ($news_main->first()->image_9 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_9)}}" alt="news photo"/>
-                                @endif
-                                @if ($news_main->first()->image_10 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_10)}}" alt="news photo"/>
-                                @endif
-                        </div>
+                                    @if ($news_main->first()->image_2 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_2)}}" alt="news photo"/>
+                                    @endif
+                                    @if ($news_main->first()->image_3 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_3)}}" alt="news photo"/>
+                                    @endif
+                                    @if ($news_main->first()->image_4 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_4)}}" alt="news photo"/>
+                                    @endif
+                                    @if ($news_main->first()->image_5 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_5)}}" alt="news photo"/>
+                                    @endif
+                                    @if ($news_main->first()->image_6 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_6)}}" alt="news photo"/>
+                                    @endif
+                                    @if ($news_main->first()->image_7 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_7)}}" alt="news photo"/>
+                                    @endif
+                                    @if ($news_main->first()->image_8 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_8)}}" alt="news photo"/>
+                                    @endif
+                                    @if ($news_main->first()->image_9 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_9)}}" alt="news photo"/>
+                                    @endif
+                                    @if ($news_main->first()->image_10 != '')
+                                        <img src="{{url('storage/images/'.$news_main->first()->image_10)}}" alt="news photo"/>
+                                    @endif
+                            </div>
                     @endif
                 </div>
             </div>
@@ -97,7 +97,7 @@
     </div>
 @endsection
 @section('news_ribbon')
-    <div class="row">
+    <div class="row inner_page_ribbon">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
             <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p>
         </div>

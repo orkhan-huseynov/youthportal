@@ -90,7 +90,7 @@
     </div>
 @endsection
 @section('news_ribbon')
-    <div class="row">
+    <div class="row inner_page_ribbon">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
             <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p>
         </div>

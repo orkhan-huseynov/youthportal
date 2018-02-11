@@ -49,45 +49,45 @@
 </div>
 @endsection
 @section('inner_content')
-            <div class="container-fluid section_news_container">
-                <div class="row section_news_inner">
-                    <div class="col-sm-12 col-md-12">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                                <a href="#"><p><span class="news_category_span">@if($lang == 'az') {{$section_name->first()->name_az}} @else {{$section_name->first()->name_ru}} @endif </span></p></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 popular_news_container">
-                                @foreach($section_news as $news_s)
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 popular_inner">
-                                            <div class="popular_news_container__img">
-                                                <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
-                                                    <img src="{{url('storage/images/'.$news_s->photo_150)}}" alt="news photo" class="popular_news_img"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 popular_inner">
-                                            <div class="popular_news_container_second__text popular_news_container_second">
-                                                <p class="popular_news_time">{{$news_s->activity_start->format('d.m.Y H:i')}}</p>
-                                                <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
-                                                    <h6 class="title_style">{{$news_s->name}}</h6>
-                                                </a>
-                                            </div>
-                                        </div>
+    <div class="container-fluid section_news_container">
+        <div class="row section_news_inner">
+            <div class="col-sm-12 col-md-12">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 news_category_container hover_class">
+                        <a href="#"><p><span class="news_category_span">@if($lang == 'az') {{$section_name->first()->name_az}} @else {{$section_name->first()->name_ru}} @endif </span></p></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 popular_news_container">
+                        @foreach($section_news as $news_s)
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3 popular_inner">
+                                    <div class="popular_news_container__img">
+                                        <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
+                                            <img src="{{url('storage/images/'.$news_s->photo_150)}}" alt="news photo" class="popular_news_img"/>
+                                        </a>
                                     </div>
-                                    <div class="row for_line">
-                                        <div class="col-sm-12 col-md-12">
-                                            <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-                                        </div>
+                                </div>
+                                <div class="col-sm-9 col-md-9 popular_inner">
+                                    <div class="popular_news_container_second__text popular_news_container_second">
+                                        <p class="popular_news_time">{{$news_s->activity_start->format('d.m.Y H:i')}}</p>
+                                        <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
+                                            <h6 class="title_style">{{$news_s->name}}</h6>
+                                        </a>
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
-                        </div>
+                            <div class="row for_line">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 @endsection
 @section('news_ribbon')
     <div class="row">

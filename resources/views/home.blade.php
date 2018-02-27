@@ -30,6 +30,9 @@
                     <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
                 </li>
             @endforeach
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</p></a>
+            </li>
         </ul>
         <span class="my-2 my-lg-0">
             @if ($lang == 'az')

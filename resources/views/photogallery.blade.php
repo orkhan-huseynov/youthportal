@@ -27,19 +27,14 @@
                 <a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
             </li>
             @foreach($sections as $section)
-                @if ($section->id == $section_id)
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
-                    </li>
-                @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
                     </li>
-                @endif
             @endforeach
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</p></a>
-            </li>        </ul>
+            </li>
+        </ul>
         <span class="my-2 my-lg-0">
             @if ($lang == 'az')
                 <a href="{{url('/ru')}}" class="btn btn-danger lang_class">По-русски</a>
@@ -50,41 +45,11 @@
     </div>
 @endsection
 @section('inner_content')
-    <div class="container-fluid section_news_container">
-        <div class="row section_news_inner">
-            <div class="col-sm-12 col-md-12">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                        <a href="#"><p><span class="news_category_span">@if($lang == 'az') {{$section_name->first()->name_az}} @else {{$section_name->first()->name_ru}} @endif </span></p></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 popular_news_container">
-                        @foreach($section_news as $news_s)
-                            <div class="row">
-                                <div class="col-sm-3 col-md-3 popular_inner">
-                                    <div class="popular_news_container__img">
-                                        <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
-                                            <img src="{{url('storage/images/'.$news_s->photo_150)}}" alt="news photo" class="popular_news_img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-9 col-md-9 popular_inner">
-                                    <div class="popular_news_container_second__text popular_news_container_second">
-                                        <p class="popular_news_time">{{$news_s->activity_start->format('d.m.Y H:i')}}</p>
-                                        <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
-                                            <h6 class="title_style">{{$news_s->name}}</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row for_line">
-                                <div class="col-sm-12 col-md-12">
-                                    <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+    <div class="container-fluid news_details_container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 life_style_big_news_container">
+                <div class="big_news_container__inner">
+
                 </div>
             </div>
         </div>
@@ -101,7 +66,7 @@
             @foreach ($news as $news_item)
                 <div class="life_style_comments_container">
                     <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
-                        <p class="title_style life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
+                        <p class="life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
                     </a>
                     <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>

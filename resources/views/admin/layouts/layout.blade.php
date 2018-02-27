@@ -63,6 +63,8 @@
                                             <ul class="nav child_menu" style="{{(strpos(Request::segment(2), 'content') !== false) ? 'display:block;' : '' }}">
                                                 <li class="{{(strpos(Request::segment(2), 'news_ru') !== false) ? 'current-page' : '' }}"><a href="{{url('/admin/content-news/ru/')}}">News RU</a></li>
                                                 <li class="{{(strpos(Request::segment(2), 'news_az') !== false) ? 'current-page' : '' }}"><a href="{{url('/admin/content-news/az/')}}">News AZ</a></li>
+                                                <li class="{{(strpos(Request::segment(2), 'photogallery_ru') !== false) ? 'current-page' : '' }}"><a href="{{url('/admin/content-photogallery/ru/')}}">Photogallery RU</a></li>
+                                                <li class="{{(strpos(Request::segment(2), 'photogallery_az') !== false) ? 'current-page' : '' }}"><a href="{{url('/admin/content-photogallery/az/')}}">Photogallery AZ</a></li>
                                             </ul>
                                         </li>
                                         <li class="{{(strpos(Request::segment(2), 'system') !== false) ? 'active' : '' }}"><a><i class="fa fa-gear"></i>System <span class="fa fa-chevron-down"></span></a>

@@ -64,4 +64,12 @@ Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], 
     Route::get('/content-news/{lang}/{news_id}/edit', 'Admin\Content\NewsController@edit');
     Route::put('/content-news/{lang}/{news_id}', 'Admin\Content\NewsController@update');
     Route::delete('/content-news/{lang}/{news_id}', 'Admin\Content\NewsController@destroy');
+
+    Route::get('/content-photogallery/{lang}', 'Admin\Content\PhotogalleryController@index');
+    Route::get('/content-photogallery/create/{lang}', 'Admin\Content\PhotogalleryController@create');
+    Route::post('/content-photogallery/{lang}', 'Admin\Content\PhotogalleryController@store');
+    Route::get('/content-photogallery/{lang}/{photogallery_id}/edit', 'Admin\Content\PhotogalleryController@edit');
+    Route::put('/content-photogallery/{lang}/{photogallery_id}', 'Admin\Content\PhotogalleryController@update');
+    Route::delete('/content-photogallery/{lang}/{gallery_id}', 'Admin\Content\PhotogalleryController@destroy');
+
 });

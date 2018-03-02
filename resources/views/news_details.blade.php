@@ -37,6 +37,9 @@
                     </li>
                 @endif
             @endforeach
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</p></a>
+            </li>
         </ul>
         <span class="my-2 my-lg-0">
             @if ($lang == 'az')

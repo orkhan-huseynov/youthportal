@@ -92,6 +92,39 @@ if (add_files_button != null) {
     });
 }
 
+let add_images_button = document.getElementById('add_images_button');
+let image_input_container_second = document.getElementById('image_input_container_second');
+let ii = 2;
+if (add_images_button != null) {
+    add_images_button.addEventListener('click', function (e) {
+        let row = document.createElement('Div');
+        row.setAttribute('class', 'row');
+
+        let label = document.createElement('Label');
+        label.setAttribute('class', 'control-label col-md-1 col-sm-1 col-xs-1');
+        label.setAttribute('for', `image_${ii}`);
+        label.innerHTML = `Image ${ii}`;
+
+        row.appendChild(label);
+
+        let input_container = document.createElement('Div');
+        input_container.setAttribute('class', 'col-md-6 col-sm-6 col-xs-6 file_input_container');
+        let input = document.createElement('Input');
+        input.setAttribute('id', `image_${ii}`);
+        input.setAttribute('class', 'form-control col-md-6 col-xs-6');
+        input.setAttribute('name', `image_${ii}`);
+        input.setAttribute('type', 'file');
+
+        input_container.appendChild(input);
+        row.appendChild(input_container);
+
+        image_input_container_second.appendChild(row);
+        e.preventDefault();
+        ii++;
+
+    });
+}
+
 //Gender control
 let genderButtonLabels = document.querySelectorAll('.genderButtonLabel');
 for (let genderButtonLabel of genderButtonLabels) {

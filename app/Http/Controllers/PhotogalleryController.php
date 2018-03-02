@@ -2,17 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\NewsRu;
 use Illuminate\Http\Request;
 use App\Models\Section;
+use App\Models\NewsRu;
 use App\Models\NewsAz;
 
-class NewsDetailsController extends Controller
+class PhotogalleryController extends Controller
 {
-    //
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+//    public function __construct()
+//    {
+//        //$this->middleware('auth');
+//    }
 
-    public function index($lang, $id) {
-
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($lang)
+    {
         if($lang != 'ru' && $lang != 'az'){
             abort(404);
         }
@@ -20,18 +33,14 @@ class NewsDetailsController extends Controller
         $sections = Section::all();
         if($lang == 'ru') {
             $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
-            $news_main = NewsRu::where('id', $id)->where('active', 1)->get();
         } else {
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
-            $news_main = NewsAz::where('id', $id)->where('active', 1)->get();
         }
 
-        return view('news_details', [
+        return view('photogallery', [
+            'lang' => $lang,
             'sections' => $sections,
             'news' => $news,
-            'news_main' => $news_main,
-            'lang' => $lang,
         ]);
-
     }
 }

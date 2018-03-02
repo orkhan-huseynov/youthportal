@@ -17,6 +17,7 @@ Route::get('/', function (){
 Route::get('{lang}', 'HomeController@index')->where('lang', 'ru|az');
 Route::get('/{lang}/section/{section_id}', 'SectionController@index');
 Route::get('/{lang}/news_details/{id}', 'NewsDetailsController@index');
+Route::get('/{lang}/photogallery/', 'PhotogalleryController@index');
 
 
 Auth::routes();
@@ -26,7 +27,7 @@ Route::get('storage/images/{filename}', function ($filename)
     $path = storage_path('app/public/images/' . $filename);
 
     if (!File::exists($path)) {
-        abort(404);
+        //abort(404);
     }
 
     $file = File::get($path);
@@ -64,4 +65,12 @@ Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], 
     Route::get('/content-news/{lang}/{news_id}/edit', 'Admin\Content\NewsController@edit');
     Route::put('/content-news/{lang}/{news_id}', 'Admin\Content\NewsController@update');
     Route::delete('/content-news/{lang}/{news_id}', 'Admin\Content\NewsController@destroy');
+
+    Route::get('/content-photogallery/{lang}', 'Admin\Content\PhotogalleryController@index');
+    Route::get('/content-photogallery/create/{lang}', 'Admin\Content\PhotogalleryController@create');
+    Route::post('/content-photogallery/{lang}', 'Admin\Content\PhotogalleryController@store');
+    Route::get('/content-photogallery/{lang}/{photogallery_id}/edit', 'Admin\Content\PhotogalleryController@edit');
+    Route::put('/content-photogallery/{lang}/{photogallery_id}', 'Admin\Content\PhotogalleryController@update');
+    Route::delete('/content-photogallery/{lang}/{gallery_id}', 'Admin\Content\PhotogalleryController@destroy');
+
 });

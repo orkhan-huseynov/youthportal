@@ -56,6 +56,36 @@ $('#newsEditForm .single_cal2').daterangepicker({
     console.log(start.toISOString(), end.toISOString(), label);
 });
 
+$('#PhotogalleryCreateForm .single_cal2').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: false,
+    startDate: new Date(),
+    timePicker: true,
+    timePicker24Hour: true,
+    timePickerIncrement: 1,
+    singleClasses: "picker_2",
+    autoUpdateInput: true,
+    locale: {
+        format: 'DD.MM.YYYY HH:mm'
+    }
+}, function(start, end, label) {
+    console.log(start.toISOString(), end.toISOString(), label);
+});
+$('#PhotogalleryEditForm .single_cal2').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: false,
+    timePicker: true,
+    timePicker24Hour: true,
+    timePickerIncrement: 1,
+    singleClasses: "picker_2",
+    autoUpdateInput: true,
+    locale: {
+        format: 'DD.MM.YYYY HH:mm'
+    }
+}, function(start, end, label) {
+    console.log(start.toISOString(), end.toISOString(), label);
+});
+
 let add_files_button = document.getElementById('add_files_button');
 let image_input_container = document.getElementById('image_input_container');
 let i = 2;

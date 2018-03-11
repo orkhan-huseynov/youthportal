@@ -10,7 +10,7 @@
         <div class="page-title">
             <div class="title_left">
                 <h3>
-                    News
+                    Photogallery
                 </h3>
             </div>
 

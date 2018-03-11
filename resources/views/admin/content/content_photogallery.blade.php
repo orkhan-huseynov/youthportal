@@ -10,7 +10,7 @@
         <div class="page-title">
             <div class="title_left">
                 <h3>
-                    Photogallery ({{$lang}})
+                    Photogallery
                 </h3>
             </div>
 

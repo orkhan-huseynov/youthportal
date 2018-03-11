@@ -15,6 +15,10 @@ class PhotogalleryController extends Controller
      */
     public function index($lang)
     {
+        if($lang != 'ru' && $lang != 'az'){
+            abort('403');
+        }
+
         $photogalleries = Photogallery::all();
 
         return view('admin.content.content_photogallery', [
@@ -48,21 +52,12 @@ class PhotogalleryController extends Controller
      */
     public function store(Request $request, $lang)
     {
-        if($lang != 'ru' && $lang != 'az'){
-            abort(404);
-        }
-
         $rules = [
-            'name' => 'required|min:3|max:255',
+            'name_' => 'required|min:3|max:255',
         ];
 
         $this->validate($request, $rules);
 
-        if($lang == 'ru'){
-            $photogalleries = new Phot();
-        } else {
-            $news = new NewsAz();
-        }
 
         if ($request->hasFile('photo')) {
             $filename_1024 = time() . '_1024.' . $request->photo->getClientOriginalExtension();

@@ -48,9 +48,109 @@
     <div class="container-fluid news_details_container">
         <div class="row">
             <div class="col-sm-12 col-md-12 life_style_big_news_container">
-                <div class="big_news_container__inner">
-
-                </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 news_category_container hover_class">
+                            <a href="#"><p class="photogallery_name"><span class="news_category_span">@if($lang == 'az') FOTOQALEREYA @else ФОТОГАЛЕРЕЯ @endif </span></p></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 popular_news_container">
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                        <div class="photogallery_container__img">
+                                            <a href="#">
+                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                        <div class="photogallery_container__img">
+                                            <a href="#">
+                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                        <div class="photogallery_container__img">
+                                            <a href="#">
+                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                        <div class="photogallery_container_text popular_news_container_second">
+                                            <a href="#">
+                                                <h5 class="photogallery_text">Some text about something</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                        <div class="photogallery_container_text popular_news_container_second">
+                                            <a href="#">
+                                                <h5 class="photogallery_text">Some text about something</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                        <div class="photogallery_container_text popular_news_container_second">
+                                            <a href="#">
+                                                <h5 class="photogallery_text">Some text about something</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 photogallery_second_container">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                    <div class="photogallery_container__img">
+                                        <a href="#">
+                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                    <div class="photogallery_container__img">
+                                        <a href="#">
+                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                    <div class="photogallery_container__img">
+                                        <a href="#">
+                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                    <div class="photogallery_container_text popular_news_container_second">
+                                        <a href="#">
+                                            <h5 class="photogallery_text">Some text about something</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                    <div class="photogallery_container_text popular_news_container_second">
+                                        <a href="#">
+                                            <h5 class="photogallery_text">Some text about something</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                    <div class="photogallery_container_text popular_news_container_second">
+                                        <a href="#">
+                                            <h5 class="photogallery_text">Some text about something</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

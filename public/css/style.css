@@ -872,3 +872,31 @@ footer .footer_img_container {
 .title_style {
     line-height: 1.2rem;
 }
+
+.photogallery_cover__img {
+    width: 200px;
+    height: 130px;
+}
+
+.photogallery_name {
+    margin-top: 4px;
+}
+
+.photogallery_text {
+    font-size: 1rem;
+    color: #666666;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.photogallery_container_text {
+    text-align: center;
+}
+
+.photogallery_container__inner {
+    margin-right: -3px;
+}
+
+.photogallery_second_container {
+    margin-top: 20px;
+}

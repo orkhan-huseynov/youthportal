@@ -55,55 +55,93 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-12 popular_news_container">
-                                <div class="row">
-                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                        <div class="photogallery_container__img">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                            </a>
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album photo" class="crls_image">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Something about something</h5>
+                                            <p>...</p>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                        <div class="photogallery_container__img">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                            </a>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album photo" class="crls_image">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>...</h5>
+                                            <p>...</p>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                        <div class="photogallery_container__img">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                        <div class="photogallery_container_text popular_news_container_second">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <h5 class="photogallery_text">Some text about something</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                        <div class="photogallery_container_text popular_news_container_second">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <h5 class="photogallery_text">Some text about something</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                        <div class="photogallery_container_text popular_news_container_second">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <h5 class="photogallery_text">Some text about something</h5>
-                                            </a>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album photo" class="crls_image">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>...</h5>
+                                            <p>...</p>
                                         </div>
                                     </div>
                                 </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
                         <div class="col-sm-12 col-md-12 photogallery_second_container">
                             <div class="row">
+                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                    <div class="photogallery_container__img">
+                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
+                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                    <div class="photogallery_container__img">
+                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
+                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
+                                    <div class="photogallery_container__img">
+                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
+                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                    <div class="photogallery_container_text popular_news_container_second">
+                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
+                                            <h5 class="photogallery_text">Some text about something</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                    <div class="photogallery_container_text popular_news_container_second">
+                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
+                                            <h5 class="photogallery_text">Some text about something</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
+                                    <div class="photogallery_container_text popular_news_container_second">
+                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
+                                            <h5 class="photogallery_text">Some text about something</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row photogallery_second_container">
                                 <div class="col-sm-4 col-md-4 photogallery_container__inner">
                                     <div class="photogallery_container__img">
                                         <a href="{{url($lang.'/photogallery/photogallery_details/')}}">

@@ -18,6 +18,7 @@ Route::get('{lang}', 'HomeController@index')->where('lang', 'ru|az');
 Route::get('/{lang}/section/{section_id}', 'SectionController@index');
 Route::get('/{lang}/news_details/{id}', 'NewsDetailsController@index');
 Route::get('/{lang}/photogallery/', 'PhotogalleryController@index');
+Route::get('/{lang}/photogallery/photogallery_details/{id}', 'PhotogalleryDetailsController@index');
 
 
 Auth::routes();

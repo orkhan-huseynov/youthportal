@@ -246,7 +246,7 @@ body {
 
 .main_inner_container a {
     color: #222222;
-    font-weight: bold;
+    /*font-weight: bold;*/
     font-size: 1.2rem;
 }
 
@@ -433,7 +433,7 @@ nav .nav_btn {
 
 .ribbon_text {
     color: #222222;
-    font-weight: bold;
+    /*font-weight: bold;*/
     font-size: 1.2rem;
     border-bottom: 1px solid #ed4630;
     /*width: 310px;*/

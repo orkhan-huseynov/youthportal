@@ -23,9 +23,9 @@
 @section('main_menu')
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
-            </li>
+            {{--<li class="nav-item">--}}
+                {{--<a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>--}}
+            {{--</li>--}}
             @foreach($sections as $section)
                 @if ($section->id == $news_main->first()->section_id)
                 <li class="nav-item active">

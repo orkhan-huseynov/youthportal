@@ -299,6 +299,7 @@ body {
     font-size: 0.85rem;
     /*margin-top: -7px;*/
     font-weight: normal;
+    line-height: 1.2rem;
 }
 
 .popular_hot_networks .hot_news_container {
@@ -598,7 +599,7 @@ nav .nav_btn {
 
 .life_style_comments_container_text {
     color: #222222;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-top: 18px;
     font-weight: normal;
 }

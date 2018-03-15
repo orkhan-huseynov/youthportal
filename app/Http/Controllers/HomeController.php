@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\NewsRu;
 use App\Models\NewsAz;
+use Carbon\Carbon;
+use Image;
 
 class HomeController extends Controller
 {
@@ -76,5 +78,81 @@ class HomeController extends Controller
             'news_world' => $news_world,
             'lang' => $lang,
         ]);
+    }
+
+    public function importNewsRu(Request $request) {
+        $news = new NewsRu();
+        $news->section_id = 8;
+        $news->name = $request->name;
+        $news->active = true;
+        $news->activity_start = Carbon::parse($request->activity_start);
+        $news->video_url = $request->video_url;
+        $news->actual = ($request->actual == 'Да');
+        $news->very_actual = ($request->very_actual == 'Да');
+        $news->important = ($request->importance == 'Важная');
+        $news->very_important = ($request->importance == 'Оч. важная');
+        $news->photo = $request->photo;
+        $news->photo_150 = '';
+        $news->tagline = $request->tagline;
+        $news->text = $request->text;
+
+        if ($request->photo != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo, PATHINFO_FILENAME);
+
+            $filename_600 = time() . $fname . '_600.' . $ext;
+            $path_600 = storage_path('/app/public/images/'.$filename_600);
+            Image::make('http://youthportal.az/'.$request->photo)->resize(600, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_600);
+            $news->photo = $filename_600;
+
+            $filename_150 = time() . $fname . '_150.' . $ext;
+            $path_150 = storage_path('/app/public/images/'.$filename_150);
+            Image::make('http://youthportal.az/'.$request->photo)->resize(150, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_150);
+            $news->photo_150 = $filename_150;
+        }
+
+        $news->save();
+    }
+
+    public function importNewsAz(Request $request) {
+        $news = new NewsAz();
+        $news->section_id = 1;
+        $news->name = $request->name;
+        $news->active = true;
+        $news->activity_start = Carbon::parse($request->activity_start);
+        $news->video_url = $request->video_url;
+        $news->actual = ($request->actual == 'Да');
+        $news->very_actual = ($request->very_actual == 'Да');
+        $news->important = ($request->importance == 'Важная');
+        $news->very_important = ($request->importance == 'Оч. важная');
+        $news->photo = $request->photo;
+        $news->photo_150 = '';
+        $news->tagline = $request->tagline;
+        $news->text = $request->text;
+
+        if ($request->photo != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo, PATHINFO_FILENAME);
+
+            $filename_600 = time() . $fname . '_600.' . $ext;
+            $path_600 = storage_path('/app/public/images/'.$filename_600);
+            Image::make('http://youthportal.az/'.$request->photo)->resize(600, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_600);
+            $news->photo = $filename_600;
+
+            $filename_150 = time() . $fname . '_150.' . $ext;
+            $path_150 = storage_path('/app/public/images/'.$filename_150);
+            Image::make('http://youthportal.az/'.$request->photo)->resize(150, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_150);
+            $news->photo_150 = $filename_150;
+        }
+
+        $news->save();
     }
 }

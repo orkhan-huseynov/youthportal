@@ -908,3 +908,24 @@ footer .footer_img_container {
     width: 700px;
     height: 400px;
 }
+
+.pagination li {
+    padding: 0 3px 0 3px;
+}
+
+.pagination li:first-child {
+    padding: 0 3px 0 0;
+}
+
+.pagination li:last-child {
+    padding: 0 0 0 3px;
+}
+
+.pagination a {
+    font-size: 1rem;
+}
+
+.pagination .active span {
+    font-size: 1rem;
+    color: #ed4630;
+}

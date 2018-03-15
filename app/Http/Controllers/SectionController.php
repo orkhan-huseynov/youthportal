@@ -24,7 +24,7 @@ class SectionController extends Controller
             $section_news = NewsAz::where('section_id', $section_id)->where('active', 1)->orderBy('activity_start', 'DESC')->get();
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
         }
-        $sections = Section::all();
+        $sections = Section::where('published', true)->get();
         $section_name = Section::where('id', $section_id)->get();
 
         return view('section_news', [

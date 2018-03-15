@@ -32,7 +32,7 @@ class HomeController extends Controller
             abort(404);
         }
 
-        $sections = Section::all();
+        $sections = Section::where('published', true)->get();
         if ($lang == 'ru') {
             $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
             $news_very_actual = NewsRu::where('very_actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(1)->get();

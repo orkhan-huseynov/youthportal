@@ -65,7 +65,17 @@ class PhotogalleryController extends Controller
                 $constraint->aspectRatio();
             })->save($path_1024);
             $photogallery->cover_photo = $filename_1024;
+
+            $filename_200 = time() . '_200.' . $request->cover_photo->getClientOriginalExtension();
+            $path_200 = storage_path('/app/public/images/' . $filename_200);
+            Image::make($request->cover_photo->getRealPath())->resize(200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path_200);
+            $photogallery->cover_photo_200 = $filename_200;
         }
+
+
+
 
         $photogallery->save();
 

@@ -123,7 +123,7 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$very_important->id)}}">
-                                <img src="storage/images/{{$very_important->photo_150}}" alt="news photo"/>
+                                <img src="{{url('storage/images/'.$very_important->photo_150)}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>

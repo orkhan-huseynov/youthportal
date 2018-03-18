@@ -56,99 +56,19 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12 popular_news_container">
                                 <div class="row">
-                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                        <div class="photogallery_container__img">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                    @foreach ($photogalleries as $photogallery)
+                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 photogallery_container__inner">
+                                        <div class="photogallery_container__img photogallery_container_text">
+                                            <a href="{{url($lang.'/photogallery_details/'.$photogallery->id)}}">
+                                                <img src="{{url('storage/images/'.$photogallery->cover_photo_200)}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                            </a>
+                                            <a href="{{url($lang.'/photogallery_details/'.$photogallery->id)}}">
+                                                <h5 class="photogallery_text">@if($lang = 'az'){{$photogallery->name_az}} @else {{$photogallery->name_ru}} @endif </h5>
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                        <div class="photogallery_container__img">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                        <div class="photogallery_container__img">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                        <div class="photogallery_container_text popular_news_container_second">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <h5 class="photogallery_text">Some text about something</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                        <div class="photogallery_container_text popular_news_container_second">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <h5 class="photogallery_text">Some text about something</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                        <div class="photogallery_container_text popular_news_container_second">
-                                            <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                                <h5 class="photogallery_text">Some text about something</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12 photogallery_second_container">
-                            <div class="row">
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
             </div>

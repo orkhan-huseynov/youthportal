@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photogallery;
 use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\NewsRu;
@@ -37,10 +38,13 @@ class PhotogalleryController extends Controller
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
         }
 
+        $photogalleries = Photogallery::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+
         return view('photogallery', [
             'lang' => $lang,
             'sections' => $sections,
             'news' => $news,
+            'photogalleries' => $photogalleries,
         ]);
     }
 }

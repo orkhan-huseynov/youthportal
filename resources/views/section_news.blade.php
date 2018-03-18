@@ -23,9 +23,9 @@
 @section('main_menu')
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>
-            </li>
+            {{--<li class="nav-item">--}}
+                {{--<a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>--}}
+            {{--</li>--}}
             @foreach($sections as $section)
                 @if ($section->id == $section_id)
                     <li class="nav-item active">
@@ -86,6 +86,11 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        {{ $section_news->links() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -103,7 +108,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
                         <p class="title_style life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
                     </a>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif // No Comments</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach

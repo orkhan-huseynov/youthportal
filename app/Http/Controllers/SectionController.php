@@ -18,13 +18,13 @@ class SectionController extends Controller
         }
 
         if($lang == 'ru'){
-            $section_news = NewsRu::where('section_id', $section_id)->where('active', 1)->orderBy('activity_start', 'DESC')->get();
+            $section_news = NewsRu::where('section_id', $section_id)->where('active', 1)->orderBy('activity_start', 'DESC')->paginate(46);
             $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
         } else {
-            $section_news = NewsAz::where('section_id', $section_id)->where('active', 1)->orderBy('activity_start', 'DESC')->get();
+            $section_news = NewsAz::where('section_id', $section_id)->where('active', 1)->orderBy('activity_start', 'DESC')->paginate(46);
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
         }
-        $sections = Section::all();
+        $sections = Section::where('published', true)->get();
         $section_name = Section::where('id', $section_id)->get();
 
         return view('section_news', [

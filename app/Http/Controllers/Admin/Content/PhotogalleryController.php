@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Content;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Photogallery;
+use App\Models\Photo;
 use Carbon\Carbon;
 use Image;
 
@@ -58,6 +59,7 @@ class PhotogalleryController extends Controller
         $photogallery->activity_start = Carbon::parse($request->activity_start);
         $photogallery->active = ($request->published == 'on');
 
+
         if ($request->hasFile('cover_photo')) {
             $filename_1024 = time() . '_1024.' . $request->cover_photo->getClientOriginalExtension();
             $path_1024 = storage_path('/app/public/images/' . $filename_1024);
@@ -74,10 +76,29 @@ class PhotogalleryController extends Controller
             $photogallery->cover_photo_200 = $filename_200;
         }
 
-
-
-
         $photogallery->save();
+
+        $i = 0;
+        foreach($request->files as $file){
+            if($i == 0){
+                $i++;
+                continue;
+            }
+
+            $filename_1024 = time() . '_1024_' . $i . '.' . $file->getClientOriginalExtension();
+            $path_1024 = storage_path('/app/public/images/' . $filename_1024);
+            Image::make($file->getRealPath())->resize(1024, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $photo = new Photo();
+            $photo->image = $filename_1024;
+            $photo->photogallery_id = $photogallery->id;
+            $i++;
+
+            $photo->save();
+        }
+
+
 
         return redirect('admin/content-photogallery');
 

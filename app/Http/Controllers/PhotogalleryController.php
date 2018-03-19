@@ -47,4 +47,29 @@ class PhotogalleryController extends Controller
             'photogalleries' => $photogalleries,
         ]);
     }
+
+    public function details($lang, $id)
+    {
+        if($lang != 'ru' && $lang != 'az'){
+            abort(404);
+        }
+
+        $sections = Section::where('published', true)->get();
+        if($lang == 'ru') {
+            $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
+        } else {
+            $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
+        }
+
+        $photogallery = Photogallery::findOrFail($id);
+        $photogalleries = Photogallery::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+
+        return view('photogallery_details', [
+            'lang' => $lang,
+            'sections' => $sections,
+            'news' => $news,
+            'photogallery' => $photogallery,
+            'photogalleries' => $photogalleries,
+        ]);
+    }
 }

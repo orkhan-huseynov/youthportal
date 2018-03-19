@@ -14,7 +14,7 @@ class Photogallery extends Model
         'active' => 'boolean',
     ];
 
-    public function photo(){
+    public function photos(){
         return $this->hasMany('App\Models\Photo');
     }
 }

@@ -58,31 +58,31 @@
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @foreach($photogallery->photos as $photo)
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}"></li>
+                                        @php
+                                            $i++;
+                                        @endphp
+                                    @endforeach
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album photo" class="crls_image">
+                                        <img src="{{url('storage/images/'.$photogallery->cover_photo)}}" alt="album photo" class="crls_image">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>Something about something</h5>
-                                            <p>...</p>
+                                            <h5>{{($lang == 'az') ? $photogallery->name_az : $photogallery->name_ru}}</h5>
                                         </div>
                                     </div>
+                                    @foreach($photogallery->photos as $photo)
                                     <div class="carousel-item">
-                                        <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album photo" class="crls_image">
+                                        <img src="{{url('storage/images/'.$photo->image)}}" alt="album photo" class="crls_image">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>...</h5>
-                                            <p>...</p>
+                                            <h5>{{($lang == 'az') ? $photogallery->name_az : $photogallery->name_ru}}</h5>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album photo" class="crls_image">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>...</h5>
-                                            <p>...</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -96,99 +96,24 @@
                         </div>
                         <div class="col-sm-12 col-md-12 photogallery_second_container">
                             <div class="row">
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
+                                @foreach ($photogalleries as $photogallery_item)
+                                    @if($photogallery->id == $photogallery_item->id)
+                                        @continue;
+                                    @endif
+                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 photogallery_container__inner">
+                                        <div class="photogallery_container__img photogallery_container_text">
+                                            <a href="{{url($lang.'/photogallery_details/'.$photogallery_item->id)}}">
+                                                <img src="{{url('storage/images/'.$photogallery_item->cover_photo_200)}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                            </a>
+                                            <a href="{{url($lang.'/photogallery_details/'.$photogallery_item->id)}}">
+                                                <h5 class="photogallery_text">@if($lang = 'az'){{$photogallery_item->name_az}} @else {{$photogallery_item->name_ru}} @endif </h5>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row photogallery_second_container">
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 photogallery_container__inner">
-                                    <div class="photogallery_container__img">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <img src="{{asset('images/man-coffee-cup-pen.jpg')}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-4 popular_inner photogallery_container__inner">
-                                    <div class="photogallery_container_text popular_news_container_second">
-                                        <a href="{{url($lang.'/photogallery/photogallery_details/')}}">
-                                            <h5 class="photogallery_text">Some text about something</h5>
-                                        </a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>

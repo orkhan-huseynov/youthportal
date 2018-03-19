@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
+                    <a href="{{ url('/'.$lang) }}"><img src="{{ url('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
                 <div class="col-sm-12 col-md-6 search_container">
                     <div class="input-group mb-3 search_btn float-right">

@@ -120,7 +120,7 @@ class HomeController extends Controller
 
     public function importNewsAz(Request $request) {
         $news = new NewsAz();
-        $news->section_id = 1;
+        $news->section_id = 6;
         $news->name = $request->name;
         $news->active = true;
         $news->activity_start = Carbon::parse($request->activity_start);
@@ -131,8 +131,8 @@ class HomeController extends Controller
         $news->very_important = ($request->importance == 'Оч. важная');
         $news->photo = $request->photo;
         $news->photo_150 = '';
-        $news->tagline = $request->tagline;
-        $news->text = $request->text;
+        $news->tagline = trim($request->tagline);
+        $news->text = (trim($request->text) == '')? trim($request->tagline) : trim($request->text);
 
         if ($request->photo != '') {
             $ext = pathinfo('http://youthportal.az/'.$request->photo, PATHINFO_EXTENSION);

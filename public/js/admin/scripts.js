@@ -1,5 +1,7 @@
 'use strict';
 
+let baseURL = '';
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -279,3 +281,30 @@ if (newsEditForm != null) {
         newsEditForm.submit();
     });
 }
+
+let adminNewsSection = document.getElementById('adminNewsSection');
+if (adminNewsSection != null) {
+    adminNewsSection.addEventListener('change', function () {
+       window.location.href = `${baseURL}/admin/content-news/ru/${this.value}`;
+    });
+}
+
+//service functions
+function getMetaContent(metaName) {
+    let metas = document.getElementsByTagName('meta');
+    let re = new RegExp('\\b' + metaName + '\\b', 'i');
+    let i = 0;
+    let mLength = metas.length;
+
+    for (i; i < mLength; i++) {
+        if (re.test(metas[i].getAttribute('name'))) {
+            return metas[i].getAttribute('content');
+        }
+    }
+
+    return '';
+}
+
+(function() {
+    baseURL = getMetaContent('base-url');
+})();

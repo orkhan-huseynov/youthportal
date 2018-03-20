@@ -17,18 +17,31 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($lang)
+    public function index($lang, $section = 1)
     {
         if($lang == 'ru'){
-            $news = NewsRu::all();
+            if ($section == 0) {
+                $news = NewsRu::all();
+            } else {
+                $news = NewsRu::where('section_id', $section)->get();
+            }
         } else if($lang == 'az') {
-            $news = NewsAz::all();
+            if ($section == 0) {
+                $news = NewsAz::all();
+            } else {
+                $news = NewsAz::where('section_id', $section)->get();
+            }
         } else {
             abort(404);
         }
+
+        $sections = Section::all();
+
         $pass_data = [
             'news' => $news,
             'lang' => $lang,
+            'sections' => $sections,
+            'currentSection' => $section,
         ];
         return view('admin.content.content_news', $pass_data); //test
     }

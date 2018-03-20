@@ -60,7 +60,7 @@ Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], 
     //Content
     //Route::resource('content-news', 'Admin\Content\NewsController');
 
-    Route::get('/content-news/{lang}', 'Admin\Content\NewsController@index');
+    Route::get('/content-news/{lang}/{section?}', 'Admin\Content\NewsController@index');
     Route::get('/content-news/create/{lang}', 'Admin\Content\NewsController@create');
     Route::post('/content-news/{lang}', 'Admin\Content\NewsController@store');
     Route::get('/content-news/{lang}/{news_id}/edit', 'Admin\Content\NewsController@edit');

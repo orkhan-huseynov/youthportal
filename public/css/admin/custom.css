@@ -4021,3 +4021,8 @@ th.dt-center, td.dt-center { text-align: center; }
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.table-filter {
+  margin-bottom: 20px;
+  margin-left: -10px;
+}

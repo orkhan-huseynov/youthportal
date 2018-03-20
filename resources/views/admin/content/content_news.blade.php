@@ -31,6 +31,19 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+
+                        <div class="col-sm-2 table-filter">
+                            <select id="adminNewsSection" name="section" class="form-control">
+                                @foreach ($sections as $section)
+                                    @if ($currentSection == $section->id)
+                                        <option value="{{ $section->id }}" selected>{{ ($lang == 'az')? $section->name_az : $section->name_ru }}</option>
+                                    @else
+                                        <option value="{{ $section->id }}">{{ ($lang == 'az')? $section->name_az : $section->name_ru }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+
                         <table id="datatable-fixed-header" class="table table-striped table-bordered">
                             <thead>
                             <tr>

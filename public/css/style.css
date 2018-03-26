@@ -7,22 +7,28 @@
     url('../fonts/MuseoSansCyrl-100.ttf')  format('truetype')
 }*/
 
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+/*@font-face {*/
+    /*font-family: 'FreeSans';*/
+    /*src: url('../fonts/FreeSans.otf') format('embedded-opentype');*/
+}
+
+/*@import url('https://fonts.googleapis.com/css?family=Noto+Sans');*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 html {
     font-size: 15px;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
     background-image: url("../images/bodyBgLeft.png"), url("../images/bodyBgRight.png");
     background-position: left top, right top;
     background-repeat: no-repeat, no-repeat;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #app {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .container_wrapper {
@@ -74,34 +80,55 @@ body {
 }
 
 .menu_container li {
-    color: #000;
+    color: #fff;
     font-size: 1rem;
-    font-weight: bold;
     /*margin: 0 10px;*/
+    text-align: center;
 }
 
-.menu_container li:first-child {
-    margin-left: -7px;
-}
+/*.menu_container li:first-child {*/
+    /*margin-left: -7px;*/
+/*}*/
 
 .menu_container a {
     padding: 0;
 }
 
-.menu_container p {
-    margin-bottom: 0;
-    padding-bottom: 5px;
-    text-transform: uppercase;
-    color: #222222;
+.menu_container .nav-link,
+.menu_container .nav-link {
+    padding-right: 0 !important;
 }
 
-.menu_container .active p {
-    border-bottom: 3px solid #ed4630;
-    color: #000000;
+
+.menu_container .border_span {
+    border-right: 1px solid #ff8080;
+    padding-right: 15px;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.menu_container .no_border_span {
+    padding-right: 15px;
+    padding-left: 10px;
+}
+
+.menu_container p {
+    margin-bottom: 0;
+    padding-bottom: 15px;
+    color: #fff;
+}
+
+.menu_container .active {
+    border-bottom: 4px solid #fff;
+    color: #fff;
+}
+
+.menu_container li:hover {
+    border-bottom: 4px solid #fff;
+    color: #fff;
 }
 
 .menu_container .menu_inner {
-    border-bottom: 2px solid #ed4630;
     margin: 10px 30px 0 30px;
 }
 
@@ -241,7 +268,6 @@ body {
 .news_category_span {
     border-bottom: 3px solid #ed4630;
     padding-bottom: 3px;
-    text-transform: uppercase;
 }
 
 .main_inner_container a {
@@ -438,6 +464,7 @@ nav .nav_btn {
     font-size: 1.2rem;
     border-bottom: 1px solid #ed4630;
     /*width: 310px;*/
+    /*margin-top: 20px;*/
 }
 
 .video_text_span {
@@ -567,7 +594,7 @@ nav .nav_btn {
 }
 
 .life_style_big_news_container {
-    margin-top: 15px;
+    /*margin-top: 15px;*/
 }
 
 .big_news_container__inner img {
@@ -592,7 +619,8 @@ nav .nav_btn {
 
 .big_news_text {
     color: #222222;
-    font-size: 0.85rem;
+    font-size: 1rem;
+    line-height: 1.6rem !important;
     margin-top: -10px;
     text-align: justify;
 }
@@ -692,6 +720,7 @@ nav .nav_btn {
 .main_container .main_inner_container {
     margin-left: 15px;
     margin-right: 15px;
+    margin-top: 20px;
 }
 
 .accordion_text {
@@ -753,7 +782,7 @@ nav .nav_btn {
 }
 
 .section_news_inner {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 }
 
 .popular_news_container .for_line:last-child .line_p_2 {
@@ -774,9 +803,12 @@ nav .nav_btn {
     z-index: 10;
     right: 45px;
     top: 15px;*/
-    margin-top: -8px;
-    padding: 2px 6px;
     background-color: #ed4630;
+    width: 35px;
+    height: 30px;
+    text-align: center;
+    padding-top: 2px;
+    margin-top: -10px;
 }
 
 footer {
@@ -929,4 +961,15 @@ footer .footer_img_container {
 .pagination .active span {
     font-size: 1rem;
     color: #ed4630;
+}
+
+.menu_wrapper nav {
+    background-color: #ed4630;
+    padding-bottom: 0;
+}
+
+.lang_changer {
+    padding-bottom: 13px;
+    width:35px;
+    display: inline-block;
 }

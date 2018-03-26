@@ -22,25 +22,25 @@
 @section('main_menu')
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            {{--<li class="nav-item active">--}}
-                {{--<a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>--}}
-            {{--</li>--}}
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url('/'.$lang)}}"><p><span class="border_span">@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></span></p></a>
+            </li>
             @foreach($sections as $section)
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
                 </li>
             @endforeach
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</p></a>
+                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p><span class="no_border_span">@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</span></p></a>
             </li>
         </ul>
-        <span class="my-2 my-lg-0">
+        <div class="my-2 my-lg-0 lang_changer">
             @if ($lang == 'az')
-                <a href="{{url('/ru')}}" class="btn btn-danger lang_class">По-русски</a>
+                <a href="{{url('/ru')}}" class="btn btn-danger lang_class">Ru</a>
             @else
-                <a href="{{url('/az')}}" class="btn btn-danger lang_class">Azərbaycanca</a>
+                <a href="{{url('/az')}}" class="btn btn-danger lang_class">Az</a>
             @endif
-        </span>
+        </div>
     </div>
 @endsection
 @section('top_news')
@@ -83,7 +83,7 @@
         <div class="col-sm-12 col-md-6 popular_news_container">
             <div class="row">
                 <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                    <a href="#"><p><span class="news_category_span">@if ($lang == 'ru') ПОПУЛЯРНЫЕ НОВОСТИ @else POPULYAR XƏBƏRLƏR @endif </span></p></a>
+                    <a href="#"><p><span class="news_category_span">@if ($lang == 'ru') Молодежные новости @else Gənclər üçün xəbərlər @endif </span></p></a>
                 </div>
             </div>
             @foreach ($news_views as $news_view)
@@ -115,7 +115,7 @@
         <div class="col-sm-12 col-md-6 hot_news_container">
             <div class="row">
                 <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                    <a href="#"><p><span class="news_category_span">@if ($lang == 'ru') ГОРЯЧИЕ НОВОСТИ @else QAYNAR XƏBƏRLƏR @endif </span></p></a>
+                    <a href="#"><p><span class="news_category_span">@if ($lang == 'ru') Популярное @else Populyar @endif </span></p></a>
                 </div>
             </div>
             @foreach ($news_very_important as $very_important)
@@ -147,7 +147,7 @@
     {{-- policy --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span"> @if ($lang == 'ru') ПОЛИТИКА @else SİYASƏT @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span"> @if ($lang == 'ru') Политика @else Siyasət @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -206,7 +206,7 @@
     {{-- economy --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') ЭКОНОМИКА @else İQTİSADİYYƏT @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Экономика @else İqtisadiyyat @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -265,7 +265,7 @@
     {{-- sport --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') СПОРТ @else İDMAN @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Спорт @else İdman @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -324,7 +324,7 @@
     {{-- education --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') ОБРАЗОВАНИЕ @else TƏHSİL @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Образование @else Təhsil @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -382,7 +382,7 @@
     {{-- show buisness/ culture --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') КУЛЬТУРА @else MƏDƏNİYYƏT @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Культура @else Mədəniyyət @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -440,7 +440,7 @@
     {{-- cinemania/ hightech --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">HIGH-TECH</span></a></p>
+            <p><a href="#"><span class="news_category_span">High-tech</span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -499,7 +499,7 @@
     {{-- actions/ world --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') В МИРЕ @else DÜNYADA @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') В мире @else Dünyada @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -753,7 +753,7 @@
 @section('news_ribbon')
     <div class="row">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p>
+            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') Новостная лента @else Xəbər lenti @endif </span></p>
         </div>
     </div>
     <div class="row">
@@ -774,7 +774,7 @@
     <div class="row margin_class">
         <div class="col-sm-12 col-md-12 video_container_2 hover_class">
             <div>
-                <p class="video_text"><a><span class="video_text_span">@if ($lang == 'az') GÜNÜN VİDEOSU @else ВИДЕО ДНЯ @endif</span></a></p>
+                <p class="video_text"><a><span class="video_text_span">@if ($lang == 'az') Günün videosu @else Видео дня @endif</span></a></p>
             </div>
             <div class="video_container__inner_2">
                 <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -790,7 +790,7 @@
 @section('networks_container')
     <div class="row margin_class">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <p class="video_text"><span class="news_category_span">@if ($lang == 'az') BİZƏ QOŞULUN @else ПРИСОЕДИНЯЙТЕСЬ К НАМ @endif</span></p>
+            <p class="video_text"><span class="news_category_span">@if ($lang == 'az') Bizə qoşulun @else Присоединяйтесь к нам @endif</span></p>
         </div>
     </div>
     <div class="row">
@@ -830,7 +830,7 @@
                     <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">TWEETS</span></p></a>
                 </div>--}}
                 <div class="col-sm-12 col-md-6 hover_class footer_category">
-                    <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') NAVİQASİYA @else НАВИГАЦИЯ @endif</span></p>
+                    <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') Naviqasiya @else Навигация @endif</span></p>
                     <ul class="footer_ul">
                         @foreach($sections as $section)
                             <li><a href="{{url($lang.'/section/'.$section->id)}}"><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  @if($lang == 'ru') {{' '.$section->name_ru}} @else {{' '.$section->name_az}} @endif</span></a></li>
@@ -858,7 +858,7 @@
                     </div>
                 </div>--}}
                 <div class="col-sm-12 col-md-6 hover_class footer_category">
-                    <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') HAQQIMIZDA @else О НАС @endif</span></p>
+                    <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') Haqqımızda @else О нас @endif</span></p>
                     <p class="footer_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
             </div>

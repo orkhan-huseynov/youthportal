@@ -123,7 +123,9 @@ class PhotogalleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $photogallery = Photogallery::findOrFail($id);
+
+        return view('admin.content.content_photogallery_edit')->with('photogallery', $photogallery);
     }
 
     /**

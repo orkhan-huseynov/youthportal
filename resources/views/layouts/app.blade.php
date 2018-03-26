@@ -34,12 +34,14 @@
     </script>
     <div id="app" class="container_wrapper">
         @yield('header')
-        <nav class="navbar navbar-expand-xl navbar-light menu_container">
-            <button class="navbar-toggler nav_btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon nav_btn_span"></span>
-            </button>
-            @yield('main_menu')
-        </nav>
+        <div class="menu_wrapper">
+            <nav class="navbar navbar-expand-xl navbar-light menu_container">
+                <button class="navbar-toggler nav_btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon nav_btn_span"></span>
+                </button>
+                @yield('main_menu')
+            </nav>
+        </div>
         @yield('top_news')
         <section>
             <div class="container-fluid main_container">

@@ -24,7 +24,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Create photogallery</h2>
+                        <h2>Edit photogallery</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                         </ul>
@@ -33,6 +33,7 @@
                     <div class="x_content">
                         <form id="PhotogalleryCreateForm" class="form-horizontal form-label-left" action="{{url('admin/content-photogallery')}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            {{ method_field('PUT') }}
 
                             <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                 <ul id="newsTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -44,21 +45,21 @@
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="name_ru">Name RU</label>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <input id="name_ru" class="form-control col-md-6 col-xs-6" minlength="3" name="name_ru" required type="text" value="{{old('name_ru')}}">
+                                                <input id="name_ru" class="form-control col-md-6 col-xs-6" minlength="3" name="name_ru" required type="text" value="{{old('name_ru', $photogallery->name_ru)}}">
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name_ru')}}</span>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="name_ru">Name AZ</label>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <input id="name_az" class="form-control col-md-6 col-xs-6" minlength="3" name="name_az" required type="text" value="{{old('name_az')}}">
+                                                <input id="name_az" class="form-control col-md-6 col-xs-6" minlength="3" name="name_az" required type="text" value="{{old('name_az', $photogallery->name_az)}}">
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name_az')}}</span>
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Published</label>
                                             <div class="col-md-5 col-sm-5 col-xs-5 to_left">
-                                                <input id="published" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="published" type="checkbox" @if (old('published') == 'on')  checked @endif>
+                                                <input id="published" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="published" type="checkbox" @if (old('published', $photogallery->active) == 'on')  checked @endif>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('published')}}</span>
                                             </div>
                                         </div>
@@ -68,7 +69,7 @@
                                                     <div class="row">
                                                         <label class="control-label col-md-1 col-sm-1 col-xs-1" for="activity_start">From</label>
                                                         <div class="col-sm-6 xdisplay_inputx form-group has-feedback">
-                                                            <input id="newsCreateActivityStart" name="activity_start" type="text" class="form-control has-feedback-left single_cal2" value="{{ old('activity_start') }}">
+                                                            <input id="newsCreateActivityStart" name="activity_start" type="text" class="form-control has-feedback-left single_cal2" value="{{ old('activity_start', $photogallery->activity_start) }}">
                                                             <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true">{{$errors->first('activity_start')}}</span>
                                                         </div>
                                                     </div>

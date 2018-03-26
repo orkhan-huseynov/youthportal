@@ -23,17 +23,17 @@
 @section('main_menu')
     <div class="collapse navbar-collapse menu_inner" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            {{--<li class="nav-item">--}}
-                {{--<a class="nav-link" href="{{url('/'.$lang)}}"><p>@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></p></a>--}}
-            {{--</li>--}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/'.$lang)}}"><p><span class="border_span">@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></span></p></a>
+            </li>
             @foreach($sections as $section)
                 @if ($section->id == $news_main->first()->section_id)
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
                 </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p>@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</p></a>
+                        <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
                     </li>
                 @endif
             @endforeach
@@ -41,13 +41,13 @@
                 <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</p></a>
             </li>
         </ul>
-        <span class="my-2 my-lg-0">
+        <div class="my-2 my-lg-0 lang_changer">
             @if ($lang == 'az')
-                <a href="{{url('/ru')}}" class="btn btn-danger lang_class">По-русски</a>
+                <a href="{{url('/ru')}}" class="btn btn-danger lang_class">Ru</a>
             @else
-                <a href="{{url('/az')}}" class="btn btn-danger lang_class">Azərbaycanca</a>
+                <a href="{{url('/az')}}" class="btn btn-danger lang_class">Az</a>
             @endif
-        </span>
+        </div>
     </div>
 @endsection
 @section('inner_content')
@@ -99,9 +99,9 @@
     </div>
 @endsection
 @section('news_ribbon')
-    <div class="row inner_page_ribbon">
+    <div class="row">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') НОВОСТНАЯ ЛЕНТА @else XƏBƏR LENTİ @endif </span></p>
+            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') Новостная лента @else Xəbər lenti @endif </span></p>
         </div>
     </div>
     <div class="row">
@@ -122,7 +122,7 @@
     <div class="row margin_class">
         <div class="col-sm-12 col-md-12 video_container_2 hover_class">
             <div>
-                <p class="video_text"><a><span class="video_text_span">@if($lang == 'az') GÜNÜN VİDEOSU @else ВИДЕО ДНЯ @endif</span></a></p>
+                <p class="video_text"><a><span class="video_text_span">@if ($lang == 'az') Günün videosu @else Видео дня @endif</span></a></p>
             </div>
             <div class="video_container__inner_2">
                 <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -138,11 +138,11 @@
 @section('networks_container')
     <div class="row margin_class">
         <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <p class="video_text"><span class="news_category_span">@if($lang == 'az') BİZƏ QOŞULUN @else ПРИСОЕДИНЯЙТЕСЬ К НАМ @endif</span></p>
+            <p class="video_text"><span class="news_category_span">@if ($lang == 'az') Bizə qoşulun @else Присоединяйтесь к нам @endif</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-4 networks_cards_container">
+        <div class="col-sm-4 col-md-4 networks_cards_container">
             <div class="networks_card networks_card_first">
                 <img class="card_img" src="{{ asset('images/f.png') }}" alt="facebook">
                 <div class="card_body">
@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-4 networks_cards_container">
+        <div class="col-sm-4 col-md-4 networks_cards_container">
             <div class="networks_card networks_card_second">
                 <img class="card_img" src="{{ asset('images/o-TWITTER-570.jpg') }}" alt="facebook">
                 <div class="card_body">
@@ -158,7 +158,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-4 networks_cards_container">
+        <div class="col-sm-4 col-md-4 networks_cards_container">
             <div class="networks_card networks_card_third">
                 <img class="card_img" src="{{ asset('images/how-to-create-rss-feed-joomla-3x.jpg') }}" alt="facebook">
                 <div class="card_body">
@@ -169,6 +169,7 @@
     </div>
 @endsection
 
+
 @section('footer')
     <footer>
         <div class="container-fluid">
@@ -177,10 +178,10 @@
                     <a href="#" class="footer_a"><p class="footer_p"><span class="news_category_span">TWEETS</span></p></a>
                 </div>--}}
                 <div class="col-sm-12 col-md-6 hover_class footer_category">
-                    <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') NAVİQASİYA @else НАВИГАЦИЯ @endif</span></p>
+                    <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') Naviqasiya @else Навигация @endif</span></p>
                     <ul class="footer_ul">
                         @foreach($sections as $section)
-                            <li><a href="{{url('section/'.$section->id)}}"><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  @if($lang == 'ru') {{' '.$section->name_ru}} @else {{' '.$section->name_az}} @endif</span></a></li>
+                            <li><a href="{{url($lang.'/section/'.$section->id)}}"><i class="fa fa-chevron-right" aria-hidden="true"></i><span>  @if($lang == 'ru') {{' '.$section->name_ru}} @else {{' '.$section->name_az}} @endif</span></a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -205,7 +206,7 @@
                     </div>
                 </div>--}}
                 <div class="col-sm-12 col-md-6 hover_class footer_category">
-                    <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') HAQQIMIZDA @else О НАС @endif</span></p>
+                    <p class="footer_p footer_a"><span class="news_category_span">@if($lang == 'az') Haqqımızda @else О нас @endif</span></p>
                     <p class="footer_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
             </div>

@@ -291,7 +291,7 @@ body {
 }
 
 .news_category_container p {
-    border-bottom: 1px solid var(--red-color);
+    border-bottom: 3px solid var(--red-color);
     padding-bottom: 2px;
 }
 
@@ -300,7 +300,7 @@ body {
 }
 
 .news_category_span {
-    border-bottom: 3px solid var(--red-color);
+    /*border-bottom: 3px solid var(--red-color);*/
     padding-bottom: 3px;
 }
 
@@ -498,7 +498,6 @@ nav .nav_btn {
     font-size: 1.2rem;
     border-bottom: 1px solid var(--red-color);
     /*width: 310px;*/
-    margin-top: 10px;
 }
 
 .video_text_span {
@@ -637,7 +636,7 @@ nav .nav_btn {
 }
 
 .big_news_container__inner {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .big_news_container__inner {
@@ -647,7 +646,7 @@ nav .nav_btn {
 .h6_settings {
     color: var(--blue-color);
     font-size: 1.2rem;
-    margin-top: 15px;
+    margin-top: 0;
     margin-bottom: 15px;
 }
 
@@ -955,8 +954,7 @@ footer .footer_img_container {
 
 .photogallery_text {
     font-size: 1rem;
-    color: #666666;
-    font-weight: bold;
+    color: var(--blue-color);
     margin-top: 5px;
 }
 
@@ -1046,4 +1044,42 @@ footer .footer_img_container {
 .similar_news_container {
     padding: 0 !important;
     margin-top: 20px;
+}
+.similar_news_container__title .line_width {
+    border-bottom: 3px solid var(--red-color);
+    padding-bottom: 5px;
+}
+
+#carouselExampleIndicators .list-inline {
+    white-space:nowrap;
+    overflow-x:auto;
+    height: auto;
+}
+
+#carouselExampleIndicators .carousel-indicators {
+    position: static;
+    left: initial;
+    width: 100%;
+    height: auto;
+    margin-left: initial;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#carouselExampleIndicators .carousel-indicators > li {
+    width: initial;
+    height: initial;
+    text-indent: initial;
+    margin-left: 0;
+    margin-top: 15px;
+}
+
+#carouselExampleIndicators .carousel-indicators > li.active img {
+    opacity: 0.7;
+}
+
+#carouselExampleIndicators .carousel-indicators > li img {
+    height: 100px;
 }

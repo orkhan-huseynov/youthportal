@@ -61,7 +61,6 @@ $('#newsEditForm .single_cal2').daterangepicker({
 $('#PhotogalleryCreateForm .single_cal2').daterangepicker({
     singleDatePicker: true,
     showDropdowns: false,
-    startDate: new Date(),
     timePicker: true,
     timePicker24Hour: true,
     timePickerIncrement: 1,
@@ -91,6 +90,11 @@ $('#PhotogalleryEditForm .single_cal2').daterangepicker({
 let add_files_button = document.getElementById('add_files_button');
 let image_input_container = document.getElementById('image_input_container');
 let i = 2;
+if (image_input_container != null) {
+    i = image_input_container.childElementCount;
+    i++;
+}
+
 if (add_files_button != null) {
     add_files_button.addEventListener('click', function (e) {
         let row = document.createElement('Div');
@@ -127,6 +131,10 @@ if (add_files_button != null) {
 let add_images_button = document.getElementById('add_images_button');
 let image_input_container_second = document.getElementById('image_input_container_second');
 let ii = 2;
+if (image_input_container_second != null) {
+    ii = image_input_container_second.childElementCount;
+    ii++;
+}
 if (add_images_button != null) {
     add_images_button.addEventListener('click', function (e) {
         let row = document.createElement('Div');

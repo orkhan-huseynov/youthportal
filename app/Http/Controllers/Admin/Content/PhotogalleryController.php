@@ -93,6 +93,7 @@ class PhotogalleryController extends Controller
             $photo = new Photo();
             $photo->image = $filename_1024;
             $photo->photogallery_id = $photogallery->id;
+            $photo->number = $i;
             $i++;
 
             $photo->save();
@@ -137,7 +138,80 @@ class PhotogalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name_ru' => 'required|min:3|max:255',
+            'name_az' => 'required|min:3|max:255',
+            'activity_start' => 'required',
+        ];
+
+        $this->validate($request, $rules);
+
+        $photogallery = Photogallery::findOrFail($id);
+        $photogallery->name_ru = $request->name_ru;
+        $photogallery->name_az = $request->name_az;
+        $photogallery->activity_start = Carbon::parse($request->activity_start);
+        $photogallery->active = ($request->published == 'on');
+
+
+        if ($request->hasFile('cover_photo')) {
+            $filename_1024 = time() . '_1024.' . $request->cover_photo->getClientOriginalExtension();
+            $path_1024 = storage_path('/app/public/images/' . $filename_1024);
+            Image::make($request->cover_photo->getRealPath())->resize(1024, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $photogallery->cover_photo = $filename_1024;
+
+            $filename_200 = time() . '_200.' . $request->cover_photo->getClientOriginalExtension();
+            $path_200 = storage_path('/app/public/images/' . $filename_200);
+            Image::make($request->cover_photo->getRealPath())->resize(200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path_200);
+            $photogallery->cover_photo_200 = $filename_200;
+        }
+
+        $photogallery->save();
+
+        //update existing photos
+        $max_number = 0;
+        $existingPhotos = Photo::where('photogallery_id', $id)->get();
+        foreach ($existingPhotos as $existingPhoto) {//dump($request->files);
+            if ($request->hasFile('image_' . $existingPhoto->number)) {
+                $file = $request->file('image_' . $existingPhoto->number);
+                $filename_1024 = time() . '_1024_' . $existingPhoto->number . '.' . $file->getClientOriginalExtension();
+                $path_1024 = storage_path('/app/public/images/' . $filename_1024);
+                Image::make($file->getRealPath())->resize(1024, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($path_1024);
+
+                $existingPhoto->image = $filename_1024;
+
+                $existingPhoto->save();
+            }
+            $max_number++;
+        }
+
+        //look further to add new photos (terrible solution but don't have time to think of smth cleverer)
+        $max_number++;
+        for ($n = $max_number; $n <= 200; $n++) {
+            if ($request->hasFile('image_' . $n)) {
+                $file = $request->file('image_' . $n);
+                $filename_1024 = time() . '_1024_' . $n . '.' . $file->getClientOriginalExtension();
+                $path_1024 = storage_path('/app/public/images/' . $filename_1024);
+                Image::make($file->getRealPath())->resize(1024, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($path_1024);
+
+                $newPhoto = new Photo();
+
+                $newPhoto->photogallery_id = $id;
+                $newPhoto->image = $filename_1024;
+                $newPhoto->number = $n;
+
+                $newPhoto->save();
+            }
+        }
+
+        return redirect('admin/content-photogallery');
     }
 
     /**

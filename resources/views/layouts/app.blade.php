@@ -35,72 +35,75 @@
     <div id="app" class="container_wrapper">
         @yield('header')
         <div class="menu_wrapper">
-            <nav class="navbar navbar-expand-xl navbar-light menu_container">
-                <button class="navbar-toggler nav_btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon nav_btn_span"></span>
-                </button>
+            <nav class="navbar navbar-expand navbar-light menu_container">
+                {{--<button class="navbar-toggler nav_btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">--}}
+                    {{--<span class="navbar-toggler-icon nav_btn_span"></span>--}}
+                {{--</button>--}}
                 @yield('main_menu')
+                <a class="login_button" target="_blank" href="{{ url('/admin') }}">@if ($lang == 'az') Sayta giriş @else Войти на сайт @endif</a>
             </nav>
         </div>
-        @yield('top_news')
-        <section>
-            <div class="container-fluid main_container">
-                <div class="row main_inner_container">
-                    <div class="col-sm-12 col-md-8 inner_content_container">
-                        @yield('inner_content')
-                    </div>
-                    <!-- Corner content -->
-
-                    <div class="col-sm-12 col-md-4">
-                        @yield('news_ribbon')
-                        @yield('video_container')
-                        @yield('networks_container')
-                            {{--<div class="row">
-                                <div class="col-sm-4 col-md-4">
-                                    <div class="accordion_section_name">
-                                        <a href="#"><i class="fa fa-minus-square" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8 col-md-8">
-                                    <p class="accordion_text">Proserue Cubre</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12">
-                                    <p class="accordion_text_big">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 col_md-4">
-                                    <div class="accordion_section_name_plus">
-                                        <a href="#"><p><i class="fa fa-plus-square" aria-hidden="true"></i></p></a>
-                                        <a href="#"><p><i class="fa fa-plus-square" aria-hidden="true"></i></p></a>
-                                        <a href="#"><p><i class="fa fa-plus-square" aria-hidden="true"></i></p></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8 col-md-8">
-                                    <p class="name_plus__text">Some text</p>
-                                    <p class="name_plus__text">Something here</p>
-                                    <p class="name_plus__text">Some text</p>
-                                </div>
-                            </div>--}}
-                            <div class="row spot_container_second">
-                                <div class="col-sm-12 col-md-12">
-                                    <div>
-                                        <a><p class="sport_text"><span class="sport_text_span">ОПРОС</span></p></a>
-                                    </div>
-                                    <div>
-                                        <a><p class="sport_text"><span class="sport_text_span">FACEBOOK</span></p></a>
-                                    </div>
-                                    @yield('facebook_social')
-
-                                </div>
-                            </div>
+        <div class="container-fluid-flex">
+                <div class="d-md-none d-lg-block main_col">
+                    <div class="left_block_ads pull-right">
+                        <div class="ad">
+                            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="120" height="166" id="aquatic" align="">
+                                <param name="movie" value="/banners/aquatic.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="/banners/aquatic.swf" quality="high" bgcolor="#FFFFFF" width="120" height="166" name="aquatic" align="" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+                            </object>
+                        </div>
+                        <div class="ad">
+                            <a target="_blank" href="http://www.genclerpaytaxti.az"><img src="{{ asset('images/banners/genclerpaytaxti.png') }}" width="120"></a>
+                        </div>
+                        <div class="ad">
+                            <a target="_blank" href="http://www.salto-youth.net/rc/eeca/eecacooperation/"><img src="{{ asset('images/banners/salto_youth.png') }}"></a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+                <div class="main_col">
+                    @yield('top_news')
+                    <section class="root_section">
+                        <div class="container-fluid main_container">
+                            <div class="row main_inner_container">
+                                <div class="col-sm-12 col-md-8 inner_content_container">
+                                    @yield('inner_content')
+                                </div>
+                                <!-- Corner content -->
+
+                                <div class="col-sm-12 col-md-4">
+                                    @yield('news_ribbon')
+                                    @yield('video_container')
+                                    @yield('networks_container')
+                                    <div class="row spot_container_second">
+                                        <div class="col-sm-12 col-md-12">
+                                            <div>
+                                                <a><p class="sport_text"><span class="sport_text_span">ОПРОС</span></p></a>
+                                            </div>
+                                            <div>
+                                                <a><p class="sport_text"><span class="sport_text_span">FACEBOOK</span></p></a>
+                                            </div>
+                                            @yield('facebook_social')
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="d-md-none d-lg-block main_col">
+                    <div class="right_block_ads">
+                        <div class="ad">
+                            <a target="_blank" href="http://www.youthforum.org"><img src="{{ asset('images/banners/youthforum.org.png') }}"></a>
+                        </div>
+                        <div class="ad">
+                            <a target="_blank" href="http://www.ec.europa.eu/youth/"><img src="{{ asset('images/banners/european_commision.gif') }}"></a>
+                        </div>
+                        <div class="ad">
+                            <a target="_blank" href="http://www.tehsil.gov.az"><img src="{{ asset('images/banners/tehsil.gov.az.png') }}"></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
         @yield('footer')
 
     <!-- Scripts -->

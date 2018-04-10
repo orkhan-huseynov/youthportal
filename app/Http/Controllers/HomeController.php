@@ -39,7 +39,7 @@ class HomeController extends Controller
             $news_view = NewsRu::where('active', 1)->orderBy('view_count', 'DESC')->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_very_important = NewsRu::where('very_important', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_policy_main = NewsRu::where('section_id', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
-            $news_economy = NewsRu::where('section_id', 3)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+            $news_economy = NewsRu::where('section_id', 9)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_sport = NewsRu::where('section_id', 5)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_education = NewsRu::where('section_id', 4)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_culture = NewsRu::where('section_id', 2)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
@@ -52,7 +52,7 @@ class HomeController extends Controller
             $news_view = NewsAz::where('active', 1)->orderBy('view_count', 'DESC')->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_very_important = NewsAz::where('very_important', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_policy_main = NewsAz::where('section_id', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
-            $news_economy = NewsAz::where('section_id', 3)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+            $news_economy = NewsAz::where('section_id', 9)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_sport = NewsAz::where('section_id', 5)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_education = NewsAz::where('section_id', 4)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_culture = NewsAz::where('section_id', 2)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
@@ -81,7 +81,7 @@ class HomeController extends Controller
 
     public function importNewsRu(Request $request) {
         $news = new NewsRu();
-        $news->section_id = 6;
+        $news->section_id = 9;
         $news->name = $request->name;
         $news->active = true;
         $news->activity_start = Carbon::parse($request->activity_start);
@@ -93,7 +93,7 @@ class HomeController extends Controller
         $news->photo = $request->photo;
         $news->photo_150 = '';
         $news->tagline = trim($request->tagline);
-        $news->text = (trim($request->text) == '')? trim($request->tagline) : trim($request->text);
+        $news->text = (trim($request->text) == '')? $this->nl2p(trim($request->tagline)) : $this->nl2p(trim($request->text));
 
         if ($request->photo != '') {
             $ext = pathinfo('http://youthportal.az/'.$request->photo, PATHINFO_EXTENSION);
@@ -119,7 +119,7 @@ class HomeController extends Controller
 
     public function importNewsAz(Request $request) {
         $news = new NewsAz();
-        $news->section_id = 6;
+        $news->section_id = 9;
         $news->name = $request->name;
         $news->active = true;
         $news->activity_start = Carbon::parse($request->activity_start);
@@ -131,7 +131,7 @@ class HomeController extends Controller
         $news->photo = $request->photo;
         $news->photo_150 = '';
         $news->tagline = trim($request->tagline);
-        $news->text = (trim($request->text) == '')? trim($request->tagline) : trim($request->text);
+        $news->text = (trim($request->text) == '')? $this->nl2p(trim($request->tagline)) : $this->nl2p(trim($request->text));
 
         if ($request->photo != '') {
             $ext = pathinfo('http://youthportal.az/'.$request->photo, PATHINFO_EXTENSION);
@@ -154,4 +154,17 @@ class HomeController extends Controller
 
         $news->save();
     }
+
+    private function nl2p($string) {
+        $paragraphs = '';
+
+        foreach (explode("\n", $string) as $line) {
+            if (trim($line)) {
+                $paragraphs .= '<p>' . $line . '</p>';
+            }
+        }
+
+        return $paragraphs;
+    }
+
 }

@@ -7,11 +7,28 @@
                 <div class="col-sm-12 col-md-6">
                     <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
-                <div class="col-sm-12 col-md-6 search_container">
-                    <div class="input-group mb-3 search_btn float-right">
-                        <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                <div class="col-sm-12 col-md-6">
+                    <div class="search_container mr-auto">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col no-padding no-margin">
+                                    <div class="input-group mb-3 search_btn">
+                                        <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col no-padding no-margin">
+                                    <div class="lang_changer">
+                                        @if ($lang == 'az')
+                                            <a href="{{url('/ru')}}" class="btn btn-danger lang_class">Ru</a>
+                                        @else
+                                            <a href="{{url('/az')}}" class="btn btn-danger lang_class">Az</a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,15 +54,12 @@
                 @endif
             @endforeach
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p><span class="no_border_span">@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</span></p></a>
-            </li>        </ul>
-        <span class="my-2 my-lg-0 lang_changer">
-            @if ($lang == 'az')
-                <a href="{{url('/ru')}}" class="btn btn-danger lang_class">Ru</a>
-            @else
-                <a href="{{url('/az')}}" class="btn btn-danger lang_class">Az</a>
-            @endif
-        </span>
+                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p><span class="no_border_span">@if ($lang == 'az') Foto @else Фото @endif</span></p></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/'.$lang.'/video/')}}"><p><span class="no_border_span">@if ($lang == 'az') Video @else Видео @endif</span></p></a>
+            </li>
+        </ul>
     </div>
 @endsection
 @section('inner_content')

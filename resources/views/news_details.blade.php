@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('header')
     <header>
         <div class="container-fluid">
@@ -8,11 +7,28 @@
                 <div class="col-sm-12 col-md-6">
                     <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
-                <div class="col-sm-12 col-md-6 search_container">
-                    <div class="input-group mb-3 search_btn float-right">
-                        <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                <div class="col-sm-12 col-md-6">
+                    <div class="search_container mr-auto">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col no-padding no-margin">
+                                    <div class="input-group mb-3 search_btn">
+                                        <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col no-padding no-margin">
+                                    <div class="lang_changer">
+                                        @if ($lang == 'az')
+                                            <a href="{{url('/ru')}}" class="btn btn-danger lang_class">Ru</a>
+                                        @else
+                                            <a href="{{url('/az')}}" class="btn btn-danger lang_class">Az</a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -38,16 +54,12 @@
                 @endif
             @endforeach
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</p></a>
+                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Foto @else Фото @endif</p></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/'.$lang.'/video/')}}"><p><span class="no_border_span">@if ($lang == 'az') Video @else Видео @endif</span></p></a>
             </li>
         </ul>
-        <div class="my-2 my-lg-0 lang_changer">
-            @if ($lang == 'az')
-                <a href="{{url('/ru')}}" class="btn btn-danger lang_class">Ru</a>
-            @else
-                <a href="{{url('/az')}}" class="btn btn-danger lang_class">Az</a>
-            @endif
-        </div>
     </div>
 @endsection
 @section('inner_content')
@@ -56,10 +68,10 @@
             <div class="col-sm-12 col-md-12 life_style_big_news_container">
                 <div class="big_news_container__inner">
                     @if ($news_main->count() > 0)
+                        <h6 class="h6_settings title_style">{{$news_main->first()->name}}</h6>
                         <img src="{{url('storage/images/'.$news_main->first()->photo)}}" class="float-left" alt="news photo"/>
-                                        <h6 class="h6_settings title_style">{{$news_main->first()->name}}</h6>
-                                        <p class="life_style_time title_style">{{$news_main->first()->activity_start->format('d.m.Y H:i')}} // {{$news_main->first()->section->name_ru}}</p>
-                            <p class="big_news_text title_style">{{$news_main->first()->text}}</p>
+                        <p class="life_style_time title_style">{{ $news_main->first()->activity_start->format('d.m.Y H:i') }} // @if ($lang == 'az') {{ $news_main->first()->section->name_az }} @else {{ $news_main->first()->section->name_ru }} @endif</p>
+                            <div class="big_news_text title_style">{!! $news_main->first()->text !!}</div>
                             <div class="news_images">
                                 @if ($news_main->first()->image_1 != '')
                                     <img src="{{url('storage/images/'.$news_main->first()->image_1)}}" alt="news photo"/>
@@ -93,6 +105,31 @@
                                     @endif
                             </div>
                     @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid similar_news_container no-gutters">
+        <div class="row">
+            <div class="col-sm-12 similar_news_container__title">
+                <p class="line_width"><span class="news_category_span">@if ($lang == 'ru') Новости раздела @else Digər xəbərlər @endif </span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 popular_news_container">
+                <div class="row">
+                    @foreach ($similar_news as $similar_news_item)
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 photogallery_container__inner">
+                            <div class="photogallery_container__img photogallery_container_text">
+                                <a href="{{url($lang.'/news_details/'.$similar_news_item->id)}}">
+                                    <img src="{{url('storage/images/'.$similar_news_item->photo)}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                </a>
+                                <a href="{{ url($lang.'/news_details/'.$similar_news_item->id) }}">
+                                    <h5 class="photogallery_text">{{ $similar_news_item->name }}</h5>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -221,3 +258,20 @@
         <div class="fb-page" data-href="https://www.facebook.com/youthportalaz/" data-tabs="timeline" data-width="343" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/youthportalaz/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/youthportalaz/">Youth Portal</a></blockquote></div>
     @endif
 @endsection
+
+@php
+
+    function nl2p($string)
+    {
+        $paragraphs = '';
+
+        foreach (explode("\n", $string) as $line) {
+            if (trim($line)) {
+                $paragraphs .= '<p>' . $line . '</p>';
+            }
+        }
+
+        return $paragraphs;
+    }
+
+@endphp

@@ -7,11 +7,28 @@
                 <div class="col-sm-12 col-md-6">
                     <a href="{{ url('/'.$lang) }}"><img src="{{ url('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
-                <div class="col-sm-12 col-md-6 search_container">
-                    <div class="input-group mb-3 search_btn float-right">
-                        <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                <div class="col-sm-12 col-md-6">
+                    <div class="search_container mr-auto">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col no-padding no-margin">
+                                    <div class="input-group mb-3 search_btn">
+                                        <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col no-padding no-margin">
+                                    <div class="lang_changer">
+                                        @if ($lang == 'az')
+                                            <a href="{{url('/ru')}}" class="btn btn-danger lang_class">Ru</a>
+                                        @else
+                                            <a href="{{url('/az')}}" class="btn btn-danger lang_class">Az</a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -31,20 +48,16 @@
                 </li>
             @endforeach
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p><span class="no_border_span">@if ($lang == 'az') Fotoqalereya @else Фотогалерея @endif</span></p></a>
+                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p><span class="no_border_span">@if ($lang == 'az') Foto @else Фото @endif</span></p></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/'.$lang.'/video/')}}"><p><span class="no_border_span">@if ($lang == 'az') Video @else Видео @endif</span></p></a>
             </li>
         </ul>
-        <div class="my-2 my-lg-0 lang_changer">
-            @if ($lang == 'az')
-                <a href="{{url('/ru')}}" class="btn btn-danger lang_class">Ru</a>
-            @else
-                <a href="{{url('/az')}}" class="btn btn-danger lang_class">Az</a>
-            @endif
-        </div>
     </div>
 @endsection
 @section('top_news')
-    <section>
+    <section class="root_section">
         <div class="container-fluid news_cards_main">
             <div class="row">
                 <div class="col-sm-6 news_card">
@@ -53,7 +66,7 @@
                             <div class="card text-white news_card_container news_card_container_margin">
                                 <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
                                 <div class="card-img-overlay news_card_overlay">
-                                    <h5 class="card-title title_text">{{$very_actual->name}}</h5>
+                                    <h5 class="card-title title_text">{{ str_limit($very_actual->name, 100) }}</h5>
                                     <!-- <p class="card-text main_text">{{$very_actual->tagline}}</p> -->
                                 </div>
                             </div>
@@ -67,7 +80,7 @@
                                 <a href="{{url($lang.'/news_details/'.$actual->id)}}">
                                     <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
                                     <div class="card-img-overlay card_overlay_little">
-                                        <h6 class="card-title title_text">{{$actual->name}}</h6>
+                                        <h6 class="card-title title_text">{{ str_limit($actual->name, 100) }}</h6>
                                     </div>
                                 </a>
                             </div>
@@ -99,7 +112,7 @@
                         <div class="popular_news_container_second__text popular_news_container_second">
                             <p class="popular_news_time">{{$news_view->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$news_view->id)}}" class="title_a">
-                                <h6 class="title_style">{{$news_view->name}}</h6>
+                                <h6 class="title_style">{{ str_limit($news_view->name, 75) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -131,7 +144,7 @@
                         <div class="popular_news_container_second__text hot_news_container_second">
                             <p class="popular_news_time">{{$very_important->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$very_important->id)}}" class="title_a">
-                                <h6 class="title_style">{{$very_important->name}}</h6>
+                                <h6 class="title_style">{{ str_limit($very_important->name, 75) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -190,7 +203,7 @@
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$policy->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$policy->id)}}">
-                                <h6 class="title_style">{{$policy->name}}</h6>
+                                <h6 class="title_style">{{ str_limit($policy->name, 75) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -206,7 +219,7 @@
     {{-- economy --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Экономика @else İqtisadiyyat @endif </span></a></p>
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Общество @else Cəmiyyət @endif </span></a></p>
             <div class="chevron_right_left_div">
                 <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
@@ -249,7 +262,7 @@
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$economy->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$economy->id)}}">
-                                <h6>{{$economy->name}}</h6>
+                                <h6>{{ str_limit($economy->name, 75) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -308,7 +321,7 @@
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$sport->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$sport->id)}}">
-                                <h6>{{$sport->name}}</h6>
+                                <h6>{{ str_limit($sport->name, 75) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -366,7 +379,7 @@
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$education->activity_start->format('d.m.Y H:i')}}</p>
-                            <h6>{{$education->name}}</h6>
+                            <h6>{{ str_limit($education->name, 75) }}</h6>
                             <p></p>
                         </div>
                     </div>
@@ -424,7 +437,7 @@
                     <div class="col-sm-6 col-md-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$culture->activity_start->format('d.m.Y H:i')}}</p>
-                            <h6>{{$culture->name}}</h6>
+                            <h6>{{ str_limit($culture->name, 75) }}</h6>
                             <p></p>
                         </div>
                     </div>
@@ -483,7 +496,7 @@
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$hightech->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$hightech->id)}}">
-                                <h6>{{$hightech->name}}</h6>
+                                <h6>{{ str_limit($hightech->name, 75) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -542,7 +555,7 @@
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$world->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$world->id)}}">
-                                <h6>{{$world->name}}</h6>
+                                <h6>{{ str_limit($world->name, 75) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -555,199 +568,6 @@
             @endforeach
         </div>
     </div>
-    {{-- auto --}}{{--
-    <div class="row new_category_row hover_class">
-        <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">ЭКОНОМИКА</span></a></p>
-            <div class="chevron_right_left_div">
-                <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="row life_style_main">
-        <div class="col-sm-12 col-md-6 life_style_big_news_container">
-            <div class="big_news_container__inner">
-                @if ($news_economy->count() > 0)
-                    <img src="storage/images/{{$news_economy->first()->photo}}" alt="news photo"/>
-                    <h6 class="h6_settings">{{$news_economy->first()->name}}</h6>
-                    <p class="life_style_time">{{$news_economy->first()->activity_start}} // Политика // Нет комментариев</p>
-                    <p class="big_news_text">{{$news_economy->first()->tagline}}</p>
-                @endif
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 hot_news_container life_style_little_news_container">
-            @php
-                $i = 0;
-            @endphp
-            @foreach ($news_economy as $economy)
-                @php
-                    $i++;
-                @endphp
-                @if($i == 1)
-                    @continue;
-                @endif
-                <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                        <div class="popular_news_container__img">
-                            <img src="storage/images/{{$economy->photo_150}}" alt="news photo"/>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6 hot_news_container_second">
-                        <div class="popular_news_container_second__text">
-                            <p class="popular_news_time">{{$economy->activity_start}}</p>
-                            <h6>{{$economy->name}}</h6>
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row for_line">
-                    <div class="col-sm-12 col-md-12">
-                        <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>--}}
-    {{--<div class="row world_news_main hover_class">
-        <div class="col-sm-12 col-md-12 news_category_container life_style_container">
-            <p><a href="#"><span class="news_category_span">WORLD NEWS</span></a></p>
-            <div class="chevron_right_left_div">
-                <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-6 life_style_big_news_container">
-            <div class="big_news_container__inner">
-                <img src="{{ asset('images/man-coffee-cup-pen.jpg') }}" alt="news photo"/>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="big_news_second_text">
-                <h6 class="h6_settings">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h6>
-                <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                <p class="big_news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,. Ut enim ad ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-            </div>
-        </div>
-    </div>--}}
-    {{--<div class="row world_news_container_little">
-        <div class="col-sm-6 col-md-3 popular_news_container">
-            <div>
-                <img src="{{ asset('images/_96116747_youngpeopleab.jpg') }}" alt="news photo" class="popular_news_img"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/mother-holding-baby-landing.jpg') }}" alt="news photo" class="popular_news_img"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3 popular_news_container_second">
-            <div>
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3 hot_news_container">
-            <div>
-                <img src="{{ asset('images/SILO_fb_022117_stockNews_shutter.jpg') }}" alt="news photo"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/7deb467507756b82a9cfeb84d6a27aab.jpg') }}" alt="news photo"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3 hot_news_container_second">
-            <div>
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-        </div>
-    </div>--}}
-    {{--<div class="row world_news_main">
-        <div class="col-sm-12 col-md-6 news_category_container hover_class">
-            <a href="#"><p class="news_category_p_width"><span class="news_category_span">POPULYAR XƏBƏRLƏR</span></p></a>
-        </div>
-        <div class="col-sm-12 col-md-6 news_category_container hover_class">
-            <a href="#"><p class="news_category_p_width"><span class="news_category_span">QAYNAR XƏBƏRLƏR</span></p></a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-6 life_style_big_news_container_2">
-            <div class="big_news_container__inner">
-                <img src="{{ asset('images/man-coffee-cup-pen.jpg') }}" alt="news photo"/>
-                <h6 class="h6_settings">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h6>
-                <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                <p class="big_news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 life_style_big_news_container_2">
-            <div class="big_news_container__inner">
-                <img src="{{ asset('images/man-coffee-cup-pen.jpg') }}" alt="news photo"/>
-                <h6 class="h6_settings">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h6>
-                <p class="popular_news_time">17 Fevral, 2018 // World News // No Comments</p>
-                <p class="big_news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-            </div>
-        </div>
-    </div>
-    <div class="row world_news_container_little_2">
-        <div class="col-sm-6 col-md-3 popular_news_container">
-            <div>
-                <img src="{{ asset('images/_96116747_youngpeopleab.jpg') }}" alt="news photo" class="popular_news_img"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/mother-holding-baby-landing.jpg') }}" alt="news photo" class="popular_news_img"/>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3 popular_news_container_second">
-            <div>
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3 hot_news_container">
-            <div>
-                <img src="{{ asset('images/SILO_fb_022117_stockNews_shutter.jpg') }}" alt="news photo"/>
-                <div class="line_p_margin_2"><p class="line_p_2"></p></div>
-            </div>
-            <div class="popular_news_container__img">
-                <img src="{{ asset('images/7deb467507756b82a9cfeb84d6a27aab.jpg') }}" alt="news photo"/>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3 hot_news_container_second">
-            <div>
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-            <div class="popular_news_container_second__text">
-                <p class="popular_news_time">17 Fevral, 2018</p>
-                <h6>Some text about something</h6>
-                <p></p>
-            </div>
-        </div>
-    </div>--}}
 @endsection
 
 @section('news_ribbon')

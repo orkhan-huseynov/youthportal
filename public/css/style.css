@@ -168,7 +168,7 @@ body {
 
 .news_card_container_margin {
     margin: 20px 0 0 15px;
-    height: 328px;
+    /*height: 328px;*/
 }
 
 .news_card_container_margin:before {
@@ -192,7 +192,9 @@ body {
 
 .news_card_container img {
     border-radius: 0;
-    height: 328px;
+    height: 306px;
+    /*height: 33vw;*/
+    /*max-height: 306px;*/
 }
 
 .clock_icon {
@@ -280,7 +282,8 @@ body {
 }
 
 .news_card_container_second img{
-    height: 163px;
+    height: 152px;
+    max-height: 152px;
     border-radius: 0;
 }
 
@@ -325,8 +328,8 @@ body {
  }*/
 
 .popular_news_img {
-    width: 150px;
-    height: 100px;
+    width: 100%;
+    height: auto;
 }
 
 .popular_news_time {
@@ -350,8 +353,8 @@ body {
 }
 
 .hot_news_container img {
-    width: 150px;
-    height: 100px;
+    width: 100%;
+    height: auto;
 }
 
 .hot_news_container_second h6 {
@@ -424,7 +427,7 @@ body {
 
 .pop_hot_inner {
     margin-top: 10px;
-    height: 120px;
+    min-height: 120px;
 }
 
 nav .nav_btn {
@@ -464,8 +467,8 @@ nav .nav_btn {
 }
 
 .line_p_margin_2 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     /*width: 310px;*/
 }
 
@@ -623,7 +626,7 @@ nav .nav_btn {
 }
 
 .life_style_little_news_container {
-    margin-top: 28px;
+    margin-top: 5px;
 }
 
 .life_style_big_news_container {
@@ -631,8 +634,14 @@ nav .nav_btn {
 }
 
 .big_news_container__inner img {
-    width: 320px;
+    width: 100%;
+    max-height: 311px;
     margin: 0 20px 10px 0;
+}
+
+.big_news_container__inner .news_details_image {
+    width: auto;
+    max-width: 380px;
 }
 
 .big_news_container__inner {
@@ -946,10 +955,6 @@ footer .footer_img_container {
 .photogallery_cover__img {
     width: 200px;
     height: 130px;
-}
-
-.photogallery_name {
-    margin-top: 4px;
 }
 
 .photogallery_text {

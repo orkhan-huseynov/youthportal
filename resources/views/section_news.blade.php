@@ -75,14 +75,14 @@
                     <div class="col-sm-12 col-md-12 popular_news_container">
                         @foreach($section_news as $news_s)
                             <div class="row">
-                                <div class="col-sm-3 col-md-3 popular_inner">
+                                <div class="col-md-12 col-lg-3 popular_inner">
                                     <div class="popular_news_container__img">
                                         <a href="{{url($lang.'/news_details/'.$news_s->id)}}">
                                             <img src="{{url('storage/images/'.$news_s->photo_150)}}" alt="news photo" class="popular_news_img"/>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-sm-9 col-md-9 popular_inner">
+                                <div class="col-md-12 col-lg-9 popular_inner">
                                     <div class="popular_news_container_second__text popular_news_container_second">
                                         <p class="popular_news_time">{{$news_s->activity_start->format('d.m.Y H:i')}}</p>
                                         <a href="{{url($lang.'/news_details/'.$news_s->id)}}">

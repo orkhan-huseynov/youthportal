@@ -60,27 +60,27 @@
     <section class="root_section">
         <div class="container-fluid news_cards_main">
             <div class="row">
-                <div class="col-sm-6 news_card">
+                <div class="col-sm-12 col-md-6 news_card">
                     @foreach($news_very_actual as $very_actual)
                         <a href="{{url($lang.'/news_details/'.$very_actual->id)}}">
                             <div class="card text-white news_card_container news_card_container_margin">
                                 <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
                                 <div class="card-img-overlay news_card_overlay">
-                                    <h5 class="card-title title_text">{{ str_limit($very_actual->name, 100) }}</h5>
+                                    <h5 class="card-title title_text">{{ \Illuminate\Support\Str::words($very_actual->name, 100) }}</h5>
                                     <!-- <p class="card-text main_text">{{$very_actual->tagline}}</p> -->
                                 </div>
                             </div>
                         </a>
                     @endforeach
                 </div>
-                <div class="col-sm-6 news_card news_card_second">
+                <div class="col-sm-12 col-md-6 news_card news_card_second d-none d-md-block">
                     <div class="news_card_container_second">
                         @foreach($news_actual as $actual)
                             <div class="card text-white actual">
                                 <a href="{{url($lang.'/news_details/'.$actual->id)}}">
                                     <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
                                     <div class="card-img-overlay card_overlay_little">
-                                        <h6 class="card-title title_text">{{ str_limit($actual->name, 100) }}</h6>
+                                        <h6 class="card-title title_text">{{ \Illuminate\Support\Str::words($actual->name, 100) }}</h6>
                                     </div>
                                 </a>
                             </div>
@@ -101,18 +101,18 @@
             </div>
             @foreach ($news_views as $news_view)
                 <div class="row pop_hot_inner">
-                    <div class="col-sm-6 col-md-6 popular_inner">
+                    <div class="col-md-12 col-lg-6 popular_inner">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$news_view->id)}}">
-                                <img src="storage/images/{{$news_view->photo_150}}" alt="news photo" class="popular_news_img"/>
+                                <img src="storage/images/{{$news_view->photo}}" alt="news photo" class="popular_news_img"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 popular_inner">
+                    <div class="col-md-12 col-lg-6 popular_inner">
                         <div class="popular_news_container_second__text popular_news_container_second">
                             <p class="popular_news_time">{{$news_view->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$news_view->id)}}" class="title_a">
-                                <h6 class="title_style">{{ str_limit($news_view->name, 75) }}</h6>
+                                <h6 class="title_style">{{ \Illuminate\Support\Str::words($news_view->name, 7) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -133,18 +133,18 @@
             </div>
             @foreach ($news_very_important as $very_important)
                 <div class="row pop_hot_inner">
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$very_important->id)}}">
-                                <img src="{{url('storage/images/'.$very_important->photo_150)}}" alt="news photo"/>
+                                <img src="{{url('storage/images/'.$very_important->photo)}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container_second__text hot_news_container_second">
                             <p class="popular_news_time">{{$very_important->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$very_important->id)}}" class="title_a">
-                                <h6 class="title_style">{{ str_limit($very_important->name, 75) }}</h6>
+                                <h6 class="title_style">{{ \Illuminate\Support\Str::words($very_important->name, 7) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -192,18 +192,18 @@
                     @continue
                     @endif
                 <div class="row policy_news">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$policy->id)}}">
                                 <img src="storage/images/{{$policy->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                    <div class="col-md-12 col-lg-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$policy->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$policy->id)}}">
-                                <h6 class="title_style">{{ str_limit($policy->name, 75) }}</h6>
+                                <h6 class="title_style">{{ \Illuminate\Support\Str::words($policy->name, 7) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -251,18 +251,18 @@
                     @continue;
                 @endif
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$economy->id)}}">
                                 <img src="storage/images/{{$economy->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                    <div class="col-md-12 col-lg-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$economy->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$economy->id)}}">
-                                <h6>{{ str_limit($economy->name, 75) }}</h6>
+                                <h6>{{ \Illuminate\Support\Str::words($economy->name, 7) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -310,18 +310,18 @@
                     @continue;
                 @endif
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$sport->id)}}">
                                 <img src="storage/images/{{$sport->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                    <div class="col-md-12 col-lg-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$sport->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$sport->id)}}">
-                                <h6>{{ str_limit($sport->name, 75) }}</h6>
+                                <h6>{{ \Illuminate\Support\Str::words($sport->name, 7) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -369,17 +369,17 @@
                     @continue;
                 @endif
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$education->id)}}">
                                 <img src="storage/images/{{$education->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                    <div class="col-md-12 col-lg-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$education->activity_start->format('d.m.Y H:i')}}</p>
-                            <h6>{{ str_limit($education->name, 75) }}</h6>
+                            <h6>{{ \Illuminate\Support\Str::words($education->name, 7) }}</h6>
                             <p></p>
                         </div>
                     </div>
@@ -427,17 +427,17 @@
                     @continue;
                 @endif
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$culture->id)}}">
                                 <img src="storage/images/{{$culture->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                    <div class="col-md-12 col-lg-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$culture->activity_start->format('d.m.Y H:i')}}</p>
-                            <h6>{{ str_limit($culture->name, 75) }}</h6>
+                            <h6>{{ \Illuminate\Support\Str::words($culture->name, 7) }}</h6>
                             <p></p>
                         </div>
                     </div>
@@ -485,18 +485,18 @@
                     @continue;
                 @endif
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$hightech->id)}}">
                                 <img src="storage/images/{{$hightech->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                    <div class="col-md-12 col-lg-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$hightech->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$hightech->id)}}">
-                                <h6>{{ str_limit($hightech->name, 75) }}</h6>
+                                <h6>{{ \Illuminate\Support\Str::words($hightech->name, 7) }}</h6>
                             </a>
                         </div>
                     </div>
@@ -544,18 +544,18 @@
                     @continue;
                 @endif
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
                             <a href="{{url($lang.'/news_details/'.$world->id)}}">
                                 <img src="storage/images/{{$world->photo_150}}" alt="news photo"/>
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 hot_news_container_second">
+                    <div class="col-md-12 col-lg-6 hot_news_container_second">
                         <div class="popular_news_container_second__text">
                             <p class="popular_news_time">{{$world->activity_start->format('d.m.Y H:i')}}</p>
                             <a href="{{url($lang.'/news_details/'.$world->id)}}">
-                                <h6>{{ str_limit($world->name, 75) }}</h6>
+                                <h6>{{ \Illuminate\Support\Str::words($world->name, 7) }}</h6>
                             </a>
                         </div>
                     </div>

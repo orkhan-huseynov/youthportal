@@ -69,7 +69,7 @@
                 <div class="big_news_container__inner">
                     @if ($news_main->count() > 0)
                         <h6 class="h6_settings title_style">{{$news_main->first()->name}}</h6>
-                        <img src="{{url('storage/images/'.$news_main->first()->photo)}}" class="float-left" alt="news photo"/>
+                        <img src="{{url('storage/images/'.$news_main->first()->photo)}}" class="news_details_image float-left" alt="news photo"/>
                         <p class="life_style_time title_style">{{ $news_main->first()->activity_start->format('d.m.Y H:i') }} // @if ($lang == 'az') {{ $news_main->first()->section->name_az }} @else {{ $news_main->first()->section->name_ru }} @endif</p>
                             <div class="big_news_text title_style">{!! $news_main->first()->text !!}</div>
                             <div class="news_images">

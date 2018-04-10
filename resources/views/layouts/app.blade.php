@@ -44,7 +44,7 @@
             </nav>
         </div>
         <div class="container-fluid-flex">
-                <div class="d-md-none d-lg-block main_col">
+                <div class="d-none d-lg-block main_col">
                     <div class="left_block_ads pull-right">
                         <div class="ad">
                             <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="120" height="166" id="aquatic" align="">
@@ -89,7 +89,7 @@
                         </div>
                     </section>
                 </div>
-                <div class="d-md-none d-lg-block main_col">
+                <div class="d-none d-lg-block main_col">
                     <div class="right_block_ads">
                         <div class="ad">
                             <a target="_blank" href="http://www.youthforum.org"><img src="{{ asset('images/banners/youthforum.org.png') }}"></a>

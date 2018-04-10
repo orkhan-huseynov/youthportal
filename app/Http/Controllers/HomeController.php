@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\NewsRu;
 use App\Models\NewsAz;
+use App\Models\Photogallery;
 use Carbon\Carbon;
 use Image;
 
@@ -33,7 +34,13 @@ class HomeController extends Controller
         }
         $sections = Section::where('published', true)->get();
         if ($lang == 'ru') {
-            $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
+            $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
+            $photogalleries = Photogallery::where('active', 1)->take(30)->get();
+            $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
+                return $item->activity_start;
+            });
+
+
             $news_very_actual = NewsRu::where('very_actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(1)->get();
             $news_actual = NewsRu::where('actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_view = NewsRu::where('active', 1)->orderBy('view_count', 'DESC')->orderBy('activity_start', 'DESC')->take(4)->get();
@@ -45,8 +52,13 @@ class HomeController extends Controller
             $news_culture = NewsRu::where('section_id', 2)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_hightech = NewsRu::where('section_id', 6)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_world = NewsRu::where('section_id', 7)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
-        }else{
-            $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(50)->get();
+        } else {
+            $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
+            $photogalleries = Photogallery::where('active', 1)->take(30)->get();
+            $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
+                return $item->activity_start;
+            });
+
             $news_very_actual = NewsAz::where('very_actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(1)->get();
             $news_actual = NewsAz::where('actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_view = NewsAz::where('active', 1)->orderBy('view_count', 'DESC')->orderBy('activity_start', 'DESC')->take(4)->get();
@@ -60,10 +72,9 @@ class HomeController extends Controller
             $news_world = NewsAz::where('section_id', 7)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
         }
 
-
         return view('home', [
             'sections' => $sections,
-            'news' => $news,
+            'news' => $merged_news_ribbon,
             'news_very_actual' => $news_very_actual,
             'news_actual' => $news_actual,
             'news_views' => $news_view,

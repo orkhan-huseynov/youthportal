@@ -33,9 +33,9 @@
 
                             <!-- menu profile quick info -->
                             <div class="profile">
-                                <div class="profile_pic">
-                                    <img src="{{URL::asset('/images/admin/img.jpg')}}" alt="..." class="img-circle profile_img">
-                                </div>
+                                {{--<div class="profile_pic">--}}
+                                    {{--<img src="{{URL::asset('/images/admin/img.jpg')}}" alt="..." class="img-circle profile_img">--}}
+                                {{--</div>--}}
                                 <div class="profile_info">
                                     <span>Welcome,</span>
                                     <h2>{{{isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email}}}</h2>
@@ -44,20 +44,20 @@
                             <!-- /menu profile quick info -->
 
                             <br />
+                            <div class="clearfix"></div>
 
                             <!-- sidebar menu -->
                             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                                 <div class="menu_section">
                                     <ul class="nav side-menu">
-                                        <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li><a href="index.html">Dashboard</a></li>
-                                            </ul>
-                                        </li>
+                                        {{--<li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>--}}
+                                            {{--<ul class="nav child_menu">--}}
+                                                {{--<li><a href="index.html">Dashboard</a></li>--}}
+                                            {{--</ul>--}}
+                                        {{--</li>--}}
                                         <li class="{{(strpos(Request::segment(2), 'structure') !== false) ? 'active' : '' }}"><a><i class="fa fa-sitemap"></i>Structure <span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu" style="{{(strpos(Request::segment(2), 'structure') !== false) ? 'display:block;' : '' }}">
                                                 <li class="{{(strpos(Request::segment(2), 'sections') !== false) ? 'current-page' : '' }}"><a href="{{url('/admin/structure-sections/')}}">Sections</a></li>
-                                                <li class="{{(strpos(Request::segment(2), 'pages') !== false) ? 'current-page' : '' }}"><a href="{{url('/admin/structure-pages/')}}">Pages</a></li>
                                             </ul>
                                         </li>
                                         <li class="{{(strpos(Request::segment(2), 'content') !== false) ? 'active' : '' }}"><a><i class="fa fa-newspaper-o"></i>Content <span class="fa fa-chevron-down"></span></a>
@@ -106,10 +106,12 @@
                                     <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                                 </div>
 
+
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="">
                                         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <img src="{{URL::asset('/images/admin/img.jpg')}}" alt="">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
+                                            {{--<img src="{{URL::asset('/images/admin/img.jpg')}}" alt="">--}}
+                                            {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
                                             <span class=" fa fa-angle-down"></span>
                                         </a>
                                         <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -143,6 +145,7 @@
         <script src="{{ URL::asset('assets/admin/js/admin.js') }}"></script>
         <script src="{{ URL::asset('assets/admin/js/users/edit.js') }}"></script>
         <script src="{{ URL::asset('js/admin/scripts.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/popper.min.js"></script>
         {{--<script src="{{ URL::asset('js/admin/custom.min.js') }}"></script>--}}
 
 

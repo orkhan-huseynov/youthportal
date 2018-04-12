@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="base-url" content="{{ url('/') }}" />
 
     <title>Youth Portal</title>
 
@@ -46,17 +47,7 @@
         <div class="container-fluid-flex">
                 <div class="d-none d-lg-block main_col">
                     <div class="left_block_ads pull-right">
-                        <div class="ad">
-                            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="120" height="166" id="aquatic" align="">
-                                <param name="movie" value="/banners/aquatic.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="/banners/aquatic.swf" quality="high" bgcolor="#FFFFFF" width="120" height="166" name="aquatic" align="" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
-                            </object>
-                        </div>
-                        <div class="ad">
-                            <a target="_blank" href="http://www.genclerpaytaxti.az"><img src="{{ asset('images/banners/genclerpaytaxti.png') }}" width="120"></a>
-                        </div>
-                        <div class="ad">
-                            <a target="_blank" href="http://www.salto-youth.net/rc/eeca/eecacooperation/"><img src="{{ asset('images/banners/salto_youth.png') }}"></a>
-                        </div>
+                        <div style="width: 120px;"></div>
                     </div>
                 </div>
                 <div class="main_col">
@@ -92,6 +83,17 @@
                 <div class="d-none d-lg-block main_col">
                     <div class="right_block_ads">
                         <div class="ad">
+                            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="120" height="166" id="aquatic" align="">
+                                <param name="movie" value="/banners/aquatic.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="/banners/aquatic.swf" quality="high" bgcolor="#FFFFFF" width="120" height="166" name="aquatic" align="" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+                            </object>
+                        </div>
+                        <div class="ad">
+                            <a target="_blank" href="http://www.genclerpaytaxti.az"><img src="{{ asset('images/banners/genclerpaytaxti.png') }}" width="120"></a>
+                        </div>
+                        <div class="ad">
+                            <a target="_blank" href="http://www.salto-youth.net/rc/eeca/eecacooperation/"><img src="{{ asset('images/banners/salto_youth.png') }}"></a>
+                        </div>
+                        <div class="ad">
                             <a target="_blank" href="http://www.youthforum.org"><img src="{{ asset('images/banners/youthforum.org.png') }}"></a>
                         </div>
                         <div class="ad">
@@ -112,5 +114,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/9aed91e10e.js"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>

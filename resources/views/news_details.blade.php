@@ -12,12 +12,14 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col no-padding no-margin">
-                                    <div class="input-group mb-3 search_btn">
-                                        <input type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                                    <form id="searchForm" action="{{ url('/search/'.$lang) }}" method="get">
+                                        <div class="input-group mb-3 search_btn">
+                                            <input id="searchInput" name="ss" type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button id="searchFormButton" class="btn btn-outline-secondary" type="button" data-lang="{{ $lang }}"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <div class="col no-padding no-margin">
                                     <div class="lang_changer">
@@ -112,7 +114,7 @@
     <div class="container-fluid similar_news_container no-gutters">
         <div class="row">
             <div class="col-sm-12 similar_news_container__title">
-                <p class="line_width"><span class="news_category_span">@if ($lang == 'ru') Новости раздела @else Digər xəbərlər @endif </span></p>
+                <p class="line_width"><span class="news_category_span news_similar_title">@if ($lang == 'ru') Новости раздела @else Digər xəbərlər @endif </span></p>
             </div>
         </div>
         <div class="row">

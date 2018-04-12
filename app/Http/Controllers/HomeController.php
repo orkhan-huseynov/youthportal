@@ -32,7 +32,7 @@ class HomeController extends Controller
         if($lang != 'ru' && $lang != 'az'){
             abort(404);
         }
-        $sections = Section::where('published', true)->get();
+        $sections = Section::where('published', true)->orderBy('position')->get();
         if ($lang == 'ru') {
             $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
             $photogalleries = Photogallery::where('active', 1)->take(30)->get();
@@ -72,8 +72,11 @@ class HomeController extends Controller
             $news_world = NewsAz::where('section_id', 7)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
         }
 
+        $photos = Photogallery::where('active', 1)->orderBy('activity_start', 'dec')->take(4)->get();
+
         return view('home', [
             'sections' => $sections,
+
             'news' => $merged_news_ribbon,
             'news_very_actual' => $news_very_actual,
             'news_actual' => $news_actual,
@@ -86,6 +89,9 @@ class HomeController extends Controller
             'news_culture' => $news_culture,
             'news_hightech' => $news_hightech,
             'news_world' => $news_world,
+
+            'photos' => $photos,
+
             'lang' => $lang,
         ]);
     }

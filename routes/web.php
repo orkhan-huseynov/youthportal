@@ -20,6 +20,8 @@ Route::get('/{lang}/news_details/{id}', 'NewsDetailsController@index');
 Route::get('/{lang}/photogallery/', 'PhotogalleryController@index');
 Route::get('/{lang}/photogallery_details/{id}', 'PhotogalleryController@details');
 
+Route::get('/search/{lang}/{ss}', 'SearchController@index');
+
 
 Auth::routes();
 
@@ -58,10 +60,10 @@ Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], 
     Route::resource('system-users', 'Admin\System\UsersController');
 
     //Content
-    //Route::resource('content-news', 'Admin\Content\NewsController');
+    //Route::get('content-news', 'Admin\Content\NewsController@index');
 
     Route::get('/content-news/{lang}/{section?}', 'Admin\Content\NewsController@index');
-    Route::get('/content-news/create/{lang}', 'Admin\Content\NewsController@create');
+    Route::get('/content-news/{lang}/create', 'Admin\Content\NewsController@create');
     Route::post('/content-news/{lang}', 'Admin\Content\NewsController@store');
     Route::get('/content-news/{lang}/{news_id}/edit', 'Admin\Content\NewsController@edit');
     Route::put('/content-news/{lang}/{news_id}', 'Admin\Content\NewsController@update');

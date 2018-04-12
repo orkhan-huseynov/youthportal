@@ -53,6 +53,7 @@ class NewsController extends Controller
      */
     public function create($lang)
     {
+
         if($lang != 'ru' && $lang != 'az'){
             abort(404);
         }

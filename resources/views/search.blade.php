@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('header')
     <header>
         <div class="container-fluid">
@@ -15,7 +14,7 @@
                                 <div class="col no-padding no-margin">
                                     <form id="searchForm" action="{{ url('/search/'.$lang) }}" method="get">
                                         <div class="input-group mb-3 search_btn">
-                                            <input id="searchInput" name="ss" type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
+                                            <input id="searchInput" name="ss" type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2" value="{{ Request::segment(3) }}" >
                                             <div class="input-group-append">
                                                 <button id="searchFormButton" class="btn btn-outline-secondary" type="button" data-lang="{{ $lang }}"><i class="fa fa-search search_btn_icon" aria-hidden="true"></i></button>
                                             </div>
@@ -46,12 +45,12 @@
                 <a class="nav-link" href="{{url('/'.$lang)}}"><p><span class="border_span">@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></span></p></a>
             </li>
             @foreach($sections as $section)
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
+                </li>
             @endforeach
-            <li class="nav-item active">
-                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p><span class="border_span">@if ($lang == 'az') Foto @else Фото @endif</span></p></a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Foto @else Фото @endif</p></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/'.$lang.'/video/')}}"><p><span class="no_border_span">@if ($lang == 'az') Video @else Видео @endif</span></p></a>
@@ -62,94 +61,31 @@
 @section('inner_content')
     <div class="container-fluid news_details_container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 life_style_big_news_container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                            <a href="#"><p class="photogallery_name"><span class="news_category_span">@if($lang == 'az') Fotoqalereya @else Фотогалерея @endif </span></p></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 popular_news_container">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    @php
-                                        $i = 1;
-                                    @endphp
-                                    @foreach($photogallery->photos as $photo)
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}"></li>
-                                        @php
-                                            $i++;
-                                        @endphp
-                                    @endforeach
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="{{url('storage/images/'.$photogallery->cover_photo)}}" alt="album photo" class="crls_image">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>{{($lang == 'az') ? $photogallery->name_az : $photogallery->name_ru}}</h5>
-                                        </div>
-                                    </div>
-                                    @foreach($photogallery->photos as $photo)
-                                    <div class="carousel-item">
-                                        <img src="{{url('storage/images/'.$photo->image)}}" alt="album photo" class="crls_image">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>{{($lang == 'az') ? $photogallery->name_az : $photogallery->name_ru}}</h5>
-                                        </div>
-                                    </div>
-                                    @endforeach
+            <div class="col-sm-12 col-md-12 news_category_container hover_class">
+                <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') Результаты поиска @else Axtariş nəticələri @endif: "<strong>{{ $ss }}</strong>" </span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="container-fluid">
+                    @foreach($search_results as $search_result)
+                        <div class="row search_result_row">
+                            <a href="{{ url($lang.'/news_details/'.$search_result->id) }}">
+                                <div class="col-12 search_title">
+                                    {!! highlight($search_result->name, Request::segment(3)) !!}
                                 </div>
-                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                                <ul class="carousel-indicators list-inline">
-                                    <li class="list-inline-item active">
-                                        <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#carouselExampleIndicators">
-                                            <img src="{{ url('storage/images/'.$photogallery->cover_photo )}}" class="img-fluid">
-                                        </a>
-                                    </li>
-                                    @php $n = 1; @endphp
-                                    @foreach($photogallery->photos as $photo)
-                                        <li class="list-inline-item">
-                                            <a id="carousel-selector-1" data-slide-to="{{ $n }}" data-target="#carouselExampleIndicators">
-                                                <img src="{{ url('storage/images/'.$photo->image) }}" class="img-fluid">
-                                            </a>
-                                        </li>
-                                        @php $n++; @endphp
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12 photogallery_second_container">
-                            <div class="row">
-                                <div class="col-sm-12 similar_news_container__title">
-                                    <p class="line_width"><span class="news_category_span section_similar_title">@if ($lang == 'ru') Еще из раздела @else Bölmədən digər @endif </span></p>
+                                <div class="col-12 search_tagline">
+                                    {!! highlight($search_result->tagline, Request::segment(3)) !!}
                                 </div>
-                            </div>
-                            <div class="row">
-                                @foreach ($photogalleries as $photogallery_item)
-                                    @if($photogallery->id == $photogallery_item->id)
-                                        @continue;
-                                    @endif
-                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 photogallery_container__inner">
-                                        <div class="photogallery_container__img photogallery_container_text">
-                                            <a href="{{url($lang.'/photogallery_details/'.$photogallery_item->id)}}">
-                                                <img src="{{url('storage/images/'.$photogallery_item->cover_photo_200)}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                            </a>
-                                            <a href="{{url($lang.'/photogallery_details/'.$photogallery_item->id)}}">
-                                                <h5 class="photogallery_text">@if($lang == 'az'){{$photogallery_item->name_az}} @else {{$photogallery_item->name_ru}} @endif </h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                            </a>
                         </div>
+                    @endforeach
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{--{{ $search_results->links() }}--}}
             </div>
         </div>
     </div>
@@ -287,3 +223,39 @@
         <div class="fb-page" data-href="https://www.facebook.com/youthportalaz/" data-tabs="timeline" data-width="343" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/youthportalaz/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/youthportalaz/">Youth Portal</a></blockquote></div>
     @endif
 @endsection
+
+@php
+
+    function nl2p($string)
+    {
+        $paragraphs = '';
+
+        foreach (explode("\n", $string) as $line) {
+            if (trim($line)) {
+                $paragraphs .= '<p>' . $line . '</p>';
+            }
+        }
+
+        return $paragraphs;
+    }
+
+    function highlight($haystack, $needle, $highlightColorValue = '#f00') {
+         // return $haystack if there is no highlight color or strings given, nothing to do.
+        if (strlen($highlightColorValue) < 1 || strlen($haystack) < 1 || strlen($needle) < 1) {
+            return $haystack;
+        }
+        preg_match_all("/$needle+/i", $haystack, $matches);
+        if (is_array($matches[0]) && count($matches[0]) >= 1) {
+            foreach ($matches[0] as $match) {
+                $haystack = str_replace($match, '<span class="highlight">'.$match.'</span>', $haystack);
+            }
+        }
+        return $haystack;
+    }
+
+    function textHighlight($haystack, $needle) {
+        $word = preg_quote($haystack);
+        $text = preg_match_all("~\b(.{0,10})($word)(.{0,10})\b~is", $text, $matches);
+    }
+
+@endphp

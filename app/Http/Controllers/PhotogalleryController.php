@@ -31,7 +31,7 @@ class PhotogalleryController extends Controller
             abort(404);
         }
 
-        $sections = Section::where('published', true)->get();
+        $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
             $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
             $photogalleries = Photogallery::where('active', 1)->take(30)->get();
@@ -62,7 +62,7 @@ class PhotogalleryController extends Controller
             abort(404);
         }
 
-        $sections = Section::where('published', true)->get();
+        $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
             $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
             $photogalleries = Photogallery::where('active', 1)->take(30)->get();

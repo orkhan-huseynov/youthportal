@@ -1147,3 +1147,21 @@ footer .footer_img_container {
     color: #636669;
     font-size: 0.9rem;
 }
+
+.yt_wrapper {
+    width: 100%;
+    max-width: 652px;
+    height: 100%;
+    margin: 0 auto;
+}
+.h_iframe {
+    position: relative;
+    padding-top: 56%;
+}
+.h_iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

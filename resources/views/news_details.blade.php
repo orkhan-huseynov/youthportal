@@ -73,39 +73,47 @@
                         <h6 class="h6_settings title_style">{{$news_main->first()->name}}</h6>
                         <img src="{{url('storage/images/'.$news_main->first()->photo)}}" class="news_details_image float-left" alt="news photo"/>
                         <p class="life_style_time title_style">{{ $news_main->first()->activity_start->format('d.m.Y H:i') }} // @if ($lang == 'az') {{ $news_main->first()->section->name_az }} @else {{ $news_main->first()->section->name_ru }} @endif</p>
-                            <div class="big_news_text title_style">{!! $news_main->first()->text !!}</div>
-                            <div class="news_images">
-                                @if ($news_main->first()->image_1 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_1)}}" alt="news photo"/>
+                        <div class="big_news_text title_style">{!! $news_main->first()->text !!}</div>
+                        <div class="news_images">
+                            @if ($news_main->first()->image_1 != '')
+                                <img src="{{url('storage/images/'.$news_main->first()->image_1)}}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->first()->image_2 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_2)}}" alt="news photo"/>
                                 @endif
-                                    @if ($news_main->first()->image_2 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_2)}}" alt="news photo"/>
-                                    @endif
-                                    @if ($news_main->first()->image_3 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_3)}}" alt="news photo"/>
-                                    @endif
-                                    @if ($news_main->first()->image_4 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_4)}}" alt="news photo"/>
-                                    @endif
-                                    @if ($news_main->first()->image_5 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_5)}}" alt="news photo"/>
-                                    @endif
-                                    @if ($news_main->first()->image_6 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_6)}}" alt="news photo"/>
-                                    @endif
-                                    @if ($news_main->first()->image_7 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_7)}}" alt="news photo"/>
-                                    @endif
-                                    @if ($news_main->first()->image_8 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_8)}}" alt="news photo"/>
-                                    @endif
-                                    @if ($news_main->first()->image_9 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_9)}}" alt="news photo"/>
-                                    @endif
-                                    @if ($news_main->first()->image_10 != '')
-                                        <img src="{{url('storage/images/'.$news_main->first()->image_10)}}" alt="news photo"/>
-                                    @endif
+                                @if ($news_main->first()->image_3 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_3)}}" alt="news photo"/>
+                                @endif
+                                @if ($news_main->first()->image_4 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_4)}}" alt="news photo"/>
+                                @endif
+                                @if ($news_main->first()->image_5 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_5)}}" alt="news photo"/>
+                                @endif
+                                @if ($news_main->first()->image_6 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_6)}}" alt="news photo"/>
+                                @endif
+                                @if ($news_main->first()->image_7 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_7)}}" alt="news photo"/>
+                                @endif
+                                @if ($news_main->first()->image_8 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_8)}}" alt="news photo"/>
+                                @endif
+                                @if ($news_main->first()->image_9 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_9)}}" alt="news photo"/>
+                                @endif
+                                @if ($news_main->first()->image_10 != '')
+                                    <img src="{{url('storage/images/'.$news_main->first()->image_10)}}" alt="news photo"/>
+                                @endif
+                        </div>
+                        <div class="clearfix"></div>
+                        @if ($news_main->first()->video_url != '')
+                            <div class="yt_wrapper">
+                                <div class="h_iframe">
+                                    {!! convertYoutube($news_main->first()->video_url) !!}
+                                </div>
                             </div>
+                        @endif
                     @endif
                 </div>
             </div>
@@ -284,6 +292,14 @@
         }
 
         return $paragraphs;
+    }
+
+    function convertYoutube($string) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "<iframe width=\"2\" height=\"2\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>",
+            $string
+        );
     }
 
 @endphp

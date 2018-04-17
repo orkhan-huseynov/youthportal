@@ -754,7 +754,6 @@
             </div>
         </div>
     </footer>
-    </div>
 @endsection
 @section('facebook_social')
     @if($lang == 'ru')

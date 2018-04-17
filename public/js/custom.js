@@ -1,6 +1,7 @@
 'use strict';
 
 let baseURL = '';
+let weatherAPIAppID = '6178c621688b97c94c84911609ebad47';
 
 
 let searchFormButton = document.getElementById('searchFormButton');
@@ -30,6 +31,61 @@ function searchRedirect(lang, value) {
 
     window.location.href = `${baseURL}/search/${lang}/${value}`;
 
+}
+
+//weather loading
+let weatherImageContainer = document.getElementById('weatherImageContainer');
+let weatherTempContainer = document.getElementById('weatherTempContainer');
+if (weatherImageContainer != null && weatherTempContainer != null) {
+    let weatherAPIUrl = `http://api.openweathermap.org/data/2.5/weather?id=587081&units=metric&appid=${weatherAPIAppID}`;
+    $.get(weatherAPIUrl, function(data) {
+       let temp = data.main.temp;
+       let icon = data.weather[0].icon;
+       let iconURL = `http://openweathermap.org/img/w/${icon}.png`;
+
+       weatherImageContainer.innerHTML = `<img src="${iconURL}" alt="weather icon" width="32" />`;
+       weatherTempContainer.innerHTML = `${temp} °C`;
+    });
+}
+
+//currency rated loading
+let currencyUSD = document.getElementById('currencyUSD');
+let currencyEUR = document.getElementById('currencyEUR');
+let currencyGBP = document.getElementById('currencyGBP');
+let currencyRUB = document.getElementById('currencyRUB');
+if (currencyUSD != null && currencyEUR != null && currencyGBP != null && currencyRUB != null) {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    let currencyAPIUrl = `https://cors.io/?https://www.cbar.az/currencies/${dd}.${mm}.${yyyy}.xml`;
+    $.ajax({
+        type: 'GET',
+        url: currencyAPIUrl,
+        dataType: 'xml',
+        success: function(xml) {
+            $(xml).find('[Code="USD"]').each(function(){
+                currencyUSD.innerHTML = $(this).find('Value').text();
+            });
+            $(xml).find('[Code="EUR"]').each(function(){
+                currencyEUR.innerHTML = $(this).find('Value').text();
+            });
+            $(xml).find('[Code="GBP"]').each(function(){
+                currencyGBP.innerHTML = $(this).find('Value').text();
+            });
+            $(xml).find('[Code="RUB"]').each(function(){
+                currencyRUB.innerHTML = $(this).find('Value').text();
+            });
+        }
+    });
 }
 
 //service functions

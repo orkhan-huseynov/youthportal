@@ -44,6 +44,45 @@
                 <a class="login_button" target="_blank" href="{{ url('/admin') }}">@if ($lang == 'az') Sayta giriş @else Войти на сайт @endif</a>
             </nav>
         </div>
+        <div class="informers_block">
+            <div class="container-fluid informers_container">
+                <div class="row">
+                    <div class="col-12 col-lg-2">
+                        <div class="weatherContainer container-fluid">
+                            <div class="row">
+                                <div class="col no-gutters">{{{ ($lang == 'az') ? 'Bakı' : 'Баку'}}}</div>
+                                <div class="col no-gutters" id="weatherImageContainer"></div>
+                                <div class="col no-gutters" id="weatherTempContainer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-10">
+                        <div class="ratesContainer">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="currency">USD</span>
+                                        <span id="currencyUSD"></span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="currency">EUR</span>
+                                        <span id="currencyEUR"></span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="currency">GBP</span>
+                                        <span id="currencyGBP"></span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="currency">RUB</span>
+                                        <span id="currencyRUB"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container-fluid-flex">
                 <div class="d-none d-lg-block main_col">
                     <div class="left_block_ads pull-right">
@@ -108,12 +147,13 @@
 
         @yield('footer')
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/9aed91e10e.js"></script>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/9aed91e10e.js"></script>
         <script src="{{ asset('js/custom.js') }}"></script>
+    </div>
 </body>
 </html>

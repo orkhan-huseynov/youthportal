@@ -52,6 +52,7 @@ class HomeController extends Controller
             $news_culture = NewsRu::where('section_id', 2)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_hightech = NewsRu::where('section_id', 6)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_world = NewsRu::where('section_id', 7)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+            $news_f1 = NewsRu::where('section_id', 10)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
         } else {
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
             $photogalleries = Photogallery::where('active', 1)->take(30)->get();
@@ -70,6 +71,7 @@ class HomeController extends Controller
             $news_culture = NewsAz::where('section_id', 2)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_hightech = NewsAz::where('section_id', 6)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_world = NewsAz::where('section_id', 7)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+            $news_f1 = NewsAz::where('section_id', 10)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
         }
 
         $photos = Photogallery::where('active', 1)->orderBy('activity_start', 'dec')->take(4)->get();
@@ -89,6 +91,7 @@ class HomeController extends Controller
             'news_culture' => $news_culture,
             'news_hightech' => $news_hightech,
             'news_world' => $news_world,
+            'news_f1' => $news_f1,
 
             'photos' => $photos,
 

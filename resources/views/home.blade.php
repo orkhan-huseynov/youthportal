@@ -570,6 +570,65 @@
             @endforeach
         </div>
     </div>
+    {{-- f1 --}}
+    <div class="row new_category_row hover_class">
+        <div class="col-sm-12 col-md-12 news_category_container life_style_container">
+            <p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Формула 1 @else Formula 1 @endif</span></a></p>
+            <div class="chevron_right_left_div">
+                <a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row life_style_main">
+        <div class="col-sm-12 col-md-6 life_style_big_news_container">
+            <div class="big_news_container__inner">
+                @if ($news_f1->count() > 0)
+                    <a href="{{url($lang.'/news_details/'.$news_f1->first()->id)}}" class="title_style">
+                        <img src="storage/images/{{$news_f1->first()->photo}}" alt="news photo"/>
+                        <h6 class="h6_settings_main">{{$news_f1->first()->name}}</h6>
+                        <p class="life_style_time">{{$news_f1->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_f1->first()->section->name_ru : $news_f1->first()->section->name_az }}}</p>
+                        <p class="big_news_text">{{$news_f1->first()->tagline}}</p>
+                    </a>
+                @endif
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 hot_news_container life_style_little_news_container">
+            @php
+                $i = 0;
+            @endphp
+            @foreach ($news_f1 as $f1)
+                @php
+                    $i++;
+                @endphp
+                @if($i == 1)
+                    @continue;
+                @endif
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="popular_news_container__img">
+                            <a href="{{url($lang.'/news_details/'.$f1->id)}}">
+                                <img src="storage/images/{{$f1->photo_150}}" alt="news photo"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 hot_news_container_second">
+                        <div class="popular_news_container_second__text">
+                            <p class="popular_news_time">{{$f1->activity_start->format('d.m.Y H:i')}}</p>
+                            <a href="{{url($lang.'/news_details/'.$f1->id)}}">
+                                <h6>{{ \Illuminate\Support\Str::words($f1->name, 7) }}</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row for_line">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="line_p_margin_2"><p class="line_p_2"></p></div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
     {{-- photos --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">

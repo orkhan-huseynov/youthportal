@@ -123,7 +123,7 @@
                     <div class="right_block_ads">
                         <div class="ad">
                             <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="120" height="166" id="aquatic" align="">
-                                <param name="movie" value="/banners/aquatic.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="/banners/aquatic.swf" quality="high" bgcolor="#FFFFFF" width="120" height="166" name="aquatic" align="" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+                                <param name="movie" value="{{ asset('images/banners/aquatic.swf') }}"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <embed src="{{ asset('images/banners/aquatic.swf') }}" quality="high" bgcolor="#FFFFFF" width="120" height="166" name="aquatic" align="" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
                             </object>
                         </div>
                         <div class="ad">

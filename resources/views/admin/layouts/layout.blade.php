@@ -20,7 +20,7 @@
         <link href="{{URL::asset('/css/admin/custom.css')}}" rel="stylesheet">
     </head>
     <body class="nav-md">
-        <div id="app" class="container body">
+        <div id="app" class="container body" data-lang="{{ $lang }}">
             <div class="main_container">
                 @section('sidebar')
                     <div class="col-md-3 left_col">

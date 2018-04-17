@@ -1,6 +1,8 @@
 'use strict';
 
 let baseURL = '';
+let app = document.getElementById('app');
+let lang = app.dataset.lang;
 
 $.ajaxSetup({
     headers: {
@@ -293,7 +295,7 @@ if (newsEditForm != null) {
 let adminNewsSection = document.getElementById('adminNewsSection');
 if (adminNewsSection != null) {
     adminNewsSection.addEventListener('change', function () {
-       window.location.href = `${baseURL}/admin/content-news/ru/${this.value}`;
+       window.location.href = `${baseURL}/admin/content-news/${lang}/${this.value}`;
     });
 }
 

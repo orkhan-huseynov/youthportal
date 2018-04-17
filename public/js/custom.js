@@ -66,11 +66,16 @@ if (currencyUSD != null && currencyEUR != null && currencyGBP != null && currenc
         mm = '0' + mm;
     }
 
-    let currencyAPIUrl = `https://cors.io/?https://www.cbar.az/currencies/${dd}.${mm}.${yyyy}.xml`;
+    let proxyUrl = `http://yp.huseynov.us/p.php`;
+    let currencyAPIUrl = `https://www.cbar.az/currencies/${dd}.${mm}.${yyyy}.xml`;
     $.ajax({
         type: 'GET',
-        url: currencyAPIUrl,
+        url: proxyUrl,
         dataType: 'xml',
+        cache: false,
+        headers: {
+            'X-Proxy-URL': currencyAPIUrl,
+        },
         success: function(xml) {
             $(xml).find('[Code="USD"]').each(function(){
                 currencyUSD.innerHTML = $(this).find('Value').text();

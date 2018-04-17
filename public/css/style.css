@@ -888,10 +888,9 @@ footer {
 }
 
 .footer_ul li {
-    margin-left: -30px;
     font-weight: bold;
     margin-top: 5px;
-    text-transform: uppercase;
+    margin-left: -50px;
 }
 
 .footer_ul a {

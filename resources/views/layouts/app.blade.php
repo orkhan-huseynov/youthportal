@@ -145,7 +145,7 @@
                 </div>
         </div>
 
-        @yield('footer')
+        @include('footer')
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>

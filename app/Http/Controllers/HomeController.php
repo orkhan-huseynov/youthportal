@@ -101,7 +101,7 @@ class HomeController extends Controller
 
     public function importNewsRu(Request $request) {
         $news = new NewsRu();
-        $news->section_id = 9;
+        $news->section_id = 13;
         $news->name = $request->name;
         $news->active = true;
         $news->activity_start = Carbon::parse($request->activity_start);
@@ -134,12 +134,132 @@ class HomeController extends Controller
             $news->photo_150 = $filename_150;
         }
 
+        if ($request->photo_1 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_1, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_1, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_1_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_1)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_1 = $filename_1024;
+        }
+
+        if ($request->photo_2 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_2, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_2, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_2_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_2)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_2 = $filename_1024;
+        }
+
+        if ($request->photo_3 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_3, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_3, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_3_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_3)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_3 = $filename_1024;
+        }
+
+        if ($request->photo_4 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_4, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_4, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_4_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_4)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_4 = $filename_1024;
+        }
+
+        if ($request->photo_5 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_5, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_5, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_5_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_5)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_5 = $filename_1024;
+        }
+
+        if ($request->photo_6 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_6, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_6, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_6_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_6)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_6 = $filename_1024;
+        }
+
+        if ($request->photo_7 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_7, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_7, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_7_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_7)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_7 = $filename_1024;
+        }
+
+        if ($request->photo_8 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_8, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_8, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_8_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_8)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_8 = $filename_1024;
+        }
+
+        if ($request->photo_9 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_9, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_9, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_9_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_9)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_9 = $filename_1024;
+        }
+
+        if ($request->photo_10 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_10, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_10, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_10_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_10)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_10 = $filename_1024;
+        }
+
         $news->save();
     }
 
     public function importNewsAz(Request $request) {
         $news = new NewsAz();
-        $news->section_id = 9;
+        $news->section_id = 13;
         $news->name = $request->name;
         $news->active = true;
         $news->activity_start = Carbon::parse($request->activity_start);
@@ -170,6 +290,126 @@ class HomeController extends Controller
                 $constraint->aspectRatio();
             })->save($path_150);
             $news->photo_150 = $filename_150;
+        }
+
+        if ($request->photo_1 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_1, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_1, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_1_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_1)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_1 = $filename_1024;
+        }
+
+        if ($request->photo_2 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_2, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_2, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_2_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_2)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_2 = $filename_1024;
+        }
+
+        if ($request->photo_3 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_3, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_3, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_3_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_3)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_3 = $filename_1024;
+        }
+
+        if ($request->photo_4 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_4, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_4, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_4_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_4)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_4 = $filename_1024;
+        }
+
+        if ($request->photo_5 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_5, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_5, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_5_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_5)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_5 = $filename_1024;
+        }
+
+        if ($request->photo_6 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_6, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_6, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_6_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_6)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_6 = $filename_1024;
+        }
+
+        if ($request->photo_7 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_7, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_7, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_7_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_7)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_7 = $filename_1024;
+        }
+
+        if ($request->photo_8 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_8, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_8, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_8_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_8)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_8 = $filename_1024;
+        }
+
+        if ($request->photo_9 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_9, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_9, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_9_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_9)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_9 = $filename_1024;
+        }
+
+        if ($request->photo_10 != '') {
+            $ext = pathinfo('http://youthportal.az/'.$request->photo_10, PATHINFO_EXTENSION);
+            $fname = pathinfo('http://youthportal.az/'.$request->photo_10, PATHINFO_FILENAME);
+
+            $filename_1024 = time() . $fname . '_10_1024.' . $ext;
+            $path_1024 = storage_path('/app/public/images/'.$filename_1024);
+            Image::make('http://youthportal.az/'.$request->photo_10)->resize(1024, null, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path_1024);
+            $news->image_10 = $filename_1024;
         }
 
         $news->save();

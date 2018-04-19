@@ -126,18 +126,18 @@
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="tagline-tab">
                                         <div class="item form-group">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="tagline">Tagline</label>
-                                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <textarea id="newsCreateTagline" class="form-control col-md-6 col-xs-6" name="tagline" rows="10" cols="20">{{old('tagline', $news->tagline)}}</textarea>
+                                            <label class="col-md-12 col-sm-12 col-xs-12" for="tagline">Tagline</label>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <textarea id="newsCreateTagline" class="form-control col-md-6 col-xs-6 ckeditor" name="tagline" rows="10" cols="20">{{old('tagline', $news->tagline)}}</textarea>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('tagline')}}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="details-tab">
                                         <div class="item form-group">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="text_ru">Text</label>
-                                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <textarea id="newsCreateText" class="form-control col-md-6 col-xs-6" name="text" rows="10" cols="20">{{old('text', $news->text)}}</textarea>
+                                            <label class="col-md-12 col-sm-12 col-xs-12" for="text_ru">Text</label>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <textarea id="newsCreateText" class="form-control col-md-6 col-xs-6 ckeditor" name="text" rows="10" cols="20">{{old('text', $news->text)}}</textarea>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('text')}}</span>
                                             </div>
                                         </div>
@@ -165,7 +165,120 @@
                                                         <input id="image_1" class="form-control col-md-6 col-xs-6" name="image_1" type="file">
                                                         <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_1')}}</span>
                                                     </div>
+                                                    @if ($news->image_1 != '')
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_1)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    @endif
                                                 </div>
+                                                @if ($news->image_2 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_2">Image 2</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_2" class="form-control col-md-6 col-xs-6" name="image_2" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_2')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_2)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($news->image_3 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_3">Image 3</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_3" class="form-control col-md-6 col-xs-6" name="image_3" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_3')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_3)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($news->image_4 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_4">Image 4</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_4" class="form-control col-md-6 col-xs-6" name="image_4" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_4')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_4)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($news->image_5 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_5">Image 5</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_5" class="form-control col-md-6 col-xs-6" name="image_5" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_5')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_5)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($news->image_6 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_6">Image 6</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_6" class="form-control col-md-6 col-xs-6" name="image_6" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_6')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_6)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($news->image_7 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_7">Image 7</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_7" class="form-control col-md-6 col-xs-6" name="image_7" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_7')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_7)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($news->image_8 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_8">Image 8</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_8" class="form-control col-md-6 col-xs-6" name="image_8" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_8')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_8)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($news->image_9 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_9">Image 9</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_9" class="form-control col-md-6 col-xs-6" name="image_9" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_9')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_9)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if ($news->image_10 != '')
+                                                    <div class="row">
+                                                        <label class="control-label col-md-1 col-sm-1 col-xs-1" for="image_10">Image 10</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                                            <input id="image_10" class="form-control col-md-6 col-xs-6" name="image_10" type="file">
+                                                            <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('image_10')}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                                            <img src="{{ url('storage/images/'.$news->image_10)}}" alt="" class="news_thumbnail" width="33" />
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6 col-sm-offset-1">

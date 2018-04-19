@@ -9,6 +9,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="base-url" content="{{ url('/') }}" />
 
+    <!-- Facebook OG tags -->
+    <meta property="og:url"           content="{{ Request::url() }}" />
+    <meta property="og:type"          content="article" />
+
+    <meta property="og:site_name"     content="{{ url('/') }}" />
+    <meta property="fb:admins"        content="1661727574">
+    @if (isset($news_main))
+        <meta property="og:title"         content="{{ strip_tags($news_main->name) }}" />
+        <meta property="og:description"   content="{{ strip_tags($news_main->tagline) }}" />
+        <meta property="og:image"         content="{{ url('/storage/images/'.$news_main->photo) }}" />
+    @endif
+
     <title>Youth Portal</title>
 
     <!-- Styles -->

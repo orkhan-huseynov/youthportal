@@ -20,7 +20,7 @@
         <link href="{{URL::asset('/css/admin/custom.css')}}" rel="stylesheet">
     </head>
     <body class="nav-md">
-        <div id="app" class="container body" data-lang="{{ $lang }}">
+        <div id="app" class="container body" data-lang="{{ isset($lang)? $lang : '' }}">
             <div class="main_container">
                 @section('sidebar')
                     <div class="col-md-3 left_col">
@@ -144,10 +144,9 @@
         <script src="{{ URL::asset('assets/admin/js/dashboard.js') }}"></script>
         <script src="{{ URL::asset('assets/admin/js/admin.js') }}"></script>
         <script src="{{ URL::asset('assets/admin/js/users/edit.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
         <script src="{{ URL::asset('js/admin/scripts.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/popper.min.js"></script>
         {{--<script src="{{ URL::asset('js/admin/custom.min.js') }}"></script>--}}
-
 
         <!-- Fontawesome -->
         <script src="https://use.fontawesome.com/a45b354850.js"></script>

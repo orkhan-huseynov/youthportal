@@ -636,7 +636,7 @@ nav .nav_btn {
 
 .big_news_container__inner img {
     width: 100%;
-    max-height: 311px;
+    /*max-height: 311px;*/
     margin: 0 20px 10px 0;
 }
 
@@ -955,6 +955,8 @@ footer .footer_img_container {
 
 .news_images img {
     width: 100%;
+    height: auto;
+    max-height: initial;
 }
 
 .title_style {

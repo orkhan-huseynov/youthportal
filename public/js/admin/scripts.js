@@ -98,6 +98,10 @@ if (image_input_container != null) {
 }
 
 if (add_files_button != null) {
+    if (i >= 10) {
+        add_files_button.style.display = 'none';
+    }
+
     add_files_button.addEventListener('click', function (e) {
         let row = document.createElement('Div');
         row.setAttribute('class', 'row');
@@ -122,7 +126,7 @@ if (add_files_button != null) {
 
         image_input_container.appendChild(row);
         e.preventDefault();
-        if (i === 10) {
+        if (i >= 10) {
             add_files_button.style.display = 'none';
         }
         i++;
@@ -298,6 +302,17 @@ if (adminNewsSection != null) {
        window.location.href = `${baseURL}/admin/content-news/${lang}/${this.value}`;
     });
 }
+
+//ckeditor
+let texareas = document.querySelectorAll('.ckeditor');
+texareas.forEach(function (textarea) {
+    ClassicEditor
+        .create(textarea)
+        .catch(error => {
+            console.error( error );
+        });
+});
+
 
 //service functions
 function getMetaContent(metaName) {

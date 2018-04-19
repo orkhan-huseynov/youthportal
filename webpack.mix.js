@@ -89,6 +89,8 @@ mix.scripts([
     'node_modules/gentelella/vendors/pnotify/dist/pnotify.nonblock.js',
     'node_modules/jcarousel/dist/jquery.jcarousel.min.js',
 
+    'node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js',
+
     'resources/assets/admin/js/dashboard.js',
 ], 'public/assets/admin/js/dashboard.js').version();
 

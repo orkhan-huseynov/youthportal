@@ -588,7 +588,7 @@
                         <img src="storage/images/{{$news_f1->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings_main">{{$news_f1->first()->name}}</h6>
                         <p class="life_style_time">{{$news_f1->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_f1->first()->section->name_ru : $news_f1->first()->section->name_az }}}</p>
-                        <p class="big_news_text">{{$news_f1->first()->tagline}}</p>
+                        <p class="big_news_text">{{ strip_tags($news_f1->first()->tagline) }}</p>
                     </a>
                 @endif
             </div>

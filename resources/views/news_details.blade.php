@@ -47,19 +47,19 @@
             @foreach($sections as $section)
                 @if ($section->id == $news_main->first()->section_id)
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
+                    <a class="nav-link" href="{{ url('/'.$lang.'/section/'.$section->id) }}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
                 </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
+                        <a class="nav-link" href="{{ url('/'.$lang.'/section/'.$section->id) }}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
                     </li>
                 @endif
             @endforeach
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p>@if ($lang == 'az') Foto @else Фото @endif</p></a>
+                <a class="nav-link" href="{{ url('/'.$lang.'/photogallery/') }}"><p>@if ($lang == 'az') Foto @else Фото @endif</p></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/'.$lang.'/video/')}}"><p><span class="no_border_span">@if ($lang == 'az') Video @else Видео @endif</span></p></a>
+                <a class="nav-link" href="{{ url('/'.$lang.'/video/') }}"><p><span class="no_border_span">@if ($lang == 'az') Video @else Видео @endif</span></p></a>
             </li>
         </ul>
     </div>
@@ -70,50 +70,51 @@
             <div class="col-sm-12 col-md-12 life_style_big_news_container">
                 <div class="big_news_container__inner">
                     @if ($news_main->count() > 0)
-                        <h6 class="h6_settings title_style">{{$news_main->first()->name}}</h6>
-                        <img src="{{url('storage/images/'.$news_main->first()->photo)}}" class="news_details_image float-left" alt="news photo"/>
-                        <p class="life_style_time title_style">{{ $news_main->first()->activity_start->format('d.m.Y H:i') }} // @if ($lang == 'az') {{ $news_main->first()->section->name_az }} @else {{ $news_main->first()->section->name_ru }} @endif</p>
-                        <div class="big_news_text title_style">{!! $news_main->first()->text !!}</div>
+                        <h6 class="h6_settings title_style">{{ $news_main->name }}</h6>
+                        <img src="{{ url('storage/images/'.$news_main->photo )}}" class="news_details_image float-left" alt="news photo"/>
+                        <p class="life_style_time title_style">{{ $news_main->activity_start->format('d.m.Y H:i') }} // @if ($lang == 'az') {{ $news_main->section->name_az }} @else {{ $news_main->section->name_ru }} @endif</p>
+                        <div class="big_news_text title_style">{!! $news_details_text !!}</div>
                         <div class="news_images">
-                            @if ($news_main->first()->image_1 != '')
-                                <img src="{{url('storage/images/'.$news_main->first()->image_1)}}" alt="news photo"/>
+                            @if ($news_main->image_1 != '' && array_search(1, $replaced_images_arr) === false )
+                                <img src="{{ url('storage/images/'.$news_main->image_1) }}" alt="news photo"/>
                             @endif
-                            @if ($news_main->first()->image_2 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_2)}}" alt="news photo"/>
+                            @if ($news_main->image_2 != '' && array_search(2, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_2) }}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_3 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_3)}}" alt="news photo"/>
+                                @if ($news_main->image_3 != '' && array_search(3, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_3) }}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_4 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_4)}}" alt="news photo"/>
+                                @if ($news_main->image_4 != '' && array_search(4, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_4) }}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_5 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_5)}}" alt="news photo"/>
+                                @if ($news_main->image_5 != '' && array_search(5, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_5) }}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_6 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_6)}}" alt="news photo"/>
+                                @if ($news_main->image_6 != '' && array_search(6, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_6) }}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_7 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_7)}}" alt="news photo"/>
+                                @if ($news_main->image_7 != '' && array_search(7, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_7) }}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_8 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_8)}}" alt="news photo"/>
+                                @if ($news_main->image_8 != '' && array_search(8, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_8) }}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_9 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_9)}}" alt="news photo"/>
+                                @if ($news_main->image_9 != '' && array_search(9, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_9) }}" alt="news photo"/>
                                 @endif
-                                @if ($news_main->first()->image_10 != '')
-                                    <img src="{{url('storage/images/'.$news_main->first()->image_10)}}" alt="news photo"/>
+                                @if ($news_main->image_10 != '' && array_search(10, $replaced_images_arr) === false)
+                                    <img src="{{ url('storage/images/'.$news_main->image_10) }}" alt="news photo"/>
                                 @endif
                         </div>
                         <div class="clearfix"></div>
-                        @if ($news_main->first()->video_url != '')
+                        @if ($video_url != '')
                             <div class="yt_wrapper">
                                 <div class="h_iframe">
-                                    {!! convertYoutube($news_main->first()->video_url) !!}
+                                    {!! $video_url !!}
                                 </div>
                             </div>
                         @endif
+                        <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="recommend" data-size="small" data-show-faces="true" data-share="true"></div>
                     @endif
                 </div>
             </div>
@@ -233,28 +234,3 @@
         <div class="fb-page" data-href="https://www.facebook.com/youthportalaz/" data-tabs="timeline" data-width="343" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/youthportalaz/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/youthportalaz/">Youth Portal</a></blockquote></div>
     @endif
 @endsection
-
-@php
-
-    function nl2p($string)
-    {
-        $paragraphs = '';
-
-        foreach (explode("\n", $string) as $line) {
-            if (trim($line)) {
-                $paragraphs .= '<p>' . $line . '</p>';
-            }
-        }
-
-        return $paragraphs;
-    }
-
-    function convertYoutube($string) {
-        return preg_replace(
-            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-            "<iframe width=\"2\" height=\"2\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>",
-            $string
-        );
-    }
-
-@endphp

@@ -4026,3 +4026,7 @@ th.dt-center, td.dt-center { text-align: center; }
   margin-bottom: 20px;
   margin-left: -10px;
 }
+
+#image_input_container .row {
+  margin-bottom: 10px;
+}

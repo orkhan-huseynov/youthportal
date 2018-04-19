@@ -44,7 +44,7 @@ class HomeController extends Controller
             $news_very_actual = NewsRu::where('very_actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(1)->get();
             $news_actual = NewsRu::where('actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_view = NewsRu::where('active', 1)->orderBy('view_count', 'DESC')->orderBy('activity_start', 'DESC')->take(4)->get();
-            $news_very_important = NewsRu::where('very_important', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+            $news_very_important = NewsRu::where('popular', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_policy_main = NewsRu::where('section_id', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_economy = NewsRu::where('section_id', 9)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_sport = NewsRu::where('section_id', 5)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
@@ -63,7 +63,7 @@ class HomeController extends Controller
             $news_very_actual = NewsAz::where('very_actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(1)->get();
             $news_actual = NewsAz::where('actual', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_view = NewsAz::where('active', 1)->orderBy('view_count', 'DESC')->orderBy('activity_start', 'DESC')->take(4)->get();
-            $news_very_important = NewsAz::where('very_important', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+            $news_very_important = NewsAz::where('popular', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_policy_main = NewsAz::where('section_id', 1)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_economy = NewsAz::where('section_id', 9)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_sport = NewsAz::where('section_id', 5)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
@@ -101,7 +101,7 @@ class HomeController extends Controller
 
     public function importNewsRu(Request $request) {
         $news = new NewsRu();
-        $news->section_id = 13;
+        $news->section_id = 1;
         $news->name = $request->name;
         $news->active = true;
         $news->activity_start = Carbon::parse($request->activity_start);
@@ -259,7 +259,7 @@ class HomeController extends Controller
 
     public function importNewsAz(Request $request) {
         $news = new NewsAz();
-        $news->section_id = 13;
+        $news->section_id = 9;
         $news->name = $request->name;
         $news->active = true;
         $news->activity_start = Carbon::parse($request->activity_start);

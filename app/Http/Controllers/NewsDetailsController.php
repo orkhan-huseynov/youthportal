@@ -28,7 +28,7 @@ class NewsDetailsController extends Controller
 
             $news_main = NewsRu::findOrFail($id);
             $similar_news = NewsRu::where('active', 1)
-                            ->where('section_id', $news_main->first()->section_id)
+                            ->where('section_id', $news_main->section_id)
                             ->inRandomOrder()
                             ->take(30)
                             ->get();
@@ -41,7 +41,7 @@ class NewsDetailsController extends Controller
 
             $news_main = NewsAz::findOrFail($id);
             $similar_news = NewsAz::where('active', 1)
-                            ->where('section_id', $news_main->first()->section_id)
+                            ->where('section_id', $news_main->section_id)
                             ->inRandomOrder()
                             ->take(30)
                             ->get();

@@ -88,6 +88,13 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Popular</label>
+                                            <div class="col-md-11 col-sm-11 col-xs-11 to_left">
+                                                <input id="popular" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="popular" type="checkbox" @if (old('popular', $news->popular) == 'on')  checked @endif>
+                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('popular')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
                                                 <div class="control-group">
                                                     <div class="controls container-fluid">
                                                         <div class="row">

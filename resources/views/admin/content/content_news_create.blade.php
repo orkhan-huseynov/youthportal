@@ -88,6 +88,13 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Popular</label>
+                                            <div class="col-md-5 col-sm-5 col-xs-5 to_left">
+                                                <input id="popular" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="popular" type="checkbox" @if (old('popular') == 'on')  checked @endif>
+                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('popular')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
                                                 <div class="control-group">
                                                     <div class="controls container-fluid">
                                                         <div class="row">
@@ -128,7 +135,7 @@
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="tagline">Tagline</label>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <textarea id="newsCreateTagline" class="form-control col-md-6 col-xs-6" name="tagline" rows="10" cols="20">{{old('tagline')}}</textarea>
+                                                <textarea id="newsCreateTagline" class="form-control col-md-6 col-xs-6 ckeditor" name="tagline" rows="10" cols="20">{{old('tagline')}}</textarea>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('tagline')}}</span>
                                             </div>
                                         </div>
@@ -137,7 +144,7 @@
                                         <div class="item form-group">
                                             <label class="control-label col-md-1 col-sm-1 col-xs-1" for="text_ru">Text</label>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <textarea id="newsCreateText" class="form-control col-md-6 col-xs-6" name="text" rows="10" cols="20">{{old('text')}}</textarea>
+                                                <textarea id="newsCreateText" class="form-control col-md-6 col-xs-6 ckeditor" name="text" rows="10" cols="20">{{old('text')}}</textarea>
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('text')}}</span>
                                             </div>
                                         </div>

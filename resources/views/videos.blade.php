@@ -120,7 +120,7 @@
                 <p class="video_text"><a><span class="video_text_span">@if ($lang == 'az') Günün videosu @else Видео дня @endif</span></a></p>
             </div>
             <div class="video_container__inner_2">
-                <iframe src="https://www.youtube.com/embed/IhqqZN0H7CI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                {!! $video_of_day !!}
             </div>
             <!--
             <div>
@@ -130,40 +130,6 @@
         </div>
     </div>
 @endsection
-@section('networks_container')
-    <div class="row margin_class">
-        <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <p class="video_text"><span class="news_category_span">@if ($lang == 'az') Bizə qoşulun @else Присоединяйтесь к нам @endif</span></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 col-md-4 networks_cards_container">
-            <div class="networks_card networks_card_first">
-                <img class="card_img" src="{{ asset('images/f.png') }}" alt="facebook">
-                <div class="card_body">
-                    <p class="card_text"><span class="networks_numbers">7.000</span><span class="networks_second_span">@if($lang == 'az') izləyici @else подписчиков @endif</span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-4 networks_cards_container">
-            <div class="networks_card networks_card_second">
-                <img class="card_img" src="{{ asset('images/o-TWITTER-570.jpg') }}" alt="facebook">
-                <div class="card_body">
-                    <p class="card_text"><span class="networks_numbers">3.000</span><span class="networks_second_span">followers</span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-4 networks_cards_container">
-            <div class="networks_card networks_card_third">
-                <img class="card_img" src="{{ asset('images/how-to-create-rss-feed-joomla-3x.jpg') }}" alt="facebook">
-                <div class="card_body">
-                    <p class="card_text"><span>@if($lang == 'az') Rss vasitəsi ilə izləyin @else Следите через Rss @endif</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
 @section('facebook_social')
     @if($lang == 'ru')
         <div class="fb-page" data-href="https://www.facebook.com/YouthPortalaz-198120266876647/" data-tabs="timeline" data-width="334" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/YouthPortalaz-198120266876647/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/YouthPortalaz-198120266876647/">YouthPortal.az</a></blockquote></div>

@@ -4030,3 +4030,7 @@ th.dt-center, td.dt-center { text-align: center; }
 #image_input_container .row {
   margin-bottom: 10px;
 }
+
+.dropdown {
+  margin-top: 12px;
+}

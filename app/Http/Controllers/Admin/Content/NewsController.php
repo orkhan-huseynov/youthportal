@@ -215,6 +215,7 @@ class NewsController extends Controller
         $news->important = ($request->important == 'on');
         $news->very_important = ($request->very_important == 'on');
         $news->popular = ($request->popular == 'on');
+        $news->video_of_day = ($request->video_of_day == 'on');
         $news->save();
 
         return redirect('admin/content-news/'.$lang);
@@ -405,6 +406,7 @@ class NewsController extends Controller
         $news->important = ($request->important == 'on');
         $news->very_important = ($request->very_important == 'on');
         $news->popular = ($request->popular == 'on');
+        $news->video_of_day = ($request->video_of_day == 'on');
         $news->save();
 
         return redirect('admin/content-news/'.$lang.'/'.$request->section);

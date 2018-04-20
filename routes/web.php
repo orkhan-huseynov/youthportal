@@ -47,10 +47,10 @@ Route::get('storage/images/{filename}', function ($filename)
 });
 
 Route::get('admin', function(){
-    return redirect('/admin/dashboard');
+    return redirect('/admin/content-news/ru');
 });
 
-Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['web', 'auth', 'ingroup:2'], 'prefix' => 'admin'], function () {
     //Dashboard Route
     Route::get('dashboard', function() {
         return view('admin.dashboard');
@@ -59,9 +59,6 @@ Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], 
     //Structure
     Route::resource('structure-sections', 'Admin\Structure\SectionController');
     Route::resource('structure-pages', 'Admin\Structure\PageController');
-
-    //System
-    Route::resource('system-users', 'Admin\System\UsersController');
 
     //Content
     //Route::get('content-news', 'Admin\Content\NewsController@index');
@@ -79,5 +76,12 @@ Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], 
     Route::get('/content-photogallery/{photogallery_id}/edit', 'Admin\Content\PhotogalleryController@edit');
     Route::put('/content-photogallery/{photogallery_id}', 'Admin\Content\PhotogalleryController@update');
     Route::delete('/content-photogallery/{gallery_id}', 'Admin\Content\PhotogalleryController@destroy');
+
+});
+
+Route::group(['middleware' => ['web', 'auth', 'isadmin'], 'prefix' => 'admin'], function () {
+
+    //System
+    Route::resource('system-users', 'Admin\System\UsersController');
 
 });

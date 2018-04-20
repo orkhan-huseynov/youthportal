@@ -32,6 +32,8 @@ class NewsDetailsController extends Controller
                             ->inRandomOrder()
                             ->take(30)
                             ->get();
+
+            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
         } else {
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->get();
             $photogalleries = Photogallery::where('active', 1)->get();
@@ -45,7 +47,11 @@ class NewsDetailsController extends Controller
                             ->inRandomOrder()
                             ->take(30)
                             ->get();
+
+            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
         }
+
+        $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
 
         $news_details_text = $news_main->text;
         $replaced_images_arr = [];
@@ -115,6 +121,8 @@ class NewsDetailsController extends Controller
             'video_url' => $video_url,
             'similar_news' => $similar_news,
             'lang' => $lang,
+
+            'video_of_day' => $video_of_day,
         ]);
 
     }

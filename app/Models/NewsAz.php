@@ -20,7 +20,7 @@ class NewsAz extends Model
         'very_actual' => 'boolean',
         'important' => 'boolean',
         'very_important' => 'boolean',
-        'popular' => 'boolean',
+        'popular' => 'boolean'
     ];
 
     protected $dates = [

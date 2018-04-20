@@ -68,11 +68,13 @@
 
                                             </ul>
                                         </li>
+                                        @if(Auth::user()->group_id == 1)
                                         <li class="{{(strpos(Request::segment(2), 'system') !== false) ? 'active' : '' }}"><a><i class="fa fa-gear"></i>System <span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu" style="{{(strpos(Request::segment(2), 'system') !== false) ? 'display:block;' : '' }}">
                                                 <li class="{{(strpos(Request::segment(2), 'system') !== false) ? 'current-page' : '' }}"><a href="{{url('/admin/system-users/')}}">Users</a></li>
                                             </ul>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -108,12 +110,22 @@
 
 
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li class="">
-                                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            {{--<img src="{{URL::asset('/images/admin/img.jpg')}}" alt="">--}}
-                                            {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
-                                            <span class=" fa fa-angle-down"></span>
-                                        </a>
+                                    <li class="dropdown">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                        {{--<img src="{{URL::asset('/images/admin/img.jpg')}}" alt="">--}}
+                                                        {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <a class="pull-right" href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out pull-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                         <ul class="dropdown-menu dropdown-usermenu pull-right">
                                             <li><a href="javascript:;"> Profile</a></li>
                                             <li>
@@ -144,7 +156,8 @@
         <script src="{{ URL::asset('assets/admin/js/dashboard.js') }}"></script>
         <script src="{{ URL::asset('assets/admin/js/admin.js') }}"></script>
         <script src="{{ URL::asset('assets/admin/js/users/edit.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="//cdn.datatables.net/plug-ins/1.10.16/sorting/datetime-moment.js"></script>
         <script src="{{ URL::asset('js/admin/scripts.js') }}"></script>
         {{--<script src="{{ URL::asset('js/admin/custom.min.js') }}"></script>--}}
 

@@ -27,6 +27,8 @@ class SectionController extends Controller
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
+
+            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
         } else {
             $section_news = NewsAz::where('section_id', $section_id)->where('active', 1)->orderBy('activity_start', 'DESC')->paginate(46);
 
@@ -35,9 +37,13 @@ class SectionController extends Controller
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
+
+            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
         }
         $sections = Section::where('published', true)->orderBy('position')->get();
         $section_name = Section::where('id', $section_id)->get();
+
+        $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
 
         return view('section_news', [
             'section_news' => $section_news,
@@ -46,6 +52,8 @@ class SectionController extends Controller
             'section_name' => $section_name,
             'section_id' => $section_id,
             'lang' => $lang,
+
+            'video_of_day' => $video_of_day,
         ]);
     }
 
@@ -71,6 +79,8 @@ class SectionController extends Controller
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
+
+            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
         } else {
             $section_news = NewsAz::where('activity_start', '>=', $dateStart)
                                     ->where('activity_start', '<=', $dateEnd)
@@ -83,8 +93,12 @@ class SectionController extends Controller
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
+
+            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
         }
         $sections = Section::where('published', true)->orderBy('position')->get();
+
+        $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
 
         return view('news_archive', [
             'section_news' => $section_news,
@@ -92,6 +106,16 @@ class SectionController extends Controller
             'news' => $merged_news_ribbon,
             'lang' => $lang,
             'date' => Carbon::createFromTimestamp($timestamp),
+
+            'video_of_day' => $video_of_day,
         ]);
+    }
+
+    private function convertYoutube($string) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "<iframe width=\"2\" height=\"2\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>",
+            $string
+        );
     }
 }

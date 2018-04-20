@@ -117,7 +117,7 @@
                                 <div class="col-sm-12 col-md-4">
                                     @yield('news_ribbon')
                                     @yield('video_container')
-                                    @yield('networks_container')
+                                    @include('social_networks')
 
                                     <div class="row spot_container_second">
                                         <div class="col-sm-12 col-md-12">

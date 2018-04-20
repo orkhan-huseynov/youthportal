@@ -130,6 +130,13 @@
                                                 <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('video_url')}}</span>
                                             </div>
                                         </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-1" for="published">Video of day</label>
+                                            <div class="col-md-11 col-sm-11 col-xs-11 to_left">
+                                                <input id="video_of_day" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="video_of_day" type="checkbox" @if (old('video_of_day', $news->video_of_day) == 'on')  checked @endif>
+                                                <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('video_of_day')}}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="tagline-tab">
                                         <div class="item form-group">

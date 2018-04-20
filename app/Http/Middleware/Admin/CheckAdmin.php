@@ -15,8 +15,8 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->group_id > 2) {
-            return redirect('home');
+        if ($request->user()->group_id > 1) {
+            return redirect('/');
         }
 
         return $next($request);

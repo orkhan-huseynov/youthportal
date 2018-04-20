@@ -313,6 +313,12 @@ texareas.forEach(function (textarea) {
         });
 });
 
+//datatables
+// $('#datatable-fixed-header').DataTable({
+//     fixedHeader: true,
+//     "order": [[ 4, 'desc' ]],
+// });
+
 
 //service functions
 function getMetaContent(metaName) {
@@ -329,6 +335,8 @@ function getMetaContent(metaName) {
 
     return '';
 }
+
+$.fn.dataTable.moment( 'MM/DD/YYYY' );
 
 (function() {
     baseURL = getMetaContent('base-url');

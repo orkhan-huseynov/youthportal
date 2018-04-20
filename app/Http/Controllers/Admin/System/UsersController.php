@@ -63,7 +63,7 @@ class UsersController extends Controller
         $user->group_id = $request->group;
         $user->name = $request->name;
         $user->gender = $request->gender;
-        $user->password = Hash::make($request->password);
+        $user->password = bcrypt($request->password);
         $user->save();
         
         return redirect('admin/system-users');
@@ -121,7 +121,7 @@ class UsersController extends Controller
         $user->active = ($request->active == 'on');
         
         if($request->password !== '') {
-            $user->password = Hash::make($request->password);
+            $user->password = bcrypt($request->password);
         }
         $user->save();
         

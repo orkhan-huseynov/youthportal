@@ -40,14 +40,19 @@ class PhotogalleryController extends Controller
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
+
+            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
         } else {
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->get();
             $photogalleries = Photogallery::where('active', 1)->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
+
+            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
         }
 
+        $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
         $photogalleries = Photogallery::where('active', 1)->orderBy('activity_start', 'DESC')->get();
 
         return view('photogallery', [
@@ -55,6 +60,8 @@ class PhotogalleryController extends Controller
             'sections' => $sections,
             'news' => $merged_news_ribbon,
             'photogalleries' => $photogalleries,
+
+            'video_of_day' => $video_of_day,
         ]);
     }
 
@@ -71,16 +78,22 @@ class PhotogalleryController extends Controller
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
+
+            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
         } else {
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->get();
             $photogalleries = Photogallery::where('active', 1)->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
+
+            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
         }
 
         $photogallery = Photogallery::findOrFail($id);
         $photogalleries = Photogallery::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+
+        $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
 
         return view('photogallery_details', [
             'lang' => $lang,
@@ -88,6 +101,16 @@ class PhotogalleryController extends Controller
             'news' => $merged_news_ribbon,
             'photogallery' => $photogallery,
             'photogalleries' => $photogalleries,
+
+            'video_of_day' => $video_of_day,
         ]);
+    }
+
+    private function convertYoutube($string) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "<iframe width=\"2\" height=\"2\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>",
+            $string
+        );
     }
 }

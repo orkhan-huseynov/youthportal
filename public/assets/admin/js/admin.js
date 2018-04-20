@@ -5276,93 +5276,95 @@ if (typeof NProgress != 'undefined') {
 				});
 				
 			};
-	   
-		/* DATA TABLES */
-			
-			function init_DataTables() {
-				
-				console.log('run_datatables');
-				
-				if( typeof ($.fn.DataTable) === 'undefined'){ return; }
-				console.log('init_DataTables');
-				
-				var handleDataTableButtons = function() {
-				  if ($("#datatable-buttons").length) {
-					$("#datatable-buttons").DataTable({
-					  dom: "Bfrtip",
-					  buttons: [
-						{
-						  extend: "copy",
-						  className: "btn-sm"
-						},
-						{
-						  extend: "csv",
-						  className: "btn-sm"
-						},
-						{
-						  extend: "excel",
-						  className: "btn-sm"
-						},
-						{
-						  extend: "pdfHtml5",
-						  className: "btn-sm"
-						},
-						{
-						  extend: "print",
-						  className: "btn-sm"
-						},
-					  ],
-					  responsive: true
-					});
-				  }
-				};
 
-				TableManageButtons = function() {
-				  "use strict";
-				  return {
-					init: function() {
-					  handleDataTableButtons();
-					}
-				  };
-				}();
+/* DATA TABLES */
 
-				$('#datatable').dataTable();
+function init_DataTables() {
 
-				$('#datatable-keytable').DataTable({
-				  keys: true
-				});
+    console.log('run_datatables');
 
-				$('#datatable-responsive').DataTable();
+    if( typeof ($.fn.DataTable) === 'undefined'){ return; }
+    console.log('init_DataTables');
 
-				$('#datatable-scroller').DataTable({
-				  ajax: "js/datatables/json/scroller-demo.json",
-				  deferRender: true,
-				  scrollY: 380,
-				  scrollCollapse: true,
-				  scroller: true
-				});
+    var handleDataTableButtons = function() {
+        if ($("#datatable-buttons").length) {
+            $("#datatable-buttons").DataTable({
+                dom: "Bfrtip",
+                buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm"
+                    },
+                    {
+                        extend: "excel",
+                        className: "btn-sm"
+                    },
+                    {
+                        extend: "pdfHtml5",
+                        className: "btn-sm"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm"
+                    },
+                ],
+                responsive: true
+            });
+        }
+    };
 
-				$('#datatable-fixed-header').DataTable({
-				  fixedHeader: true
-				});
+    TableManageButtons = function() {
+        "use strict";
+        return {
+            init: function() {
+                handleDataTableButtons();
+            }
+        };
+    }();
 
-				var $datatable = $('#datatable-checkbox');
+    $('#datatable').dataTable();
 
-				$datatable.dataTable({
-				  'order': [[ 1, 'asc' ]],
-				  'columnDefs': [
-					{ orderable: false, targets: [0] }
-				  ]
-				});
-				$datatable.on('draw.dt', function() {
-				  $('checkbox input').iCheck({
-					checkboxClass: 'icheckbox_flat-green'
-				  });
-				});
+    $('#datatable-keytable').DataTable({
+        keys: true
+    });
 
-				TableManageButtons.init();
-				
-			};
+    $('#datatable-responsive').DataTable();
+
+    $('#datatable-scroller').DataTable({
+        ajax: "js/datatables/json/scroller-demo.json",
+        deferRender: true,
+        scrollY: 380,
+        scrollCollapse: true,
+        scroller: true
+    });
+
+    $('#datatable-fixed-header').DataTable({
+        fixedHeader: true,
+        "order": [[ 4, 'desc' ]],
+    });
+
+    var $datatable = $('#datatable-checkbox');
+
+    $datatable.dataTable({
+        'order': [[ 1, 'asc' ]],
+        'columnDefs': [
+            { orderable: false, targets: [0] }
+        ]
+    });
+    $datatable.on('draw.dt', function() {
+        $('checkbox input').iCheck({
+            checkboxClass: 'icheckbox_flat-green'
+        });
+    });
+
+    TableManageButtons.init();
+
+};
+
 	   
 			/* CHART - MORRIS  */
 		

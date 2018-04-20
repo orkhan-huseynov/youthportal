@@ -55,6 +55,8 @@ class HomeController extends Controller
             $news_hightech = NewsRu::where('section_id', 6)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_world = NewsRu::where('section_id', 7)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_f1 = NewsRu::where('section_id', 10)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+
+            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
         } else {
             $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->get();
             $photogalleries = Photogallery::where('active', 1)->get();
@@ -74,9 +76,13 @@ class HomeController extends Controller
             $news_hightech = NewsAz::where('section_id', 6)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_world = NewsAz::where('section_id', 7)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
             $news_f1 = NewsAz::where('section_id', 10)->where('active', 1)->orderBy('activity_start', 'DESC')->take(4)->get();
+
+            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
         }
 
         $photos = Photogallery::where('active', 1)->orderBy('activity_start', 'dec')->take(4)->get();
+
+        $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
 
         return view('home', [
             'sections' => $sections,
@@ -96,6 +102,8 @@ class HomeController extends Controller
             'news_f1' => $news_f1,
 
             'photos' => $photos,
+
+            'video_of_day' => $video_of_day,
 
             'lang' => $lang,
         ]);
@@ -427,6 +435,14 @@ class HomeController extends Controller
         }
 
         return $paragraphs;
+    }
+
+    private function convertYoutube($string) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "<iframe width=\"2\" height=\"2\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>",
+            $string
+        );
     }
 
 }

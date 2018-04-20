@@ -378,7 +378,7 @@ body {
 
 .networks_card {
     width: 100px;
-    height: 160px;
+    height: 90px;
     margin-top: 15px;
 }
 
@@ -1203,4 +1203,8 @@ footer .footer_img_container {
 #newsArchiveCalendar {
     width: 225px;
     margin: 0 auto;
+}
+
+.video_description {
+    margin-top: 15px;
 }

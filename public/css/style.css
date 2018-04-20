@@ -1199,3 +1199,8 @@ footer .footer_img_container {
     padding-top: 13px !important;
     min-height: 42px;
 }
+
+#newsArchiveCalendar {
+    width: 225px;
+    margin: 0 auto;
+}

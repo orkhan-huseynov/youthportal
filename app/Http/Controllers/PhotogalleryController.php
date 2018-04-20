@@ -25,6 +25,8 @@ class PhotogalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $ribbon_news_count = 30;
+
     public function index($lang)
     {
         if($lang != 'ru' && $lang != 'az'){
@@ -33,17 +35,17 @@ class PhotogalleryController extends Controller
 
         $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
-            $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
-            $photogalleries = Photogallery::where('active', 1)->take(30)->get();
+            $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+            $photogalleries = Photogallery::where('active', 1)->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
-            });
+            })->take($this->ribbon_news_count);
         } else {
-            $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
-            $photogalleries = Photogallery::where('active', 1)->take(30)->get();
+            $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+            $photogalleries = Photogallery::where('active', 1)->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
-            });
+            })->take($this->ribbon_news_count);
         }
 
         $photogalleries = Photogallery::where('active', 1)->orderBy('activity_start', 'DESC')->get();
@@ -64,17 +66,17 @@ class PhotogalleryController extends Controller
 
         $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
-            $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
-            $photogalleries = Photogallery::where('active', 1)->take(30)->get();
+            $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+            $photogalleries = Photogallery::where('active', 1)->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
-            });
+            })->take($this->ribbon_news_count);
         } else {
-            $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->take(30)->get();
-            $photogalleries = Photogallery::where('active', 1)->take(30)->get();
+            $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+            $photogalleries = Photogallery::where('active', 1)->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
-            });
+            })->take($this->ribbon_news_count);
         }
 
         $photogallery = Photogallery::findOrFail($id);

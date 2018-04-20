@@ -25,6 +25,8 @@ Route::get('/search/{lang}/{ss}', 'SearchController@index');
 Route::get('/{lang}/video/', 'VideoController@index');
 Route::get('/{lang}/video_details/{id}', 'VideoController@details');
 
+Route::get('/{lang}/newsArchive/{timestamp}', 'SectionController@newsArchive');
+
 Auth::routes();
 
 Route::get('storage/images/{filename}', function ($filename)

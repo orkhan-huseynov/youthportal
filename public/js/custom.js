@@ -93,12 +93,25 @@ if (currencyUSD != null && currencyEUR != null && currencyGBP != null && currenc
     });
 }
 
+//news archive calendar
+$('#newsArchiveCalendar').datepicker({
+    format: "dd.mm.YYYY",
+    weekStart: 1,
+}).on('changeDate', function(e) {
+    let selectedDate = e.date;
+    let timestamp = selectedDate.getTime()/1000;
+
+    let url = `${baseURL}/${lang}/newsArchive/${timestamp}`;
+    window.location.href = url;
+});
+
 //service functions
 function getMetaContent(metaName) {
     let metas = document.getElementsByTagName('meta');
     let re = new RegExp('\\b' + metaName + '\\b', 'i');
     let i = 0;
     let mLength = metas.length;
+
 
     for (i; i < mLength; i++) {
         if (re.test(metas[i].getAttribute('name'))) {

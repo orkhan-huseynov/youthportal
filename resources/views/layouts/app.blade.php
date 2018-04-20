@@ -28,6 +28,9 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!-- datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.standalone.min.css" />
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -115,10 +118,17 @@
                                     @yield('news_ribbon')
                                     @yield('video_container')
                                     @yield('networks_container')
+
                                     <div class="row spot_container_second">
                                         <div class="col-sm-12 col-md-12">
+                                            {{--<div>--}}
+                                                {{--<a><p class="sport_text"><span class="sport_text_span">ОПРОС</span></p></a>--}}
+                                            {{--</div>--}}
                                             <div>
-                                                <a><p class="sport_text"><span class="sport_text_span">ОПРОС</span></p></a>
+                                                <a><p class="sport_text"><span class="sport_text_span">АРХИВ НОВОСТЕЙ</span></p></a>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 text-center">
+                                                <div id="newsArchiveCalendar"></div>
                                             </div>
                                             <div>
                                                 <a><p class="sport_text"><span class="sport_text_span">FACEBOOK</span></p></a>
@@ -165,7 +175,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://use.fontawesome.com/9aed91e10e.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.az.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.ru.min.js"></script>
         <script src="{{ asset('js/custom.js') }}"></script>
+
     </div>
 </body>
 </html>

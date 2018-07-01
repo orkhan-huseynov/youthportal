@@ -69,7 +69,7 @@
                                                     <div class="row">
                                                         <label class="control-label col-md-1 col-sm-1 col-xs-1" for="activity_start">From</label>
                                                         <div class="col-sm-6 xdisplay_inputx form-group has-feedback">
-                                                            <input id="newsCreateActivityStart" name="activity_start" type="text" class="form-control has-feedback-left single_cal2" value="{{ old('activity_start', $photogallery->activity_start->format('d.m.Y h:i')) }}">
+                                                            <input id="newsCreateActivityStart" name="activity_start" type="text" class="form-control has-feedback-left single_cal2" value="{{ old('activity_start', $photogallery->activity_start->format('d.m.Y H:i')) }}">
                                                             <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true">{{$errors->first('activity_start')}}</span>
                                                         </div>
                                                     </div>

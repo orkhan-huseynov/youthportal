@@ -4034,3 +4034,7 @@ th.dt-center, td.dt-center { text-align: center; }
 .dropdown {
   margin-top: 12px;
 }
+
+.section_select_button {
+  height: 32px;
+}

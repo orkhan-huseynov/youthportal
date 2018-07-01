@@ -66,7 +66,7 @@ if (currencyUSD != null && currencyEUR != null && currencyGBP != null && currenc
         mm = '0' + mm;
     }
 
-    let proxyUrl = `http://yp.huseynov.us/p.php`;
+    let proxyUrl = `http://youthportal.az/p.php`;
     let currencyAPIUrl = `https://www.cbar.az/currencies/${dd}.${mm}.${yyyy}.xml`;
     $.ajax({
         type: 'GET',

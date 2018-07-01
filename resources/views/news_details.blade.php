@@ -72,7 +72,7 @@
                     @if ($news_main->count() > 0)
                         <h6 class="h6_settings title_style">{{ $news_main->name }}</h6>
                         <img src="{{ url('storage/images/'.$news_main->photo )}}" class="news_details_image float-left" alt="news photo"/>
-                        <p class="life_style_time title_style">{{ $news_main->activity_start->format('d.m.Y H:i') }} // @if ($lang == 'az') {{ $news_main->section->name_az }} @else {{ $news_main->section->name_ru }} @endif</p>
+                        <p class="life_style_time title_style">{{ $news_main->activity_start->format('d.m.Y H:i') }} // @if ($lang == 'az') {{ ($news_main->section != null)? $news_main->section->name_az : '' }} @else {{ ($news_main->section != null)? $news_main->section->name_ru : '' }} @endif</p>
                         <div class="big_news_text title_style">{!! $news_details_text !!}</div>
                         <div class="news_images">
                             @if ($news_main->image_1 != '' && array_search(1, $replaced_images_arr) === false )
@@ -114,6 +114,11 @@
                                 </div>
                             </div>
                         @endif
+
+                        <div class="view_count">
+                            {{ ($lang == 'az')? 'Baxilib:' : 'Просмотрено:' }} {{ $news_main->view_count }}
+                        </div>
+
                         <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="recommend" data-size="small" data-show-faces="true" data-share="true"></div>
                     @endif
                 </div>
@@ -160,7 +165,7 @@
                         <a href="{{url($lang.'/photogallery_details/'.$news_item->id)}}" class="life_style_comments_container_text">
                             <p class="life_style_comments_container_text title_style">@if ($lang == 'az') {{ $news_item->name_az }} @else {{ $news_item->name_ru }} @endif</p>
                         </a>
-                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if ($lang == 'az') Foto @else Фото @endif</p>
+                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if ($lang == 'az') Foto @else Фото @endif</p>
                         <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                     </div>
                 @else
@@ -168,7 +173,7 @@
                         <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
                             <p class="life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
                         </a>
-                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif</p>
+                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if($lang == 'az') {{ ($news_item->section != null)? $news_item->section->name_az : '' }} @else {{ ($news_item->section != null)? $news_item->section->name_ru : '' }} @endif</p>
                         <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                     </div>
                 @endif

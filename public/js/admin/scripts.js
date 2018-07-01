@@ -296,12 +296,19 @@ if (newsEditForm != null) {
     });
 }
 
-let adminNewsSection = document.getElementById('adminNewsSection');
-if (adminNewsSection != null) {
-    adminNewsSection.addEventListener('change', function () {
-       window.location.href = `${baseURL}/admin/content-news/${lang}/${this.value}`;
-    });
-}
+// let adminNewsSection = document.getElementById('adminNewsSection');
+// if (adminNewsSection != null) {
+//     adminNewsSection.addEventListener('change', function () {
+//        window.location.href = `${baseURL}/admin/content-news/${lang}/${this.value}`;
+//     });
+//}
+
+// $('#adminNewsSection').change(function(){
+//     window.location.href = `${baseURL}/admin/content-news/${lang}/${$(this).val()}`;
+//});
+$('#adminSelectSectionButton').click(function() {
+    window.location.href = `${baseURL}/admin/content-news/${lang}/${$('#adminNewsSection').val()}`;
+});
 
 //ckeditor
 let texareas = document.querySelectorAll('.ckeditor');

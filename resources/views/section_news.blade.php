@@ -123,7 +123,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
                         <p class="life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
                     </a>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if($lang == 'az') {{ ($news_item->section != null)? $news_item->section->name_az : '' }} @else {{ ($news_item->section != null)? $news_item->section->name_ru : '' }} @endif</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach

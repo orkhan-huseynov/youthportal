@@ -5344,7 +5344,7 @@ function init_DataTables() {
 
     $('#datatable-fixed-header').DataTable({
         fixedHeader: true,
-        "order": [[ 4, 'desc' ]],
+        "order": [[ 0, 'desc' ]],
     });
 
     var $datatable = $('#datatable-checkbox');

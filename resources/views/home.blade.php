@@ -177,7 +177,7 @@
                         <img src="storage/images/{{$news_policy->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings_main title_style">{{$news_policy->first()->name}}</h6>
                         <p class="life_style_time">{{$news_policy->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>
-                        <p class="big_news_text title_style">{{$news_policy->first()->tagline}}</p>
+                        <p class="big_news_text title_style">{{ strip_tags($news_policy->first()->tagline) }}</p>
                     </a>
                 @endif
             </div>
@@ -236,7 +236,7 @@
                         <img src="storage/images/{{$news_sport->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings_main">{{$news_sport->first()->name}}</h6>
                         <p class="life_style_time">{{$news_sport->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>
-                        <p class="big_news_text">{{$news_sport->first()->tagline}}</p>
+                        <p class="big_news_text">{{ strip_tags($news_sport->first()->tagline) }}</p>
                     </a>
                 @endif
             </div>
@@ -295,7 +295,7 @@
                         <img src="storage/images/{{$news_education->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings_main">{{$news_education->first()->name}}</h6>
                         <p class="life_style_time">{{$news_education->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>
-                        <p class="big_news_text">{{$news_education->first()->tagline}}</p>
+                        <p class="big_news_text">{{ strip_tags($news_education->first()->tagline) }}</p>
                     </a>
                 @endif
             </div>
@@ -353,7 +353,7 @@
                         <img src="storage/images/{{$news_economy->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings_main">{{$news_economy->first()->name}}</h6>
                         <p class="life_style_time">{{$news_economy->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>
-                        <p class="big_news_text">{{$news_economy->first()->tagline}}</p>
+                        <p class="big_news_text">{{ strip_tags($news_economy->first()->tagline) }}</p>
                     </a>
                 @endif
             </div>
@@ -470,7 +470,7 @@
                         <img src="storage/images/{{$news_hightech->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings_main">{{$news_hightech->first()->name}}</h6>
                         <p class="life_style_time">{{$news_hightech->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>
-                        <p class="big_news_text">{{$news_hightech->first()->tagline}}</p>
+                        <p class="big_news_text">{{ strip_tags($news_hightech->first()->tagline) }}</p>
                     </a>
                 @endif
             </div>
@@ -529,7 +529,7 @@
                         <img src="storage/images/{{$news_world->first()->photo}}" alt="news photo"/>
                         <h6 class="h6_settings_main">{{$news_world->first()->name}}</h6>
                         <p class="life_style_time">{{$news_world->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>
-                        <p class="big_news_text">{{$news_world->first()->tagline}}</p>
+                        <p class="big_news_text">{{ strip_tags($news_world->first()->tagline) }}</p>
                     </a>
                 @endif
             </div>
@@ -703,7 +703,7 @@
                         <a href="{{url($lang.'/photogallery_details/'.$news_item->id)}}" class="life_style_comments_container_text">
                             <p class="life_style_comments_container_text title_style">@if ($lang == 'az') {{ $news_item->name_az }} @else {{ $news_item->name_ru }} @endif</p>
                         </a>
-                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if ($lang == 'az') Foto @else Фото @endif</p>
+                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if ($lang == 'az') Foto @else Фото @endif</p>
                         <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                     </div>
                 @else
@@ -711,7 +711,7 @@
                         <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
                             <p class="life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
                         </a>
-                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y h:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif</p>
+                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if($lang == 'az') {{ ($news_item->section != null)? $news_item->section->name_az : '' }} @else {{ ($news_item->section != null)? $news_item->section->name_ru : '' }} @endif</p>
                         <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                     </div>
                 @endif

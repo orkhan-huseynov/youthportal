@@ -20,13 +20,20 @@ class NewsDetailsController extends Controller
 
         $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
-            $news = NewsRu::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+            $news = NewsRu::where('active', 1)
+                            ->orderBy('activity_start', 'DESC')
+                            ->get();
             $photogalleries = Photogallery::where('active', 1)->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
             $news_main = NewsRu::findOrFail($id);
+
+            $news_to_increment = NewsRu::findOrFail($id);
+            $news_to_increment->view_count += 1;
+            $news_to_increment->save();
+
             $similar_news = NewsRu::where('active', 1)
                             ->where('section_id', $news_main->section_id)
                             ->inRandomOrder()
@@ -35,13 +42,20 @@ class NewsDetailsController extends Controller
 
             $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
         } else {
-            $news = NewsAz::where('active', 1)->orderBy('activity_start', 'DESC')->get();
+            $news = NewsAz::where('active', 1)
+                            ->orderBy('activity_start', 'DESC')
+                            ->get();
             $photogalleries = Photogallery::where('active', 1)->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
             $news_main = NewsAz::findOrFail($id);
+
+            $news_to_increment = NewsAz::findOrFail($id);
+            $news_to_increment->view_count += 1;
+            $news_to_increment->save();
+
             $similar_news = NewsAz::where('active', 1)
                             ->where('section_id', $news_main->section_id)
                             ->inRandomOrder()

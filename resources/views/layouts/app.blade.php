@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118578066-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-118578066-1');
+    </script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +18,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="base-url" content="{{ url('/') }}" />
-    <meta http-equiv="refresh" content="300">
+    <meta http-equiv="refresh" content="120">
 
     <!-- Facebook OG tags -->
     <meta property="og:url"           content="{{ Request::url() }}" />
@@ -20,10 +30,14 @@
         <meta property="og:title"         content="{{ strip_tags($news_main->name) }}" />
         <meta property="og:description"   content="{{ strip_tags($news_main->tagline) }}" />
         <meta property="og:image"         content="{{ url('/storage/images/'.$news_main->photo) }}" />
+
+        <meta name="keywords" content="{{ strip_tags($news_main->tags) }}" />
+        <meta name="description" content="{{ strip_tags($news_main->tagline) }}" />
+    @else
+        <meta name="description" content="Youth Portal {{ (($lang ?? '') == 'az') ? '– gənclərin saytıdır. Siz burda gənclərin həyata keçirdiyi layihələr, o cümlədən  Gənclər və İdman nazirliyinin dəstəyi ilə reallaşan layihələr ilə tanış ola bilərsiniz.' : '– молодежный сайт, где вы можете ознакомиться с проектами, реализуемыми в молодежной сфере, в том числе при поддержке Министерства молодежи и спорта Азербайджана.' }}" />
     @endif
 
-    <title>{{ ($news_main->name ?? '' != '')? $news_main->name . ' -' : '' }} Youth Portal {{ ($lang == 'az') ? '- Gənclər portalı' : '- Молодежный портал' }}</title>
-
+    <title>{{ ($news_main->name ?? '' != '')? $news_main->name . ' - ' : '' }}Youth Portal {{ (($lang ?? '') == 'az') ? '- Gənclər portalı' : '- Молодежный портал' }}</title>
 
     <!-- Styles -->
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet" />--}}
@@ -53,12 +67,12 @@
 <div id="app" class="container_wrapper">
     @yield('header')
     <div class="menu_wrapper">
-        <nav class="navbar navbar-expand navbar-light menu_container">
-            {{--<button class="navbar-toggler nav_btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">--}}
-            {{--<span class="navbar-toggler-icon nav_btn_span"></span>--}}
-            {{--</button>--}}
+        <nav class="navbar navbar-expand-md navbar-light menu_container">
+            <button class="navbar-toggler nav_btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon nav_btn_span"></span>
+            </button>
             @yield('main_menu')
-            <a class="login_button" target="_blank" href="{{ url('/admin') }}">@if ($lang == 'az') Sayta giriş @else Войти на сайт @endif</a>
+            <a class="login_button" target="_blank" href="{{ url('/admin') }}">@if (($lang ?? '') == 'az') Sayta giriş @else Войти на сайт @endif</a>
         </nav>
     </div>
     <div class="informers_block">
@@ -67,7 +81,7 @@
                 <div class="col-12 col-lg-2">
                     <div class="weatherContainer container-fluid">
                         <div class="row">
-                            <div class="col no-gutters">{{{ ($lang == 'az') ? 'Bakı' : 'Баку'}}}</div>
+                            <div class="col no-gutters">{{{ (($lang ?? '') == 'az') ? 'Bakı' : 'Баку'}}}</div>
                             <div class="col no-gutters" id="weatherImageContainer"></div>
                             <div class="col no-gutters" id="weatherTempContainer"></div>
                         </div>
@@ -151,10 +165,10 @@
                     </object>
                 </div>
                 <div class="ad">
-                    <a target="_blank" href="http://www.genclerpaytaxti.az"><img src="{{ asset('images/banners/genclerpaytaxti.png') }}" width="120"></a>
+                    <a target="_blank" href="http://www.genclerpaytaxti.az"><img alt="Gənclər Paytaxtı" src="{{ asset('images/banners/genclerpaytaxti.png') }}" width="120"></a>
                 </div>
                 <div class="ad">
-                    <a target="_blank" href="http://www.salto-youth.net/rc/eeca/eecacooperation/"><img src="{{ asset('images/banners/salto_youth.png') }}"></a>
+                    <a target="_blank" href="http://www.salto-youth.net/rc/eeca/eecacooperation/"><img alt="Salto Youth" src="{{ asset('images/banners/salto_youth.png') }}"></a>
                 </div>
                 {{--<div class="ad">--}}
                 {{--<a target="_blank" href="http://www.youthforum.org"><img src="{{ asset('images/banners/youthforum.org.png') }}"></a>--}}
@@ -163,7 +177,7 @@
                 {{--<a target="_blank" href="http://www.ec.europa.eu/youth/"><img src="{{ asset('images/banners/european_commision.gif') }}"></a>--}}
                 {{--</div>--}}
                 <div class="ad">
-                    <a target="_blank" href="http://www.tehsil.gov.az"><img src="{{ asset('images/banners/tehsil.gov.az.png') }}"></a>
+                    <a target="_blank" href="http://www.tehsil.gov.az"><img alt="Tehsil Nazirliyi" src="{{ asset('images/banners/tehsil.gov.az.png') }}"></a>
                 </div>
             </div>
         </div>
@@ -183,5 +197,25 @@
     <script src="{{ asset('js/custom.js') }}"></script>
 
 </div>
+<!--LiveInternet counter-->
+<script type="text/javascript">
+    new Image().src = "//counter.yadro.ru/hit?r"+
+        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+            ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+            screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+        ";h"+escape(document.title.substring(0,150))+
+        ";"+Math.random();
+</script>
+<!--/LiveInternet-->
+<!--Openstat-->
+<script type="text/javascript">
+    var openstat = { counter: 2175107, image: 5082, color: "c3c3c3", next: openstat, track_links: "all" };
+    (function(d, t, p) {
+        var j = d.createElement(t); j.async = true; j.type = "text/javascript";
+        j.src = ("https:" == p ? "https:" : "http:") + "//openstat.net/cnt.js";
+        var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
+    })(document, "script", document.location.protocol);
+</script>
+<!--/Openstat-->
 </body>
 </html>

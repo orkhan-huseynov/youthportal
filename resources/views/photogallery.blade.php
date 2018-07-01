@@ -6,14 +6,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
+                    <a class="main_logo" href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="search_container mr-auto">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col no-padding no-margin">
-                                    <form id="searchForm" action="{{ url('/search/'.$lang) }}" method="get">
+                                    <form id="searchForm" action="javascript:void(0);" method="get">
                                         <div class="input-group mb-3 search_btn">
                                             <input id="searchInput" name="ss" type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
@@ -46,9 +46,9 @@
                 <a class="nav-link" href="{{url('/'.$lang)}}"><p><span class="border_span">@if ($lang == 'az') Əsas @else Главная @endif <span class="sr-only">(current)</span></span></p></a>
             </li>
             @foreach($sections as $section)
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/'.$lang.'/section/'.$section->id)}}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
+                </li>
             @endforeach
             <li class="nav-item active">
                 <a class="nav-link" href="{{url('/'.$lang.'/photogallery/')}}"><p><span class="border_span">@if ($lang == 'az') Foto @else Фото @endif</span></p></a>
@@ -63,29 +63,29 @@
     <div class="container-fluid news_details_container">
         <div class="row">
             <div class="col-sm-12 col-md-12 life_style_big_news_container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 news_category_container hover_class">
-                            <a href="#"><p class="photogallery_name"><span class="news_category_span">@if($lang == 'az') Fotoqalereya @else Фотогалерея @endif </span></p></a>
-                        </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 news_category_container hover_class">
+                        <a href="#"><p class="photogallery_name"><span class="news_category_span">@if($lang == 'az') Fotoqalereya @else Фотогалерея @endif </span></p></a>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 popular_news_container">
-                                <div class="row">
-                                    @foreach ($photogalleries as $photogallery)
-                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 photogallery_container__inner">
-                                        <div class="photogallery_container__img photogallery_container_text">
-                                            <a href="{{url($lang.'/photogallery_details/'.$photogallery->id)}}">
-                                                <img src="{{url('storage/images/'.$photogallery->cover_photo_200)}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                            </a>
-                                            <a href="{{url($lang.'/photogallery_details/'.$photogallery->id)}}">
-                                                <h5 class="photogallery_text">@if($lang == 'az'){{$photogallery->name_az}} @else {{$photogallery->name_ru}} @endif </h5>
-                                            </a>
-                                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 popular_news_container">
+                        <div class="row">
+                            @foreach ($photogalleries as $photogallery)
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 photogallery_container__inner">
+                                    <div class="photogallery_container__img photogallery_container_text">
+                                        <a href="{{url($lang.'/photogallery_details/'.$photogallery->id)}}">
+                                            <img src="{{url('storage/images/'.$photogallery->cover_photo_200)}}" alt="album cover photo" class="photogallery_cover__img"/>
+                                        </a>
+                                        <a href="{{url($lang.'/photogallery_details/'.$photogallery->id)}}">
+                                            <h5 class="photogallery_text">@if($lang == 'az'){{$photogallery->name_az}} @else {{$photogallery->name_ru}} @endif </h5>
+                                        </a>
                                     </div>
-                                    @endforeach
                                 </div>
+                            @endforeach
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>

@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
+                    <a class="main_logo" href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="search_container mr-auto">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col no-padding no-margin">
-                                    <form id="searchForm" action="{{ url('/search/'.$lang) }}" method="get">
+                                    <form id="searchForm" action="javascript:void(0);" method="get">
                                         <div class="input-group mb-3 search_btn">
                                             <input id="searchInput" name="ss" type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">

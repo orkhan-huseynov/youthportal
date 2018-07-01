@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
+                    <a class="main_logo" href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="search_container mr-auto">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col no-padding no-margin">
-                                    <form id="searchForm" action="{{ url('/search/'.$lang) }}" method="get">
+                                    <form id="searchForm" action="javascript:void(0);" method="get">
                                         <div class="input-group mb-3 search_btn">
                                             <input id="searchInput" name="ss" type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
@@ -123,7 +123,7 @@
                     <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
                         <p class="life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
                     </a>
-                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if($lang == 'az') {{$news_item->section->name_az}} @else {{$news_item->section->name_ru}} @endif</p>
+                    <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if($lang == 'az') {{ ($news_item->section != null)? $news_item->section->name_az : '' }} @else {{ ($news_item->section != null)? $news_item->section->name_ru : '' }} @endif</p>
                     <div class="line_p_margin_3"><p class="line_p_2"></p></div>
                 </div>
             @endforeach

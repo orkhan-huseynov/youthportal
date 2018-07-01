@@ -4,78 +4,78 @@
 
 @section('content')
 
-<!-- page content -->
-<div class="right_col" role="main">
-    <div class="">
-        <div class="page-title">
-            <div class="title_left">
-                <h3>
-                    Structure Sections
-                </h3>
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>
+                        Structure Sections
+                    </h3>
+                </div>
+
+                <div class="title_right">
+                </div>
             </div>
+            <div class="clearfix"></div>
 
-            <div class="title_right">
-            </div>
-        </div>
-        <div class="clearfix"></div>
+            <div class="row">
 
-        <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Edit Section</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left" action="{{url('admin/structure-sections/'.$section->id)}}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                                <div class="item form-group {{$errors->has('name_ru')?'has-error':''}}">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name_ru">Name RU<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="name_ru" class="form-control col-md-7 col-xs-12" minlength="3" name="name_ru" required type="text" value="{{old('name_ru', $section->name_ru)}}" />
+                                        <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name_ru')}}</span>
+                                    </div>
+                                </div>
+                                <div class="item form-group {{$errors->has('name_az')?'has-error':''}}">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name_az">Name AZ<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="name_az" class="form-control col-md-7 col-xs-12" minlength="3" name="name_az" required type="text" value="{{old('name_az', $section->name_az)}}" />
+                                        <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name_az')}}</span>
+                                    </div>
+                                </div>
+                                <div class="item form-group {{$errors->has('position')?'has-error':''}}">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="position">Position<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="position" class="form-control col-md-7 col-xs-12" minlength="3" name="position" required type="number" value="{{old('position', $section->position)}}" />
+                                        <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('position')}}</span>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label for="published" class="control-label col-md-2 col-sm-2 col-xs-12">Published</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 checkbox_container">
+                                        <input id="published" type="checkbox" name="published" class="js-switch form-control" {{(old('published', $section->published) == 1)?'checked':''}} />
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-4 col-md-offset-1">
+                                        <a href="{{url('admin/structure-sections')}}" class="btn btn-primary">Cancel</a>
+                                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
 
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Edit Section</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <form class="form-horizontal form-label-left" action="{{url('admin/structure-sections/'.$section->id)}}" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('PUT') }}
-                            <div class="item form-group {{$errors->has('name_ru')?'has-error':''}}">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name_ru">Name RU<span class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="name_ru" class="form-control col-md-7 col-xs-12" minlength="3" name="name_ru" required type="text" value="{{old('name_ru', $section->name_ru)}}" />
-                                    <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name_ru')}}</span>
-                                </div>
-                            </div>
-                            <div class="item form-group {{$errors->has('name_az')?'has-error':''}}">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name_az">Name AZ<span class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="name_az" class="form-control col-md-7 col-xs-12" minlength="3" name="name_az" required type="text" value="{{old('name_az', $section->name_az)}}" />
-                                    <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('name_az')}}</span>
-                                </div>
-                            </div>
-                            <div class="item form-group {{$errors->has('position')?'has-error':''}}">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="position">Position<span class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="position" class="form-control col-md-7 col-xs-12" minlength="3" name="position" required type="number" value="{{old('position', $section->position)}}" />
-                                    <span class="col-md-5 col-xs-2 text-danger">{{$errors->first('position')}}</span>
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label for="published" class="control-label col-md-2 col-sm-2 col-xs-12">Published</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12 checkbox_container">
-                                    <input id="published" type="checkbox" name="published" class="js-switch form-control" {{(old('published', $section->published) == 1)?'checked':''}} />
-                                </div>
-                            </div>
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-4 col-md-offset-1">
-                                    <a href="{{url('admin/structure-sections')}}" class="btn btn-primary">Cancel</a>
-                                    <button id="send" type="submit" class="btn btn-success">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- /page content -->
+    <!-- /page content -->
 
 @endsection

@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <a href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
+                    <a class="main_logo" href="{{ url('/'.$lang) }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="search_container mr-auto">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col no-padding no-margin">
-                                    <form id="searchForm" action="{{ url('/search/'.$lang) }}" method="get">
+                                    <form id="searchForm" action="javascript:void(0);" method="get">
                                         <div class="input-group mb-3 search_btn">
                                             <input id="searchInput" name="ss" type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
@@ -46,9 +46,9 @@
             </li>
             @foreach($sections as $section)
                 @if ($section->id == $news_main->first()->section_id)
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/'.$lang.'/section/'.$section->id) }}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url('/'.$lang.'/section/'.$section->id) }}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
+                    </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/'.$lang.'/section/'.$section->id) }}"><p><span class="border_span">@if ($lang == 'az'){{ $section->name_az }}@else{{ $section->name_ru }}@endif</span></p></a>
@@ -70,41 +70,93 @@
             <div class="col-sm-12 col-md-12 life_style_big_news_container">
                 <div class="big_news_container__inner">
                     @if ($news_main->count() > 0)
-                        <h6 class="h6_settings title_style">{{ $news_main->name }}</h6>
-                        <img src="{{ url('storage/images/'.$news_main->photo )}}" class="news_details_image float-left" alt="news photo"/>
+                        <h1 class="h6_settings title_style">{{ $news_main->name }}</h1>
+                        @if ($news_main->photo != '')
+                            <img src="{{ url('storage/images/'.$news_main->photo )}}" class="news_details_image float-left" alt="news photo"/>
+                        @endif
                         <p class="life_style_time title_style">{{ $news_main->activity_start->format('d.m.Y H:i') }} // @if ($lang == 'az') {{ ($news_main->section != null)? $news_main->section->name_az : '' }} @else {{ ($news_main->section != null)? $news_main->section->name_ru : '' }} @endif</p>
-                        <div class="big_news_text title_style">{!! $news_details_text !!}</div>
+                        <div class="big_news_text title_style news_details_text">{!! $news_details_text !!}</div>
                         <div class="news_images">
                             @if ($news_main->image_1 != '' && array_search(1, $replaced_images_arr) === false )
                                 <img src="{{ url('storage/images/'.$news_main->image_1) }}" alt="news photo"/>
+                                @if ($news_main->image_1_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_1_caption }}</p>
+                                    </div>
+                                @endif
                             @endif
                             @if ($news_main->image_2 != '' && array_search(2, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_2) }}" alt="news photo"/>
+                                <img src="{{ url('storage/images/'.$news_main->image_2) }}" alt="news photo"/>
+                                @if ($news_main->image_2_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_2_caption }}</p>
+                                    </div>
                                 @endif
-                                @if ($news_main->image_3 != '' && array_search(3, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_3) }}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->image_3 != '' && array_search(3, $replaced_images_arr) === false)
+                                <img src="{{ url('storage/images/'.$news_main->image_3) }}" alt="news photo"/>
+                                @if ($news_main->image_3_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_3_caption }}</p>
+                                    </div>
                                 @endif
-                                @if ($news_main->image_4 != '' && array_search(4, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_4) }}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->image_4 != '' && array_search(4, $replaced_images_arr) === false)
+                                <img src="{{ url('storage/images/'.$news_main->image_4) }}" alt="news photo"/>
+                                @if ($news_main->image_4_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_4_caption }}</p>
+                                    </div>
                                 @endif
-                                @if ($news_main->image_5 != '' && array_search(5, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_5) }}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->image_5 != '' && array_search(5, $replaced_images_arr) === false)
+                                <img src="{{ url('storage/images/'.$news_main->image_5) }}" alt="news photo"/>
+                                @if ($news_main->image_5_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_5_caption }}</p>
+                                    </div>
                                 @endif
-                                @if ($news_main->image_6 != '' && array_search(6, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_6) }}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->image_6 != '' && array_search(6, $replaced_images_arr) === false)
+                                <img src="{{ url('storage/images/'.$news_main->image_6) }}" alt="news photo"/>
+                                @if ($news_main->image_6_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_6_caption }}</p>
+                                    </div>
                                 @endif
-                                @if ($news_main->image_7 != '' && array_search(7, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_7) }}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->image_7 != '' && array_search(7, $replaced_images_arr) === false)
+                                <img src="{{ url('storage/images/'.$news_main->image_7) }}" alt="news photo"/>
+                                @if ($news_main->image_7_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_7_caption }}</p>
+                                    </div>
                                 @endif
-                                @if ($news_main->image_8 != '' && array_search(8, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_8) }}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->image_8 != '' && array_search(8, $replaced_images_arr) === false)
+                                <img src="{{ url('storage/images/'.$news_main->image_8) }}" alt="news photo"/>
+                                @if ($news_main->image_8_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_8_caption }}</p>
+                                    </div>
                                 @endif
-                                @if ($news_main->image_9 != '' && array_search(9, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_9) }}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->image_9 != '' && array_search(9, $replaced_images_arr) === false)
+                                <img src="{{ url('storage/images/'.$news_main->image_9) }}" alt="news photo"/>
+                                @if ($news_main->image_9_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_9_caption }}</p>
+                                    </div>
                                 @endif
-                                @if ($news_main->image_10 != '' && array_search(10, $replaced_images_arr) === false)
-                                    <img src="{{ url('storage/images/'.$news_main->image_10) }}" alt="news photo"/>
+                            @endif
+                            @if ($news_main->image_10 != '' && array_search(10, $replaced_images_arr) === false)
+                                <img src="{{ url('storage/images/'.$news_main->image_10) }}" alt="news photo"/>
+                                @if ($news_main->image_10_caption != '')
+                                    <div class="photo_caption_container">
+                                        <p>{{ $news_main->image_10_caption }}</p>
+                                    </div>
                                 @endif
+                            @endif
                         </div>
                         <div class="clearfix"></div>
                         @if ($video_url != '')
@@ -116,10 +168,12 @@
                         @endif
 
                         <div class="view_count">
-                            {{ ($lang == 'az')? 'Baxilib:' : 'Просмотрено:' }} {{ $news_main->view_count }}
+                            @auth
+                                {{ ($lang == 'az')? 'Baxilib:' : 'Просмотрено:' }} {{ $news_main->view_count }}
+                            @endauth
                         </div>
 
-                        <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="recommend" data-size="small" data-show-faces="true" data-share="true"></div>
+                        <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="recommend" data-width="345" data-size="small" data-show-faces="true" data-share="true"></div>
                     @endif
                 </div>
             </div>
@@ -137,9 +191,11 @@
                     @foreach ($similar_news as $similar_news_item)
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 photogallery_container__inner">
                             <div class="photogallery_container__img photogallery_container_text">
-                                <a href="{{url($lang.'/news_details/'.$similar_news_item->id)}}">
-                                    <img src="{{url('storage/images/'.$similar_news_item->photo)}}" alt="album cover photo" class="photogallery_cover__img"/>
-                                </a>
+                                @if ($similar_news_item->photo != '')
+                                    <a href="{{url($lang.'/news_details/'.$similar_news_item->id)}}">
+                                        <img src="{{ url('storage/images/'.$similar_news_item->photo) }}" alt="album cover photo" class="photogallery_cover__img"/>
+                                    </a>
+                                @endif
                                 <a href="{{ url($lang.'/news_details/'.$similar_news_item->id) }}">
                                     <h5 class="photogallery_text">{{ $similar_news_item->name }}</h5>
                                 </a>

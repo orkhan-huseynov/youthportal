@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <a href="{{ url('/'.$lang) }}"><img src="{{ url('images/logo.png') }}" alt="logo" class="logo_img"/></a>
+                    <a class="main_logo" href="{{ url('/'.$lang) }}"><img src="{{ url('images/logo.png') }}" alt="logo" class="logo_img"/></a>
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="search_container mr-auto">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col no-padding no-margin">
-                                    <form id="searchForm" action="{{ url('/search/'.$lang) }}" method="get">
+                                    <form id="searchForm" action="javascript:void(0);" method="get">
                                         <div class="input-group mb-3 search_btn">
                                             <input id="searchInput" name="ss" type="search" class="form-control" placeholder="@if ($lang == 'az') axtar @else поиск @endif" aria-label="search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
@@ -68,8 +68,8 @@
                             <div class="card text-white news_card_container news_card_container_margin">
                                 <img class="card-img" src="storage/images/{{$very_actual->photo}}" alt="Card image">
                                 <div class="card-img-overlay news_card_overlay">
-                                    <h5 class="card-title title_text">{{ \Illuminate\Support\Str::words($very_actual->name, 100) }}</h5>
-                                    <!-- <p class="card-text main_text">{{$very_actual->tagline}}</p> -->
+                                    <h1 class="card-title title_text">{{ \Illuminate\Support\Str::words($very_actual->name, 100) }}</h1>
+                                <!-- <p class="card-text main_text">{{$very_actual->tagline}}</p> -->
                                 </div>
                             </div>
                         </a>
@@ -82,7 +82,7 @@
                                 <a href="{{url($lang.'/news_details/'.$actual->id)}}">
                                     <img class="card-img" src="storage/images/{{$actual->photo}}" alt="Card image">
                                     <div class="card-img-overlay card_overlay_little">
-                                        <h6 class="card-title title_text">{{ \Illuminate\Support\Str::words($actual->name, 100) }}</h6>
+                                        <h2 class="card-title title_text">{{ \Illuminate\Support\Str::words($actual->name, 100) }}</h2>
                                     </div>
                                 </a>
                             </div>
@@ -183,16 +183,16 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-6 hot_news_container life_style_little_news_container">
-                @php
-                    $i = 0;
-                @endphp
+            @php
+                $i = 0;
+            @endphp
             @foreach ($news_policy as $policy)
-                    @php
-                        $i++;
-                    @endphp
+                @php
+                    $i++;
+                @endphp
                 @if ($i == 1)
                     @continue
-                    @endif
+                @endif
                 <div class="row policy_news">
                     <div class="col-md-12 col-lg-6">
                         <div class="popular_news_container__img">
@@ -396,61 +396,61 @@
     </div>
     {{-- show buisness/ culture --}}
     {{--<div class="row new_category_row hover_class">--}}
-        {{--<div class="col-sm-12 col-md-12 news_category_container life_style_container">--}}
-            {{--<p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Культура @else Mədəniyyət @endif </span></a></p>--}}
-            {{--<div class="chevron_right_left_div">--}}
-                {{--<a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>--}}
-                {{--<a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+    {{--<div class="col-sm-12 col-md-12 news_category_container life_style_container">--}}
+    {{--<p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Культура @else Mədəniyyət @endif </span></a></p>--}}
+    {{--<div class="chevron_right_left_div">--}}
+    {{--<a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>--}}
+    {{--<a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
     {{--</div>--}}
     {{--<div class="row life_style_main">--}}
-        {{--<div class="col-sm-12 col-md-6 life_style_big_news_container">--}}
-            {{--<div class="big_news_container__inner">--}}
-                {{--@if ($news_culture->count() > 0)--}}
-                    {{--<a href="{{url($lang.'/news_details/'.$news_culture->first()->id)}}">--}}
-                        {{--<img src="storage/images/{{$news_culture->first()->photo}}" alt="news photo"/>--}}
-                        {{--<h6 class="h6_settings_main">{{$news_culture->first()->name}}</h6>--}}
-                        {{--<p class="life_style_time">{{$news_culture->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>--}}
-                        {{--<p class="big_news_text">{{$news_culture->first()->tagline}}</p>--}}
-                    {{--</a>--}}
-                {{--@endif--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="col-sm-12 col-md-6 hot_news_container life_style_little_news_container">--}}
-            {{--@php--}}
-                {{--$i = 0;--}}
-            {{--@endphp--}}
-            {{--@foreach ($news_culture as $culture)--}}
-                {{--@php--}}
-                    {{--$i++;--}}
-                {{--@endphp--}}
-                {{--@if($i == 1)--}}
-                    {{--@continue;--}}
-                {{--@endif--}}
-                {{--<div class="row">--}}
-                    {{--<div class="col-md-12 col-lg-6">--}}
-                        {{--<div class="popular_news_container__img">--}}
-                            {{--<a href="{{url($lang.'/news_details/'.$culture->id)}}">--}}
-                                {{--<img src="storage/images/{{$culture->photo_150}}" alt="news photo"/>--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-md-12 col-lg-6 hot_news_container_second">--}}
-                        {{--<div class="popular_news_container_second__text">--}}
-                            {{--<p class="popular_news_time">{{$culture->activity_start->format('d.m.Y H:i')}}</p>--}}
-                            {{--<h6>{{ \Illuminate\Support\Str::words($culture->name, 7) }}</h6>--}}
-                            {{--<p></p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="row for_line">--}}
-                    {{--<div class="col-sm-12 col-md-12">--}}
-                        {{--<div class="line_p_margin_2"><p class="line_p_2"></p></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--@endforeach--}}
-        {{--</div>--}}
+    {{--<div class="col-sm-12 col-md-6 life_style_big_news_container">--}}
+    {{--<div class="big_news_container__inner">--}}
+    {{--@if ($news_culture->count() > 0)--}}
+    {{--<a href="{{url($lang.'/news_details/'.$news_culture->first()->id)}}">--}}
+    {{--<img src="storage/images/{{$news_culture->first()->photo}}" alt="news photo"/>--}}
+    {{--<h6 class="h6_settings_main">{{$news_culture->first()->name}}</h6>--}}
+    {{--<p class="life_style_time">{{$news_culture->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>--}}
+    {{--<p class="big_news_text">{{$news_culture->first()->tagline}}</p>--}}
+    {{--</a>--}}
+    {{--@endif--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="col-sm-12 col-md-6 hot_news_container life_style_little_news_container">--}}
+    {{--@php--}}
+    {{--$i = 0;--}}
+    {{--@endphp--}}
+    {{--@foreach ($news_culture as $culture)--}}
+    {{--@php--}}
+    {{--$i++;--}}
+    {{--@endphp--}}
+    {{--@if($i == 1)--}}
+    {{--@continue;--}}
+    {{--@endif--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-md-12 col-lg-6">--}}
+    {{--<div class="popular_news_container__img">--}}
+    {{--<a href="{{url($lang.'/news_details/'.$culture->id)}}">--}}
+    {{--<img src="storage/images/{{$culture->photo_150}}" alt="news photo"/>--}}
+    {{--</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="col-md-12 col-lg-6 hot_news_container_second">--}}
+    {{--<div class="popular_news_container_second__text">--}}
+    {{--<p class="popular_news_time">{{$culture->activity_start->format('d.m.Y H:i')}}</p>--}}
+    {{--<h6>{{ \Illuminate\Support\Str::words($culture->name, 7) }}</h6>--}}
+    {{--<p></p>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="row for_line">--}}
+    {{--<div class="col-sm-12 col-md-12">--}}
+    {{--<div class="line_p_margin_2"><p class="line_p_2"></p></div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--@endforeach--}}
+    {{--</div>--}}
     {{--</div>--}}
     {{-- cinemania/ hightech --}}
     <div class="row new_category_row hover_class">
@@ -647,7 +647,7 @@
                         <img src="storage/images/{{$photos->first()->cover_photo}}" alt="news photo"/>
                         <h6 class="h6_settings_main">{{{ ($lang == 'az')? $photos->first()->name_az : $photos->first()->name_ru }}}</h6>
                         <p class="life_style_time">{{$photos->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'az')? 'Foto' : 'Фото' }}}</p>
-                        {{--<p class="big_news_text">{{$news_world->first()->tagline}}</p>--}}
+                    {{--<p class="big_news_text">{{$news_world->first()->tagline}}</p>--}}
                 @endif
             </div>
         </div>

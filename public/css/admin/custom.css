@@ -1,15 +1,15 @@
 .daterangepicker .ranges li {
   color: #73879C; }
-  .daterangepicker .ranges li.active, .daterangepicker .ranges li:hover {
-    background: #536A7F;
-    border: 1px solid #536A7F;
-    color: #fff; }
+.daterangepicker .ranges li.active, .daterangepicker .ranges li:hover {
+  background: #536A7F;
+  border: 1px solid #536A7F;
+  color: #fff; }
 .daterangepicker .input-mini {
   background-color: #eee;
   border: 1px solid #ccc;
   box-shadow: none !important; }
-  .daterangepicker .input-mini.active {
-    border: 1px solid #ccc; }
+.daterangepicker .input-mini.active {
+  border: 1px solid #ccc; }
 .daterangepicker select.monthselect, .daterangepicker select.yearselect, .daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.secondselect, .daterangepicker select.ampmselect {
   font-size: 12px;
   padding: 1px;
@@ -35,27 +35,27 @@
   content: none; }
 .daterangepicker .calendar.single {
   margin: 0 0 4px 0; }
-  .daterangepicker .calendar.single .calendar-table {
-    width: 224px;
-    padding: 0 0 4px 0 !important; }
-    .daterangepicker .calendar.single .calendar-table thead tr:first-child th {
-      padding: 8px 5px; }
-    .daterangepicker .calendar.single .calendar-table thead th {
-      border-radius: 0; }
+.daterangepicker .calendar.single .calendar-table {
+  width: 224px;
+  padding: 0 0 4px 0 !important; }
+.daterangepicker .calendar.single .calendar-table thead tr:first-child th {
+  padding: 8px 5px; }
+.daterangepicker .calendar.single .calendar-table thead th {
+  border-radius: 0; }
 .daterangepicker.picker_1 {
   color: #fff;
   background: #34495E; }
-  .daterangepicker.picker_1 .calendar-table {
-    background: #34495E; }
-    .daterangepicker.picker_1 .calendar-table thead tr {
-      background: #213345; }
-    .daterangepicker.picker_1 .calendar-table thead tr:first-child {
-      background: #1ABB9C; }
-    .daterangepicker.picker_1 .calendar-table td.off {
-      background: #34495E;
-      color: #999; }
-    .daterangepicker.picker_1 .calendar-table td.available:hover {
-      color: #34495E; }
+.daterangepicker.picker_1 .calendar-table {
+  background: #34495E; }
+.daterangepicker.picker_1 .calendar-table thead tr {
+  background: #213345; }
+.daterangepicker.picker_1 .calendar-table thead tr:first-child {
+  background: #1ABB9C; }
+.daterangepicker.picker_1 .calendar-table td.off {
+  background: #34495E;
+  color: #999; }
+.daterangepicker.picker_1 .calendar-table td.available:hover {
+  color: #34495E; }
 .daterangepicker.picker_2 .calendar-table thead tr {
   color: #1ABB9C; }
 .daterangepicker.picker_2 .calendar-table thead tr:first-child {
@@ -82,10 +82,10 @@
   margin-bottom: 20px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   overflow: hidden; }
-  .calendar-exibit .show-calendar .calendar {
-    margin: 0 0 4px 0; }
-  .calendar-exibit .show-calendar.picker_1 {
-    background: #34495E; }
+.calendar-exibit .show-calendar .calendar {
+  margin: 0 0 4px 0; }
+.calendar-exibit .show-calendar.picker_1 {
+  background: #34495E; }
 .calendar-exibit .calendar-table {
   padding: 0 0 4px 0; }
 
@@ -3999,18 +3999,18 @@ th.dt-center, td.dt-center { text-align: center; }
 }
 
 .tab-content {
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding-top: 10px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding-top: 10px;
 }
 
 .form-buttons {
-    margin: 10px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 .tabs-container {
-    margin: 0 0 10px 0;
+  margin: 0 0 10px 0;
 }
 
 .to_left {

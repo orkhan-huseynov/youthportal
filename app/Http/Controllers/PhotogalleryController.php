@@ -37,37 +37,45 @@ class PhotogalleryController extends Controller
         $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
             $news = NewsRu::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->orderBy('activity_start', 'DESC')
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->get();
             $photogalleries = Photogallery::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
-            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsRu::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         } else {
             $news = NewsAz::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->orderBy('activity_start', 'DESC')
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->get();
             $photogalleries = Photogallery::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
-            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsAz::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         }
 
         $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
         $photogalleries = Photogallery::where('active', 1)
-                            ->where('activity_start', '<=', Carbon::now())
-                            ->orderBy('activity_start', 'DESC')
-                            ->get();
+            ->where('activity_start', '<=', Carbon::now())
+            ->orderBy('activity_start', 'DESC')
+            ->get();
 
         return view('photogallery', [
             'lang' => $lang,
@@ -88,37 +96,45 @@ class PhotogalleryController extends Controller
         $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
             $news = NewsRu::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->orderBy('activity_start', 'DESC')
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->get();
             $photogalleries = Photogallery::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
-            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsRu::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         } else {
             $news = NewsAz::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->orderBy('activity_start', 'DESC')
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->get();
             $photogalleries = Photogallery::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
-            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsAz::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         }
 
         $photogallery = Photogallery::findOrFail($id);
         $photogalleries = Photogallery::where('active', 1)
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->orderBy('activity_start', 'DESC')
-                        ->get();
+            ->where('activity_start', '<=', Carbon::now())
+            ->orderBy('activity_start', 'DESC')
+            ->get();
 
         $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
 

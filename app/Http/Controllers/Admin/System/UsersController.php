@@ -57,7 +57,7 @@ class UsersController extends Controller
             'password2' => 'required|min:6|same:password'
         ];
         $this->validate($request, $rules);
-        
+
         $user = new User;
         $user->email = $request->email;
         $user->group_id = $request->group;
@@ -65,7 +65,7 @@ class UsersController extends Controller
         $user->gender = $request->gender;
         $user->password = bcrypt($request->password);
         $user->save();
-        
+
         return redirect('admin/system-users');
     }
 
@@ -88,12 +88,12 @@ class UsersController extends Controller
     public function edit($id) {
         $user = User::findOrFail($id);
         $groups = Group::all();
-        
+
         $data_array = [
             'user' => $user,
             'groups' => $groups
         ];
-        
+
         return view('admin.system.system_users_edit', $data_array);
     }
 
@@ -112,19 +112,19 @@ class UsersController extends Controller
             'gender' => 'required|min:4|max:6', //male of female
         ];
         $this->validate($request, $rules);
-        
+
         $user = User::findOrFail($id);
         $user->email = $request->email;
         $user->group_id = $request->group;
         $user->name = $request->name;
         $user->gender = $request->gender;
         $user->active = ($request->active == 'on');
-        
+
         if($request->password !== '') {
             $user->password = bcrypt($request->password);
         }
         $user->save();
-        
+
         return redirect('admin/system-users');
     }
 

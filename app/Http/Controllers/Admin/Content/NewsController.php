@@ -113,93 +113,103 @@ class NewsController extends Controller
         }
 
         if ($request->hasFile('image_1')) {
-            $filename_image_1 = time() . '.' . $request->image_1->getClientOriginalExtension();
+            $filename_image_1 = time() . '_1' . '.' . $request->image_1->getClientOriginalExtension();
             $path_image_1 = storage_path('/app/public/images/'.$filename_image_1);
             Image::make($request->image_1->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_1);
             $news->image_1 = $filename_image_1;
+            $news->image_1_caption = $request->image_1_caption;
         }
 
         if ($request->hasFile('image_2')) {
-            $filename_image_2 = time() . '.' . $request->image_2->getClientOriginalExtension();
+            $filename_image_2 = time() . '_2' . '.' . $request->image_2->getClientOriginalExtension();
             $path_image_2 = storage_path('/app/public/images/'.$filename_image_2);
             Image::make($request->image_2->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_2);
             $news->image_2 = $filename_image_2;
+            $news->image_2_caption = $request->image_2_caption;
         }
 
         if ($request->hasFile('image_3')) {
-            $filename_image_3 = time() . '.' . $request->image_3->getClientOriginalExtension();
+            $filename_image_3 = time() . '_3' . '.' . $request->image_3->getClientOriginalExtension();
             $path_image_3 = storage_path('/app/public/images/'.$filename_image_3);
             Image::make($request->image_3->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_3);
             $news->image_3 = $filename_image_3;
+            $news->image_3_caption = $request->image_3_caption;
         }
 
         if ($request->hasFile('image_4')) {
-            $filename_image_4 = time() . '.' . $request->image_4->getClientOriginalExtension();
+            $filename_image_4 = time() . '_4' . '.' . $request->image_4->getClientOriginalExtension();
             $path_image_4 = storage_path('/app/public/images/'.$filename_image_4);
             Image::make($request->image_4->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_4);
             $news->image_4 = $filename_image_4;
+            $news->image_4_caption = $request->image_4_caption;
         }
 
         if ($request->hasFile('image_5')) {
-            $filename_image_5 = time() . '.' . $request->image_5->getClientOriginalExtension();
+            $filename_image_5 = time() . '_5' . '.' . $request->image_5->getClientOriginalExtension();
             $path_image_5 = storage_path('/app/public/images/'.$filename_image_5);
             Image::make($request->image_5->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_5);
             $news->image_5 = $filename_image_5;
+            $news->image_5_caption = $request->image_5_caption;
         }
 
         if ($request->hasFile('image_6')) {
-            $filename_image_6 = time() . '.' . $request->image_6->getClientOriginalExtension();
+            $filename_image_6 = time() . '_6' . '.' . $request->image_6->getClientOriginalExtension();
             $path_image_6 = storage_path('/app/public/images/'.$filename_image_6);
             Image::make($request->image_6->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_6);
             $news->image_6 = $filename_image_6;
+            $news->image_6_caption = $request->image_6_caption;
         }
 
         if ($request->hasFile('image_7')) {
-            $filename_image_7 = time() . '.' . $request->image_7->getClientOriginalExtension();
+            $filename_image_7 = time() . '_7' . '.' . $request->image_7->getClientOriginalExtension();
             $path_image_7 = storage_path('/app/public/images/'.$filename_image_7);
             Image::make($request->image_7->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_7);
             $news->image_7 = $filename_image_7;
+            $news->image_7_caption = $request->image_7_caption;
         }
 
         if ($request->hasFile('image_8')) {
-            $filename_image_8 = time() . '.' . $request->image_8->getClientOriginalExtension();
+            $filename_image_8 = time() . '_8' . '.' . $request->image_8->getClientOriginalExtension();
             $path_image_8 = storage_path('/app/public/images/'.$filename_image_8);
             Image::make($request->image_8->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_8);
             $news->image_8 = $filename_image_8;
+            $news->image_8_caption = $request->image_8_caption;
         }
 
         if ($request->hasFile('image_9')) {
-            $filename_image_9 = time() . '.' . $request->image_9->getClientOriginalExtension();
+            $filename_image_9 = time() . '_9' . '.' . $request->image_9->getClientOriginalExtension();
             $path_image_9 = storage_path('/app/public/images/'.$filename_image_9);
             Image::make($request->image_9->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_9);
             $news->image_9 = $filename_image_9;
+            $news->image_9_caption = $request->image_9_caption;
         }
 
         if ($request->hasFile('image_10')) {
-            $filename_image_10 = time() . '.' . $request->image_10->getClientOriginalExtension();
+            $filename_image_10 = time() . '_10' . '.' . $request->image_10->getClientOriginalExtension();
             $path_image_10 = storage_path('/app/public/images/'.$filename_image_10);
             Image::make($request->image_10->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_10);
             $news->image_10 = $filename_image_10;
+            $news->image_10_caption = $request->image_10_caption;
         }
 
         $news->section_id = $request->section;
@@ -216,6 +226,7 @@ class NewsController extends Controller
         $news->very_important = ($request->very_important == 'on');
         $news->popular = ($request->popular == 'on');
         $news->video_of_day = ($request->video_of_day == 'on');
+        $news->tags = $request->tags;
         $news->save();
 
         return redirect('admin/content-news/'.$lang);
@@ -253,8 +264,8 @@ class NewsController extends Controller
         $sections = Section::all();
 
         return view('admin.content.content_news_edit', [
-           'lang' => $lang,
-           'news' => $news,
+            'lang' => $lang,
+            'news' => $news,
             'sections' => $sections,
         ]);
     }
@@ -304,7 +315,7 @@ class NewsController extends Controller
         }
 
         if ($request->hasFile('image_1')) {
-            $filename_image_1 = time() . '.' . $request->image_1->getClientOriginalExtension();
+            $filename_image_1 = time() . '_1' . '.' . $request->image_1->getClientOriginalExtension();
             $path_image_1 = storage_path('/app/public/images/'.$filename_image_1);
             Image::make($request->image_1->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -312,8 +323,12 @@ class NewsController extends Controller
             $news->image_1 = $filename_image_1;
         }
 
+        if ($request->has('image_1_caption')) {
+            $news->image_1_caption = $request->image_1_caption;
+        }
+
         if ($request->hasFile('image_2')) {
-            $filename_image_2 = time() . '.' . $request->image_2->getClientOriginalExtension();
+            $filename_image_2 = time() . '_2' . '.' . $request->image_2->getClientOriginalExtension();
             $path_image_2 = storage_path('/app/public/images/'.$filename_image_2);
             Image::make($request->image_2->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -321,8 +336,12 @@ class NewsController extends Controller
             $news->image_2 = $filename_image_2;
         }
 
+        if ($request->has('image_2_caption')) {
+            $news->image_2_caption = $request->image_2_caption;
+        }
+
         if ($request->hasFile('image_3')) {
-            $filename_image_3 = time() . '.' . $request->image_3->getClientOriginalExtension();
+            $filename_image_3 = time() . '_3' . '.' . $request->image_3->getClientOriginalExtension();
             $path_image_3 = storage_path('/app/public/images/'.$filename_image_3);
             Image::make($request->image_3->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -330,8 +349,12 @@ class NewsController extends Controller
             $news->image_3 = $filename_image_3;
         }
 
+        if ($request->has('image_3_caption')) {
+            $news->image_3_caption = $request->image_3_caption;
+        }
+
         if ($request->hasFile('image_4')) {
-            $filename_image_4 = time() . '.' . $request->image_4->getClientOriginalExtension();
+            $filename_image_4 = time() . '_4' . '.' . $request->image_4->getClientOriginalExtension();
             $path_image_4 = storage_path('/app/public/images/'.$filename_image_4);
             Image::make($request->image_4->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -339,8 +362,12 @@ class NewsController extends Controller
             $news->image_4 = $filename_image_4;
         }
 
+        if ($request->has('image_4_caption')) {
+            $news->image_4_caption = $request->image_4_caption;
+        }
+
         if ($request->hasFile('image_5')) {
-            $filename_image_5 = time() . '.' . $request->image_5->getClientOriginalExtension();
+            $filename_image_5 = time() . '_5' . '.' . $request->image_5->getClientOriginalExtension();
             $path_image_5 = storage_path('/app/public/images/'.$filename_image_5);
             Image::make($request->image_5->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -348,8 +375,12 @@ class NewsController extends Controller
             $news->image_5 = $filename_image_5;
         }
 
+        if ($request->has('image_5_caption')) {
+            $news->image_5_caption = $request->image_5_caption;
+        }
+
         if ($request->hasFile('image_6')) {
-            $filename_image_6 = time() . '.' . $request->image_6->getClientOriginalExtension();
+            $filename_image_6 = time() . '_6' . '.' . $request->image_6->getClientOriginalExtension();
             $path_image_6 = storage_path('/app/public/images/'.$filename_image_6);
             Image::make($request->image_6->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -357,8 +388,12 @@ class NewsController extends Controller
             $news->image_6 = $filename_image_6;
         }
 
+        if ($request->has('image_6_caption')) {
+            $news->image_6_caption = $request->image_6_caption;
+        }
+
         if ($request->hasFile('image_7')) {
-            $filename_image_7 = time() . '.' . $request->image_7->getClientOriginalExtension();
+            $filename_image_7 = time() . '_7' . '.' . $request->image_7->getClientOriginalExtension();
             $path_image_7 = storage_path('/app/public/images/'.$filename_image_7);
             Image::make($request->image_7->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -366,8 +401,12 @@ class NewsController extends Controller
             $news->image_7 = $filename_image_7;
         }
 
+        if ($request->has('image_7_caption')) {
+            $news->image_7_caption = $request->image_7_caption;
+        }
+
         if ($request->hasFile('image_8')) {
-            $filename_image_8 = time() . '.' . $request->image_8->getClientOriginalExtension();
+            $filename_image_8 = time() . '_8' . '.' . $request->image_8->getClientOriginalExtension();
             $path_image_8 = storage_path('/app/public/images/'.$filename_image_8);
             Image::make($request->image_8->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -375,8 +414,12 @@ class NewsController extends Controller
             $news->image_8 = $filename_image_8;
         }
 
+        if ($request->has('image_8_caption')) {
+            $news->image_8_caption = $request->image_8_caption;
+        }
+
         if ($request->hasFile('image_9')) {
-            $filename_image_9 = time() . '.' . $request->image_9->getClientOriginalExtension();
+            $filename_image_9 = time() . '_9' . '.' . $request->image_9->getClientOriginalExtension();
             $path_image_9 = storage_path('/app/public/images/'.$filename_image_9);
             Image::make($request->image_9->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
@@ -384,13 +427,21 @@ class NewsController extends Controller
             $news->image_9 = $filename_image_9;
         }
 
+        if ($request->has('image_9_caption')) {
+            $news->image_9_caption = $request->image_9_caption;
+        }
+
         if ($request->hasFile('image_10')) {
-            $filename_image_10 = time() . '.' . $request->image_10->getClientOriginalExtension();
+            $filename_image_10 = time() . '_10' . '.' . $request->image_10->getClientOriginalExtension();
             $path_image_10 = storage_path('/app/public/images/'.$filename_image_10);
             Image::make($request->image_10->getRealPath())->resize(800, null, function($constraint){
                 $constraint->aspectRatio();
             })->save($path_image_10);
             $news->image_10 = $filename_image_10;
+        }
+
+        if ($request->has('image_10_caption')) {
+            $news->image_10_caption = $request->image_10_caption;
         }
 
         $news->section_id = $request->section;
@@ -407,6 +458,7 @@ class NewsController extends Controller
         $news->very_important = ($request->very_important == 'on');
         $news->popular = ($request->popular == 'on');
         $news->video_of_day = ($request->video_of_day == 'on');
+        $news->tags = $request->tags;
         $news->save();
 
         return redirect('admin/content-news/'.$lang.'/'.$request->section);

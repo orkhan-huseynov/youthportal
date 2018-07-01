@@ -37,186 +37,192 @@ class HomeController extends Controller
         $sections = Section::where('published', true)->orderBy('position')->get();
         if ($lang == 'ru') {
             $news = NewsRu::where('active', 1)
-                    ->where('activity_start', '<=', Carbon::now())
-                    ->orderBy('activity_start', 'DESC')
-                    ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->get();
             $photogalleries = Photogallery::where('active', 1)
-                            ->where('activity_start', '<=', Carbon::now())
-                            ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
 
             $news_very_actual = NewsRu::where('very_actual', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(1)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(1)
+                ->get();
             $news_actual = NewsRu::where('actual', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_view = NewsRu::where('section_id', 12)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('view_count', 'DESC')
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_very_important = NewsRu::where('popular', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_policy_main = NewsRu::where('section_id', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_economy = NewsRu::where('section_id', 9)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_sport = NewsRu::where('section_id', 5)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_education = NewsRu::where('section_id', 4)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_culture = NewsRu::where('section_id', 2)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_hightech = NewsRu::where('section_id', 6)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_world = NewsRu::where('section_id', 7)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_f1 = NewsRu::where('section_id', 10)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
 
-            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsRu::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         } else {
             $news = NewsAz::where('active', 1)
-                    ->where('activity_start', '<=', Carbon::now())
-                    ->orderBy('activity_start', 'DESC')
-                    ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->get();
             $photogalleries = Photogallery::where('active', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->get();
             $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
             $news_very_actual = NewsAz::where('very_actual', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(1)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(1)
+                ->get();
             $news_actual = NewsAz::where('actual', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_view = NewsAz::where('section_id', 12)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('view_count', 'DESC')
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_very_important = NewsAz::where('popular', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_policy_main = NewsAz::where('section_id', 1)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_economy = NewsAz::where('section_id', 9)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_sport = NewsAz::where('section_id', 5)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_education = NewsAz::where('section_id', 4)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_culture = NewsAz::where('section_id', 2)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_hightech = NewsAz::where('section_id', 6)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_world = NewsAz::where('section_id', 7)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
             $news_f1 = NewsAz::where('section_id', 10)
-                                ->where('activity_start', '<=', Carbon::now())
-                                ->where('active', 1)
-                                ->orderBy('activity_start', 'DESC')
-                                ->take(4)
-                                ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->take(4)
+                ->get();
 
-            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsAz::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         }
 
         $photos = Photogallery::where('active', 1)
-                    ->where('activity_start', '<=', Carbon::now())
-                    ->orderBy('activity_start', 'dec')
-                    ->take(4)
-                    ->get();
+            ->where('activity_start', '<=', Carbon::now())
+            ->orderBy('activity_start', 'dec')
+            ->take(4)
+            ->get();
 
         $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
 

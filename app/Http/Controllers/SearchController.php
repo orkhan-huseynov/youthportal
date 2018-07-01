@@ -40,8 +40,9 @@ class SearchController extends Controller
         }
 
         $results = DB::table('news_'.$lang)
-                        ->whereRaw($whereSql)
-                        ->get();
+            ->whereRaw($whereSql)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
@@ -56,7 +57,11 @@ class SearchController extends Controller
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
-            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsRu::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         } else {
             $news = NewsAz::where('active', 1)
                 ->where('activity_start', '<=', Carbon::now())
@@ -69,7 +74,11 @@ class SearchController extends Controller
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
-            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsAz::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         }
 
         $video_of_day = $this->convertYoutube($video_of_day_news->video_url);

@@ -31,9 +31,17 @@ class VideoController extends Controller
                 return $item->activity_start;
             })->take($this->ribbon_news_count);
 
-            $videos = NewsRu::whereNotNull('video_url')->where('active', 1)->get();
+            $videos = NewsRu::whereNotNull('video_url')
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->get();
 
-            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsRu::whereNotNull('video_url')
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('video_of_day', true)
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         } else {
             $news = NewsAz::where('active', 1)
                 ->where('activity_start', '<=', Carbon::now())
@@ -47,14 +55,16 @@ class VideoController extends Controller
             })->take($this->ribbon_news_count);
 
             $videos = NewsAz::whereNotNull('video_url')
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->where('active', 1)
-                        ->get();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('active', 1)
+                ->orderBy('activity_start', 'DESC')
+                ->get();
 
             $video_of_day_news = NewsAz::whereNotNull('video_url')
-                        ->where('activity_start', '<=', Carbon::now())
-                        ->where('video_of_day', true)
-                        ->first();
+                ->where('activity_start', '<=', Carbon::now())
+                ->where('video_of_day', true)
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         }
 
         $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
@@ -95,7 +105,11 @@ class VideoController extends Controller
                 ->take(30)
                 ->get();
 
-            $video_of_day_news = NewsRu::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsRu::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         } else {
             $news = NewsAz::where('active', 1)
                 ->where('activity_start', '<=', Carbon::now())
@@ -116,7 +130,11 @@ class VideoController extends Controller
                 ->take(30)
                 ->get();
 
-            $video_of_day_news = NewsAz::whereNotNull('video_url')->where('video_of_day', true)->first();
+            $video_of_day_news = NewsAz::whereNotNull('video_url')
+                ->where('video_of_day', true)
+                ->where('activity_start', '<=', Carbon::now())
+                ->orderBy('activity_start', 'DESC')
+                ->first();
         }
 
         $video_url = $this->convertYoutube($video->video_url);

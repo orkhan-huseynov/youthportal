@@ -330,6 +330,7 @@ if (newsEditForm != null) {
 // $('#adminNewsSection').change(function(){
 //     window.location.href = `${baseURL}/admin/content-news/${lang}/${$(this).val()}`;
 //});
+
 $('#adminSelectSectionButton').click(function() {
     window.location.href = `${baseURL}/admin/content-news/${lang}/${$('#adminNewsSection').val()}`;
 });

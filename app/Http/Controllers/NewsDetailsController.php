@@ -21,17 +21,6 @@ class NewsDetailsController extends Controller
 
         $sections = Section::where('published', true)->orderBy('position')->get();
         if($lang == 'ru') {
-            $news = NewsRu::where('active', 1)
-                            ->where('activity_start', '<=', Carbon::now())
-                            ->orderBy('activity_start', 'DESC')
-                            ->get();
-            $photogalleries = Photogallery::where('active', 1)
-                            ->where('activity_start', '<=', Carbon::now())
-                            ->get();
-            $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
-                return $item->activity_start;
-            })->take($this->ribbon_news_count);
-
             $news_main = NewsRu::findOrFail($id);
 
             $news_to_increment = NewsRu::findOrFail($id);
@@ -44,24 +33,7 @@ class NewsDetailsController extends Controller
                             ->inRandomOrder()
                             ->take(30)
                             ->get();
-
-            $video_of_day_news = NewsRu::whereNotNull('video_url')
-                                    ->where('video_of_day', true)
-                                    ->where('activity_start', '<=', Carbon::now())
-                                    ->orderBy('activity_start', 'DESC')
-                                    ->first();
         } else {
-            $news = NewsAz::where('active', 1)
-                            ->where('activity_start', '<=', Carbon::now())
-                            ->orderBy('activity_start', 'DESC')
-                            ->get();
-            $photogalleries = Photogallery::where('active', 1)
-                            ->where('activity_start', '<=', Carbon::now())
-                            ->get();
-            $merged_news_ribbon = $news->merge($photogalleries)->sortByDesc(function ($item) {
-                return $item->activity_start;
-            })->take($this->ribbon_news_count);
-
             $news_main = NewsAz::findOrFail($id);
 
             $news_to_increment = NewsAz::findOrFail($id);
@@ -74,15 +46,7 @@ class NewsDetailsController extends Controller
                             ->inRandomOrder()
                             ->take(30)
                             ->get();
-
-            $video_of_day_news = NewsAz::whereNotNull('video_url')
-                                    ->where('video_of_day', true)
-                                    ->where('activity_start', '<=', Carbon::now())
-                                    ->orderBy('activity_start', 'DESC')
-                                    ->first();
         }
-
-        $video_of_day = $this->convertYoutube($video_of_day_news->video_url);
 
         $news_details_text = $news_main->text;
         $replaced_images_arr = [];
@@ -155,7 +119,7 @@ class NewsDetailsController extends Controller
 
         return view('news_details', [
             'sections' => $sections,
-            'news' => $merged_news_ribbon,
+            'news' => $this->getNewsRibbon($lang, $this->ribbon_news_count),
             'news_main' => $news_main,
             'news_details_text' => $news_details_text,
             'replaced_images_arr' => $replaced_images_arr,
@@ -163,16 +127,8 @@ class NewsDetailsController extends Controller
             'similar_news' => $similar_news,
             'lang' => $lang,
 
-            'video_of_day' => $video_of_day,
+            'video_of_day' => $this->getVideoOfDay($lang),
         ]);
 
-    }
-
-    private function convertYoutube($string) {
-        return preg_replace(
-            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-            "<iframe width=\"2\" height=\"2\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>",
-            $string
-        );
     }
 }

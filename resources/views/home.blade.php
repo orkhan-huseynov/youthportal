@@ -394,64 +394,6 @@
             @endforeach
         </div>
     </div>
-    {{-- show buisness/ culture --}}
-    {{--<div class="row new_category_row hover_class">--}}
-        {{--<div class="col-sm-12 col-md-12 news_category_container life_style_container">--}}
-            {{--<p><a href="#"><span class="news_category_span">@if ($lang == 'ru') Культура @else Mədəniyyət @endif </span></a></p>--}}
-            {{--<div class="chevron_right_left_div">--}}
-                {{--<a href="#" class="chevron_margin"><i class="fa fa-chevron-left category_span__chevron" aria-hidden="true"></i></a>--}}
-                {{--<a href="#"><i class="fa fa-chevron-right category_span__chevron" aria-hidden="true"></i></a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--<div class="row life_style_main">--}}
-        {{--<div class="col-sm-12 col-md-6 life_style_big_news_container">--}}
-            {{--<div class="big_news_container__inner">--}}
-                {{--@if ($news_culture->count() > 0)--}}
-                    {{--<a href="{{url($lang.'/news_details/'.$news_culture->first()->id)}}">--}}
-                        {{--<img src="storage/images/{{$news_culture->first()->photo}}" alt="news photo"/>--}}
-                        {{--<h6 class="h6_settings_main">{{$news_culture->first()->name}}</h6>--}}
-                        {{--<p class="life_style_time">{{$news_culture->first()->activity_start->format('d.m.Y H:i')}} // {{{ ($lang == 'ru')? $news_world->first()->section->name_ru : $news_world->first()->section->name_az }}}</p>--}}
-                        {{--<p class="big_news_text">{{$news_culture->first()->tagline}}</p>--}}
-                    {{--</a>--}}
-                {{--@endif--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="col-sm-12 col-md-6 hot_news_container life_style_little_news_container">--}}
-            {{--@php--}}
-                {{--$i = 0;--}}
-            {{--@endphp--}}
-            {{--@foreach ($news_culture as $culture)--}}
-                {{--@php--}}
-                    {{--$i++;--}}
-                {{--@endphp--}}
-                {{--@if($i == 1)--}}
-                    {{--@continue;--}}
-                {{--@endif--}}
-                {{--<div class="row">--}}
-                    {{--<div class="col-md-12 col-lg-6">--}}
-                        {{--<div class="popular_news_container__img">--}}
-                            {{--<a href="{{url($lang.'/news_details/'.$culture->id)}}">--}}
-                                {{--<img src="storage/images/{{$culture->photo_150}}" alt="news photo"/>--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-md-12 col-lg-6 hot_news_container_second">--}}
-                        {{--<div class="popular_news_container_second__text">--}}
-                            {{--<p class="popular_news_time">{{$culture->activity_start->format('d.m.Y H:i')}}</p>--}}
-                            {{--<h6>{{ \Illuminate\Support\Str::words($culture->name, 7) }}</h6>--}}
-                            {{--<p></p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="row for_line">--}}
-                    {{--<div class="col-sm-12 col-md-12">--}}
-                        {{--<div class="line_p_margin_2"><p class="line_p_2"></p></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--@endforeach--}}
-        {{--</div>--}}
-    {{--</div>--}}
     {{-- cinemania/ hightech --}}
     <div class="row new_category_row hover_class">
         <div class="col-sm-12 col-md-12 news_category_container life_style_container">
@@ -689,36 +631,6 @@
     </div>
 @endsection
 
-@section('news_ribbon')
-    <div class="row">
-        <div class="col-sm-12 col-md-12 news_category_container hover_class">
-            <p class="line_width ribbon_text"><span class="news_category_span">@if ($lang == 'ru') Новостная лента @else Xəbər lenti @endif </span></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 comments_container_margin">
-            @foreach ($news as $news_item)
-                @if ($news_item->getTable() == 'photogalleries')
-                    <div class="life_style_comments_container">
-                        <a href="{{url($lang.'/photogallery_details/'.$news_item->id)}}" class="life_style_comments_container_text">
-                            <p class="life_style_comments_container_text title_style">@if ($lang == 'az') {{ $news_item->name_az }} @else {{ $news_item->name_ru }} @endif</p>
-                        </a>
-                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if ($lang == 'az') Foto @else Фото @endif</p>
-                        <div class="line_p_margin_3"><p class="line_p_2"></p></div>
-                    </div>
-                @else
-                    <div class="life_style_comments_container">
-                        <a href="{{url($lang.'/news_details/'.$news_item->id)}}" class="life_style_comments_container_text">
-                            <p class="life_style_comments_container_text title_style @if ($news_item->important) title_style_important @endif @if ($news_item->very_important) title_style_very_important @endif">{{$news_item->name}}</p>
-                        </a>
-                        <p class="popular_news_time">{{$news_item->activity_start->format('d.m.Y H:i')}} // @if($lang == 'az') {{ ($news_item->section != null)? $news_item->section->name_az : '' }} @else {{ ($news_item->section != null)? $news_item->section->name_ru : '' }} @endif</p>
-                        <div class="line_p_margin_3"><p class="line_p_2"></p></div>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
-@endsection
 @section('video_container')
     <div class="row margin_class">
         <div class="col-sm-12 col-md-12 video_container_2 hover_class">

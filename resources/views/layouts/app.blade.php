@@ -131,7 +131,7 @@
                                 <!-- Corner content -->
 
                                 <div class="col-sm-12 col-md-4">
-                                    @yield('news_ribbon')
+                                    @include('news_ribbon')
                                     @yield('video_container')
                                     @include('social_networks')
 

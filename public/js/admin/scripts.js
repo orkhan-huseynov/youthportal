@@ -361,10 +361,45 @@ Array.prototype.forEach.call(texareas, function(elements, index) {
 // });
 
 //datatables
-// $('#datatable-fixed-header').DataTable({
-//     fixedHeader: true,
-//     "order": [[ 4, 'desc' ]],
-// });
+const dataTableAjaxNews = document.getElementById("datatable-ajax-news");
+if (dataTableAjaxNews != null) {
+    const currentSection = dataTableAjaxNews.dataset.currentSection;
+    const lang = dataTableAjaxNews.dataset.lang;
+
+    $('#datatable-ajax-news').DataTable({
+        processing: true,
+        serverSide: true,
+        fixedHeader: true,
+        "ajax": {
+            url: `${baseURL}/api/datatablesAdminNews`,
+            dataType: "json",
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: function(d) {
+                d.newsFilterSection = currentSection;
+                d.newsFilterLang = lang;
+            }
+        },
+        columns: [
+            { "data": "id" },
+            { "data": "section", "sortable": false },
+            { "data": "name" },
+            { "data": "published", "sortable": false },
+            { "data": "from" },
+            { "data": "video_of_day", "sortable": false },
+            { "data": "actuality", "sortable": false },
+            { "data": "importance", "sortable": false },
+            { "data": "popular", "sortable": false },
+            { "data": "actions", "sortable": false },
+        ],
+        iDisplayLength: 5,
+        order: [[ 4, 'desc' ]],
+        bLengthChange: false,
+    });
+}
+
 
 //$("#tags_1").tagsInput({width:"auto"});
 

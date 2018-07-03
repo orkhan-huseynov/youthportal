@@ -8,6 +8,7 @@ use App\Models\Section;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
 use Image;
 
 class NewsController extends Controller
@@ -19,31 +20,161 @@ class NewsController extends Controller
      */
     public function index($lang, $section = 1)
     {
-        if($lang == 'ru'){
-            if ($section == 0) {
-                $news = NewsRu::all();
-            } else {
-                $news = NewsRu::where('section_id', $section)->get();
-            }
-        } else if($lang == 'az') {
-            if ($section == 0) {
-                $news = NewsAz::all();
-            } else {
-                $news = NewsAz::where('section_id', $section)->get();
-            }
-        } else {
-            abort(404);
-        }
+//        if ($lang == 'ru') {
+////            if ($section == 0) {
+////                $news = NewsRu::all();
+////            } else {
+////                $news = NewsRu::where('section_id', $section)->get();
+////            }
+//        } else if($lang == 'az') {
+//            if ($section == 0) {
+//                $news = NewsAz::all();
+//            } else {
+//                $news = NewsAz::where('section_id', $section)->get();
+//            }
+//        } else {
+//            abort(404);
+//        }
 
         $sections = Section::all();
 
         $pass_data = [
-            'news' => $news,
+            //'news' => $news,
             'lang' => $lang,
             'sections' => $sections,
             'currentSection' => $section,
         ];
         return view('admin.content.content_news', $pass_data); //test
+    }
+
+    public function indexApi(Request $request)
+    {
+        $newsFilterSection = filter_var(Input::get('newsFilterSection'), FILTER_SANITIZE_NUMBER_INT);
+        $lang = filter_var(Input::get('newsFilterLang'), FILTER_SANITIZE_STRING);
+
+        $filterArr = [];
+
+        if ($newsFilterSection > 0) {
+            array_push($filterArr, ['section_id', '=', $newsFilterSection]);
+        }
+
+        $columns = [
+            'id',
+            'section',
+            'name',
+            'published',
+            'from',
+            'video_of_day',
+            'actuality',
+            'importance',
+            'popular',
+            'actions',
+        ];
+
+        if ($lang == 'ru') {
+            $totalData = NewsRu::where($filterArr)->count();
+            $totalFiltered = $totalData;
+
+            $limit = $request->input('length');
+            $start = $request->input('start');
+            $order = $columns[$request->input('order.0.column')];
+            $dir = $request->input('order.0.dir');
+
+            if (empty($request->input('search.value'))) {
+                $newsQuery = NewsRu::where($filterArr)->offset($start)->limit($limit);
+
+                if ($order == 'from') {
+                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
+                } else {
+                    $orderByRaw = $order . ' ' . $dir;
+                }
+
+                $newsQuery->orderByRaw($orderByRaw);
+            } else {
+                $search = $request->input('search.value');
+
+                $newsQuery =  NewsRu::where($filterArr)
+                    ->where('id','LIKE',"%{$search}%")
+                    ->orWhere('name','LIKE',"%{$search}%")
+                    ->offset($start)
+                    ->limit($limit);
+
+                if ($order == 'from') {
+                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
+                } else {
+                    $orderByRaw = $order . ' ' . $dir;
+                }
+
+                $newsQuery->orderByRaw($orderByRaw);
+            }
+        } else {
+            $totalData = NewsAz::where($filterArr)->count();
+            $totalFiltered = $totalData;
+
+            $limit = $request->input('length');
+            $start = $request->input('start');
+            $order = $columns[$request->input('order.0.column')];
+            $dir = $request->input('order.0.dir');
+
+            if (empty($request->input('search.value'))) {
+                $newsQuery = NewsAz::where($filterArr)->offset($start)->limit($limit);
+
+                if ($order == 'from') {
+                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
+                } else {
+                    $orderByRaw = $order . ' ' . $dir;
+                }
+
+                $newsQuery->orderByRaw($orderByRaw);
+            } else {
+                $search = $request->input('search.value');
+
+                $newsQuery =  NewsAz::where($filterArr)
+                    ->where('id','LIKE',"%{$search}%")
+                    ->orWhere('name','LIKE',"%{$search}%")
+                    ->offset($start)
+                    ->limit($limit);
+
+                if ($order == 'from') {
+                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
+                } else {
+                    $orderByRaw = $order . ' ' . $dir;
+                }
+
+                $newsQuery->orderByRaw($orderByRaw);
+            }
+        }
+
+        $news = $newsQuery->get();
+
+        $data = [];
+        if (!empty($news)) {
+            foreach ($news as $news_item) {
+                $nestedData['id'] = $news_item->id;
+
+                $actionsHtml = '<a href="' . url('admin/content-news/' . $lang . '/' . $news_item->id . '/edit') . '"><i class="fa fa-pencil"></i></a>';
+                $actionsHtml .= '&nbsp;&nbsp;&nbsp;<a class="delete-link" href="javascript:void(0);" data-url="' . url('admin/content-news/' . $lang . '/' . $news_item->id) . '" data-return-url="' . url('admin/content-news/' . $lang . '/' . $news_item->section->id) . '"><i class="fa fa-trash"></i></a>';
+                $nestedData['actions'] = $actionsHtml;
+
+                $nestedData['section'] = ($lang == 'ru')? $news_item->section->name_ru : $news_item->section->name_az;
+                $nestedData['name'] = $news_item->name;
+                $nestedData['published'] = ($news_item->active) ? '<i class="fa fa-check"></i>' : '';
+                $nestedData['from'] = '<span style="display:none;">' . $news_item->activity_start->format('YmdHi') . '</span>' . $news_item->activity_start->format('d.m.Y H:i');
+                $nestedData['video_of_day'] = ($news_item->video_of_day) ? '<i class="fa fa-check"></i> ' : '';
+                $nestedData['actuality'] = ($news_item->very_actual) ? 'Very actual' : (($news_item->actual) ? 'Actual' : '');
+                $nestedData['importance'] = ($news_item->very_important) ? 'Very important' : (($news_item->important) ? 'Important' : '');
+                $nestedData['popular'] = ($news_item->popular) ? '<i class="fa fa-check"></i>' : '';
+
+                $data[] = $nestedData;
+            }
+        }
+
+        return response()->json([
+            "draw"            => intval($request->input('draw')),
+            "recordsTotal"    => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data"            => $data,
+        ]);
     }
 
     /**

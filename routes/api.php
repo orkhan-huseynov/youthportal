@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/import-news-ru', 'HomeController@importNewsRu');
 Route::post('/import-news-az', 'HomeController@importNewsAz');
+
+Route::post('/datatablesAdminNews', 'Admin\Content\NewsController@indexApi');

@@ -53,7 +53,7 @@
                         </div>
 
 
-                        <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                        <table id="datatable-ajax-news" class="table table-striped table-bordered" data-current-section="{{ $currentSection }}" data-lang="{{ $lang }}">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -70,22 +70,22 @@
                             </tr>
                             </thead>
 
-                            <tbody>
-                            @foreach ($news as $news_item)
-                                <tr>
-                                    <td class="">{{$news_item->id}}</td>
-                                    <td class="">{{$news_item->section->name_ru}}</td>
-                                    <td class="">{{$news_item->name}}</td>
-                                    <td class="">@if ($news_item->active) <i class="fa fa-check"></i> @endif</td>
-                                    <td class="">{{$news_item->activity_start->format('d.m.Y H:i')}}</td>
-                                    <td class="">@if ($news_item->video_of_day) <i class="fa fa-check"></i> @endif</td>
-                                    <td class="">@if ($news_item->very_actual) Very actual @elseif ($news_item->actual) Actual @endif</td>
-                                    <td class="">@if ($news_item->very_important) Very important @elseif ($news_item->important) Important @endif</td>
-                                    <td class="">@if ($news_item->popular) <i class="fa fa-check"></i> @endif</td>
-                                    <td class="last"><a href="{{url('admin/content-news/'.$lang.'/'.$news_item->id.'/edit')}}"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;<a class="delete-link" href="javascript:void(0);" data-url="{{url('admin/content-news/'.$lang.'/'.$news_item->id)}}" data-return-url="{{url('admin/content-news/'.$lang.'/'.$news_item->section->id)}}"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                            @endforeach
-                            </tbody>
+                            {{--<tbody>--}}
+                            {{--@foreach ($news as $news_item)--}}
+                                {{--<tr>--}}
+                                    {{--<td class="">{{$news_item->id}}</td>--}}
+                                    {{--<td class="">{{$news_item->section->name_ru}}</td>--}}
+                                    {{--<td class="">{{$news_item->name}}</td>--}}
+                                    {{--<td class="">@if ($news_item->active) <i class="fa fa-check"></i> @endif</td>--}}
+                                    {{--<td class="">{{$news_item->activity_start->format('d.m.Y H:i')}}</td>--}}
+                                    {{--<td class="">@if ($news_item->video_of_day) <i class="fa fa-check"></i> @endif</td>--}}
+                                    {{--<td class="">@if ($news_item->very_actual) Very actual @elseif ($news_item->actual) Actual @endif</td>--}}
+                                    {{--<td class="">@if ($news_item->very_important) Very important @elseif ($news_item->important) Important @endif</td>--}}
+                                    {{--<td class="">@if ($news_item->popular) <i class="fa fa-check"></i> @endif</td>--}}
+                                    {{--<td class="last"><a href="{{url('admin/content-news/'.$lang.'/'.$news_item->id.'/edit')}}"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;<a class="delete-link" href="javascript:void(0);" data-url="{{url('admin/content-news/'.$lang.'/'.$news_item->id)}}" data-return-url="{{url('admin/content-news/'.$lang.'/'.$news_item->section->id)}}"><i class="fa fa-trash"></i></a></td>--}}
+                                {{--</tr>--}}
+                            {{--@endforeach--}}
+                            {{--</tbody>--}}
                         </table>
                     </div>
                 </div>

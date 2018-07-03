@@ -22,7 +22,7 @@ class Controller extends BaseController
             $news = NewsRu::where('active', 1)
                 ->where('activity_start', '<=', Carbon::now())
                 ->orderBy('activity_start', 'DESC')
-                ->take(50)
+                ->limit($news_count)
                 ->get();
             $photogalleries = Photogallery::where('active', 1)
                 ->where('activity_start', '<=', Carbon::now())
@@ -34,7 +34,7 @@ class Controller extends BaseController
             $news = NewsAz::where('active', 1)
                 ->where('activity_start', '<=', Carbon::now())
                 ->orderBy('activity_start', 'DESC')
-                ->take(50)
+                ->limit($news_count)
                 ->get();
             $photogalleries = Photogallery::where('active', 1)
                 ->where('activity_start', '<=', Carbon::now())

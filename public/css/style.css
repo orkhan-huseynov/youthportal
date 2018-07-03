@@ -2,6 +2,7 @@
     --max-width: 1024px;
     --red-color: #f40000;
     --blue-color: #225985;
+    --news-link-color: #144c85;
     --image-border-color: #dddfe2;
 }
 
@@ -1221,7 +1222,7 @@ footer .footer_img_container {
 .news_details_text a,
 .news_details_text a:hover {
     font-size: 1rem;
-    color: var(--blue-color) !important;
+    color: var(--news-link-color) !important;
 }
 
 .photo_caption_container {

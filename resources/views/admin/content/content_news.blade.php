@@ -31,31 +31,40 @@
                     </div>
                     <div class="x_content">
 
-                        <div class="col-sm-3 table-filter">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <select id="adminNewsSection" name="section" class="form-control">
-                                            @foreach ($sections as $section)
-                                                @if ($currentSection == $section->id)
-                                                    <option value="{{ $section->id }}" selected>{{ ($lang == 'az')? $section->name_az : $section->name_ru }}</option>
-                                                @else
-                                                    <option value="{{ $section->id }}">{{ ($lang == 'az')? $section->name_az : $section->name_ru }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <button id="adminSelectSectionButton" class="btn-success section_select_button">Select</button>
+                        <div class="row">
+                            <div class="col-sm-3 table-filter">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <select id="adminNewsSection" name="section" class="form-control">
+                                                @foreach ($sections as $section)
+                                                    @if ($currentSection == $section->id)
+                                                        <option value="{{ $section->id }}" selected>{{ ($lang == 'az')? $section->name_az : $section->name_ru }}</option>
+                                                    @else
+                                                        <option value="{{ $section->id }}">{{ ($lang == 'az')? $section->name_az : $section->name_ru }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button id="adminSelectSectionButton" class="btn-success section_select_button">Select</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-9">
+                                <a href="#" class="btn btn-xs btn-danger pull-right news_bulk_delete_button" id="bulkDeleteNews">Delete selected</a>
+                            </div>
                         </div>
-
-
                         <table id="datatable-ajax-news" class="table table-striped table-bordered" data-current-section="{{ $currentSection }}" data-lang="{{ $lang }}">
                             <thead>
                             <tr>
+                                <th class="w-30">
+                                    <span class="checkbox-custom checkbox-primary">
+                                      <input id="inputCheckedTopNews" class="selectable-all" type="checkbox">
+                                      <label class="top_checkbox_label"></label>
+                                    </span>
+                                </th>
                                 <th>ID</th>
                                 <th>Section</th>
                                 <th>Name</th>

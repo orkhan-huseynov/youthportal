@@ -152,18 +152,18 @@ class NewsController extends Controller
             foreach ($news as $news_item) {
                 $nestedData['id'] = $news_item->id;
 
-                $actionsHtml = '<a href="' . url('admin/content-news/' . $lang . '/' . $news_item->id . '/edit') . '"><i class="fa fa-pencil"></i></a>';
-                $actionsHtml .= '&nbsp;&nbsp;&nbsp;<a class="delete-link" href="javascript:void(0);" data-url="' . url('admin/content-news/' . $lang . '/' . $news_item->id) . '" data-return-url="' . url('admin/content-news/' . $lang . '/' . $news_item->section->id) . '"><i class="fa fa-trash"></i></a>';
+                $actionsHtml = '<div class="text-center"><a href="' . url('admin/content-news/' . $lang . '/' . $news_item->id . '/edit') . '"><i class="fa fa-pencil"></i></a></div>';
+                //$actionsHtml .= '&nbsp;&nbsp;&nbsp;<a class="delete-link" href="javascript:void(0);" data-url="' . url('admin/content-news/' . $lang . '/' . $news_item->id) . '" data-return-url="' . url('admin/content-news/' . $lang . '/' . $news_item->section->id) . '"><i class="fa fa-trash"></i></a>';
                 $nestedData['actions'] = $actionsHtml;
 
                 $nestedData['section'] = ($lang == 'ru')? $news_item->section->name_ru : $news_item->section->name_az;
                 $nestedData['name'] = $news_item->name;
-                $nestedData['published'] = ($news_item->active) ? '<i class="fa fa-check"></i>' : '';
+                $nestedData['published'] = ($news_item->active) ? '<div class="text-center"><i class="fa fa-check"></i></div>' : '';
                 $nestedData['from'] = '<span style="display:none;">' . $news_item->activity_start->format('YmdHi') . '</span>' . $news_item->activity_start->format('d.m.Y H:i');
-                $nestedData['video_of_day'] = ($news_item->video_of_day) ? '<i class="fa fa-check"></i> ' : '';
-                $nestedData['actuality'] = ($news_item->very_actual) ? 'Very actual' : (($news_item->actual) ? 'Actual' : '');
-                $nestedData['importance'] = ($news_item->very_important) ? 'Very important' : (($news_item->important) ? 'Important' : '');
-                $nestedData['popular'] = ($news_item->popular) ? '<i class="fa fa-check"></i>' : '';
+                $nestedData['video_of_day'] = ($news_item->video_of_day) ? '<div class="text-center"><i class="fa fa-check"></i></div>' : '';
+                $nestedData['actuality'] = ($news_item->very_actual) ? '<div class="text-center">Very actual</div>' : (($news_item->actual) ? '<div class="text-center">Actual</div>' : '');
+                $nestedData['importance'] = ($news_item->very_important) ? '<div class="text-center">Very important</div>' : (($news_item->important) ? '<div class="text-center">Important</div>' : '');
+                $nestedData['popular'] = ($news_item->popular) ? '<div class="text-center"><i class="fa fa-check"></i></div>' : '';
 
                 $data[] = $nestedData;
             }
@@ -615,5 +615,37 @@ class NewsController extends Controller
         }
 
         $news->delete();
+    }
+
+    function bulkDeleteNews(Request $request)
+    {
+        try {
+            $news = $request->news;
+            $lang = $request->lang;
+
+            foreach ($news as $news_item) {
+                $newsId = $news_item[0];
+
+                if ($lang == 'ru') {
+                    $newsObject = NewsRu::findOrFail($newsId);
+                } elseif ($lang == 'az') {
+                    $newsObject = NewsAz::findOrFail($newsId);
+                } else {
+                    continue;
+                }
+
+                $newsObject->delete();
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'responseCode' => 2,
+                'message' => $e->getMessage(),
+            ]);
+        }
+
+        return response()->json([
+            'responseCode' => 1,
+            'message' => 'ok',
+        ]);
     }
 }

@@ -62,7 +62,7 @@ class Controller extends BaseController
                 ->first();
         }
 
-        return $this->convertYoutube($video_of_day_news->video_url);
+        return ($video_of_day_news != null) ? $this->convertYoutube($video_of_day_news->video_url) : '';
     }
 
     protected function convertYoutube($string) {

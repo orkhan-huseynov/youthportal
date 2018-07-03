@@ -4038,3 +4038,8 @@ th.dt-center, td.dt-center { text-align: center; }
 .section_select_button {
   height: 32px;
 }
+
+.news_bulk_delete_button {
+  height: 32px;
+  line-height: 28px;
+}

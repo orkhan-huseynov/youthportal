@@ -21,3 +21,5 @@ Route::post('/import-news-ru', 'HomeController@importNewsRu');
 Route::post('/import-news-az', 'HomeController@importNewsAz');
 
 Route::post('/datatablesAdminNews', 'Admin\Content\NewsController@indexApi');
+
+Route::post('bulkDeleteNews', 'Admin\Content\NewsController@bulkDeleteNews');

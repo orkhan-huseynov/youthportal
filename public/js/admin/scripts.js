@@ -366,10 +366,10 @@ if (dataTableAjaxNews != null) {
     const currentSection = dataTableAjaxNews.dataset.currentSection;
     const lang = dataTableAjaxNews.dataset.lang;
 
-    $('#datatable-ajax-news').DataTable({
-        processing: true,
-        serverSide: true,
-        fixedHeader: true,
+    const adminNewsDataTable = $('#datatable-ajax-news').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "fixedHeader": true,
         "ajax": {
             url: `${baseURL}/api/datatablesAdminNews`,
             dataType: "json",
@@ -382,7 +382,8 @@ if (dataTableAjaxNews != null) {
                 d.newsFilterLang = lang;
             }
         },
-        columns: [
+        "columns": [
+            { "data": "checkbox" },
             { "data": "id" },
             { "data": "section", "sortable": false },
             { "data": "name" },
@@ -394,10 +395,70 @@ if (dataTableAjaxNews != null) {
             { "data": "popular", "sortable": false },
             { "data": "actions", "sortable": false },
         ],
-        iDisplayLength: 5,
-        order: [[ 4, 'desc' ]],
-        bLengthChange: false,
+        "aoColumnDefs": [{
+            'bSortable': false,
+            'bSearchable':false,
+            'bOrderable':false,
+            "mRender": function ( data, type, row ) {
+                return `<div class="checkbox-custom checkbox-primary"><input type="checkbox" class="inputCheckedNews" data-news-id="${row.id}"><label for="inputUnchecked" class="checkbox_label"></label></div>`;
+            },
+            "aTargets": [ 0 ]
+        },{ "visible": false,  "targets": [ 1 ] }],
+        "select": {
+            "style": "multi"
+        },
+        "iDisplayLength": 5,
+        "order": [[ 4, 'desc' ]],
+        "bLengthChange": false,
     });
+
+    // Handle click on "Select all" control
+    $('#inputCheckedTopNews').on('click', function() {
+        $(".inputCheckedNews").prop('checked', this.checked);
+    });
+
+    //bulk delete news
+    let bulkDeleteNews = document.getElementById('bulkDeleteNews');
+    if (bulkDeleteNews != null) {
+        bulkDeleteNews.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            let postArray = [];
+            let checkBoxesArr = document.querySelectorAll('.inputCheckedNews');
+
+            checkBoxesArr.forEach(function (checkBoxInput) {
+                if (checkBoxInput.checked) {
+                    let newsId = checkBoxInput.dataset.newsId;
+
+                    let newsToDelete = [newsId];
+                    postArray.push(newsToDelete);
+                }
+            });
+
+            if (postArray.length > 0) {
+
+                if (confirm(`Are you sure you want to delete selected ${postArray.length} news?`)) {
+                    let remoteUrl = `${baseURL}/api/bulkDeleteNews`;
+
+                    axios.post(remoteUrl, {
+                        news: postArray,
+                        lang: lang,
+                    })
+                    .then(function (responseData) {
+                        let data = responseData.data;
+
+                        if (data.responseCode == 2) {
+                            console.log(data.message);
+                        } else {
+                            adminNewsDataTable.draw();
+                        }
+                    })
+                    .catch(err => console.log(err));
+                }
+
+            }
+        });
+    }
 }
 
 

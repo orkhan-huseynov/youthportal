@@ -49,7 +49,7 @@
                                                 <select id="newsSectionSelect" class="js-switch form-control col-md-7 col-xs-12" minlength="3" name="section">
                                                     <option value="0">Choose Section</option>
                                                     @foreach ($sections as $section)
-                                                        <option value="{{$section->id}}">{{$section->name_ru}}</option>
+                                                        <option value="{{$section->id}}">{{ ($lang == 'ru')? $section->name_ru : $section->name_az }}</option>
                                                     @endforeach
 
                                                 </select>

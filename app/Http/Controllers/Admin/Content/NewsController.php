@@ -360,7 +360,7 @@ class NewsController extends Controller
         $news->tags = $request->tags;
         $news->save();
 
-        return redirect('admin/content-news/'.$lang);
+        return redirect('admin/content-news/'.$lang.'/'.$request->section);
     }
 
     /**

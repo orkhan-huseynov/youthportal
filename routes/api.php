@@ -17,9 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/import-news-ru', 'HomeController@importNewsRu');
-Route::post('/import-news-az', 'HomeController@importNewsAz');
+Route::group(['middleware' => ['auth:api']], function() {
+    Route::post('/import-news-ru', 'HomeController@importNewsRu');
+    Route::post('/import-news-az', 'HomeController@importNewsAz');
 
-Route::post('/datatablesAdminNews', 'Admin\Content\NewsController@indexApi');
+    Route::post('/datatablesAdminNews', 'Admin\Content\NewsController@indexApi');
 
-Route::post('bulkDeleteNews', 'Admin\Content\NewsController@bulkDeleteNews');
+    Route::post('bulkDeleteNews', 'Admin\Content\NewsController@bulkDeleteNews');
+});

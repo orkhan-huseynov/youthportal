@@ -8,7 +8,7 @@ let searchFormButton = document.getElementById('searchFormButton');
 let lang = searchFormButton.dataset.lang;
 if (searchFormButton != null) {
     searchFormButton.addEventListener('click', function (e) {
-       e.preventDefault();
+        e.preventDefault();
 
 
         let searchInput = document.getElementById('searchInput');
@@ -19,11 +19,11 @@ if (searchFormButton != null) {
 let searchInput = document.getElementById('searchInput');
 if (searchInput != null) {
     searchInput.addEventListener('keyup', function(e) {
-       e.preventDefault();
+        e.preventDefault();
 
-       if (e.keyCode === 13) {
-           searchRedirect(lang, this.value);
-       }
+        if (e.keyCode === 13) {
+            searchRedirect(lang, this.value);
+        }
     });
 }
 
@@ -39,12 +39,12 @@ let weatherTempContainer = document.getElementById('weatherTempContainer');
 if (weatherImageContainer != null && weatherTempContainer != null) {
     let weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?id=587081&units=metric&appid=${weatherAPIAppID}`;
     $.get(weatherAPIUrl, function(data) {
-       let temp = Math.round(data.main.temp);
-       let icon = data.weather[0].icon;
-       let iconURL = `https://openweathermap.org/img/w/${icon}.png`;
+        let temp = Math.round(data.main.temp);
+        let icon = data.weather[0].icon;
+        let iconURL = `https://openweathermap.org/img/w/${icon}.png`;
 
-       weatherImageContainer.innerHTML = `<img src="${iconURL}" alt="weather icon" width="32" />`;
-       weatherTempContainer.innerHTML = `${temp} °C`;
+        weatherImageContainer.innerHTML = `<img src="${iconURL}" alt="weather icon" width="32" />`;
+        weatherTempContainer.innerHTML = `${temp} °C`;
     });
 }
 

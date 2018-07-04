@@ -73,9 +73,9 @@ if (currencyUSD != null && currencyEUR != null && currencyGBP != null && currenc
         url: proxyUrl,
         dataType: 'xml',
         cache: false,
-        headers: {
-            'X-Proxy-URL': currencyAPIUrl,
-        },
+        // headers: {
+        //     'X-Proxy-URL': currencyAPIUrl,
+        // },
         success: function(xml) {
             $(xml).find('[Code="USD"]').each(function(){
                 currencyUSD.innerHTML = $(this).find('Value').text();

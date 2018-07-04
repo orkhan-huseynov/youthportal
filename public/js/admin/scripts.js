@@ -403,12 +403,12 @@ if (dataTableAjaxNews != null) {
                 return `<div class="checkbox-custom checkbox-primary"><input type="checkbox" class="inputCheckedNews" data-news-id="${row.id}"><label for="inputUnchecked" class="checkbox_label"></label></div>`;
             },
             "aTargets": [ 0 ]
-        },{ "visible": false,  "targets": [ 1 ] }],
+        }],
         "select": {
             "style": "multi"
         },
         "iDisplayLength": 5,
-        "order": [[ 4, 'desc' ]],
+        "order": [[ 1, 'desc' ]],
         "bLengthChange": false,
     });
 

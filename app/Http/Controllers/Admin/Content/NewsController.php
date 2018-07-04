@@ -59,6 +59,7 @@ class NewsController extends Controller
         }
 
         $columns = [
+            //'checkbox',
             'id',
             'section',
             'name',
@@ -83,11 +84,12 @@ class NewsController extends Controller
             if (empty($request->input('search.value'))) {
                 $newsQuery = NewsRu::where($filterArr)->offset($start)->limit($limit);
 
-                if ($order == 'from') {
-                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
-                } else {
-                    $orderByRaw = $order . ' ' . $dir;
-                }
+                $orderByRaw = ' `ID` ' . $dir;
+//                if ($order == 'from') {
+//                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
+//                } else {
+//                    $orderByRaw = $order . ' ' . $dir;
+//                }
 
                 $newsQuery->orderByRaw($orderByRaw);
             } else {
@@ -99,11 +101,12 @@ class NewsController extends Controller
                     ->offset($start)
                     ->limit($limit);
 
-                if ($order == 'from') {
-                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
-                } else {
-                    $orderByRaw = $order . ' ' . $dir;
-                }
+                $orderByRaw = ' `ID` ' . $dir;
+//                if ($order == 'from') {
+//                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
+//                } else {
+//                    $orderByRaw = $order . ' ' . $dir;
+//                }
 
                 $newsQuery->orderByRaw($orderByRaw);
             }
@@ -119,11 +122,12 @@ class NewsController extends Controller
             if (empty($request->input('search.value'))) {
                 $newsQuery = NewsAz::where($filterArr)->offset($start)->limit($limit);
 
-                if ($order == 'from') {
-                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
-                } else {
-                    $orderByRaw = $order . ' ' . $dir;
-                }
+                $orderByRaw = ' `ID` ' . $dir;
+//                if ($order == 'from') {
+//                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
+//                } else {
+//                    $orderByRaw = $order . ' ' . $dir;
+//                }
 
                 $newsQuery->orderByRaw($orderByRaw);
             } else {
@@ -135,11 +139,12 @@ class NewsController extends Controller
                     ->offset($start)
                     ->limit($limit);
 
-                if ($order == 'from') {
-                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
-                } else {
-                    $orderByRaw = $order . ' ' . $dir;
-                }
+                $orderByRaw = ' `ID` ' . $dir;
+//                if ($order == 'from') {
+//                    $orderByRaw = 'DATE(`activity_start`) ' . $dir;
+//                } else {
+//                    $orderByRaw = $order . ' ' . $dir;
+//                }
 
                 $newsQuery->orderByRaw($orderByRaw);
             }
@@ -150,6 +155,7 @@ class NewsController extends Controller
         $data = [];
         if (!empty($news)) {
             foreach ($news as $news_item) {
+                $nestedData['checkbox'] = '';
                 $nestedData['id'] = $news_item->id;
 
                 $actionsHtml = '<div class="text-center"><a href="' . url('admin/content-news/' . $lang . '/' . $news_item->id . '/edit') . '"><i class="fa fa-pencil"></i></a></div>';
@@ -159,7 +165,8 @@ class NewsController extends Controller
                 $nestedData['section'] = ($lang == 'ru')? $news_item->section->name_ru : $news_item->section->name_az;
                 $nestedData['name'] = $news_item->name;
                 $nestedData['published'] = ($news_item->active) ? '<div class="text-center"><i class="fa fa-check"></i></div>' : '';
-                $nestedData['from'] = '<span style="display:none;">' . $news_item->activity_start->format('YmdHi') . '</span>' . $news_item->activity_start->format('d.m.Y H:i');
+                //$nestedData['from'] = '<span style="display:none;">' . $news_item->activity_start->format('YmdHi') . '</span>' . $news_item->activity_start->format('d.m.Y H:i');
+                $nestedData['from'] =  $news_item->activity_start->format('d.m.Y H:i');
                 $nestedData['video_of_day'] = ($news_item->video_of_day) ? '<div class="text-center"><i class="fa fa-check"></i></div>' : '';
                 $nestedData['actuality'] = ($news_item->very_actual) ? '<div class="text-center">Very actual</div>' : (($news_item->actual) ? '<div class="text-center">Actual</div>' : '');
                 $nestedData['importance'] = ($news_item->very_important) ? '<div class="text-center">Very important</div>' : (($news_item->important) ? '<div class="text-center">Important</div>' : '');
